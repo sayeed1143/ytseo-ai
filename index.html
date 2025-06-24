@@ -578,5 +578,28 @@ hashtagsLabel: '📌 Хэштеги',
             }
         });
     </script>
+    <script>
+  function loadSEOData(lang) {
+    fetch(`seo-${lang}.json`)
+      .then(response => response.json())
+      .then(data => {
+        window.seoTemplates = data;
+        console.log("Loaded SEO for:", lang, data);
+      })
+      .catch(err => console.error("Error loading SEO JSON:", err));
+  }
+
+  // Load language-based JSON on page load
+  document.addEventListener("DOMContentLoaded", function () {
+    const uiLang = document.getElementById("uiLang")?.value || "en";
+    loadSEOData(uiLang);
+  });
+
+  // Load new JSON when UI language changes
+  function changeUILanguage() {
+    const selectedLang = document.getElementById("uiLang").value;
+    loadSEOData(selectedLang);
+  }
+</script>
 </body>
 </html>
