@@ -1,0 +1,55 @@
+{
+  "seo_templates": [
+    {
+      "keywords": ["lion", "animal story", "moral lesson"],
+      "templates": {
+        "title": {
+          "shorts": "The {adjective} Lion: A {length} Story About {moral}",
+          "long": "How the {adjective} Lion Learned {moral} - Full {length} Story"
+        },
+        "description": {
+          "shorts": "This {length} animated story about a {adjective} lion teaches {moral}. Perfect for {audience}!",
+          "long": "Join us for a {length} journey with Leo the lion as he discovers {moral}. This {adjective} tale is ideal for {audience} and teaches valuable life lessons."
+        },
+        "tags": ["lion story", "{moral}", "animal tales", "{length} video", "{audience} content"],
+        "variables": {
+          "adjective": ["proud", "young", "wise", "mighty"],
+          "moral": ["humility", "kindness", "teamwork", "courage"],
+          "length": ["60-second", "2-minute", "quick", "short"],
+          "audience": ["kids", "families", "children", "all ages"]
+        }
+      }
+    },
+    {
+      "keywords": ["python", "coding", "programming"],
+      "templates": {
+        "title": {
+          "shorts": "{number} Python {concept} Every {audience} Should Know",
+          "long": "Python {concept} Explained: Complete {length} Tutorial for {audience}"
+        },
+        "description": {
+          "shorts": "Learn {number} essential Python {concept} in this {length} tutorial! Perfect for {audience}.",
+          "long": "Master Python {concept} with this comprehensive {length} guide. Whether you're a {experience} or just starting out, this tutorial covers everything {audience} need to know."
+        },
+        "tags": ["python", "{concept}", "coding tutorial", "{length} video", "{audience}"],
+        "variables": {
+          "number": ["1", "3", "5", "7"],
+          "concept": ["tricks", "functions", "loops", "data types"],
+          "length": ["quick", "in-depth", "detailed", "complete"],
+          "audience": ["beginners", "developers", "students", "coders"],
+          "experience": ["beginner", "intermediate", "expert"]
+        }
+      }
+    }
+  ],
+  "fallback": {
+    "title": "{topic} - Amazing {type} You'll Love!",
+    "description": "This {type} about {topic} will {impact}. Watch till the end for {benefit}!",
+    "tags": ["{topic}", "{type} video", "viral content", "{language}"],
+    "variables": {
+      "type": ["story", "tutorial", "guide", "lesson"],
+      "impact": ["blow your mind", "change your perspective", "inspire you", "make you think"],
+      "benefit": ["a surprise", "valuable tips", "life-changing advice", "exclusive insights"]
+    }
+  }
+}
