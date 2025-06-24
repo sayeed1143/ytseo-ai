@@ -1,170 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>YouTube SEO Generator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2rem;
-      background: #f9f9f9;
-      color: #222;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    form {
-      max-width: 600px;
-      margin: 0 auto 2rem auto;
-      background: #fff;
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    }
-    label {
-      display: block;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-    }
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-      box-sizing: border-box;
-    }
-    textarea {
-      height: 100px;
-    }
-    button {
-      display: block;
-      background-color: #ff0000;
-      color: white;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 0 auto;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #cc0000;
-    }
-    .output {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-      white-space: pre-wrap;
-      font-family: Consolas, monospace;
-      color: #333;
-    }
-    .output h2 {
-      margin-top: 0;
-      color: #ff0000;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YouTube SEO Metadata Generator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    background: #f9f9f9;
+    color: #222;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  form {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    background: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  }
+  label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+  input[type="text"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  textarea {
+    height: 100px;
+  }
+  button {
+    display: block;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #cc0000;
+  }
+  .output {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+    color: #333;
+  }
+  .output h2 {
+    margin-top: 0;
+    color: #ff0000;
+  }
+  .loading {
+    text-align:center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #666;
+  }
+</style>
 </head>
 <body>
-  <h1>YouTube SEO Metadata Generator</h1>
-  <form id="seoForm" aria-label="YouTube SEO Generator Form">
-    <label for="title">Video Title</label>
-    <input type="text" id="title" name="title" maxlength="100" placeholder="Enter your video title" required />
+<h1>YouTube SEO Metadata Generator</h1>
 
-    <label for="description">Video Description</label>
-    <textarea id="description" name="description" placeholder="Enter your video description" required></textarea>
+<div id="loading" class="loading">Loading configuration...</div>
 
-    <label for="tags">Relevant Tags (comma separated)</label>
-    <input type="text" id="tags" name="tags" placeholder="e.g. tutorial, javascript, coding" />
+<form id="seoForm" aria-label="YouTube SEO Generator Form" hidden>
+  <label for="title">Video Title</label>
+  <input type="text" id="title" name="title" maxlength="100" placeholder="Enter your video title" required />
 
-    <button type="submit">Generate SEO Metadata</button>
-  </form>
+  <label for="description">Video Description</label>
+  <textarea id="description" name="description" placeholder="Enter your video description" required></textarea>
 
-  <div id="result" class="output" aria-live="polite"></div>
+  <label for="tags">Relevant Tags (comma separated)</label>
+  <input type="text" id="tags" name="tags" placeholder="e.g. tutorial, javascript, coding" />
 
-  <script>
-    // Function to clean and optimize title respecting YouTube's 100 character limit
-    function optimizeTitle(title) {
-      // Remove excessive whitespace
-      let cleanTitle = title.trim().replace(/\s+/g, ' ');
-      // Capitalize first letter of main words (title case)
-      cleanTitle = cleanTitle.toLowerCase().split(' ').map(word => {
-        if (word.length <= 3) return word; // keep small words lowercase except first word
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      }).join(' ');
-      // Capitalize first word first letter for small words case
-      cleanTitle = cleanTitle.charAt(0).toUpperCase() + cleanTitle.slice(1);
-      // Truncate if more than 100 chars
-      if (cleanTitle.length > 100) {
-        cleanTitle = cleanTitle.substring(0, 97) + '...';
+  <label for="language">Content Language</label>
+  <select id="language" name="language" aria-label="Select content language">
+    <!-- Options will be loaded dynamically from JSON -->
+  </select>
+
+  <button type="submit">Generate SEO Metadata</button>
+</form>
+
+<div id="result" class="output" aria-live="polite" tabindex="0"></div>
+
+<script>
+  // Fetch config.json to populate Content Language options dynamically
+  async function loadConfig() {
+    try {
+      const response = await fetch('/config.json', {cache: "no-store"});
+      if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      const config = await response.json();
+
+      if (!config.languages || !Array.isArray(config.languages) || config.languages.length === 0) {
+        throw new Error('languages array missing or empty in config.json');
       }
-      return cleanTitle;
+      return config;
+    } catch (error) {
+      console.error('Failed to load config.json:', error);
+      document.getElementById('loading').textContent = 'Failed to load configuration.';
+      return null;
     }
+  }
 
-    // Function to generate hashtags from tags
-    function generateHashtags(tagsString) {
-      if (!tagsString) return '';
-      // Split by commas
-      const tags = tagsString.split(',').map(t => t.trim().toLowerCase())
-                     .filter(t => t.length > 0);
-      // Clean tags: remove spaces and special chars for hashtags
-      const cleanedTags = tags.map(t => t.replace(/[^a-z0-9]/gi, ''))
-                              .filter(t => t.length > 0);
-      // Limit to max 15 hashtags (YouTube max)
-      const limitedTags = cleanedTags.slice(0, 15);
-      // Prefix with #
-      return limitedTags.map(t => '#' + t).join(' ');
+  // Populate content language select options
+  function populateLanguages(langs) {
+    const select = document.getElementById('language');
+    select.innerHTML = '';
+    langs.forEach(({code, name}) => {
+      const option = document.createElement('option');
+      option.value = code;
+      option.textContent = name;
+      select.appendChild(option);
+    });
+  }
+
+  // Update <html lang> attribute to match content language
+  function updateHtmlLang(lang) {
+    document.documentElement.lang = lang || 'en';
+  }
+
+  // Optimize title respecting 100 char limit
+  function optimizeTitle(title) {
+    let cleanTitle = title.trim().replace(/\s+/g, ' ');
+    cleanTitle = cleanTitle.toLowerCase().split(' ').map((word, i) => {
+      if (i === 0) return word.charAt(0).toUpperCase() + word.slice(1);
+      if (word.length <= 3) return word;
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+    if (cleanTitle.length > 100) {
+      cleanTitle = cleanTitle.substring(0, 97) + '...';
     }
+    return cleanTitle;
+  }
 
-    // Function to incorporate tags as keywords in description
-    function enhanceDescription(description, tagsString) {
-      let desc = description.trim();
-      if (!tagsString) return desc;
+  // Generate hashtags from tags string
+  function generateHashtags(tagsString) {
+    if (!tagsString) return '';
+    const tags = tagsString.split(',').map(t => t.trim().toLowerCase())
+                    .filter(t => t.length > 0);
+    const cleanedTags = tags.map(t => t.replace(/[^a-z0-9]/gi, '')).filter(t => t.length > 0);
+    const limitedTags = cleanedTags.slice(0, 15);
+    return limitedTags.map(t => '#' + t).join(' ');
+  }
 
-      const keywords = tagsString.split(',').map(t => t.trim()).filter(t => t.length > 0);
-      if (keywords.length === 0) return desc;
-      
-      // Append keywords as “Keywords: tag1, tag2, …” if not already present
-      const keywordLine = '\n\nKeywords: ' + keywords.join(', ');
-      if (!desc.toLowerCase().includes('keywords')) {
-        desc += keywordLine;
-      }
-      return desc;
+  // Enhance description by appending keywords line if not present
+  function enhanceDescription(description, tagsString) {
+    let desc = description.trim();
+    if (!tagsString) return desc;
+
+    const keywords = tagsString.split(',').map(t => t.trim()).filter(t => t.length > 0);
+    if (keywords.length === 0) return desc;
+
+    const keywordLine = '\n\nKeywords: ' + keywords.join(', ');
+    if (!desc.toLowerCase().includes('keywords')) {
+      desc += keywordLine;
     }
+    return desc;
+  }
 
-    document.getElementById('seoForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+  // Main initialization
+  document.addEventListener('DOMContentLoaded', async () => {
+    const config = await loadConfig();
+    if (!config) return;
+
+    populateLanguages(config.languages);
+
+    const form = document.getElementById('seoForm');
+    const loadingDiv = document.getElementById('loading');
+    loadingDiv.hidden = true;
+    form.hidden = false;
+
+    const languageSelect = document.getElementById('language');
+
+    // Set initial lang attribute
+    updateHtmlLang(languageSelect.value);
+
+    languageSelect.addEventListener('change', () => {
+      updateHtmlLang(languageSelect.value);
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
 
       const titleInput = document.getElementById('title').value;
       const descriptionInput = document.getElementById('description').value;
       const tagsInput = document.getElementById('tags').value;
+      const lang = languageSelect.value;
 
       const optimizedTitle = optimizeTitle(titleInput);
       const optimizedDescription = enhanceDescription(descriptionInput, tagsInput);
       const hashtags = generateHashtags(tagsInput);
 
-      // Construct output text
-      let outputText = '';
-      outputText += 'Optimized Title:\n' + optimizedTitle + '\n\n';
-      outputText += 'Optimized Description:\n' + optimizedDescription + '\n\n';
-      outputText += 'Hashtags:\n' + (hashtags || 'No hashtags generated');
+      const outputText =
+        `Content Language: ${lang}\n\n` +
+        `Optimized Title:\n${optimizedTitle}\n\n` +
+        `Optimized Description:\n${optimizedDescription}\n\n` +
+        `Hashtags:\n${hashtags || 'No hashtags generated'}`;
 
-      // Show result
       const resultDiv = document.getElementById('result');
       resultDiv.textContent = outputText;
-
-      // Set focus on result for accessibility
       resultDiv.focus();
     });
-  </script>
+  });
+</script>
 </body>
 </html>
