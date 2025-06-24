@@ -1,155 +1,253 @@
-<style>
-  :root {
-    --red: #e63946;
-    --black: #121212;
-    --white: #ffffff;
-    --gray-light: #f4f4f4;
-    --gray-dark: #2e2e2e;
-    --text-dark: #1a1a1a;
-    --text-light: #eeeeee;
+:root {
+  --bg-light: #f5f5f5;
+  --bg-dark: #121212;
+  --text-light: #333;
+  --text-dark: #f5f5f5;
+  --card-light: #fff;
+  --card-dark: #1e1e1e;
+  --btn-light: #007bff;
+  --btn-dark: #3399ff;
+  --green: #28a745;
+  --highlight: #e57c23;
+  --border-radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+body.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header Styles */
+.text-logo-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.text-logo-header h1 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--highlight);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.5px;
+}
+
+.text-logo-header h1 span {
+  color: var(--text-light);
+}
+
+body.dark .text-logo-header h1 span {
+  color: var(--text-dark);
+}
+
+.tagline {
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  color: #666;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+body.dark .tagline {
+  color: #aaa;
+}
+
+/* Control Buttons */
+.control-buttons {
+  position: absolute;
+  top: 1.5rem; /* Adjusted from 0 to 1.5rem */
+  right: 1rem; /* Added right padding for better spacing */
+  display: flex;
+  gap: 10px;
+}
+
+.control-btn {
+  background: none;
+  border: 2px solid #666;
+  padding: 6px 12px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  color: #666;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+body.dark .control-btn {
+  border-color: #bbb;
+  color: #bbb;
+}
+
+.control-btn:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+body.dark .control-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Form Elements */
+.section {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--highlight);
+}
+
+textarea, select, input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  background-color: var(--card-light);
+  color: inherit;
+  transition: all 0.3s;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+body.dark textarea,
+body.dark select,
+body.dark input {
+  background-color: var(--card-dark);
+  border: 1px solid #444;
+  color: var(--text-dark);
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--green);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+.btn-tertiary {
+  background-color: var(--btn-light);
+  color: white;
+}
+
+.btn-tertiary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Card Styles */
+.result-card {
+  background-color: var(--card-light);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+body.dark .result-card {
+  background-color: var(--card-dark);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #999;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+body.dark footer {
+  color: #666;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
   }
 
-  body {
-    font-family: "Segoe UI", sans-serif;
-    margin: 0;
-    padding: 2rem;
-    background-color: var(--white);
-    color: var(--text-dark);
-    transition: background 0.3s, color 0.3s;
+  .control-buttons {
+    position: static;
+    justify-content: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 
-  body.dark {
-    background-color: var(--black);
-    color: var(--text-light);
-  }
-
-  /* 🔝 UI Language Selector */
-  #uiLang {
-    background: transparent;
-    border: 1px solid #ccc;
-    padding: 4px 8px;
-    font-size: 0.9rem;
-    border-radius: 4px;
-    color: inherit;
-  }
-
-  /* 🧠 Header */
-  .logo-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .logo-header h1 {
-    font-size: 2.5rem;
-    margin: 0;
-    color: var(--red);
-  }
-
-  .tagline {
-    font-size: 1.1rem;
-    color: #777;
-  }
-
-  .section {
-    margin-bottom: 1.8rem;
-  }
-
-  label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.4rem;
-  }
-
-  textarea,
-  select {
+  .btn {
     width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: var(--gray-light);
-    color: var(--text-dark);
-    transition: background 0.3s;
   }
+}
 
-  body.dark textarea,
-  body.dark select {
-    background-color: var(--gray-dark);
-    border-color: #444;
-    color: var(--text-light);
-  }
+/* Language Selector */
+#uiLang {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ddd;
+  background-color: var(--card-light);
+  color: inherit;
+}
 
-  textarea::placeholder {
-    color: #999;
-  }
-
-  /* 🎯 Buttons */
-  .generate-btn,
-  .copy-btn,
-  .reset-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    margin-right: 0.5rem;
-    transition: background 0.3s;
-  }
-
-  .generate-btn {
-    background-color: var(--red);
-    color: var(--white);
-  }
-
-  .generate-btn:hover {
-    background-color: #c92b3e;
-  }
-
-  .copy-btn,
-  .reset-btn {
-    background-color: #555;
-    color: white;
-  }
-
-  .copy-btn:hover,
-  .reset-btn:hover {
-    background-color: #333;
-  }
-
-  /* 🌐 UI Selector + Dark Toggle Top-Right */
-  .top-controls {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-    font-size: 0.9rem;
-  }
-
-  .top-controls select {
-    background-color: white;
-    color: black;
-    border-radius: 4px;
-  }
-
-  body.dark .top-controls select {
-    background-color: #2a2a2a;
-    color: white;
-    border: 1px solid #555;
-  }
-
-  /* 💬 Suggestions Box */
-  #suggestions {
-    font-size: 0.9rem;
-    color: var(--red);
-    margin-top: 6px;
-  }
-
-  footer {
-    margin-top: 2rem;
-    font-size: 0.85rem;
-    text-align: center;
-    color: #888;
-  }
-</style>
+body.dark #uiLang {
+  background-color: var(--card-dark);
+  border-color: #444;
+}
