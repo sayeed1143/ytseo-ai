@@ -6,6 +6,7 @@
   <title>YTSEO.ai – Smart SEO. More Views. Less Hassle.</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <style>
+    /* Your existing CSS (from the previous complete file) goes here. */
     :root {
       --bg-light: #f5f5f5;
       --bg-dark: #121212;
@@ -83,8 +84,8 @@
     /* Control Buttons */
     .control-buttons {
       position: absolute;
-      top: 1.5rem; /* Adjusted from 0 to 1.5rem */
-      right: 1rem; /* Added right padding for better spacing */
+      top: 1.5rem;
+      right: 1rem;
       display: flex;
       gap: 10px;
     }
@@ -238,7 +239,7 @@
         position: static;
         justify-content: center;
         margin-bottom: 1rem;
-        margin-top: 1rem; /* Added margin for better spacing on mobile */
+        margin-top: 1rem;
       }
 
       .btn {
@@ -338,7 +339,21 @@
   </div>
 
   <script>
-    // Translations object
+    let seoTips = []; // Global variable to store loaded SEO data
+
+    // 1. SAFER JSON LOADING (DeepSeek's improvement)
+    async function loadSEOTips() {
+      try {
+        const response = await fetch('seo-data.json');
+        if (!response.ok) throw new Error('Failed to load SEO data');
+        return await response.json();
+      } catch (error) {
+        console.error('Error loading SEO data. Using fallback:', error);
+        return { seo_tips: [] }; // Return an empty array on error
+      }
+    }
+
+    // Translations object (this remains the same from our last update)
     const translations = {
       en: {
         darkModeButton: '🌙 Dark Mode',
@@ -373,7 +388,6 @@
         alertEnterTopic: 'Please enter a video topic first!',
         alertGenerateContent: 'Generate some content first!',
         copiedSuccess: '✓ Copied!',
-        // Add more keys as needed
       },
       hi: {
         darkModeButton: '🌙 डार्क मोड',
@@ -408,7 +422,6 @@
         alertEnterTopic: 'कृपया पहले एक वीडियो विषय दर्ज करें!',
         alertGenerateContent: 'पहले कुछ सामग्री जनरेट करें!',
         copiedSuccess: '✓ कॉपी किया गया!',
-        // Add more keys as needed
       },
       ur: {
         darkModeButton: '🌙 ڈارک موڈ',
@@ -478,7 +491,6 @@
         alertGenerateContent: 'Сначала сгенерируйте какой-либо контент!',
         copiedSuccess: '✓ Скопировано!',
       }
-      // Add other languages here
     };
 
     function applyTranslations(lang) {
@@ -489,11 +501,9 @@
             element.placeholder = translations[lang][key];
           } else if (element.tagName === 'OPTION') {
             element.textContent = translations[lang][key];
-          }
-          else if (element.tagName === 'BUTTON' && (key === 'darkModeButton' || key === 'lightModeButton')) {
+          } else if (element.tagName === 'BUTTON' && (key === 'darkModeButton' || key === 'lightModeButton')) {
             element.innerHTML = document.body.classList.contains("dark") ? translations[lang].lightModeButton : translations[lang].darkModeButton;
-          }
-          else {
+          } else {
             element.textContent = translations[lang][key];
           }
         }
@@ -504,19 +514,11 @@
       }
     }
 
-    // Function to change UI language
     function changeUILanguage() {
       const lang = document.getElementById("uiLang").value;
-      localStorage.setItem('ytseoUILang', lang); // Save preference
+      localStorage.setItem('ytseoUILang', lang);
       applyTranslations(lang);
     }
-
-    // Load saved language or default to English on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('ytseoUILang') || 'en';
-        document.getElementById('uiLang').value = savedLang;
-        applyTranslations(savedLang);
-    });
 
     // Copy to Clipboard
     function copyToClipboard(id) {
@@ -527,24 +529,44 @@
         const btn = document.querySelector(`[onclick="copyToClipboard('${id}')"]`);
         const originalText = btn.textContent;
         const currentLang = localStorage.getItem('ytseoUILang') || 'en';
-        btn.textContent = translations[currentLang].copiedSuccess; // Use translated "Copied!" text
+        btn.textContent = translations[currentLang].copiedSuccess;
         setTimeout(() => {
             btn.textContent = originalText;
         }, 2000);
     }
 
-    // Generate SEO Content
+    // 2. SMARTER CONTENT GENERATION (DeepSeek's enhanced function)
     function generateSEO() {
-        const topic = document.getElementById("inputTopic").value;
-        const language = document.getElementById("language").value;
-        const type = document.getElementById("type").value;
-        const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+      const topic = document.getElementById("inputTopic").value.trim();
+      const language = document.getElementById("language").value; // Content language, not UI
+      const type = document.getElementById("type").value; // Short or Long video
+      const currentUILang = localStorage.getItem('ytseoUILang') || 'en'; // UI language for alerts
 
-        if (!topic) {
-            alert(translations[currentLang].alertEnterTopic);
-            return;
-        }
+      if (!topic) {
+        alert(translations[currentUILang].alertEnterTopic);
+        return;
+      }
 
+      // Case-insensitive partial matching against loaded JSON data
+      const matches = seoTips.filter(item =>
+        item.keyword.toLowerCase().includes(topic.toLowerCase()) ||
+        topic.toLowerCase().includes(item.keyword.toLowerCase())
+      );
+
+      let bestMatch = null;
+      if (matches.length > 0) {
+          // Prioritize exact or closer matches if needed, for simplicity taking the first match
+          bestMatch = matches[0];
+      }
+
+      if (bestMatch) {
+        // Use data from JSON match
+        document.getElementById("titleBox").value = bestMatch.title;
+        document.getElementById("descBox").value = bestMatch.description;
+        document.getElementById("hashtagBox").value = bestMatch.tags.map(t => `#${t.replace(/\s+/g, '')}`).join(" ");
+        document.getElementById("tagsBox").value = bestMatch.tags.join(", ");
+      } else {
+        // Fallback to dynamic generation if no JSON match (our previous logic)
         let titleSuffix = "";
         let descIntro = "";
         let subscribeText = "";
@@ -581,11 +603,10 @@
             commentText = "Оставьте свои мысли в комментариях ниже";
         }
 
-
         document.getElementById("titleBox").value = `${topic} - ${titleSuffix}`;
-
         document.getElementById("descBox").value =
-`${descIntro}
+`
+${descIntro}
 
 🔔 ${subscribeText}
 👍 ${likeText}
@@ -598,6 +619,7 @@
 
         document.getElementById("tagsBox").value =
 `${topic}, ${language} ${type}, ${type} video, viral ${type}, ${topic} story`;
+      }
     }
 
     // Reset Form
@@ -620,7 +642,7 @@
       const currentLang = localStorage.getItem('ytseoUILang') || 'en';
 
       if (!title && !desc && !tags && !hashtags) {
-        alert(translations[currentLang].alertGenerateContent);
+        alert(translations[currentUILang].alertGenerateContent);
         return;
       }
 
@@ -641,11 +663,20 @@
       const btn = document.querySelector('[onclick="toggleDarkMode()"]');
       const currentLang = localStorage.getItem('ytseoUILang') || 'en';
       btn.textContent = document.body.classList.contains("dark") ? translations[currentLang].lightModeButton : translations[currentLang].darkModeButton;
-      localStorage.setItem('ytseoDarkMode', document.body.classList.contains("dark")); // Save dark mode preference
+      localStorage.setItem('ytseoDarkMode', document.body.classList.contains("dark"));
     }
 
-    // Apply dark mode on load
-    document.addEventListener('DOMContentLoaded', () => {
+    // 3. INITIALIZE ON LOAD (DeepSeek's improvement, combined with our existing DOMContentLoaded)
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Load SEO tips first
+        const data = await loadSEOTips();
+        seoTips = data.seo_tips;
+
+        // Then apply UI language and dark mode
+        const savedLang = localStorage.getItem('ytseoUILang') || 'en';
+        document.getElementById('uiLang').value = savedLang;
+        applyTranslations(savedLang);
+
         if (localStorage.getItem('ytseoDarkMode') === 'true') {
             document.body.classList.add('dark');
             const btn = document.querySelector('[onclick="toggleDarkMode()"]');
