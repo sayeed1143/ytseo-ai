@@ -68,7 +68,8 @@
             for (const niche in seoData.seo_templates) {
                 const option = document.createElement('option');
                 option.value = niche;
-                option.textContent = niche.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()); // Format for display
+                // Format niche names for display (e.g., "food_cooking" becomes "Food Cooking")
+                option.textContent = niche.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
                 nicheSelect.appendChild(option);
             }
         }
@@ -84,33 +85,40 @@
             }
 
             const nicheTemplates = seoData.seo_templates[selectedNiche];
-            if (!nicheTemplates || nicheTemplates.length === 0) {
-                console.warn(`No templates found for niche: ${selectedNiche}. Using fallback.`);
+            let templateToUse = null;
+
+            // For simplicity, we'll just pick the first template in the niche array.
+            // In a more advanced setup, you'd have logic to pick based on keywords etc.
+            if (nicheTemplates && nicheTemplates.length > 0) {
+                templateToUse = nicheTemplates[0]; // Picking the first available template in the niche
+            }
+
+            // If no specific niche template is found, use the fallback
+            if (!templateToUse) {
+                console.warn(`No specific template found for niche: ${selectedNiche}. Using fallback.`);
                 useFallback(selectedLang);
                 return;
             }
 
-            // Pick a random template from the selected niche
-            const randomTemplate = nicheTemplates[Math.floor(Math.random() * nicheTemplates.length)];
-
-            // Get the language-specific title, description, and tags
-            let title = randomTemplate.templates.title[selectedLang];
-            let description = randomTemplate.templates.description[selectedLang];
-            let tags = randomTemplate.templates.tags[selectedLang]; // This is already an array
+            // Get the language-specific title, description, and tags from the chosen template
+            let title = templateToUse.title[selectedLang] || templateToUse.title['en']; // Fallback to English
+            let description = templateToUse.description[selectedLang] || templateToUse.description['en']; // Fallback to English
+            let tags = templateToUse.tags[selectedLang] || templateToUse.tags['en']; // Fallback to English
 
             // If the template has specific variables, replace them
-            if (randomTemplate.variables) {
-                const templateVariables = randomTemplate.variables;
+            if (templateToUse.variables) {
+                const templateVariables = templateToUse.variables;
 
                 for (const varName in templateVariables) {
                     if (templateVariables.hasOwnProperty(varName)) {
-                        const varValues = templateVariables[varName][selectedLang]; // Get language-specific values
+                        const varValues = templateVariables[varName][selectedLang] || templateVariables[varName]['en']; // Get language-specific values or English fallback
                         if (varValues && varValues.length > 0) {
                             const randomVarValue = varValues[Math.floor(Math.random() * varValues.length)];
-                            const placeholder = new RegExp(`{${varName}}`, 'g');
+                            const placeholder = new RegExp(`{${varName}}`, 'g'); // Create regex for placeholder e.g. {game_name}
 
                             title = title.replace(placeholder, randomVarValue);
                             description = description.replace(placeholder, randomVarValue);
+                            // Tags is an array, so map over it to replace within each tag string
                             tags = tags.map(tag => tag.replace(placeholder, randomVarValue));
                         } else {
                             console.warn(`No values found for variable '${varName}' in language '${selectedLang}' for niche '${selectedNiche}'.`);
@@ -124,7 +132,7 @@
             generatedTags.textContent = tags.join(", "); // Display tags as comma-separated string
         }
 
-        // Function to use fallback content if no niche template is found
+        // Function to use fallback content
         function useFallback(lang) {
             const fallback = seoData.fallback;
             if (!fallback) {
@@ -135,54 +143,39 @@
                 return;
             }
 
-            let title = fallback.templates.title[lang] || fallback.templates.title.en; // Fallback to English if chosen lang not found
-            let description = fallback.templates.description[lang] || fallback.templates.description.en;
-            let tags = fallback.templates.tags[lang] || fallback.templates.tags.en;
+            // Get fallback templates based on language, with English as ultimate fallback
+            let title = fallback.title[lang] || fallback.title['en'];
+            let description = fallback.description[lang] || fallback.description['en'];
+            let tags = fallback.tags[lang] || fallback.tags['en'];
 
+            // Replace variables in fallback
             if (fallback.variables) {
                 for (const varName in fallback.variables) {
                     if (fallback.variables.hasOwnProperty(varName)) {
-                        const varValues = fallback.variables[varName][lang] || fallback.variables[varName].en;
+                        const varValues = fallback.variables[varName][lang] || fallback.variables[varName]['en'];
                         if (varValues && varValues.length > 0) {
                             const randomVarValue = varValues[Math.floor(Math.random() * varValues.length)];
-                            const placeholder = new RegExp(`{${varName}_${lang}}|{${varName}}`, 'g'); // Try both explicit and generic placeholder
-                            
-                            // Important: Fallback placeholders should match the template, e.g., {topic_en} or {topic}
-                            // In this fallback, I've used {topic_en} for clarity, but if your templates are just {topic}, adjust the regex.
-                            // The JSON provided above uses {topic_en} etc for fallback for explicit language, so this matches.
-                            
-                            title = title.replace(new RegExp(`{${varName}_${lang}}`, 'g'), randomVarValue);
-                            description = description.replace(new RegExp(`{${varName}_${lang}}`, 'g'), randomVarValue);
-                            tags = tags.map(tag => tag.replace(new RegExp(`{${varName}_${lang}}`, 'g'), randomVarValue));
+                            const placeholder = new RegExp(`{${varName}}`, 'g'); // Generic placeholder
 
-                            // Also try to replace generic placeholders if they exist
-                            title = title.replace(new RegExp(`{${varName}}`, 'g'), randomVarValue);
-                            description = description.replace(new RegExp(`{${varName}}`, 'g'), randomVarValue);
-                            tags = tags.map(tag => tag.replace(new RegExp(`{${varName}}`, 'g'), randomVarValue));
+                            title = title.replace(placeholder, randomVarValue);
+                            description = description.replace(placeholder, randomVarValue);
+                            tags = tags.map(tag => tag.replace(placeholder, randomVarValue));
+                        } else {
+                            console.warn(`No values found for fallback variable '${varName}' in language '${lang}'.`);
                         }
                     }
                 }
             }
-
-            // For the fallback, we need to supply *some* generic topics/video types
-            // This is a manual override for the fallback to ensure it always produces something
-            // In a real app, you might have user input for topic, or default to a generic one.
-            const genericTopic = {
-                en: "General Topic", hi: "सामान्य विषय", ur: "عام موضوع", ru: "Общая тема", es: "Tema General", fr: "Sujet Général", nl: "Algemeen Onderwerp"
-            }[lang] || "General Topic";
             
-            const genericVideoType = {
-                en: "Video", hi: "वीडियो", ur: "ویڈیو", ru: "Видео", es: "Video", fr: "Vidéo", nl: "Video"
-            }[lang] || "Video";
-
-            title = title.replace(/{topic_en}|{topic}/g, genericTopic); // Replace generic topic placeholders too
-            description = description.replace(/{topic_en}|{topic}/g, genericTopic);
-            tags = tags.map(tag => tag.replace(/{topic_en}|{topic}/g, genericTopic));
-
-            title = title.replace(/{video_type_en}|{video_type}/g, genericVideoType); // Replace generic video_type placeholders too
-            description = description.replace(/{video_type_en}|{video_type}/g, genericVideoType);
-            tags = tags.map(tag => tag.replace(/{video_type_en}|{video_type}/g, genericVideoType));
-
+            // For fallback, we need to manually provide some generic values for {topic}
+            // In a real application, you might get this from user input or a default.
+            const genericTopic = {
+                en: "Amazing Content", hi: "अद्भुत सामग्री", ur: "حیرت انگیز مواد", ru: "Удивительный контент", es: "Contenido Asombroso", fr: "Contenu Incroyable", nl: "Geweldige Inhoud"
+            }[lang] || "Amazing Content";
+            
+            title = title.replace(/{topic}/g, genericTopic);
+            description = description.replace(/{topic}/g, genericTopic);
+            tags = tags.map(tag => tag.replace(/{topic}/g, genericTopic));
 
             generatedTitle.textContent = title;
             generatedDescription.textContent = description;
