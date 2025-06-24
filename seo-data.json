@@ -1,593 +1,188 @@
 {
-  "languages": {
-    "en": "English",
-    "hi": "Hindi",
-    "ur": "Urdu",
-    "ru": "Russian",
-    "es": "Spanish",
-    "fr": "French",
-    "nl": "Dutch"
-  },
   "seo_templates": {
+    "motivation": [
+      {
+        "keyword": "success story",
+        "title": "From Rock Bottom to Riches | Real Success Story",
+        "description": "This motivational story proves that setbacks are setups for comebacks. Get inspired today.",
+        "tags": ["motivation", "success", "life story", "comeback", "inspiration", "hard work", "entrepreneur", "hustle"]
+      },
+      {
+        "keyword": "never give up",
+        "title": "Why Winners Never Quit | Inspirational Tale",
+        "description": "Facing challenges? This story will remind you why quitting is never the answer.",
+        "tags": ["never give up", "motivational story", "inspiration", "perseverance", "resilience", "overcoming obstacles"]
+      },
+      {
+        "keyword": "self improvement",
+        "title": "How to Reinvent Yourself in 30 Days (Step-by-Step)",
+        "description": "Transform your habits, mindset, and life with this powerful 30-day challenge.",
+        "tags": ["self improvement", "personal growth", "habits", "discipline", "mindset"]
+      }
+    ],
+    "technology": [
+      {
+        "keyword": "ai tools",
+        "title": "Top 5 Free AI Tools You Need in 2025",
+        "description": "Discover the best AI tools that can transform your workflow. All for free!",
+        "tags": ["ai", "tools", "2025", "technology", "productivity", "artificial intelligence", "chatgpt", "automation"]
+      },
+      {
+        "keyword": "future tech",
+        "title": "This Tech Will Change the World in 2026",
+        "description": "Get ahead of the curve with these breakthrough innovations shaping tomorrow.",
+        "tags": ["future tech", "gadgets", "ai", "robotics", "innovation", "tech trends", "sci-fi tech"]
+      },
+      {
+        "keyword": "smartphone review",
+        "title": "{phone_model} Review: Worth the Hype? (Full Test)",
+        "description": "We tested the {phone_model} for 30 days—here’s the brutal truth.",
+        "tags": ["smartphone", "tech review", "{phone_brand}", "unboxing", "camera test", "battery life"],
+        "variables": {
+          "phone_model": ["iPhone 16 Pro", "Samsung Galaxy S25", "Google Pixel 9"],
+          "phone_brand": ["Apple", "Samsung", "Google"]
+        }
+      }
+    ],
+    "education": [
+      {
+        "keyword": "study tips",
+        "title": "Study Smarter, Not Harder | Tips That Actually Work",
+        "description": "Master your exams with these proven techniques to boost your learning.",
+        "tags": ["study", "education", "tips", "students", "learning", "exam hacks", "focus", "memory"]
+      },
+      {
+        "keyword": "learn fast",
+        "title": "Learn Anything 2x Faster | Memory Techniques",
+        "description": "Speed up your learning using these scientifically backed memory methods.",
+        "tags": ["learning", "study tips", "memory", "students", "neuroscience", "productivity"]
+      },
+      {
+        "keyword": "career advice",
+        "title": "How to Get Hired in 2025 (No Experience Needed)",
+        "description": "Land your dream job with these unconventional strategies.",
+        "tags": ["career", "jobs", "resume tips", "interview skills", "remote work"]
+      }
+    ],
+    "finance": [
+      {
+        "keyword": "investing",
+        "title": "Beginner’s Guide to Investing in 2025",
+        "description": "Learn how to grow your money with safe, smart investments—even if you're just starting.",
+        "tags": ["finance", "investing", "2025", "money", "wealth", "stocks", "passive income"]
+      },
+      {
+        "keyword": "budgeting",
+        "title": "How to Budget Like a Pro (Even on Low Income)",
+        "description": "This budgeting guide helps you save money, reduce stress, and gain control of your finances.",
+        "tags": ["budgeting", "money", "finance", "saving tips", "debt free", "frugal living"]
+      },
+      {
+        "keyword": "side hustles",
+        "title": "7 Side Hustles That Pay $1000+/Month (2025)",
+        "description": "Turn spare time into income with these realistic side gigs.",
+        "tags": ["side hustles", "make money", "online income", "freelancing", "entrepreneur"]
+      }
+    ],
+    "storytelling": [
+      {
+        "keyword": "animal story",
+        "title": "The Fox and the Crow | Timeless Moral Story",
+        "description": "A clever tale with a life lesson that still matters today. Watch till the end!",
+        "tags": ["animal story", "moral", "shorts", "lesson", "kids story", "bedtime story"]
+      },
+      {
+        "keyword": "life lesson",
+        "title": "The Old Tree’s Wisdom | Touching Short Story",
+        "description": "Sometimes wisdom hides in silence. A story that touches the soul.",
+        "tags": ["life lesson", "storytelling", "emotional", "moral", "inspiration", "short film"]
+      },
+      {
+        "keyword": "scary story",
+        "title": "The Whispering Shadows | Horror Short Story",
+        "description": "A chilling tale that will haunt you long after it ends. Don’t watch alone!",
+        "tags": ["horror", "scary story", "creepy", "paranormal", "thriller"]
+      }
+    ],
+    "health": [
+      {
+        "keyword": "mental health",
+        "title": "5 Habits That Destroy Mental Health (Fix Them Now)",
+        "description": "Improve your emotional well-being by breaking these hidden toxic habits.",
+        "tags": ["mental health", "self care", "mindset", "health tips", "anxiety relief", "therapy"]
+      },
+      {
+        "keyword": "healthy lifestyle",
+        "title": "Daily Habits of Healthy People | Easy Routine for 2025",
+        "description": "Follow these simple habits to transform your energy, sleep, and focus.",
+        "tags": ["healthy habits", "lifestyle", "fitness", "routine", "wellness", "nutrition"]
+      },
+      {
+        "keyword": "weight loss",
+        "title": "Lose 10kg in 30 Days (Science-Backed Plan)",
+        "description": "No fad diets—just a realistic, sustainable weight loss strategy.",
+        "tags": ["weight loss", "fitness", "diet", "fat loss", "health transformation"]
+      }
+    ],
     "gaming": [
       {
         "keyword": "game review",
-        "title": {
-          "en": "{game_name} Review: Is It Worth Playing in {year}?",
-          "hi": "{game_name} समीक्षा: क्या यह {year} में खेलने लायक है?",
-          "ur": "{game_name} جائزہ: کیا یہ {year} میں کھیلنے کے قابل ہے؟",
-          "ru": "Обзор {game_name}: Стоит ли играть в {year} году?",
-          "es": "Reseña de {game_name}: ¿Vale la Pena Jugarlo en {year}?",
-          "fr": "Critique de {game_name}: Vaut-il la Peine d'y Jouer en {year}?",
-          "nl": "{game_name} Review: Is het de moeite waard om te spelen in {year}?"
-        },
-        "description": {
-          "en": "We played {game_name} for {hours} hours—here’s the honest verdict. Watch our full gameplay and review!",
-          "hi": "हमने {game_name} को {hours} घंटे खेला—यह रहा ईमानदार फैसला। हमारा पूरा गेमप्ले और समीक्षा देखें!",
-          "ur": "ہم نے {game_name} کو {hours} گھنٹے کھیلا—یہ رہا ایماندارانہ فیصلہ۔ ہمارا مکمل گیم پلے اور جائزہ دیکھیں!",
-          "ru": "Мы играли в {game_name} {hours} часов — вот честный вердикт. Смотрите наше полное прохождение и обзор!",
-          "es": "Jugamos {game_name} durante {hours} horas, este es el veredicto honesto. ¡Mira nuestro gameplay completo y reseña!",
-          "fr": "Nous avons joué à {game_name} pendant {hours} heures – voici le verdict honnête. Regardez notre gameplay complet et notre critique !",
-          "nl": "We hebben {game_name} {hours} uur gespeeld—hier is het eerlijke oordeel. Bekijk onze volledige gameplay en review!"
-        },
-        "tags": {
-          "en": ["gaming", "game review", "{game_genre}", "{game_platform}", "walkthrough", "gameplay", "new game", "{year}"],
-          "hi": ["गेमिंग", "गेम समीक्षा", "{game_genre}", "{game_platform}", "गेमप्ले", "नया गेम", "{year}"],
-          "ur": ["گیمنگ", "گیم ریویو", "{game_genre}", "{game_platform}", "واک تھرو", "گیم پلے", "نیا گیم", "{year}"],
-          "ru": ["игры", "обзор игры", "{game_genre}", "{game_platform}", "прохождение", "геймплей", "новая игра", "{year}"],
-          "es": ["gaming", "reseña de juego", "{game_genre}", "{game_platform}", "gameplay", "juego nuevo", "{year}"],
-          "fr": ["gaming", "critique de jeu", "{game_genre}", "{game_platform}", "gameplay", "nouveau jeu", "{year}"],
-          "nl": ["gaming", "game review", "{game_genre}", "{game_platform}", "walkthrough", "gameplay", "nieuw spel", "{year}"]
-        },
+        "title": "{game_name} Review: Is It Worth Playing in 2025?",
+        "description": "We played {game_name} for 50 hours—here’s the honest verdict.",
+        "tags": ["gaming", "game review", "{game_genre}", "{game_platform}", "walkthrough"],
         "variables": {
-          "game_name": {
-            "en": ["GTA 6", "Elden Ring 2", "Cyberpunk 2077 Update", "The Witcher 4"],
-            "hi": ["जी टी ए 6", "एल्डन रिंग 2", "साइबरपंक 2077 अपडेट", "द विचर 4"],
-            "ur": ["جی ٹی اے 6", "ایلڈن رنگ 2", "سائبر پنک 2077 اپ ڈیٹ", "دی وچر 4"],
-            "ru": ["GTA 6", "Elden Ring 2", "Cyberpunk 2077 Обновление", "Ведьмак 4"],
-            "es": ["GTA 6", "Elden Ring 2", "Cyberpunk 2077 Actualización", "The Witcher 4"],
-            "fr": ["GTA 6", "Elden Ring 2", "Cyberpunk 2077 Mise à jour", "The Witcher 4"],
-            "nl": ["GTA 6", "Elden Ring 2", "Cyberpunk 2077 Update", "The Witcher 4"]
-          },
-          "game_genre": {
-            "en": ["RPG", "FPS", "Open World", "Strategy"],
-            "hi": ["आर पी जी", "एफ पी एस", "ओपन वर्ल्ड", "रणनीति"],
-            "ur": ["آر پی جی", "ایف پی ایس", "اوپن ورلڈ", "حکمت عملی"],
-            "ru": ["РПГ", "Шутер", "Открытый мир", "Стратегия"],
-            "es": ["RPG", "FPS", "Mundo Abierto", "Estrategia"],
-            "fr": ["RPG", "FPS", "Monde Ouvert", "Stratégie"],
-            "nl": ["RPG", "FPS", "Open Wereld", "Strategie"]
-          },
-          "game_platform": {
-            "en": ["PS5", "Xbox", "PC", "Nintendo Switch"],
-            "hi": ["पीएस 5", "एक्सबॉक्स", "पीसी", "निंटेंडो स्विच"],
-            "ur": ["پی ایس 5", "ایکس باکس", "پی سی", "نینٹینڈو سوئچ"],
-            "ru": ["PS5", "Xbox", "ПК", "Nintendo Switch"],
-            "es": ["PS5", "Xbox", "PC", "Nintendo Switch"],
-            "fr": ["PS5", "Xbox", "PC", "Nintendo Switch"],
-            "nl": ["PS5", "Xbox", "PC", "Nintendo Switch"]
-          },
-          "year": {
-            "en": ["2025", "2026", "Next Year"],
-            "hi": ["2025", "2026", "अगले साल"],
-            "ur": ["2025", "2026", "اگلے سال"],
-            "ru": ["2025", "2026", "в следующем году"],
-            "es": ["2025", "2026", "el próximo año"],
-            "fr": ["2025", "2026", "l'année prochaine"],
-            "nl": ["2025", "2026", "volgend jaar"]
-          },
-          "hours": {
-            "en": ["10", "20", "50", "100+"],
-            "hi": ["10", "20", "50", "100+"],
-            "ur": ["10", "20", "50", "100+"],
-            "ru": ["10", "20", "50", "100+"],
-            "es": ["10", "20", "50", "100+"],
-            "fr": ["10", "20", "50", "100+"],
-            "nl": ["10", "20", "50", "100+"]
-          }
+          "game_name": ["GTA 6", "Elden Ring 2", "Cyberpunk 2077 Update"],
+          "game_genre": ["RPG", "FPS", "Open World"],
+          "game_platform": ["PS5", "Xbox", "PC"]
         }
       },
       {
         "keyword": "gaming tips",
-        "title": {
-          "en": "10 Pro Tips to Dominate {game_name} in {year}!",
-          "hi": "{game_name} में {year} में हावी होने के लिए 10 प्रो टिप्स!",
-          "ur": "{game_name} میں {year} میں سبقت حاصل کرنے کے 10 پرو ٹپس!",
-          "ru": "10 профессиональных советов по доминированию в {game_name} в {year} году!",
-          "es": "¡10 consejos profesionales para dominar {game_name} en {year}!",
-          "fr": "10 astuces de pro pour dominer {game_name} en {year} !",
-          "nl": "10 Pro Tips om {game_name} te domineren in {year}!"
-        },
-        "description": {
-          "en": "These advanced strategies will make you unbeatable. Boost your skills and climb the ranks!",
-          "hi": "ये उन्नत रणनीतियाँ आपको अपराजेय बना देंगी। अपने कौशल को बढ़ावा दें और रैंकों पर चढ़ें!",
-          "ur": "یہ جدید حکمت عملی آپ کو ناقابل شکست بنا دے گی۔ اپنی مہارتوں کو بڑھائیں اور رینکس چڑھائیں!",
-          "ru": "Эти продвинутые стратегии сделают вас непобедимым. Развивайте свои навыки и поднимайтесь по рангам!",
-          "es": "Estas estrategias avanzadas te harán imbatible. ¡Mejora tus habilidades y sube de rango!",
-          "fr": "Ces stratégies avancées vous rendront imbattable. Améliorez vos compétences et montez dans les classements !",
-          "nl": "Deze geavanceerde strategieën maken je onverslaanbaar. Verbeter je vaardigheden en klim in de rangen!"
-        },
-        "tags": {
-          "en": ["gaming tips", "pro gamer", "esports", "{game_name}", "guide", "tutorial", "strategy guide", "YouTube gaming"],
-          "hi": ["गेमिंग टिप्स", "प्रो गेमर", "ईस्पोर्ट्स", "{game_name}", "गाइड", "ट्यूटोरियल"],
-          "ur": ["گیمنگ ٹپس", "پرو گیمر", "ای اسپورٹس", "{game_name}", "گائیڈ", "ٹیوٹوریل"],
-          "ru": ["советы по играм", "про геймер", "киберспорт", "{game_name}", "руководство", "учебник"],
-          "es": ["consejos de gaming", "pro gamer", "esports", "{game_name}", "guía", "tutorial"],
-          "fr": ["astuces gaming", "pro gamer", "esports", "{game_name}", "guide", "tutoriel"],
-          "nl": ["gaming tips", "pro gamer", "esports", "{game_name}", "gids", "tutorial"]
-        },
-        "variables": {
-          "game_name": {
-            "en": ["Fortnite", "Call of Duty", "Apex Legends", "Valorant"],
-            "hi": ["फोर्टनाइट", "कॉल ऑफ़ ड्यूटी", "एपेक्स लीजेंड्स", "वेलोरेंट"],
-            "ur": ["فورٹنائیٹ", "کال آف ڈیوٹی", "ایپیکس لیجنڈز", "ویلیورنٹ"],
-            "ru": ["Фортнайт", "Call of Duty", "Apex Legends", "Valorant"],
-            "es": ["Fortnite", "Call of Duty", "Apex Legends", "Valorant"],
-            "fr": ["Fortnite", "Call of Duty", "Apex Legends", "Valorant"],
-            "nl": ["Fortnite", "Call of Duty", "Apex Legends", "Valorant"]
-          },
-          "year": {
-            "en": ["2025", "2026", "This Year"],
-            "hi": ["2025", "2026", "इस साल"],
-            "ur": ["2025", "2026", "اس سال"],
-            "ru": ["2025", "2026", "в этом году"],
-            "es": ["2025", "2026", "este año"],
-            "fr": ["2025", "2026", "cette année"],
-            "nl": ["2025", "2026", "dit jaar"]
-          }
-        }
+        "title": "10 Pro Tips to Dominate {game_name} in 2025",
+        "description": "These advanced strategies will make you unbeatable.",
+        "tags": ["gaming tips", "pro gamer", "esports", "{game_name}", "guide"]
       }
     ],
-    "vlogging": [
-      {
-        "keyword": "daily vlog",
-        "title": {
-          "en": "A Day in My Life: {activity} & {emotion}!",
-          "hi": "मेरे जीवन का एक दिन: {activity} और {emotion}!",
-          "ur": "میری زندگی کا ایک دن: {activity} اور {emotion}!",
-          "ru": "Один день из моей жизни: {activity} и {emotion}!",
-          "es": "Un día en mi vida: ¡{activity} y {emotion}!",
-          "fr": "Une journée dans ma vie : {activity} et {emotion} !",
-          "nl": "Een dag in mijn leven: {activity} & {emotion}!"
-        },
-        "description": {
-          "en": "Come along with me as I {activity_full} and share some {emotion_full} moments. Don't forget to like and subscribe for more daily vlogs!",
-          "hi": "मेरे साथ आएं जब मैं {activity_full} करता हूँ और कुछ {emotion_full} पल साझा करता हूँ। अधिक दैनिक व्लॉग्स के लिए लाइक और सब्सक्राइब करना न भूलें!",
-          "ur": "میرے ساتھ آئیں جب میں {activity_full} کرتا ہوں اور کچھ {emotion_full} لمحات شیئر کرتا ہوں۔ مزید روزانہ وِلاگز کے لیے لائک اور سبسکرائب کرنا نہ بھولیں!",
-          "ru": "Присоединяйтесь ко мне, пока я {activity_full} и делюсь {emotion_full} моментами. Не забудьте поставить лайк и подписаться для большего количества ежедневных влогов!",
-          "es": "Acompáñame mientras {activity_full} y comparto algunos momentos {emotion_full}. ¡No olvides darle me gusta y suscribirte para más vlogs diarios!",
-          "fr": "Venez avec moi pendant que je {activity_full} et partage des moments {emotion_full}. N'oubliez pas de liker et de vous abonner pour plus de vlogs quotidiens !",
-          "nl": "Ga met me mee terwijl ik {activity_full} en enkele {emotion_full} momenten deel. Vergeet niet te liken en te abonneren voor meer dagelijkse vlogs!"
-        },
-        "tags": {
-          "en": ["daily vlog", "vlogging", "my day", "{activity}", "lifestyle", "YouTube vlog", "routine", "day in life"],
-          "hi": ["दैनिक व्लॉग", "व्लॉगिंग", "मेरा दिन", "{activity}", "लाइफस्टाइल"],
-          "ur": ["روزانہ وِلاگ", "وِلاگنگ", "میرا دن", "{activity}", "طرز زندگی"],
-          "ru": ["ежедневный влог", "влогинг", "мой день", "{activity}", "образ жизни"],
-          "es": ["vlog diario", "vlogging", "mi día", "{activity}", "estilo de vida"],
-          "fr": ["vlog quotidien", "vlogging", "ma journée", "{activity}", "mode de vie"],
-          "nl": ["dagelijkse vlog", "vloggen", "mijn dag", "{activity}", "levensstijl"]
-        },
-        "variables": {
-          "activity": {
-            "en": ["Productive Work Day", "Fun Adventure", "Relaxing Sunday", "New City Exploration"],
-            "hi": ["उत्पादक कार्य दिवस", "मज़ेदार साहसिक", "आरामदायक रविवार", "नए शहर की खोज"],
-            "ur": ["پیداواری کام کا دن", "تفریحی مہم جوئی", "آرام دہ اتوار", "نئے شہر کی تلاش"],
-            "ru": ["продуктивный рабочий день", "веселое приключение", "расслабляющее воскресенье", "исследование нового города"],
-            "es": ["Día de Trabajo Productivo", "Aventura Divertida", "Domingo Relajante", "Exploración de Ciudad Nueva"],
-            "fr": ["Journée de Travail Productive", "Aventure Amusante", "Dimanche Relaxant", "Exploration d'une Nouvelle Ville"],
-            "nl": ["Productieve Werkdag", "Leuk Avontuur", "Ontspannen Zondag", "Verkenning Nieuwe Stad"]
-          },
-          "emotion": {
-            "en": ["Excitement", "Relaxation", "Surprises", "Challenges"],
-            "hi": ["उत्साह", "आराम", "आश्चर्य", "चुनौतियाँ"],
-            "ur": ["جوش", "آرام", "حیرت", "چیلنجز"],
-            "ru": ["волнение", "расслабление", "сюрпризы", "вызовы"],
-            "es": ["Emoción", "Relajación", "Sorpresas", "Desafíos"],
-            "fr": ["Excitation", "Détente", "Surprises", "Défis"],
-            "nl": ["Spanning", "Ontspanning", "Verrassingen", "Uitdagingen"]
-          },
-          "activity_full": {
-            "en": ["work from home", "explore the mountains", "spend a lazy day at home", "discover hidden cafes"],
-            "hi": ["घर से काम करता हूँ", "पहाड़ों की खोज करता हूँ", "घर पर आलसी दिन बिताता हूँ", "छिपे हुए कैफे खोजता हूँ"],
-            "ur": ["گھر سے کام کرتا ہوں", "پہاڑوں کی تلاش کرتا ہوں", "گھر پر سست دن گزارتا ہوں", "پوشیدہ کیفے ڈھونڈتا ہوں"],
-            "ru": ["работаю из дома", "исследую горы", "провожу ленивый день дома", "открываю скрытые кафе"],
-            "es": ["trabajo desde casa", "exploro las montañas", "paso un día tranquilo en casa", "descubro cafés escondidos"],
-            "fr": ["travaille à domicile", "explore les montagnes", "passe une journée paresseuse à la maison", "découvre des cafés cachés"],
-            "nl": ["thuiswerk", "de bergen verkennen", "een luie dag thuis doorbrengen", "verborgen cafés ontdekken"]
-          },
-          "emotion_full": {
-            "en": ["joyful", "peaceful", "hilarious", "unexpected"],
-            "hi": ["आनंदमय", "शांतिपूर्ण", "हास्यास्पद", "अप्रत्याशित"],
-            "ur": ["خوشگوار", "پرامن", "مضحکہ خیز", "غیر متوقع"],
-            "ru": ["радостные", "мирные", "уморительные", "неожиданные"],
-            "es": ["alegres", "pacíficos", "hilarantes", "inesperados"],
-            "fr": ["joyeux", "paisibles", "hilarants", "inattendus"],
-            "nl": ["vreugdevolle", "vredige", "hilarische", "onverwachte"]
-          }
-        }
-      }
-    ],
-    "tutorials": [
-      {
-        "keyword": "how to",
-        "title": {
-          "en": "How to {skill} in {time_frame} (Beginner Friendly Guide)",
-          "hi": "{time_frame} में {skill} कैसे करें (शुरुआती के अनुकूल गाइड)",
-          "ur": "{time_frame} میں {skill} کیسے کریں (ابتدائیوں کے لیے دوستانہ گائیڈ)",
-          "ru": "Как {skill} за {time_frame} (Руководство для начинающих)",
-          "es": "Cómo {skill} en {time_frame} (Guía para principiantes)",
-          "fr": "Comment {skill} en {time_frame} (Guide pour débutants)",
-          "nl": "Hoe je {skill} in {time_frame} (Beginner Vriendelijke Gids)"
-        },
-        "description": {
-          "en": "Learn to {skill_full} with our easy-to-follow tutorial. This video will make {complex_task} simple! Subscribe for more educational content.",
-          "hi": "हमारे आसान ट्यूटोरियल के साथ {skill_full} करना सीखें। यह वीडियो {complex_task} को सरल बना देगा! अधिक शैक्षिक सामग्री के लिए सदस्यता लें।",
-          "ur": "ہمارے آسان ٹیوٹوریل کے ساتھ {skill_full} کرنا سیکھیں۔ یہ ویڈیو {complex_task} کو آسان بنا دے گا! مزید تعلیمی مواد کے لیے سبسکرائب کریں۔",
-          "ru": "Научитесь {skill_full} с помощью нашего простого урока. Это видео сделает {complex_task} простым! Подпишитесь на больше образовательного контента.",
-          "es": "Aprende a {skill_full} con nuestro tutorial fácil de seguir. ¡Este video hará que {complex_task} sea sencillo! Suscríbete para más contenido educativo.",
-          "fr": "Apprenez à {skill_full} avec notre tutoriel facile à suivre. Cette vidéo rendra {complex_task} simple ! Abonnez-vous pour plus de contenu éducatif.",
-          "nl": "Leer hoe je {skill_full} met onze gemakkelijk te volgen tutorial. Deze video maakt {complex_task} eenvoudig! Abonneer je voor meer educatieve content."
-        },
-        "tags": {
-          "en": ["how to", "tutorial", "{skill_short}", "diy", "guide", "learn", "educational video", "step by step"],
-          "hi": ["कैसे करें", "ट्यूटोरियल", "{skill_short}", "गाइड", "सीखें"],
-          "ur": ["کیسے کریں", "ٹیوٹوریل", "{skill_short}", "گائیڈ", "سیکھیں"],
-          "ru": ["как", "учебник", "{skill_short}", "руководство", "учиться"],
-          "es": ["cómo hacer", "tutorial", "{skill_short}", "guía", "aprender"],
-          "fr": ["comment faire", "tutoriel", "{skill_short}", "guide", "apprendre"],
-          "nl": ["hoe", "tutorial", "{skill_short}", "gids", "leren"]
-        },
-        "variables": {
-          "skill": {
-            "en": ["Edit Videos", "Code in Python", "Cook Pasta", "Draw Anime"],
-            "hi": ["वीडियो संपादित करें", "पायथन में कोड करें", "पास्ता पकाएं", "एनीमे बनाएं"],
-            "ur": ["ویڈیو ایڈٹ کریں", "پائتھن میں کوڈ کریں", "پاستا پکائیں", "انیمے بنائیں"],
-            "ru": ["редактировать видео", "программировать на Python", "готовить пасту", "рисовать аниме"],
-            "es": ["Editar Videos", "Programar en Python", "Cocinar Pasta", "Dibujar Anime"],
-            "fr": ["Monter des Vidéos", "Coder en Python", "Cuisiner des Pâtes", "Dessiner des Manga"],
-            "nl": ["Video's Bewerken", "Coderen in Python", "Pasta Koken", "Anime Tekenen"]
-          },
-          "time_frame": {
-            "en": ["10 Minutes", "Under an Hour", "a Week", "Just 5 Steps"],
-            "hi": ["10 मिनट", "एक घंटे से कम", "एक हफ्ता", "बस 5 कदम"],
-            "ur": ["10 منٹ", "ایک گھنٹے سے کم", "ایک ہفتہ", "صرف 5 اقدامات"],
-            "ru": ["10 минут", "менее часа", "неделю", "всего 5 шагов"],
-            "es": ["10 Minutos", "Menos de una Hora", "una Semana", "Solo 5 Pasos"],
-            "fr": ["10 Minutes", "Moins d'une Heure", "une Semaine", "Seulement 5 Étapes"],
-            "nl": ["10 Minuten", "Minder dan een Uur", "een Week", "Slechts 5 Stappen"]
-          },
-          "skill_full": {
-            "en": ["master video editing", "build your first app with Python", "make delicious homemade pasta", "create stunning anime characters"],
-            "hi": ["वीडियो एडिटिंग में महारत हासिल करें", "पायथन के साथ अपना पहला ऐप बनाएं", "स्वादिष्ट घर का बना पास्ता बनाएं", "आश्चर्यजनक एनीमे पात्र बनाएं"],
-            "ur": ["ویڈیو ایڈیٹنگ میں مہارت حاصل کریں", "پائتھن کے ساتھ اپنی پہلی ایپ بنائیں", "مزیدار گھر کا بنا پاستا بنائیں", "شاندار انیمے کردار بنائیں"],
-            "ru": ["освоить видеомонтаж", "создать свое первое приложение на Python", "приготовить вкусную домашнюю пасту", "создать потрясающих аниме-персонажей"],
-            "es": ["dominar la edición de video", "construir tu primera aplicación con Python", "hacer deliciosa pasta casera", "crear impresionantes personajes de anime"],
-            "fr": ["maîtriser le montage vidéo", "créer votre première application avec Python", "faire de délicieuses pâtes maison", "créer de superbes personnages d'anime"],
-            "nl": ["videobewerking onder de knie krijgen", "je eerste app bouwen met Python", "heerlijke zelfgemaakte pasta maken", "verbluffende anime-personages maken"]
-          },
-          "complex_task": {
-            "en": ["complex software", "new programming language", "gourmet cooking", "digital art"],
-            "hi": ["जटिल सॉफ्टवेयर", "नई प्रोग्रामिंग भाषा", "गॉरमेट कुकिंग", "डिजिटल कला"],
-            "ur": ["پیچیدہ سافٹ ویئر", "نئی پروگرامنگ زبان", "گورمے کوکنگ", "ڈیجیٹل آرٹ"],
-            "ru": ["сложное программное обеспечение", "новый язык программирования", "изысканную кулинарию", "цифровое искусство"],
-            "es": ["software complejo", "nuevo lenguaje de programación", "cocina gourmet", "arte digital"],
-            "fr": ["logiciel complexe", "nouveau langage de programmation", "cuisine gastronomique", "art numérique"],
-            "nl": ["complexe software", "nieuwe programmeertaal", "gastronomisch koken", "digitale kunst"]
-          },
-          "skill_short": {
-            "en": ["editing", "coding", "cooking", "drawing"],
-            "hi": ["एडिटिंग", "कोडिंग", "खाना बनाना", "ड्राइंग"],
-            "ur": ["ایڈیٹنگ", "کوڈنگ", "کھانا بنانا", "ڈرائنگ"],
-            "ru": ["редактирование", "кодирование", "готовка", "рисование"],
-            "es": ["edición", "codificación", "cocina", "dibujo"],
-            "fr": ["montage", "codage", "cuisine", "dessin"],
-            "nl": ["bewerken", "coderen", "koken", "tekenen"]
-          }
-        }
-      }
-    ],
-    "music": [
-      {
-        "keyword": "song cover",
-        "title": {
-          "en": "{song_title} ({artist_name} Cover) by {my_name}",
-          "hi": "{song_title} ({artist_name} कवर) {my_name} द्वारा",
-          "ur": "{song_title} ({artist_name} کور) {my_name} کی طرف سے",
-          "ru": "Кавер {song_title} ({artist_name}) от {my_name}",
-          "es": "Cover de {song_title} de {artist_name} por {my_name}",
-          "fr": "Reprise de {song_title} ({artist_name}) par {my_name}",
-          "nl": "{song_title} ({artist_name} Cover) door {my_name}"
-        },
-        "description": {
-          "en": "My acoustic cover of {song_title} by {artist_name}. Hope you enjoy it! Don't forget to like, comment, and subscribe for more music!",
-          "hi": "{song_title} का मेरा एकॉस्टिक कवर {artist_name} द्वारा। आशा है आपको यह पसंद आएगा! अधिक संगीत के लिए लाइक, कमेंट और सब्सक्राइब करना न भूलें!",
-          "ur": "{song_title} کا میرا ایکوسٹک کور {artist_name} کی طرف سے۔ امید ہے کہ آپ کو یہ پسند آئے گا! مزید موسیقی کے لیے لائک، کمنٹ اور سبسکرائب کرنا نہ بھولیں!",
-          "ru": "Мой акустический кавер на {song_title} от {artist_name}. Надеюсь, вам понравится! Не забудьте поставить лайк, прокомментировать и подписаться, чтобы получать больше музыки!",
-          "es": "Mi cover acústico de {song_title} de {artist_name}. ¡Espero que lo disfrutes! ¡No olvides darle me gusta, comentar y y suscribirte para más música!",
-          "fr": "Ma reprise acoustique de {song_title} par {artist_name}. J'espère que vous apprécierez ! N'oubliez pas de liker, commenter et vous abonner pour plus de musique !",
-          "nl": "Mijn akoestische cover van {song_title} door {artist_name}. Ik hoop dat je ervan geniet! Vergeet niet te liken, reageren en abonneren voor meer muziek!"
-        },
-        "tags": {
-          "en": ["song cover", "{song_title}", "{artist_name}", "acoustic cover", "music", "new music", "YouTube music"],
-          "hi": ["गीत कवर", "{song_title}", "{artist_name}", "एकॉस्टिक कवर", "संगीत"],
-          "ur": ["گانے کا کور", "{song_title}", "{artist_name}", "ایکوسٹک کور", "موسیقی"],
-          "ru": ["кавер", "{song_title}", "{artist_name}", "акустический кавер", "музыка"],
-          "es": ["cover de canción", "{song_title}", "{artist_name}", "cover acústico", "música"],
-          "fr": ["reprise de chanson", "{song_title}", "{artist_name}", "reprise acoustique", "musique"],
-          "nl": ["song cover", "{song_title}", "{artist_name}", "akoestische cover", "muziek"]
-        },
-        "variables": {
-          "song_title": {
-            "en": ["Blinding Lights", "Shape of You", "Levitating", "Flowers"],
-            "hi": ["ब्लाइंडिंग लाइट्स", "शेप ऑफ यू", "लेविटेटिंग", "फ्लावर्स"],
-            "ur": ["بلائنڈنگ لائٹس", "شیپ آف یو", "لیویٹیٹنگ", "فلاورز"],
-            "ru": ["Blinding Lights", "Shape of You", "Levitating", "Flowers"],
-            "es": ["Blinding Lights", "Shape of You", "Levitating", "Flowers"],
-            "fr": ["Blinding Lights", "Shape of You", "Levitating", "Flowers"],
-            "nl": ["Blinding Lights", "Shape of You", "Levitating", "Flowers"]
-          },
-          "artist_name": {
-            "en": ["The Weeknd", "Ed Sheeran", "Dua Lipa", "Miley Cyrus"],
-            "hi": ["द वीकेंड", "एड शीरन", "दुआ लीपा", "माइली साइरस"],
-            "ur": ["دی ویک اینڈ", "ایڈ شیران", "دوا لیپا", "مائلی سائرس"],
-            "ru": ["The Weeknd", "Ed Sheeran", "Dua Lipa", "Miley Cyrus"],
-            "es": ["The Weeknd", "Ed Sheeran", "Dua Lipa", "Miley Cyrus"],
-            "fr": ["The Weeknd", "Ed Sheeran", "Dua Lipa", "Miley Cyrus"],
-            "nl": ["The Weeknd", "Ed Sheeran", "Dua Lipa", "Miley Cyrus"]
-          },
-          "my_name": {
-            "en": ["Your Name", "Music Channel", "Acoustic Vibes"],
-            "hi": ["आपका नाम", "संगीत चैनल", "एकॉस्टिक वाइब्स"],
-            "ur": ["آپ کا نام", "موسیقی چینل", "ایکوسٹک وائبز"],
-            "ru": ["Ваше имя", "Музыкальный канал", "Акустические вибрации"],
-            "es": ["Tu Nombre", "Canal de Música", "Vibras Acústicas"],
-            "fr": ["Votre Nom", "Chaîne Musicale", "Ambiance Acoustique"],
-            "nl": ["Jouw Naam", "Muziek Kanaal", "Akoestische Vibes"]
-          }
-        }
-      }
-    ],
-    "food_cooking": [
-      {
-        "keyword": "recipe",
-        "title": {
-          "en": "Easy {dish_name} Recipe for Beginners (Quick & Delicious)",
-          "hi": "शुरुआती लोगों के लिए आसान {dish_name} रेसिपी (त्वरित और स्वादिष्ट)",
-          "ur": "ابتدائیوں کے لیے آسان {dish_name} ترکیب (تیز اور مزیدار)",
-          "ru": "Простой рецепт {dish_name} для начинающих (Быстро и вкусно)",
-          "es": "Receta Fácil de {dish_name} para Principiantes (Rápida y Deliciosa)",
-          "fr": "Recette Facile de {dish_name} pour Débutants (Rapide et Délicieux)",
-          "nl": "Makkelijk {dish_name} Recept voor Beginners (Snel & Lekker)"
-        },
-        "description": {
-          "en": "Learn how to make the best {dish_name} at home! This step-by-step cooking tutorial is perfect for beginners. Share your creations in the comments!",
-          "hi": "घर पर सबसे अच्छा {dish_name} बनाना सीखें! यह चरण-दर-चरण खाना पकाने का ट्यूटोरियल शुरुआती लोगों के लिए एकदम सही है। टिप्पणियों में अपनी रचनाएँ साझा करें!",
-          "ur": "گھر پر بہترین {dish_name} بنانا سیکھیں! یہ مرحلہ وار کھانا پکانے کا ٹیوٹوریل ابتدائیوں کے لیے بہترین ہے۔ اپنی تخلیقات کو تبصروں میں شیئر کریں!",
-          "ru": "Узнайте, как приготовить лучший {dish_name} дома! Этот пошаговый кулинарный урок идеально подходит для начинающих. Делитесь своими творениями в комментариях!",
-          "es": "¡Aprende a hacer el mejor {dish_name} en casa! Este tutorial de cocina paso a paso es perfecto para principiantes. ¡Comparte tus creaciones en los comentarios!",
-          "fr": "Apprenez à faire le meilleur {dish_name} à la maison ! Ce tutoriel de cuisine étape par étape est parfait pour les débutants. Partagez vos créations dans les commentaires !",
-          "nl": "Leer hoe je de beste {dish_name} thuis maakt! Deze stap-voor-stap kooktutorial is perfect voor beginners. Deel je creaties in de reacties!"
-        },
-        "tags": {
-          "en": ["recipe", "{dish_name}", "cooking tutorial", "easy recipe", "homemade", "food", "kitchen", "cook with me"],
-          "hi": ["रेसिपी", "{dish_name}", "खाना पकाने का ट्यूटोरियल", "आसान रेसिपी"],
-          "ur": ["ترکیب", "{dish_name}", "کھانا پکانے کا ٹیوٹوریل", "آسان ترکیب"],
-          "ru": ["рецепт", "{dish_name}", "кулинарный урок", "простой рецепт"],
-          "es": ["receta", "{dish_name}", "tutorial de cocina", "receta fácil"],
-          "fr": ["recette", "{dish_name}", "tutoriel de cuisine", "recette facile"],
-          "nl": ["recept", "{dish_name}", "kooktutorial", "makkelijk recept"]
-        },
-        "variables": {
-          "dish_name": {
-            "en": ["Chicken Curry", "Pasta Carbonara", "Vegan Chili", "Chocolate Cake"],
-            "hi": ["चिकन करी", "पास्ता कार्बनारा", "वीगन चिली", "चॉकलेट केक"],
-            "ur": ["چکن کری", "پاستا کاربونारा", "ویگن چلی", "چاکلیٹ کیک"],
-            "ru": ["Куриное карри", "Паста карбонара", "Веганский чили", "Шоколадный торт"],
-            "es": ["Curry de Pollo", "Pasta Carbonara", "Chili Vegano", "Pastel de Chocolate"],
-            "fr": ["Curry de Poulet", "Pâtes Carbonara", "Chili Vegan", "Gâteau au Chocolat"],
-            "nl": ["Kip Curry", "Pasta Carbonara", "Vegan Chili", "Chocoladetaart"]
-          }
-        }
-      }
-    ],
-    "travel_vlogs": [
+    "travel": [
       {
         "keyword": "travel guide",
-        "title": {
-          "en": "{city_name} Travel Guide: Hidden Gems & Must-See Spots!",
-          "hi": "{city_name} यात्रा गाइड: छिपे हुए रत्न और अवश्य देखने योग्य स्थान!",
-          "ur": "{city_name} ٹریول گائیڈ: چھپے ہوئے جواہرات اور ضرور دیکھنے والے مقامات!",
-          "ru": "Путеводитель по {city_name}: Скрытые жемчужины и обязательные места!",
-          "es": "Guía de Viaje de {city_name}: ¡Joyas Ocultas y Lugares Imprescindibles!",
-          "fr": "Guide de Voyage {city_name}: Trésors Cachés et Lieux Incontournables !",
-          "nl": "{city_name} Reisgids: Verborgen Parels & Must-See Plekken!"
-        },
-        "description": {
-          "en": "Explore {city_name} with me! This comprehensive travel guide covers everything from {attraction_1} to {attraction_2}. Plan your perfect trip!",
-          "hi": "मेरे साथ {city_name} का अन्वेषण करें! यह व्यापक यात्रा गाइड {attraction_1} से लेकर {attraction_2} तक सब कुछ शामिल करता है। अपनी परफेक्ट यात्रा की योजना बनाएं!",
-          "ur": "میرے ساتھ {city_name} کو دریافت کریں! یہ جامع سفری گائیڈ {attraction_1} سے لے کر {attraction_2} تک سب کچھ شامل کرتا ہے۔ اپنے بہترین سفر کی منصوبہ بندی کریں!",
-          "ru": "Исследуйте {city_name} со мной! Этот всеобъемлющий путеводитель охватывает все от {attraction_1} до {attraction_2}. Спланируйте свою идеальную поездку!",
-          "es": "¡Explora {city_name} conmigo! Esta guía de viaje completa cubre todo, desde {attraction_1} hasta {attraction_2}. ¡Planifica tu viaje perfecto!",
-          "fr": "Explorez {city_name} avec moi ! Ce guide de voyage complet couvre tout, de {attraction_1} à {attraction_2}. Planifiez votre voyage parfait !",
-          "nl": "Verken {city_name} met mij! Deze uitgebreide reisgids behandelt alles van {attraction_1} tot {attraction_2}. Plan je perfecte reis!"
-        },
-        "tags": {
-          "en": ["travel", "{city_name}", "travel guide", "vlog", "vacation", "tourism", "what to do in {city_name}", "travel tips"],
-          "hi": ["यात्रा", "{city_name}", "यात्रा गाइड", "व्लॉग", "छुट्टियाँ"],
-          "ur": ["سفر", "{city_name}", "سفری گائیڈ", "وِلاگ", "چھٹیاں"],
-          "ru": ["путешествие", "{city_name}", "путеводитель", "влог", "отпуск"],
-          "es": ["viajes", "{city_name}", "guía de viaje", "vlog", "vacaciones"],
-          "fr": ["voyage", "{city_name}", "guide de voyage", "vlog", "vacances"],
-          "nl": ["reizen", "{city_name}", "reisgids", "vlog", "vakantie"]
-        },
+        "title": "{city_name} Travel Guide: Hidden Gems (2025)",
+        "description": "Skip the tourist traps—here’s where locals actually go.",
+        "tags": ["travel", "travel guide", "{city_name}", "adventure", "budget travel"],
         "variables": {
-          "city_name": {
-            "en": ["Paris", "Tokyo", "Goa", "New York", "Rome", "Dubai", "Amsterdam"],
-            "hi": ["पेरिस", "टोक्यो", "गोवा", "न्यूयॉर्क", "रोम", "दुबई", "एम्स्टर्डम"],
-            "ur": ["پیرس", "ٹوکیو", "گوا", "نیو یارک", "روم", "دبئی", "ایمسٹرڈیم"],
-            "ru": ["Париж", "Токио", "Гоа", "Нью-Йорк", "Рим", "Дубай", "Амстердам"],
-            "es": ["París", "Tokio", "Goa", "Nueva York", "Roma", "Dubái", "Ámsterdam"],
-            "fr": ["Paris", "Tokyo", "Goa", "New York", "Rome", "Dubaï", "Amsterdam"],
-            "nl": ["Parijs", "Tokio", "Goa", "New York", "Rome", "Dubai", "Amsterdam"]
-          },
-          "attraction_1": {
-            "en": ["iconic landmarks", "street food markets", "historical sites"],
-            "hi": ["प्रतिष्ठित स्थल", "स्ट्रीट फूड बाजार", "ऐतिहासिक स्थल"],
-            "ur": ["مشہور مقامات", "اسٹریٹ فوڈ بازار", "تاریخی مقامات"],
-            "ru": ["знаковые достопримечательности", "рынки уличной еды", "исторические места"],
-            "es": ["lugares emblemáticos", "mercados de comida callejera", "sitios históricos"],
-            "fr": ["sites emblématiques", "marchés de rue", "sites historiques"],
-            "nl": ["iconische bezienswaardigheden", "straatvoedselmarkten", "historische plaatsen"]
-          },
-          "attraction_2": {
-            "en": ["local hidden gems", "vibrant nightlife", "beautiful parks"],
-            "hi": ["स्थानीय छिपे हुए रत्न", "जीवंत नाइटलाइफ", "सुंदर पार्क"],
-            "ur": ["مقامی چھپے ہوئے جواہرات", "متعدد نائٹ لائف", "خوبصورت پارکس"],
-            "ru": ["местные скрытые жемчужины", "яркая ночная жизнь", "красивые парки"],
-            "es": ["joyas ocultas locales", "vida nocturna vibrante", "hermosos parques"],
-            "fr": ["trésors cachés locaux", "vie nocturne animée", "magnifiques parcs"],
-            "nl": ["lokale verborgen parels", "bruisend nachtleven", "prachtige parken"]
-          }
+          "city_name": ["Bali", "Tokyo", "Paris", "New York"]
         }
+      },
+      {
+        "keyword": "solo travel",
+        "title": "Solo Travel Mistakes to Avoid (Safety Tips)",
+        "description": "Don’t learn these lessons the hard way. Stay safe and smart!",
+        "tags": ["solo travel", "backpacking", "adventure", "safety tips"]
       }
     ],
-    "health_fitness": [
+    "fashion": [
       {
-        "keyword": "workout routine",
-        "title": {
-          "en": "{workout_type} Workout for {goal} (No Equipment Needed!)",
-          "hi": "{goal} के लिए {workout_type} वर्कआउट (किसी उपकरण की आवश्यकता नहीं!)",
-          "ur": "{goal} کے لیے {workout_type} ورزش (کسی سامان کی ضرورت نہیں!)",
-          "ru": "{workout_type} тренировка для {goal} (без оборудования!)",
-          "es": "Rutina de {workout_type} para {goal} (¡Sin Equipo Necesario!)",
-          "fr": "Entraînement {workout_type} pour {goal} (Pas besoin d'équipement !)",
-          "nl": "{workout_type} Training voor {goal} (Geen apparatuur nodig!)"
-        },
-        "description": {
-          "en": "Get fit at home with this {workout_type_desc} workout. Perfect for {target_audience} looking to {goal_desc}. Hit that like button and subscribe for daily fitness!",
-          "hi": "इस {workout_type_desc} वर्कआउट से घर पर फिट रहें। {target_audience} के लिए बिल्कुल सही जो {goal_desc} करना चाहते हैं। उस लाइक बटन को दबाएं और दैनिक फिटनेस के लिए सदस्यता लें!",
-          "ur": "اس {workout_type_desc} ورزش سے گھر پر فٹ رہیں۔ {target_audience} کے لیے بہترین ہے جو {goal_desc} کرنا چاہتے ہیں۔ لائک بٹن دبائیں اور روزانہ کی فٹنس کے لیے سبسکرائب کریں!",
-          "ru": "Приведите себя в форму дома с помощью этой {workout_type_desc} тренировки. Идеально подходит для {target_audience}, желающих {goal_desc}. Жмите лайк и подписывайтесь на ежедневные фитнес-видео!",
-          "es": "Ponte en forma en casa con este entrenamiento {workout_type_desc}. Perfecto para {target_audience} que buscan {goal_desc}. ¡Dale a me gusta y suscríbete para fitness diario!",
-          "fr": "Mettez-vous en forme à la maison avec cet entraînement {workout_type_desc}. Parfait pour {target_audience} qui cherchent à {goal_desc}. Appuyez sur le bouton J'aime et abonnez-vous pour du fitness quotidien !",
-          "nl": "Word thuis fit met deze {workout_type_desc} training. Perfect voor {target_audience} die {goal_desc} willen bereiken. Druk op de like-knop en abonneer je voor dagelijkse fitness!"
-        },
-        "tags": {
-          "en": ["workout", "{workout_type}", "{goal}", "home workout", "fitness", "exercise", "no equipment", "healthy lifestyle", "YouTube fitness"],
-          "hi": ["वर्कआउट", "{workout_type}", "{goal}", "घर पर वर्कआउट", "फिटनेस"],
-          "ur": ["ورزش", "{workout_type}", "{goal}", "گھر پر ورزش", "فٹنس"],
-          "ru": ["тренировка", "{workout_type}", "{goal}", "домашняя тренировка", "фитнес"],
-          "es": ["entrenamiento", "{workout_type}", "{goal}", "entrenamiento en casa", "fitness"],
-          "fr": ["entraînement", "{workout_type}", "{goal}", "entraînement à domicile", "fitness"],
-          "nl": ["workout", "{workout_type}", "{goal}", "thuisworkout", "fitness"]
-        },
-        "variables": {
-          "workout_type": {
-            "en": ["Full Body", "HIIT", "Cardio", "Yoga"],
-            "hi": ["पूरे शरीर का", "एचआईआईटी", "कार्डियो", "योग"],
-            "ur": ["پورے جسم کا", "ایچ آئی آئی ٹی", "کارڈیو", "یوگا"],
-            "ru": ["На все тело", "ВИИТ", "Кардио", "Йога"],
-            "es": ["Cuerpo Completo", "HIIT", "Cardio", "Yoga"],
-            "fr": ["Corps Entier", "HIIT", "Cardio", "Yoga"],
-            "nl": ["Full Body", "HIIT", "Cardio", "Yoga"]
-          },
-          "goal": {
-            "en": ["Weight Loss", "Muscle Gain", "Flexibility", "Stress Relief"],
-            "hi": ["वजन घटाना", "मांसपेशियों का लाभ", "लचीलापन", "तनाव से राहत"],
-            "ur": ["وزن کم کرنا", "پٹھوں میں اضافہ", "لچک", "تناؤ سے نجات"],
-            "ru": ["Потеря веса", "Набор мышц", "Гибкость", "Снятие стресса"],
-            "es": ["Pérdida de Peso", "Ganancia Muscular", "Flexibilidad", "Alivio del Estrés"],
-            "fr": ["Perte de Poids", "Gain Musculaire", "Flexibilité", "Soulagement du Stress"],
-            "nl": ["Gewichtsverlies", "Spiermassa", "Flexibiliteit", "Stressvermindering"]
-          },
-          "workout_type_desc": {
-            "en": ["intense", "beginner-friendly", "quick & effective", "calming"],
-            "hi": ["तीव्र", "शुरुआती-अनुकूल", "तेज और प्रभावी", "शांत करने वाला"],
-            "ur": ["شدید", "ابتدائیوں کے لیے دوستانہ", "تیز اور مؤثر", "پر سکون"],
-            "ru": ["интенсивной", "для начинающих", "быстрой и эффективной", "успокаивающей"],
-            "es": ["intenso", "para principiantes", "rápido y efectivo", "calmante"],
-            "fr": ["intense", "adapté aux débutants", "rapide et efficace", "apaisant"],
-            "nl": ["intensieve", "beginnersvriendelijke", "snelle & effectieve", "kalmerende"]
-          },
-          "target_audience": {
-            "en": ["busy professionals", "students", "anyone at home", "seniors"],
-            "hi": ["व्यस्त पेशेवर", "छात्र", "घर पर कोई भी", "वरिष्ठ"],
-            "ur": ["مصروف پیشہ ور افراد", "طلباء", "گھر پر کوئی بھی", "بزرگ"],
-            "ru": ["занятых профессионалов", "студентов", "любого человека дома", "пожилых людей"],
-            "es": ["profesionales ocupados", "estudiantes", "cualquiera en casa", "personas mayores"],
-            "fr": ["professionnels occupés", "étudiants", "toute personne à la maison", "personnes âgées"],
-            "nl": ["drukke professionals", "studenten", "iedereen thuis", "senioren"]
-          },
-          "goal_desc": {
-            "en": ["shed pounds", "build strength", "improve mobility", "find inner peace"],
-            "hi": ["वजन कम करना", "ताकत बढ़ाना", "गतिशीलता में सुधार", "आंतरिक शांति प्राप्त करना"],
-            "ur": ["پاؤنڈ کم کرنا", "طاقت بنانا", "حرکت پذیری بہتر بنانا", "اندرونی سکون حاصل کرنا"],
-            "ru": ["сбросить вес", "нарастить силу", "улучшить подвижность", "найти внутренний покой"],
-            "es": ["perder peso", "ganar fuerza", "mejorar la movilidad", "encontrar la paz interior"],
-            "fr": ["perdre du poids", "développer la force", "améliorer la mobilité", "trouver la paix intérieure"],
-            "nl": ["kilogrammen kwijtraken", "kracht opbouwen", "mobiliteit verbeteren", "innerlijke rust vinden"]
-          }
-        }
+        "keyword": "outfit ideas",
+        "title": "5 Outfits That Make You Look Rich (On a Budget)",
+        "description": "Luxury looks without the price tag. Style hacks inside!",
+        "tags": ["fashion", "outfit ideas", "style tips", "budget fashion", "aesthetic"]
+      },
+      {
+        "keyword": "makeup tutorial",
+        "title": "No-Makeup Makeup Look (Natural & Easy)",
+        "description": "Perfect for school, work, or dates—look flawless in 5 minutes.",
+        "tags": ["makeup tutorial", "beauty", "natural look", "grwm", "cosmetics"]
       }
     ]
   },
   "fallback": {
-    "title": {
-      "en": "{topic} - {video_type} You Need to Watch!",
-      "hi": "{topic} - {video_type} जो आपको देखना चाहिए!",
-      "ur": "{topic} - {video_type} جو آپ کو دیکھنا چاہیے!",
-      "ru": "{topic} - {video_type}, который вам нужно посмотреть!",
-      "es": "{topic} - ¡{video_type} que Tienes que Ver!",
-      "fr": "{topic} - {video_type} que vous devez regarder !",
-      "nl": "{topic} - {video_type} Die Je Moet Zien!"
-    },
-    "description": {
-      "en": "This {video_type} about {topic} will {impact}. Watch till the end for {benefit}! Subscribe for more!",
-      "hi": "{topic} के बारे में यह {video_type} आपको {impact} करेगा। {benefit} के लिए अंत तक देखें! अधिक के लिए सदस्यता लें!",
-      "ur": "{topic} کے بارے میں یہ {video_type} آپ کو {impact} کرے گا۔ {benefit} کے لیے آخر تک دیکھیں! مزید کے لیے سبسکرائب کریں!",
-      "ru": "Это {video_type} о {topic} {impact}. Смотрите до конца, чтобы получить {benefit}! Подпишитесь для большего!",
-      "es": "Este {video_type} sobre {topic} te {impact}. ¡Mira hasta el final para {benefit}! ¡Suscríbete para más!",
-      "fr": "Cette {video_type} sur {topic} vous {impact}. Regardez jusqu'à la fin pour {benefit} ! Abonnez-vous pour plus !",
-      "nl": "Deze {video_type} over {topic} zal {impact}. Kijk tot het einde voor {benefit}! Abonneer je voor meer!"
-    },
-    "tags": {
-      "en": ["{topic}", "{video_type}", "viral", "trending", "YouTube", "must watch"],
-      "hi": ["{topic}", "{video_type}", "वायरल", "ट्रेंडिंग"],
-      "ur": ["{topic}", "{video_type}", "وائرل", "ٹرینڈنگ"],
-      "ru": ["{topic}", "{video_type}", "вирусное", "в тренде"],
-      "es": ["{topic}", "{video_type}", "viral", "tendencia"],
-      "fr": ["{topic}", "{video_type}", "viral", "tendance"],
-      "nl": ["{topic}", "{video_type}", "viraal", "trending"]
-    },
+    "title": "{topic} - {video_type} You Need to See!",
+    "description": "This {video_type} about {topic} will {impact}. Watch till the end for {benefit}!",
+    "tags": ["{topic}", "{video_type}", "viral", "trending", "education", "entertainment"],
     "variables": {
-      "video_type": {
-        "en": ["video", "guide", "tutorial", "review", "story", "vlog"],
-        "hi": ["वीडियो", "गाइड", "ट्यूटोरियल", "समीक्षा", "कहानी", "व्लॉग"],
-        "ur": ["ویڈیو", "گائیڈ", "ٹیوٹوریل", "جائزہ", "کہانی", "وِلاگ"],
-        "ru": ["видео", "руководство", "учебник", "обзор", "история", "влог"],
-        "es": ["video", "guía", "tutorial", "reseña", "historia", "vlog"],
-        "fr": ["vidéo", "guide", "tutoriel", "revue", "histoire", "vlog"],
-        "nl": ["video", "gids", "tutorial", "review", "verhaal", "vlog"]
-      },
-      "impact": {
-        "en": ["change your life", "blow your mind", "save you time", "inspire you"],
-        "hi": ["आपका जीवन बदल देगा", "आपका दिमाग उड़ा देगा", "आपका समय बचाएगा", "आपको प्रेरित करेगा"],
-        "ur": ["آپ کی زندگی بدل دے گا", "آپ کا ذہن اڑا دے گا", "آپ کا وقت بچائے گا", "آپ کو متاثر کرے گا"],
-        "ru": ["изменит вашу жизнь", "поразит вас", "сэкономит ваше время", "вдохновит вас"],
-        "es": ["cambiará tu vida", "te sorprenderá", "te ahorrará tiempo", "te inspirará"],
-        "fr": ["changer votre vie", "vous épater", "vous faire gagner du temps", "vous inspirer"],
-        "nl": ["je leven veranderen", "je versteld doen staan", "je tijd besparen", "je inspireren"]
-      },
-      "benefit": {
-        "en": ["a surprise", "exclusive tips", "a free gift", "deep insights"],
-        "hi": ["एक आश्चर्य", "विशेष टिप्स", "एक मुफ्त उपहार", "गहरी अंतर्दृष्टि"],
-        "ur": ["ایک حیرت", "خصوصی ٹپس", "ایک مفت تحفہ", "گہری بصیرتیں"],
-        "ru": ["сюрприз", "эксклюзивные советы", "бесплатный подарок", "глубокие инсайты"],
-        "es": ["una sorpresa", "consejos exclusivos", "un regalo gratis", "conocimientos profundos"],
-        "fr": ["une surprise", "des astuces exclusives", "un cadeau gratuit", "des informations approfondies"],
-        "nl": ["een verrassing", "exclusieve tips", "een gratis cadeau", "diepgaande inzichten"]
-      }
+      "video_type": ["video", "guide", "tutorial", "review", "story"],
+      "impact": ["change your life", "blow your mind", "save you time"],
+      "benefit": ["a surprise", "exclusive tips", "a free gift"]
     }
   }
 }
