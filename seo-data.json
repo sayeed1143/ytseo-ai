@@ -1,221 +1,251 @@
 {
   "seo_templates": [
     {
-      "keywords": ["lion", "animal story", "moral lesson"],
+      "keywords": ["story", "tale", "fable", "narrative", "adventure", "children story", "moral lesson", "characters", "fiction", "animated"],
       "templates": {
         "title": {
-          "shorts": "The {adjective} Lion: A {length} Story About {moral}",
-          "long": "How the {adjective} Lion Learned {moral} - Full {length} Story"
+          "shorts": "{character_1} and the {character_2}: A {adjective_story} Short",
+          "long": "The {adjective_story} Tale of {character_1} and {character_2} | Full {story_type}"
         },
         "description": {
-          "shorts": "This {length} animated story about a {adjective} lion teaches {moral}. Perfect for {audience}!",
-          "long": "Join us for a {length} journey with Leo the lion as he discovers {moral}. This {adjective} tale is ideal for {audience} and teaches valuable life lessons."
+          "shorts": "Join {character_1} and {character_2} on a {adjective_story} adventure! This {length_story} will teach you about {moral_lesson}. #ShortStory #KidsStory",
+          "long": "Embark on a {adjective_story} journey with {character_1} and their friend {character_2}. This full-length {story_type} explores themes of {moral_lesson_1} and {moral_lesson_2}, perfect for {audience_story}. Watch now for an inspiring tale!"
         },
-        "tags": ["lion story", "{moral}", "animal tales", "{length} video", "{audience} content", "{adjective}"],
+        "tags": ["{character_1}", "{character_2}", "story", "{adjective_story}", "{moral_lesson}", "{audience_story}", "animated short", "kids story", "children's story", "fable", "tale", "adventure story", "family friendly", "lesson"],
         "variables": {
-          "adjective": ["proud", "young", "wise", "mighty", "fierce", "lonely"],
-          "moral": ["humility", "kindness", "teamwork", "courage", "forgiveness", "patience", "self-acceptance"],
-          "length": ["60-second", "2-minute", "quick", "short", "animated", "captivating"],
-          "audience": ["kids", "families", "children", "all ages", "young learners", "story lovers"]
+          "character_1": ["Whiskers", "Leo the Lion", "Bella the Bird", "Rocky the Raccoon", "Pip the Squirrel", "Luna the Cat", "Max the Dog"],
+          "character_2": ["the Duck", "the Mouse", "the Wise Owl", "the Friendly Bear", "the Curious Fox", "the Big Bad Wolf", "the Little Worm"],
+          "adjective_story": ["magical", "heartwarming", "exciting", "funny", "inspiring", "classic", "unforgettable", "enchanting", "timeless", "epic"],
+          "length_story": ["short animated film", "quick tale", "charming narrative", "mini-movie"],
+          "moral_lesson": ["friendship", "courage", "kindness", "perseverance", "honesty", "empathy", "teamwork", "respect", "self-belief"],
+          "moral_lesson_1": ["friendship", "courage", "kindness"],
+          "moral_lesson_2": ["perseverance", "honesty", "empathy"],
+          "audience_story": ["children", "families", "all ages", "young learners", "bedtime stories"],
+          "story_type": ["Animated Story", "Fable", "Children's Book Adaptation", "Illustrated Tale"]
         }
-      }
     },
     {
-      "keywords": ["python", "coding", "programming", "software"],
+      "keywords": ["recipe", "cook", "cooking", "food", "dish", "how to make", "bake", "kitchen", "meal prep", "eat", "chef", "cuisine", "tasty", "delicious"],
       "templates": {
         "title": {
-          "shorts": "{number} Python {concept} Every {audience} Should Know",
-          "long": "Python {concept} Explained: Complete {length} Tutorial for {audience}"
+          "shorts": "Quick {meal_type} Recipe: {dish_name} in 60 Seconds! #Shorts",
+          "long": "How to Make {dish_name} | The Ultimate {cuisine_type} Recipe Guide"
         },
         "description": {
-          "shorts": "Learn {number} essential Python {concept} in this {length} tutorial! Perfect for {audience}.",
-          "long": "Master Python {concept} with this comprehensive {length} guide. Whether you're a {experience} or just starting out, this tutorial covers everything {audience} need to know."
+          "shorts": "Learn to make delicious {dish_name} in this super quick short! Perfect for {occasion_food}. #EasyRecipe #FoodShorts",
+          "long": "Master the art of making {dish_name} with this comprehensive recipe tutorial. We cover {tip_1} and {tip_2} to make your {dish_name} absolutely perfect. Get the full recipe and ingredients list in the description below!"
         },
-        "tags": ["python", "{concept}", "coding tutorial", "{length} video", "{audience}", "{experience}", "learn to code"],
+        "tags": ["{dish_name}", "recipe", "cooking", "food", "{cuisine_type}", "{meal_type}", "how to cook", "easy recipes", "homemade", "chef tips", "kitchen hacks", "foodie"],
         "variables": {
-          "number": ["1", "3", "5", "7", "10", "Top 10"],
-          "concept": ["tricks", "functions", "loops", "data types", "classes", "modules", "web scraping", "basics", "advanced concepts", "best practices"],
-          "length": ["quick", "in-depth", "detailed", "complete", "beginner-friendly", "practical"],
-          "audience": ["beginners", "developers", "students", "coders", "aspiring programmers", "data scientists"],
-          "experience": ["beginner", "intermediate", "expert"]
+          "dish_name": ["Chicken Curry", "Pasta Carbonara", "Vegan Chili", "Chocolate Cake", "Spicy Noodles", "Perfect Pancakes", "Healthy Salad"],
+          "meal_type": ["Dinner", "Lunch", "Breakfast", "Dessert", "Snack"],
+          "cuisine_type": ["Indian", "Italian", "Mexican", "Asian", "American", "Mediterranean", "Vegan"],
+          "occasion_food": ["quick meals", "parties", "weeknight dinners", "healthy eating", "dessert cravings"],
+          "tip_1": ["ingredient selection", "cooking techniques", "flavor balancing", "presentation tips"],
+          "tip_2": ["meal prepping", "cost-saving hacks", "advanced garnishing", "alternative ingredients"]
         }
-      }
     },
     {
-      "keywords": ["motivation", "inspiration", "success", "mindset", "achieve goals", "productivity"],
+      "keywords": ["gameplay", "gaming", "lets play", "walkthrough", "review game", "esports", "gaming news", "pc game", "console game", "mobile game", "tips and tricks game"],
       "templates": {
         "title": {
-          "shorts": "Daily Motivation: {action} Your {goal} in {duration}!",
-          "long": "Unlock Your Potential: {technique} for {goal} & {result}"
+          "shorts": "{game_name} - CRAZY {moment_gaming} (Shorts)",
+          "long": "{game_name} Full Walkthrough | How to Beat {level_name} (No Commentary)"
         },
         "description": {
-          "shorts": "Get your daily dose of motivation to {action} your {goal}. A {duration} boost for success!",
-          "long": "Struggling to find your drive? This video provides {technique} to help you {action} your {goal} and achieve {result}. Let's grow together and build an {adjective_mindset}!"
+          "shorts": "Epic {game_name} moment you won't believe! 🔥 #GamingShorts #{game_name}Clip",
+          "long": "Welcome to my complete playthrough of {game_name}! In this episode, we tackle {level_name} and discover {discovery}. Don't miss out on {tip_gaming} for this game!"
         },
-        "tags": ["motivation", "success", "{goal}", "inspiration", "{action}", "mindset", "{technique}", "{result}"],
+        "tags": ["{game_name}", "gaming", "{gaming_genre}", "{platform_gaming}", "gameplay", "walkthrough", "lets play", "best moments", "tips and tricks", "new game", "review"],
         "variables": {
-          "action": ["Achieve", "Boost", "Conquer", "Manifest", "Unleash", "Ignite"],
-          "goal": ["Dreams", "Goals", "Potential", "Productivity", "Greatness", "Fulfillment"],
-          "duration": ["60 seconds", "quick tips", "short burst", "fast advice", "instant boost"],
-          "technique": ["Powerful Mindset Hacks", "Practical Strategies", "Daily Habits", "Unstoppable Drive", "Growth Mindset"],
-          "result": ["Peak Performance", "Lasting Fulfillment", "Financial Freedom", "Personal Growth", "Ultimate Happiness", "Unbreakable Spirit"],
-          "adjective_mindset": ["unbeatable mindset", "positive outlook", "resilient spirit"]
+          "game_name": ["Fortnite", "Minecraft", "Call of Duty", "Valorant", "Genshin Impact", "Apex Legends", "Elden Ring", "Cyberpunk 2077"],
+          "gaming_genre": ["FPS", "RPG", "Adventure", "Strategy", "Simulation", "Horror", "Action"],
+          "platform_gaming": ["PC", "PlayStation", "Xbox", "Nintendo Switch", "Mobile"],
+          "moment_gaming": ["Headshot", "Clutch", "Victory Royale", "Epic Fail", "Hidden Easter Egg", "Speedrun"],
+          "level_name": ["The Forbidden Forest", "Skyrim Dungeons", "Nuketown Map", "Pandora's Box"],
+          "discovery": ["secret areas", "powerful weapons", "challenging boss fights"],
+          "tip_gaming": ["hidden secrets", "leveling up fast", "winning every match", "mastering combat"]
         }
-      }
     },
     {
-      "keywords": ["kindness", "compassion", "empathy", "humanity", "good deeds"],
+      "keywords": ["learn", "tutorial", "how to", "education", "science", "history", "lesson", "guide", "explain", "understand", "study", "facts", "knowledge", "research"],
       "templates": {
         "title": {
-          "shorts": "A Simple Act of {emotion} Changes Everything!",
-          "long": "The Power of {emotion}: How One Act Transformed a Life"
+          "shorts": "Learn {topic_edu} in 60 Seconds! #Shorts #EduShorts",
+          "long": "The Ultimate Guide to {topic_edu} | Everything You Need to Know"
         },
         "description": {
-          "shorts": "This {length} story shows how a small act of {emotion} creates a huge impact. Prepare to be inspired!",
-          "long": "Discover the profound impact of {emotion} in this {length} heartwarming tale. A story of how compassion can change lives and build {community_type}."
+          "shorts": "Quick explanation of {topic_edu}. Understand the basics fast! #LearnFast #ScienceFacts",
+          "long": "Dive deep into {topic_edu} with this comprehensive educational video. We break down complex concepts into easy-to-understand parts, covering {subtopic_edu_1} and {subtopic_edu_2}. Perfect for students and curious minds!"
         },
-        "tags": ["kindness", "{emotion}", "heartwarming story", "humanity", "{community_type}", "{impact_word}", "good vibes"],
+        "tags": ["{topic_edu}", "education", "learning", "tutorial", "how to", "science", "history", "knowledge", "facts", "guide", "explained", "learn online"],
         "variables": {
-          "emotion": ["Kindness", "Compassion", "Generosity", "Empathy", "Love", "Forgiveness"],
-          "length": ["emotional", "touching", "inspiring", "beautiful", "moving", "uplifting"],
-          "community_type": ["strong communities", "better world", "lasting bonds", "joyful lives", "peaceful society", "harmonious relationships"],
-          "impact_word": ["inspiring", "transformative", "uplifting", "profound", "powerful"]
+          "topic_edu": ["Quantum Physics", "Ancient Egypt", "JavaScript Basics", "Climate Change", "World History", "Artificial Intelligence", "Human Anatomy"],
+          "subtopic_edu_1": ["fundamental principles", "key theories", "historical context", "practical applications"],
+          "subtopic_edu_2": ["common misconceptions", "future implications", "advanced techniques", "real-world examples"]
         }
-      }
     },
     {
-      "keywords": ["cooking", "recipe", "food", "kitchen", "bake", "cook", "meal"],
+      "keywords": ["diy", "crafts", "how to make", "build", "project", "handmade", "home decor", "upcycle", "hacks", "life hacks", "tutorial make"],
       "templates": {
         "title": {
-          "shorts": "Easy {cuisine} {dish_type} in {time}!",
-          "long": "Master {cuisine} {dish_type}: {difficulty} {cooking_method} Guide"
+          "shorts": "DIY {project_diy}: Make This in 5 Mins! #DIYShorts",
+          "long": "How to Make a {project_diy} | Easy DIY Craft Tutorial"
         },
         "description": {
-          "shorts": "Whip up this {adjective_dish} {cuisine} {dish_type} in just {time}! Perfect for a {meal_type}.",
-          "long": "Learn to cook the perfect {cuisine} {dish_type} with our {difficulty} {cooking_method} guide. From {ingredient_1} to {ingredient_2}, we cover everything to make your dish {taste_adjective}."
+          "shorts": "Follow along to create your own {project_diy}! Super easy & fun. #Crafts #DIYProject",
+          "long": "Transform your home with this amazing DIY {project_diy}! This step-by-step tutorial covers everything from {step_diy_1} to {step_diy_2}. Get creative and save money!"
         },
-        "tags": ["cooking", "recipe", "{cuisine}", "{dish_type}", "{meal_type}", "{difficulty}", "{cooking_method}", "food", "kitchen"],
+        "tags": ["{project_diy}", "DIY", "crafts", "how to make", "handmade", "home decor", "upcycle", "life hacks", "easy DIY", "craft tutorial", "creative projects"],
         "variables": {
-          "cuisine": ["Italian", "Mexican", "Indian", "Chinese", "Mediterranean", "Thai", "American", "Vegan"],
-          "dish_type": ["Pasta", "Tacos", "Curry", "Stir-fry", "Salad", "Soup", "Chicken", "Dessert", "Bread", "Burger"],
-          "time": ["15 minutes", "30 minutes", "no time", "under an hour", "quick & easy"],
-          "adjective_dish": ["quick", "delicious", "simple", "healthy", "mouth-watering", "flavorful", "homemade"],
-          "meal_type": ["weeknight dinner", "quick lunch", "special occasion", "brunch", "breakfast"],
-          "difficulty": ["beginner-friendly", "intermediate", "expert-level", "easy", "simple"],
-          "cooking_method": ["baking", "frying", "grilling", "stewing", "roasting", "sautéing", "no-bake"],
-          "ingredient_1": ["fresh vegetables", "spices", "chicken", "pasta", "rice", "beans"],
-          "ingredient_2": ["herbs", "sauces", "cheese", "seafood", "chocolate", "fruits"],
-          "taste_adjective": ["delicious", "flavorful", "aromatic", "perfect", "scrumptious", "tasty"]
+          "project_diy": ["Wall Art", "Desk Organizer", "Candle Holder", "Planter", "Book Nook", "Custom T-Shirt", "Jewelry Box"],
+          "step_diy_1": ["materials gathering", "initial cutting", "basic assembly"],
+          "step_diy_2": ["finishing touches", "decoration ideas", "troubleshooting tips"]
         }
-      }
     },
     {
-      "keywords": ["travel", "adventure", "vacation", "explore", "trip", "destination"],
+      "keywords": ["travel", "vlog travel", "destination", "explore", "adventure", "vacation", "trip", "city guide", "travel tips", "wanderlust", "journey", "budget travel"],
       "templates": {
         "title": {
-          "shorts": "{city} in {days} Days: A {type_of_trip} Guide!",
-          "long": "Exploring {destination}: Your Ultimate {travel_guide} for {activity}"
+          "shorts": "{city_travel} in 60 Seconds! Must-See Spots #TravelShorts",
+          "long": "Exploring {city_travel}: A Complete Travel Guide & Best Places to Visit"
         },
         "description": {
-          "shorts": "Discover the {adjective_place} sights of {city} in just {days} days! Your {type_of_trip} adventure starts here.",
-          "long": "Embark on an unforgettable journey through {destination}. This {travel_guide} covers everything from {activity_1} to {activity_2}, ensuring you have the most {adjective_experience} vacation."
+          "shorts": "Quick tour of {city_travel}'s highlights! Where should I go next? #TravelVlog #Explore",
+          "long": "Join me on an incredible journey through {city_travel}! Discover hidden gems, {activity_travel_1}, and enjoy {activity_travel_2}. Planning your trip? Check out my top {travel_tips_count} tips!"
         },
-        "tags": ["travel", "{destination}", "{activity}", "{type_of_trip}", "vacation", "{adjective_place}", "{travel_guide}", "wanderlust"],
+        "tags": ["{city_travel}", "travel", "vlog", "travel guide", "adventure", "vacation", "explore", "{country_travel}", "travel tips", "wanderlust", "budget travel", "must visit places"],
         "variables": {
-          "city": ["Paris", "Tokyo", "New York", "Rome", "Bali", "London", "Dubai", "Sydney", "Kyoto", "Rio"],
-          "days": ["3", "5", "7", "10", "a weekend", "a week"],
-          "type_of_trip": ["Solo Travel", "Family Vacation", "Adventure Trip", "Budget Travel", "Luxury Getaway", "Road Trip", "Romantic Escape"],
-          "destination": ["Europe", "Asia", "South America", "National Parks", "The Caribbean", "Southeast Asia", "Africa"],
-          "travel_guide": ["Travel Guide", "Itinerary", "Exploration", "Journey", "Adventure"],
-          "activity": ["sightseeing", "food tours", "hiking", "beaches", "museums", "nightlife", "cultural experiences"],
-          "adjective_place": ["stunning", "incredible", "breathtaking", "memorable", "vibrant", "historic", "picturesque"],
-          "adjective_experience": ["amazing", "unforgettable", "epic", "relaxing", "exciting"],
-          "activity_1": ["local cuisine", "historic sites", "hidden gems"],
-          "activity_2": ["outdoor adventures", "shopping", "cultural festivals"]
+          "city_travel": ["Paris", "Tokyo", "New York", "Rome", "Dubai", "Bali", "Goa", "Mumbai"],
+          "country_travel": ["France", "Japan", "USA", "Italy", "UAE", "Indonesia", "India"],
+          "activity_travel_1": ["delicious local food", "breathtaking historical sites", "vibrant nightlife"],
+          "activity_travel_2": ["stunning natural landscapes", "cultural experiences", "thrilling adventures"],
+          "travel_tips_count": ["5", "10", "7", "3"]
         }
-      }
     },
     {
-      "keywords": ["fitness", "workout", "exercise", "health", "lose weight", "muscle gain"],
+      "keywords": ["fitness", "workout", "exercise", "health", "lose weight", "muscle gain", "yoga", "gym", "home workout", "nutrition", "bodybuilding", "personal training"],
       "templates": {
         "title": {
-          "shorts": "{minutes} {body_part} Workout for {goal} at Home!",
-          "long": "Full {workout_type} Routine: {goal} & {benefit}!"
+          "shorts": "{workout_type} for Beginners (60 Sec Challenge) #FitnessShorts",
+          "long": "{workout_type} Full Body Workout Routine | Build Muscle & Lose Fat"
         },
         "description": {
-          "shorts": "Blast your {body_part} with this {intensity} {minutes}-minute workout! No equipment needed, perfect for {goal}.",
-          "long": "Transform your body with this comprehensive {workout_type} routine designed for {goal}. Includes {exercise_1}, {exercise_2}, and key tips for {benefit}. Get ready to sweat!"
+          "shorts": "Try this quick {workout_type} for amazing results! Perfect for any level. #Workout #Fitness",
+          "long": "Get ready to transform your body with this {workout_type} workout routine! This video covers {exercise_1} and {exercise_2} to help you reach your fitness goals. Perfect for {fitness_level}."
         },
-        "tags": ["fitness", "workout", "{workout_type}", "{body_part}", "{goal}", "exercise", "home workout", "{benefit}"],
+        "tags": ["{workout_type}", "fitness", "workout", "exercise", "health", "lose weight", "muscle gain", "gym", "home workout", "nutrition", "{fitness_level}", "bodybuilding"],
         "variables": {
-          "minutes": ["5", "10", "15", "20", "30"],
-          "body_part": ["Abs", "Full Body", "Legs", "Arms", "Core"],
-          "goal": ["Weight Loss", "Muscle Gain", "Strength", "Flexibility", "Endurance", "Tone"],
-          "intensity": ["quick", "intense", "beginner-friendly", "effective", "challenging"],
-          "workout_type": ["HIIT", "Cardio", "Strength Training", "Yoga", "Pilates", "Dance"],
-          "benefit": ["Boost Metabolism", "Build Stamina", "Improve Posture", "Reduce Stress"],
-          "exercise_1": ["squats", "planks", "push-ups", "lunges"],
-          "exercise_2": ["crunches", "burpees", "deadlifts", "stretches"]
+          "workout_type": ["HIIT", "Strength Training", "Cardio", "Yoga", "Pilates", "Core", "Full Body"],
+          "fitness_level": ["beginners", "intermediate", "advanced", "all levels"],
+          "exercise_1": ["proper form techniques", "warm-up routines", "cool-down stretches"],
+          "exercise_2": ["modifications for injuries", "progressing your lifts", "nutrition tips"]
         }
-      }
     },
     {
-      "keywords": ["beauty", "skincare", "makeup", "haircare", "beauty tips"],
+      "keywords": ["tech review", "unboxing", "gadget", "smartphone", "laptop", "product review", "tech news", "comparison", "best tech", "new technology", "electronics"],
       "templates": {
         "title": {
-          "shorts": "{number} {beauty_product} Hacks You NEED to Try!",
-          "long": "Ultimate {routine_type} Routine for {skin_type} Skin: {benefit}"
+          "shorts": "{tech_product_name} in 60 Seconds! Worth It? #TechShorts",
+          "long": "{tech_product_name} Review | The Ultimate Guide (Pros & Cons)"
         },
         "description": {
-          "shorts": "Unlock {number} amazing {beauty_product} hacks for a flawless look! Quick and easy tips you can use today.",
-          "long": "Achieve your dream skin with this comprehensive {routine_type} routine for {skin_type} skin. Learn about {step_1}, {step_2}, and the best {adjective_product} for {benefit}."
+          "shorts": "Quick look at the new {tech_product_name}! Is it the best? #TechReview #Gadget",
+          "long": "Is the {tech_product_name} worth your money? In this in-depth review, I cover its {feature_1}, {feature_2}, and ultimate performance. Find out if this is the right {tech_product_category} for you!"
         },
-        "tags": ["beauty", "{beauty_product}", "{routine_type}", "{skin_type}", "{benefit}", "makeup", "skincare", "haircare"],
+        "tags": ["{tech_product_name}", "tech review", "unboxing", "gadget", "smartphone", "laptop", "product review", "best tech", "new technology", "electronics", "{tech_product_category}"],
         "variables": {
-          "number": ["3", "5", "7", "10"],
-          "beauty_product": ["Skincare", "Makeup", "Hair", "Anti-Aging"],
-          "routine_type": ["Morning", "Evening", "Daily", "Weekly"],
-          "skin_type": ["Oily", "Dry", "Combination", "Sensitive", "Acne-Prone"],
-          "benefit": ["Glowing Skin", "Clear Complexion", "Anti-Aging", "Hydration", "Hair Growth", "Volume"],
-          "adjective_product": ["best", "holy grail", "affordable", "luxury"],
-          "step_1": ["cleansing", "toning", "moisturizing"],
-          "step_2": ["serums", "face masks", "sunscreen"]
+          "tech_product_name": ["iPhone 16", "Samsung Galaxy Z Fold 6", "MacBook Pro M4", "Dyson Airwrap", "PlayStation 6", "Tesla Model 3", "Sony WH-1000XM6"],
+          "tech_product_category": ["smartphone", "laptop", "headphones", "gaming console", "electric car", "smart home device"],
+          "feature_1": ["camera quality", "battery life", "processing power", "design and build"],
+          "feature_2": ["software features", "gaming performance", "display quality", "audio experience"]
         }
-      }
     },
     {
-      "keywords": ["diy", "crafts", "home decor", "handmade", "diy project"],
+      "keywords": ["finance", "money", "investing", "budget", "personal finance", "stocks", "cryptocurrency", "save money", "financial advice", "wealth", "economy", "stock market", "retirement"],
       "templates": {
         "title": {
-          "shorts": "{number} Easy DIY {item} Ideas for Your Home!",
-          "long": "Transform Your {room}: {diy_project_type} Tutorial for {level}"
+          "shorts": "Save Money FAST! {money_tip} in 60 Secs #FinanceShorts",
+          "long": "How to Start Investing in {investment_type} | Beginner's Guide"
         },
         "description": {
-          "shorts": "Make {number} amazing {item} at home with these quick and simple DIY hacks! Perfect for {occasion}.",
-          "long": "Give your {room} a {adjective_transformation} makeover with this {diy_project_type} tutorial. Learn {skill} and create {item} that will impress everyone! Great for {level} crafters."
+          "shorts": "Quick tip to boost your savings! Don't miss this. #MoneyHacks #Finance",
+          "long": "Want to build wealth? This video is your ultimate guide to investing in {investment_type}. Learn about {finance_concept_1} and {finance_concept_2} to make smart financial decisions. Start your journey today!"
         },
-        "tags": ["diy", "crafts", "{item}", "home decor", "{diy_project_type}", "{room}", "handmade", "{occasion}"],
+        "tags": ["finance", "money", "investing", "budget", "personal finance", "stocks", "cryptocurrency", "save money", "financial advice", "wealth building", "economy", "stock market", "retirement planning"],
         "variables": {
-          "number": ["3", "5", "7", "10"],
-          "item": ["Decorations", "Gifts", "Furniture", "Art", "Storage Solutions"],
-          "room": ["Living Room", "Bedroom", "Kitchen", "Bathroom", "Garden"],
-          "diy_project_type": ["Upcycling", "Budget-Friendly Decor", "Renovation", "Crafting"],
-          "level": ["Beginners", "Intermediate", "Advanced"],
-          "occasion": ["Christmas", "Birthdays", "Everyday Use", "Seasonal Decor"],
-          "adjective_transformation": ["stunning", "easy", "affordable", "creative", "unique"],
-          "skill": ["painting techniques", "woodworking basics", "fabric manipulation"]
+          "money_tip": ["Budgeting Secret", "Passive Income Idea", "Investing Tip", "Debt Payoff Strategy", "Frugal Living Hack"],
+          "investment_type": ["Stocks", "Real Estate", "Cryptocurrency", "Mutual Funds", "ETFs", "Index Funds"],
+          "finance_concept_1": ["compound interest", "risk management", "diversification"],
+          "finance_concept_2": ["market analysis", "tax implications", "long-term planning"]
         }
-      }
+    },
+    {
+      "keywords": ["comedy", "funny", "skit", "prank", "humor", "hilarious", "stand up", "parody", "laugh", "meme"],
+      "templates": {
+        "title": {
+          "shorts": "When Your {situation_comedy} Goes WRONG! 😂 #ComedyShorts",
+          "long": "The Funniest {comedy_type} Compilation of All Time!"
+        },
+        "description": {
+          "shorts": "This {situation_comedy} had me in stitches! 😂 Watch till the end! #FunnyVideos #Comedy",
+          "long": "Get ready to laugh out loud! This compilation features the most hilarious {comedy_type} moments, including {funny_scenario_1} and {funny_scenario_2}. You won't believe what happens next!"
+        },
+        "tags": ["comedy", "funny", "skit", "prank", "humor", "hilarious", "laugh", "meme", "viral video", "funny moments", "parody", "best comedy"],
+        "variables": {
+          "situation_comedy": ["Cooking Attempt", "First Date", "Job Interview", "Friendship Test", "Gym Session"],
+          "comedy_type": ["Skits", "Pranks", "Stand-Up", "Reaction", "Improvisation"],
+          "funny_scenario_1": ["unexpected twists", "awkward encounters", "hilarious misunderstandings"],
+          "funny_scenario_2": ["epic fails", "clever comebacks", "sarcastic observations"]
+        }
+    },
+    {
+      "keywords": ["beauty", "makeup", "skincare", "hair tutorial", "fashion", "style", "beauty hacks", "review beauty", "cosmetics", "glam", "get ready with me", "haul"],
+      "templates": {
+        "title": {
+          "shorts": "{makeup_look} in 60 Seconds! ✨ #BeautyShorts",
+          "long": "My {makeup_look} Tutorial | Get Ready With Me for {occasion_beauty}"
+        },
+        "description": {
+          "shorts": "Quick & easy {makeup_look} for any day! #MakeupHacks #BeautyTips",
+          "long": "Learn how to create this stunning {makeup_look} with my step-by-step tutorial! I'll share my favorite {beauty_product_type_1} and {beauty_product_type_2} to help you achieve a flawless finish for {occasion_beauty}."
+        },
+        "tags": ["beauty", "makeup", "skincare", "hair tutorial", "fashion", "style", "beauty hacks", "cosmetics", "glam", "get ready with me", "haul", "{makeup_look}", "{occasion_beauty}"],
+        "variables": {
+          "makeup_look": ["Natural Everyday Makeup", "Glam Night Out", "Smoky Eye", "Soft Glam", "Bridal Makeup", "Quick Hairdo", "Flawless Skin Routine"],
+          "occasion_beauty": ["a party", "daily wear", "a wedding", "special events", "work", "school"],
+          "beauty_product_type_1": ["foundations", "eyeshadow palettes", "lipsticks", "brushes"],
+          "beauty_product_type_2": ["skincare essentials", "hair styling tools", "fragrances", "nail polishes"]
+        }
+    },
+    {
+      "keywords": ["vlog", "daily life", "day in the life", "personal vlog", "lifestyle", "routine", "my day", "challenge vlog", "behind the scenes", "a week in my life"],
+      "templates": {
+        "title": {
+          "shorts": "A Day in My Life as a {vlogger_type} (Shorts)",
+          "long": "My {daily_activity} Routine | A Full Day in My Life Vlog"
+        },
+        "description": {
+          "shorts": "Quick glimpse into my day! What's your favorite part? #DailyVlog #LifeUpdate",
+          "long": "Join me for a candid look at my {daily_activity} routine! From {vlog_activity_1} to {vlog_activity_2}, see what a typical day looks like for me. Let me know what you want to see next!"
+        },
+        "tags": ["vlog", "daily life", "day in the life", "personal vlog", "lifestyle", "routine", "my day", "challenge vlog", "behind the scenes", "a week in my life", "{vlogger_type}"],
+        "variables": {
+          "vlogger_type": ["Student", "Creator", "Entrepreneur", "Traveler", "Parent", "Gamer"],
+          "daily_activity": ["morning", "work", "weekend", "productive", "relaxing"],
+          "vlog_activity_1": ["waking up early", "planning my content", "hitting the gym"],
+          "vlog_activity_2": ["cooking healthy meals", "spending time with friends", "unwinding in the evening"]
+        }
     }
   ],
   "fallback": {
-    "title": "{topic} - Amazing {type} You'll Love!",
-    "description": "This {type} about {topic} will {impact}. Watch till the end for {benefit}!",
-    "tags": ["{topic}", "{type} video", "viral content", "{language}", "trending"],
+    "title": "{topic} - Amazing {video_type} You'll Love! | YTSEO.ai",
+    "description": "This {video_type} about {topic} will {impact}. Watch till the end for {benefit}! Learn more and get inspired. #YouTubeSEO #ContentCreation",
+    "tags": ["{topic}", "{video_type} video", "viral content", "{language}", "trending", "explore", "learn", "how to", "best of", "new ideas", "community", "inspiration"],
     "variables": {
-      "type": ["story", "tutorial", "guide", "lesson", "review", "vlog", "challenge", "explanation"],
-      "impact": ["blow your mind", "change your perspective", "inspire you", "make you think", "teach you something new", "entertain you", "help you grow", "solve a problem"],
-      "benefit": ["a surprise", "valuable tips", "life-changing advice", "exclusive insights", "actionable steps", "fun facts", "new skills", "unique perspectives"]
+      "video_type": ["video", "clip", "tutorial", "guide", "story", "review", "explanation", "tips", "tricks", "documentary", "series", "vlog", "challenge"],
+      "impact": ["blow your mind", "change your perspective", "inspire you", "make you think", "teach you something new", "entertain you", "help you grow", "solve a problem", "make you laugh", "shock you", "inform you"],
+      "benefit": ["a surprise", "valuable tips", "life-changing advice", "exclusive insights", "actionable steps", "fun facts", "new skills", "unique perspectives", "inspiration", "entertainment"]
     }
   }
 }
