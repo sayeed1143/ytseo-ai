@@ -1,4 +1,8 @@
-<!-- 🌐 UI Language Selector (Top Right) -->
+<!-- ✅ SAFE UPGRADE VERSION -->
+<!-- 🌐 Language Translation + 📱 Mobile Responsive + 🤖 AI Integration Ready (Separated) -->
+<!-- Use this as a modular add-on; DO NOT replace your main HTML directly -->
+
+<!-- 🌐 UI Language Selector -->
 <div style="position: absolute; top: 16px; right: 20px; font-size: 0.9rem;">
   <label for="uiLang" style="margin-right: 6px;">🌐</label>
   <select id="uiLang" onchange="changeUILanguage()" style="padding: 4px 8px;">
@@ -9,258 +13,109 @@
   </select>
 </div>
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YTSEO.ai – Smart SEO. More Views. Less Hassle.</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-  <style>
-    :root {
-      --bg-light: #f5f5f5;
-      --bg-dark: #121212;
-      --text-light: #333;
-      --text-dark: #f5f5f5;
-      --card-light: #fff;
-      --card-dark: #1e1e1e;
-      --btn-light: #007bff;
-      --btn-dark: #3399ff;
-      --green: #28a745;
-      --highlight: #e57c23;
+<!-- 🔤 Translation Strings -->
+<script>
+  const translations = {
+    en: {
+      topicLabel: "📝 Provide the topic or script of your video",
+      langLabel: "🌍 Select Language:",
+      typeLabel: "🎬 Select Format:",
+      generate: "⚡ Generate SEO",
+      reset: "🔁 Reset",
+      export: "📥 Export to .txt",
+      title: "🎯 Title",
+      description: "📝 Description",
+      hashtags: "📌 Hashtags",
+      tags: "🔖 Video Tags"
+    },
+    hi: {
+      topicLabel: "📝 अपने वीडियो का विषय या स्क्रिप्ट दें",
+      langLabel: "🌍 भाषा चुनें:",
+      typeLabel: "🎬 वीडियो का प्रकार चुनें:",
+      generate: "⚡ एसईओ बनाएं",
+      reset: "🔁 रीसेट करें",
+      export: "📥 .txt फ़ाइल बनाएं",
+      title: "🎯 शीर्षक",
+      description: "📝 विवरण",
+      hashtags: "📌 हैशटैग",
+      tags: "🔖 वीडियो टैग्स"
+    },
+    ur: {
+      topicLabel: "📝 اپنے ویڈیو کا موضوع یا اسکرپٹ فراہم کریں",
+      langLabel: "🌍 زبان منتخب کریں:",
+      typeLabel: "🎬 فارمیٹ منتخب کریں:",
+      generate: "⚡ ایس ای او بنائیں",
+      reset: "🔁 ری سیٹ کریں",
+      export: "📥 .txt میں ایکسپورٹ کریں",
+      title: "🎯 عنوان",
+      description: "📝 تفصیل",
+      hashtags: "📌 ہیش ٹیگز",
+      tags: "🔖 ویڈیو ٹیگز"
+    },
+    ru: {
+      topicLabel: "📝 Укажите тему или сценарий видео",
+      langLabel: "🌍 Выберите язык:",
+      typeLabel: "🎬 Выберите формат:",
+      generate: "⚡ Сгенерировать SEO",
+      reset: "🔁 Сбросить",
+      export: "📥 Экспорт в .txt",
+      title: "🎯 Заголовок",
+      description: "📝 Описание",
+      hashtags: "📌 Хэштеги",
+      tags: "🔖 Теги видео"
     }
+  };
 
+  function changeUILanguage() {
+    const selectedLang = document.getElementById("uiLang").value;
+    const t = translations[selectedLang];
+    if (!t) return;
+    document.querySelector("label[for='inputTopic']").innerText = t.topicLabel;
+    document.querySelector("label[for='language']").innerText = t.langLabel;
+    document.querySelector("label[for='type']").innerText = t.typeLabel;
+    document.querySelector(".generate-btn").innerText = t.generate;
+    document.querySelector(".reset-btn").innerText = t.reset;
+    document.querySelector(".download-btn").innerText = t.export;
+    document.querySelector("label[for='titleBox']").innerText = t.title;
+    document.querySelector("label[for='descBox']").innerText = t.description;
+    document.querySelector("label[for='hashtagBox']").innerText = t.hashtags;
+    document.querySelector("label[for='tagsBox']").innerText = t.tags;
+  }
+</script>
+
+<!-- 📱 Mobile Fix (Add this in <head>) -->
+<style>
+  @media screen and (max-width: 600px) {
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      transition: all 0.3s ease;
+      padding: 1rem;
     }
-
-    body.dark {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-
-    .text-logo-header {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .text-logo-header h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--highlight);
-      margin-bottom: 0.2rem;
-    }
-
-    .text-logo-header h1 span {
-      color: #000;
-    }
-
-    body.dark .text-logo-header h1 span {
-      color: #fff;
-    }
-
-    .tagline {
-      font-size: 1.1rem;
-      color: #666;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
     .section {
-      margin-bottom: 2rem;
-    }
-
-    textarea, select, input {
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      margin-top: 0.5rem;
       margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: var(--card-light);
-      color: inherit;
     }
-
-    body.dark textarea,
-    body.dark select,
-    body.dark input {
-      background-color: var(--card-dark);
-      border: 1px solid #444;
-      color: var(--text-dark);
-    }
-
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 1rem;
-    }
-
-    button.copy-btn, .generate-btn {
-      padding: 10px 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-    }
-
-    .copy-btn {
-      background-color: var(--btn-light);
-      color: white;
-    }
-
-    .copy-btn:hover {
-      background-color: #0056b3;
-    }
-
-    .generate-btn {
-      background-color: var(--green);
-      color: white;
-      width: 100%;
-    }
-
-    .generate-btn:hover {
-      background-color: #218838;
-    }
-
-    .dark-mode-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    textarea, select, input {
       font-size: 0.9rem;
-      cursor: pointer;
-      background: none;
-      border: 2px solid #666;
-      padding: 6px 12px;
-      border-radius: 6px;
-      color: #666;
+      padding: 0.6rem;
     }
-
-    body.dark .dark-mode-toggle {
-      border-color: #bbb;
-      color: #bbb;
-    }
-
-    footer {
-      margin-top: 3rem;
+    button {
       font-size: 0.9rem;
-      color: #999;
-      text-align: center;
     }
-  </style>
+  }
+</style>
 
-  <script>
-    function copyToClipboard(id) {
-      const textarea = document.getElementById(id);
-      textarea.select();
-      document.execCommand("copy");
-      alert("Copied!");
+<!-- 🤖 AI Integration READY HOOK (Add when you link n8n or any free AI service) -->
+<script>
+  async function callAIBackend(prompt) {
+    try {
+      const response = await fetch('https://your-n8n-or-json-url.com/webhook', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await response.json();
+      // Use AI response here
+      console.log(data);
+    } catch (error) {
+      console.error("AI fetch error:", error);
     }
-
-    function generateSEO() {
-      const topic = document.getElementById("inputTopic").value;
-      const language = document.getElementById("language").value;
-      const type = document.getElementById("type").value;
-
-      document.getElementById("titleBox").value = `${topic} - Amazing Story`;
-      document.getElementById("descBox").value = `This ${type.toLowerCase()} shares an inspiring message about "${topic}". Watch till the end!`;
-      document.getElementById("hashtagBox").value = `#ytseo #story #${type.toLowerCase()} #${language.toLowerCase()} #inspiration`;
-      document.getElementById("tagsBox").value = `${topic}, ${language} story, ${type}, inspiring tale`;
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-    }function resetFields() {
-      document.getElementById("inputTopic").value = "";
-      document.getElementById("language").selectedIndex = 0;
-      document.getElementById("type").selectedIndex = 0;
-      document.getElementById("titleBox").value = "";
-      document.getElementById("descBox").value = "";
-      document.getElementById("hashtagBox").value = "";
-      document.getElementById("tagsBox").value = "";
-    }
-
-  </script>
-</head>
-<body>
-
-  
-  <!-- 🧠 Styled Text Logo Instead of Image -->
-  <div class="text-logo-header">
-    <h1>YT<span>SEO</span>.ai</h1>
-    <p class="tagline">Smart SEO. More Views. Less Hassle.</p>
-  </div>
-
-  <!-- ✍️ Topic -->
-  <div class="section">
-    <label for="inputTopic">📝 Provide the topic or script of your video</label>
-    <textarea id="inputTopic" placeholder="e.g. A story about a lion who learns humility..."></textarea>
-  </div>
-  <div id="suggestions" style="font-size: 0.9rem; color: #666; margin-top: 5px;"></div>
-
-  <!-- 🌍 Language + 🎬 Format -->
-  <div class="section">
-    <label for="language">🌍 Select Language:</label>
-    <select id="language">
-      <option value="english">English</option>
-      <option value="hindi">Hindi</option>
-      <option value="urdu">Urdu</option>
-      <option value="russian">Russian</option>
-    </select>
-
-    <label for="type">🎬 Select Format:</label>
-    <select id="type">
-      <option value="shorts">Short Video</option>
-      <option value="long">Long Video</option>
-    </select>
-  </div>
-
-  
-  <!-- ⚡ Buttons Section -->
-  <div class="section" style="display: flex; flex-wrap: wrap; gap: 10px;">
-    <button class="generate-btn" onclick="generateSEO()">⚡ Generate SEO</button>
-    <button class="reset-btn" onclick="resetFields()">🔁 Reset</button>
-    <button class="download-btn" onclick="downloadTxt()">📥 Export to .txt</button>
-  </div>
-
-  <!-- 📋 Results: Title / Desc / Tags / Hashtags -->
-  <div class="section">
-    <label for="titleBox">🎯 Title</label>
-    <textarea id="titleBox" placeholder="Generated title will appear here..."></textarea>
-    <button class="copy-btn" onclick="copyToClipboard('titleBox')">Copy Title</button>
-  </div>
-
-  <div class="section">
-    <label for="descBox">📝 Description</label>
-    <textarea id="descBox" placeholder="Generated description will appear here..."></textarea>
-    <button class="copy-btn" onclick="copyToClipboard('descBox')">Copy Description</button>
-  </div>
-
-  <div class="section">
-    <label for="hashtagBox">📌 Hashtags</label>
-    <textarea id="hashtagBox" placeholder="Generated hashtags will appear here..."></textarea>
-    <button class="copy-btn" onclick="copyToClipboard('hashtagBox')">Copy Hashtags</button>
-  </div>
-
-  <div class="section">
-    <label for="tagsBox">🔖 Video Tags</label>
-    <textarea id="tagsBox" placeholder="Generated tags will appear here..."></textarea>
-    <button class="copy-btn" onclick="copyToClipboard('tagsBox')">Copy Video Tags</button>
-  </div>
-
-  <!-- 🧾 Footer -->
-  <footer>
-    Powered by <strong>YTSEO.ai</strong> – Built with ❤️ for global YouTube creators.
-  </footer>
-
-</body>
-</html>
+  }
+</script>
