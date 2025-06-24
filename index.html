@@ -12,11 +12,253 @@
     <meta property="og:url" content="https://www.ytseo.ai/">
     <meta property="og:title" content="YTSEO.ai - Smart SEO for YouTube Videos">
     <meta property="og:description" content="Generate optimized YouTube titles, descriptions, and tags instantly. Boost your video's SEO with AI-powered suggestions.">
-    <meta property="og:image" content="https://www.ytseo.ai/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://www.ytseo.ai/og-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.ytseo.ai/">
     <meta property="twitter:title" content="YTSEO.ai - Smart SEO for YouTube Videos">
     <meta property="twitter:description" content="Generate optimized YouTube titles, descriptions, and tags instantly. Boost your video's SEO with AI-powered suggestions.">
-    <meta property="twitter:image" content="https://www.ytseo.ai/twitter-image.jpg"> <link rel="stylesheet" href="style.css">
+    <meta property="twitter:image" content="https://www.ytseo.ai/twitter-image.jpg">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .header-controls {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .header-controls select,
+        .header-controls button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .header-controls select:hover,
+        .header-controls button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark .card {
+            background: rgba(44,62,80,0.95);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        body.dark label {
+            color: #bdc3c7;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        body.dark input,
+        body.dark select,
+        body.dark textarea {
+            background: #34495e;
+            border-color: #555;
+            color: #ecf0f1;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
+        }
+        
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #7f8c8d;
+            transform: translateY(-2px);
+        }
+        
+        .btn-export {
+            background: #27ae60;
+            color: white;
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .btn-export:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+        
+        .output-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .btn-copy {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 10px 0 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-copy:hover {
+            background: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid #ccc;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -230,7 +472,7 @@
                 contentLanguageLabel: '🌍 Язык контента',
                 englishOption: 'Английский',
                 hindiOption: 'Хинди',
-                urduOption: 'Урdu',
+                urduOption: 'Урду',
                 russianOption: 'Русский',
                 spanishOption: 'Испанский',
                 frenchOption: 'Французский',
@@ -245,7 +487,7 @@
                 titlePlaceholder: 'Ваш оптимизированный заголовок появится здесь...',
                 descriptionLabel: '📝 Описание',
                 descriptionPlaceholder: 'Ваше SEO-описание появится здесь...',
-hashtagsLabel: '📌 Хэштеги',
+                hashtagsLabel: '📌 Хэштеги',
                 hashtagsPlaceholder: 'Соответствующие хэштеги появятся здесь...',
                 videoTagsLabel: '🔖 Теги видео',
                 videoTagsPlaceholder: 'Оптимизированные теги появятся здесь...',
@@ -323,260 +565,4 @@ hashtagsLabel: '📌 Хэштеги',
                 videoTagsPlaceholder: 'Les mots-clés optimisés apparaîtront ici...',
                 copyTagsButton: 'Copier les Mots-clés',
                 copyHashtagsButton: 'Copier les Hashtags',
-                footerText: 'Propulsé par <strong>YTSEO.ai</strong> – Conçu avec ❤️ pour les créateurs mondiaux',
-                alertEnterTopic: 'Veuillez d\'abord saisir un sujet de vidéo !',
-                alertGenerateContent: 'Générez d\'abord du contenu !',
-                copiedSuccess: '✓ Copié !',
-            },
-            de: {
-                darkModeButton: '🌙 Dunkelmodus',
-                lightModeButton: '☀️ Hellmodus',
-                tagline: 'Smartes SEO. Mehr Aufrufe. Weniger Aufwand.',
-                videoTopicLabel: '📝 Video-Thema/Skript',
-                videoTopicPlaceholder: 'z.B. Eine Geschichte über einen Löwen, der Demut lernt...',
-                contentLanguageLabel: '🌍 Inhaltssprache',
-                englishOption: 'Englisch',
-                hindiOption: 'Hindi',
-                urduOption: 'Urdu',
-                russianOption: 'Russisch',
-                spanishOption: 'Spanisch',
-                frenchOption: 'Französisch',
-                germanOption: 'Deutsch',
-                videoFormatLabel: '🎬 Video-Format',
-                shortVideoOption: 'Kurzvideo',
-                longVideoOption: 'Langvideo',
-                generateSEOButton: '⚡ SEO Generieren',
-                resetButton: '🔁 Zurücksetzen',
-                exportButton: '📥 Alles Exportieren',
-                titleLabel: '🎯 Titel',
-                titlePlaceholder: 'Ihr optimierter Titel wird hier erscheinen...',
-                copyTitleButton: 'Titel kopieren',
-                descriptionLabel: '📝 Beschreibung',
-                descriptionPlaceholder: 'Ihre SEO-Beschreibung wird hier erscheinen...',
-                hashtagsLabel: '📌 Hashtags',
-                hashtagsPlaceholder: 'Relevante Hashtags werden hier erscheinen...',
-                videoTagsLabel: '🔖 Video-Tags',
-                videoTagsPlaceholder: 'Optimierte Tags werden hier erscheinen...',
-                copyTagsButton: 'Tags kopieren',
-                copyHashtagsButton: 'Hashtags kopieren',
-                footerText: 'Powered by <strong>YTSEO.ai</strong> – Mit ❤️ für globale Kreative erstellt',
-                alertEnterTopic: 'Bitte geben Sie zuerst ein Video-Thema ein!',
-                alertGenerateContent: 'Generieren Sie zuerst Inhalte!',
-                copiedSuccess: '✓ Kopiert!',
-            }
-        };
-
-        function applyTranslations(lang) {
-            document.querySelectorAll('[data-translate-key]').forEach(element => {
-                const key = element.getAttribute('data-translate-key');
-                if (translations[lang] && translations[lang][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = translations[lang][key];
-                    } else if (element.tagName === 'OPTION') {
-                        element.textContent = translations[lang][key];
-                    } else if (element.tagName === 'BUTTON' && (key === 'darkModeButton' || key === 'lightModeButton')) {
-                        element.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[lang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[lang].darkModeButton}`;
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
-                }
-            });
-            const darkModeBtn = document.querySelector('[onclick="toggleDarkMode()"]');
-            if (darkModeBtn) {
-                darkModeBtn.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[lang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[lang].darkModeButton}`;
-            }
-        }
-
-        function changeUILanguage() {
-            const lang = document.getElementById("uiLang").value;
-            localStorage.setItem('ytseoUILang', lang);
-            applyTranslations(lang);
-        }
-
-        // Copy to Clipboard
-        function copyToClipboard(id) {
-            const textarea = document.getElementById(id);
-            textarea.select();
-            document.execCommand("copy");
-
-            const btn = document.querySelector(`[onclick="copyToClipboard('${id}')"]`);
-            const originalHTML = btn.innerHTML; // Store original HTML to include icon
-            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
-            btn.innerHTML = `<i class="fas fa-check"></i> ${translations[currentLang].copiedSuccess}`;
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-            }, 2000);
-        }
-
-        // --- ENHANCED JAVASCRIPT PROCESSOR (with corrected generateSEO) ---
-
-        // Improved content generator
-        async function generateSEO() {
-            const topic = document.getElementById("inputTopic").value.trim();
-            const lang = document.getElementById("language").value; // Content language, not UI
-            const isShort = document.getElementById("type").value === "shorts";
-            const type = isShort ? "shorts" : "long";
-            const currentUILang = localStorage.getItem('ytseoUILang') || 'en'; // UI language for alerts
-
-            if (!topic) {
-                alert(translations[currentUILang].alertEnterTopic);
-                return;
-            }
-
-            // Load templates
-            const { seo_templates, fallback } = await fetchSEOData();
-            
-            // Find best matching template with improved logic
-            const template = findBestTemplate(topic, seo_templates);
-            
-            // Use the found template, or the fallback if no specific template is found
-            const chosenTemplate = template || fallback;
-
-            // Generate variables (topic, language, type are always available)
-            const variables = {
-                topic,
-                language: lang,
-                video_type: isShort ? "short video" : "long video", // Provide a more descriptive 'video_type' for templates
-                ...(chosenTemplate.variables || {}) // Merge template-specific variables if they exist
-            };
-
-            let titleTemplate = '';
-            let descriptionTemplate = '';
-            let tagsTemplate = '';
-
-            if (chosenTemplate.templates) { // If it's a specific SEO template with "shorts" / "long" variations
-                titleTemplate = chosenTemplate.templates.title[type];
-                descriptionTemplate = chosenTemplate.templates.description[type];
-                tagsTemplate = chosenTemplate.templates.tags.join(", ");
-            } else { // If it's the fallback template (or any other simpler structure)
-                titleTemplate = chosenTemplate.title;
-                descriptionTemplate = chosenTemplate.description;
-                tagsTemplate = Array.isArray(chosenTemplate.tags) ? chosenTemplate.tags.join(", ") : chosenTemplate.tags || ''; 
-            }
-
-            document.getElementById("titleBox").value = replacePlaceholders(titleTemplate, variables);
-            document.getElementById("descBox").value = replacePlaceholders(descriptionTemplate, variables);
-            
-            const tagsRaw = replacePlaceholders(tagsTemplate, variables);
-            document.getElementById("tagsBox").value = tagsRaw;
-            document.getElementById("hashtagBox").value = tagsRaw.split(", ").map(t => `#${t.replace(/\s+/g, '')}`).join(" ");
-        }
-
-        // Helper functions
-        async function fetchSEOData() {
-            try {
-                const response = await fetch('seo-data.json');
-                if (!response.ok) {
-                    console.error('Failed to load seo-data.json. Check file path and content.');
-                    return { seo_templates: [], fallback: {} };
-                }
-                return await response.json();
-            } catch (error) {
-                console.error('Error parsing seo-data.json:', error);
-                return { seo_templates: [], fallback: {} }; // Return empty structure on parse error
-            }
-        }
-
-        // NEW IMPROVED findBestTemplate function
-        function findBestTemplate(topic, templates) {
-            const lowerTopic = topic.toLowerCase();
-            const topicWords = new Set(lowerTopic.split(/\s+/).filter(word => word.length > 2)); // Get unique words from topic, ignore short ones
-
-            let bestMatchTemplate = null;
-            let maxMatchingScore = 0; // Use a score instead of just count
-
-            for (const template of templates) {
-                let currentScore = 0;
-                template.keywords.forEach(kw => {
-                    const lowerKw = kw.toLowerCase();
-                    if (lowerTopic.includes(lowerKw)) {
-                        // Give higher score for exact phrase match
-                        if (lowerTopic === lowerKw) {
-                            currentScore += 100; // Very high score for exact match
-                        } else if (lowerTopic.includes(lowerKw + ' ')) { // Word boundary check
-                            currentScore += lowerKw.split(/\s+/).length * 10; // More weight for multi-word keywords
-                        } else {
-                            currentScore += lowerKw.split(/\s+/).length; // Basic score for partial include
-                        }
-                    }
-                });
-
-                if (currentScore > maxMatchingScore) {
-                    maxMatchingScore = currentScore;
-                    bestMatchTemplate = template;
-                }
-            }
-            return bestMatchTemplate;
-        }
-
-        function replacePlaceholders(text, variables) {
-            if (!text) return "";
-            return text.replace(/{(\w+)}/g, (_, key) => {
-                const options = variables[key];
-                return Array.isArray(options) 
-                    ? options[Math.floor(Math.random() * options.length)]
-                    : (options !== undefined ? options : "");
-            });
-        }
-
-        // Reset Form
-        function resetFields() {
-            document.getElementById("inputTopic").value = "";
-            document.getElementById("language").selectedIndex = 0;
-            document.getElementById("type").selectedIndex = 0;
-            document.getElementById("titleBox").value = "";
-            document.getElementById("descBox").value = "";
-            document.getElementById("hashtagBox").value = "";
-            document.getElementById("tagsBox").value = "";
-        }
-
-        // Download as TXT
-        function downloadTxt() {
-            const title = document.getElementById("titleBox").value;
-            const desc = document.getElementById("descBox").value;
-            const tags = document.getElementById("tagsBox").value;
-            const hashtags = document.getElementById("hashtagBox").value;
-            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
-
-            if (!title && !desc && !tags && !hashtags) {
-                alert(translations[currentLang].alertGenerateContent);
-                return;
-            }
-
-            const content = `Title:\n${title}\n\nDescription:\n${desc}\n\nTags:\n${tags}\n\nHashtags:\n${hashtags}\n\nGenerated by YTSEO.ai`;
-            const blob = new Blob([content], { type: "text/plain" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "ytseo-ai-content.txt";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
-        // Dark Mode Toggle
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark");
-            const btn = document.querySelector('[onclick="toggleDarkMode()"]');
-            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
-            btn.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[currentLang].darkModeButton}`;
-            localStorage.setItem('ytseoDarkMode', document.body.classList.contains("dark"));
-        }
-
-        // INITIALIZE ON LOAD
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Apply UI language and dark mode first
-            const savedLang = localStorage.getItem('ytseoUILang') || 'en';
-            document.getElementById('uiLang').value = savedLang;
-            applyTranslations(savedLang);
-
-            if (localStorage.getItem('ytseoDarkMode') === 'true') {
-                document.body.classList.add('dark');
-                const btn = document.querySelector('[onclick="toggleDarkMode()"]');
-                const currentLang = localStorage.getItem('ytseoUILang') || 'en';
-                btn.innerHTML = `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}`;
-            }
-        });
-    </script>
-</body>
-</html>
+                footerText: 'Propulsé par <strong
