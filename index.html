@@ -578,32 +578,5 @@ hashtagsLabel: '📌 Хэштеги',
             }
         });
     </script>
-    <script>
-  async function loadSEOData(lang) {
-    try {
-      const res = await fetch(`seo-${lang}.json`);
-      const data = await res.json();
-      window.seoTemplates = data;
-      console.log("Loaded:", lang, data);
-    } catch (err) {
-      console.error("Could not load SEO JSON for", lang);
-    }
-  }
-
-  // Load on first page load
-  document.addEventListener("DOMContentLoaded", function () {
-    const defaultLang = document.getElementById("uiLang")?.value || "en";
-    loadSEOData(defaultLang);
-  });
-
-  // When user changes UI language, load new content language too
-  function changeUILanguage() {
-    const newLang = document.getElementById("uiLang")?.value || "en";
-    loadSEOData(newLang);
-
-    // OPTIONAL: Trigger your UI text switch here if you have separate logic
-  }
-</script>
-
 </body>
 </html>
