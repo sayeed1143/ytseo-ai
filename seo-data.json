@@ -90,4 +90,318 @@
       "benefit": ["a surprise", "valuable tips", "life-changing advice", "exclusive insights", "actionable steps", "fun facts", "new skills", "unique perspectives", "inspiration", "entertainment", "expert advice", "hidden gems", "quick solutions"]
     }
   }
+},
+{
+  "seo_templates": [
+    {
+      "keywords": ["story", "tale", "fable", "narrative", "adventure", "children story", "moral lesson", "characters", "fiction", "animated story", "short film", "bedtime story", "imagination", "fantasy", "legend", "myth", "folktale", "drama", "plot", "hero", "villain", "journey", "discovery"],
+      "templates": {
+        "title": {
+          "shorts": "{character_1} and the {character_2}: A {adjective_story} Short",
+          "long": "The {adjective_story} Tale of {character_1} and {character_2} | Full {story_type}"
+        },
+        "description": {
+          "shorts": "Join {character_1} and {character_2} on a {adjective_story} adventure! This {length_story} will teach you about {moral_lesson}. #ShortStory #KidsStory #AnimatedShort",
+          "long": "Embark on a {adjective_story} journey with {character_1} and their friend {character_2}. This full-length {story_type} explores themes of {moral_lesson_1} and {moral_lesson_2}, perfect for {audience_story}. Watch now for an inspiring tale! Don't forget to {call_to_action_story}."
+        },
+        "tags": ["{character_1}", "{character_2}", "story", "{adjective_story}", "{moral_lesson}", "{audience_story}", "animated short", "kids story", "children's story", "fable", "tale", "adventure story", "family friendly", "lesson learned", "{story_type_tag}", "narrative"],
+        "variables": {
+          "character_1": ["Whiskers", "Leo the Lion", "Bella the Bird", "Rocky the Raccoon", "Pip the Squirrel", "Luna the Cat", "Max the Dog", "Sophie the Scientist", "The Brave Knight"],
+          "character_2": ["the Duck", "the Mouse", "the Wise Owl", "the Friendly Bear", "the Curious Fox", "the Big Bad Wolf", "the Little Worm", "The Lost Robot", "The Magical Gem"],
+          "adjective_story": ["magical", "heartwarming", "exciting", "funny", "inspiring", "classic", "unforgettable", "enchanting", "timeless", "epic", "thrilling", "charming", "whimsical", "captivating"],
+          "length_story": ["short animated film", "quick tale", "charming narrative", "mini-movie", "brief story", "quick animation"],
+          "moral_lesson": ["friendship", "courage", "kindness", "perseverance", "honesty", "empathy", "teamwork", "respect", "self-belief", "acceptance", "forgiveness"],
+          "moral_lesson_1": ["friendship", "courage", "kindness"],
+          "moral_lesson_2": ["perseverance", "honesty", "empathy"],
+          "audience_story": ["children", "families", "all ages", "young learners", "bedtime stories", "fantasy lovers", "animation fans"],
+          "story_type": ["Animated Story", "Fable", "Children's Book Adaptation", "Illustrated Tale", "Adventure Story", "Short Animation"],
+          "story_type_tag": ["animation", "cartoon", "fairytale", "moralstory", "kidsanimation"],
+          "call_to_action_story": ["subscribe for more stories", "hit the like button", "share with friends", "tell us your favorite part"]
+        }
+      }
+    },
+    {
+      "keywords": ["recipe", "cook", "cooking", "food", "dish", "how to make", "bake", "kitchen", "meal prep", "eat", "chef", "cuisine", "tasty", "delicious", "healthy food", "gourmet", "home cooking", "ingredients", "easy recipe", "quick meal", "dessert", "appetizer", "main course", "baking", "grill", "fry", "vegan recipe", "vegetarian recipe", "non-veg recipe"],
+      "templates": {
+        "title": {
+          "shorts": "Quick {meal_type} Recipe: {dish_name} in 60 Seconds! #Shorts",
+          "long": "How to Make {dish_name} | The Ultimate {cuisine_type} Recipe Guide"
+        },
+        "description": {
+          "shorts": "Learn to make delicious {dish_name} in this super quick short! Perfect for {occasion_food}. #EasyRecipe #FoodShorts #{cuisine_type}Food",
+          "long": "Master the art of making {dish_name} with this comprehensive recipe tutorial. We cover {tip_1} and {tip_2} to make your {dish_name} absolutely perfect. Get the full recipe and ingredients list in the description below! Don't forget to {call_to_action_food}."
+        },
+        "tags": ["{dish_name}", "recipe", "cooking", "food", "{cuisine_type}", "{meal_type}", "how to cook", "easy recipes", "homemade", "chef tips", "kitchen hacks", "foodie", "delicious", "healthy recipe", "{diet_type}", "cook at home", "quick meal"],
+        "variables": {
+          "dish_name": ["Chicken Curry", "Pasta Carbonara", "Vegan Chili", "Chocolate Cake", "Spicy Noodles", "Perfect Pancakes", "Healthy Salad", "Tandoori Chicken", "Biryani", "Pizza Dough", "Smoothie Bowl"],
+          "meal_type": ["Dinner", "Lunch", "Breakfast", "Dessert", "Snack", "Brunch", "Appetizer"],
+          "cuisine_type": ["Indian", "Italian", "Mexican", "Asian", "American", "Mediterranean", "Vegan", "Continental", "Chinese", "Thai"],
+          "occasion_food": ["quick meals", "parties", "weeknight dinners", "healthy eating", "dessert cravings", "special occasions", "potlucks", "family dinners"],
+          "tip_1": ["ingredient selection", "cooking techniques", "flavor balancing", "presentation tips", "prep tips", "sourcing ingredients"],
+          "tip_2": ["meal prepping", "cost-saving hacks", "advanced garnishing", "alternative ingredients", "storage tips", "serving suggestions"],
+          "diet_type": ["vegan", "vegetarian", "gluten-free", "keto", "low-carb", "high-protein"],
+          "call_to_action_food": ["subscribe for more recipes", "like and share", "leave a comment", "visit my blog for ingredients"]
+        }
+      }
+    },
+    {
+      "keywords": ["gameplay", "gaming", "lets play", "walkthrough", "review game", "esports", "gaming news", "pc game", "console game", "mobile game", "tips and tricks game", "live stream game", "best moments gaming", "gaming setup", "gaming tutorial", "speedrun", "cheats", "glitches", "new game", "update game", "patch notes", "gaming community", "pro gamer"],
+      "templates": {
+        "title": {
+          "shorts": "{game_name} - CRAZY {moment_gaming} (Shorts) #Gaming",
+          "long": "{game_name} Full {video_type_gaming} | How to Beat {level_name}"
+        },
+        "description": {
+          "shorts": "Epic {game_name} moment you won't believe! 🔥 Subscribe for more! #GamingShorts #{game_name}Clip #{gaming_genre}",
+          "long": "Welcome to my complete playthrough of {game_name}! In this episode, we tackle {level_name} and discover {discovery}. Don't miss out on {tip_gaming} for this game! {call_to_action_gaming}"
+        },
+        "tags": ["{game_name}", "gaming", "{gaming_genre}", "{platform_gaming}", "gameplay", "walkthrough", "lets play", "best moments", "tips and tricks", "new game", "review", "esports", "gaming community", "pro gamer", "{video_type_gaming_tag}", "{character_gaming}"],
+        "variables": {
+          "game_name": ["Fortnite", "Minecraft", "Call of Duty", "Valorant", "Genshin Impact", "Apex Legends", "Elden Ring", "Cyberpunk 2077", "Roblox", "Grand Theft Auto", "League of Legends", "Among Us"],
+          "gaming_genre": ["FPS", "RPG", "Adventure", "Strategy", "Simulation", "Horror", "Action", "Battle Royale", "MMORPG", "Puzzle"],
+          "platform_gaming": ["PC", "PlayStation", "Xbox", "Nintendo Switch", "Mobile Gaming"],
+          "moment_gaming": ["Headshot", "Clutch", "Victory Royale", "Epic Fail", "Hidden Easter Egg", "Speedrun", "Best Play", "Funny Moments", "Highlights"],
+          "level_name": ["The Forbidden Forest", "Skyrim Dungeons", "Nuketown Map", "Pandora's Box", "The End Dimension", "Verdansk", "Summoner's Rift"],
+          "discovery": ["secret areas", "powerful weapons", "challenging boss fights", "new strategies", "lore details", "Easter eggs"],
+          "tip_gaming": ["hidden secrets", "leveling up fast", "winning every match", "mastering combat", "pro tips", "beginner guide"],
+          "video_type_gaming": ["Walkthrough", "Gameplay", "Review", "Guide", "Highlights", "Live Stream"],
+          "video_type_gaming_tag": ["playthrough", "gametips", "gamingvlog", "gameplayvideo"],
+          "character_gaming": ["master chief", "kratos", "mario", "link", "lara croft", "arthur morgan"],
+          "call_to_action_gaming": ["Like if you love this game", "Subscribe for more gaming content", "What's your favorite part?", "Share with your gaming squad"]
+        }
+      }
+    },
+    {
+      "keywords": ["learn", "tutorial", "how to", "education", "science", "history", "lesson", "guide", "explain", "understand", "study", "facts", "knowledge", "research", "course", "lecture", "academy", "masterclass", "quick lesson", "explainer", "breakdown", "concepts", "principles", "theory", "practical", "demonstration", "tips"],
+      "templates": {
+        "title": {
+          "shorts": "Learn {topic_edu} in 60 Seconds! #Shorts #EduShorts",
+          "long": "The Ultimate Guide to {topic_edu} | Everything You Need to Know"
+        },
+        "description": {
+          "shorts": "Quick explanation of {topic_edu}. Understand the basics fast! #LearnFast #ScienceFacts #QuickGuide",
+          "long": "Dive deep into {topic_edu} with this comprehensive educational video. We break down complex concepts into easy-to-understand parts, covering {subtopic_edu_1} and {subtopic_edu_2}. Perfect for students and curious minds! {call_to_action_edu}"
+        },
+        "tags": ["{topic_edu}", "education", "learning", "tutorial", "how to", "science", "history", "knowledge", "facts", "guide", "explained", "learn online", "study tips", "academic", "informative", "educational video", "{skill_edu}"],
+        "variables": {
+          "topic_edu": ["Quantum Physics", "Ancient Egypt", "JavaScript Basics", "Climate Change", "World History", "Artificial Intelligence", "Human Anatomy", "Financial Literacy", "Digital Marketing", "Python Programming"],
+          "subtopic_edu_1": ["fundamental principles", "key theories", "historical context", "practical applications", "core concepts", "basic setup"],
+          "subtopic_edu_2": ["common misconceptions", "future implications", "advanced techniques", "real-world examples", "case studies", "problem-solving"],
+          "skill_edu": ["coding", "data science", "language learning", "design", "writing", "math", "physics", "chemistry"],
+          "call_to_action_edu": ["Subscribe for more learning videos", "Share this with a friend who needs to learn", "What topic should I explain next?", "Visit my website for more resources"]
+        }
+      }
+    },
+    {
+      "keywords": ["diy", "crafts", "how to make", "build", "project", "handmade", "home decor", "upcycle", "hacks", "life hacks", "tutorial make", "do it yourself", "creative project", "craft ideas", "easy crafts", "art project", "woodworking", "sewing", "knitting", "crochet", "paper craft", "resin art", "painting", "customization"],
+      "templates": {
+        "title": {
+          "shorts": "DIY {project_diy}: Make This in 5 Mins! #DIYShorts #Crafts",
+          "long": "How to Make a {project_diy} | Easy DIY Craft Tutorial"
+        },
+        "description": {
+          "shorts": "Follow along to create your own {project_diy}! Super easy & fun. #Crafts #DIYProject #LifeHacks",
+          "long": "Transform your home with this amazing DIY {project_diy}! This step-by-step tutorial covers everything from {step_diy_1} to {step_diy_2}. Get creative and save money! {call_to_action_diy}"
+        },
+        "tags": ["{project_diy}", "DIY", "crafts", "how to make", "handmade", "home decor", "upcycle", "life hacks", "easy DIY", "craft tutorial", "creative projects", "{craft_type}", "do it yourself", "home improvement"],
+        "variables": {
+          "project_diy": ["Wall Art", "Desk Organizer", "Candle Holder", "Planter", "Book Nook", "Custom T-Shirt", "Jewelry Box", "Macrame Hanger", "Garden Bench", "Picture Frame"],
+          "step_diy_1": ["materials gathering", "initial cutting", "basic assembly", "designing the layout", "preparing the surface"],
+          "step_diy_2": ["finishing touches", "decoration ideas", "troubleshooting tips", "painting and sealing", "adding details"],
+          "craft_type": ["woodworking", "papercraft", "sewing", "jewelry making", "resin art", "home decor DIY"],
+          "call_to_action_diy": ["Share your creations with me", "Subscribe for more DIY ideas", "Like if you found this helpful", "What should I make next?"]
+        }
+      }
+    },
+    {
+      "keywords": ["travel", "vlog travel", "destination", "explore", "adventure", "vacation", "trip", "city guide", "travel tips", "wanderlust", "journey", "budget travel", "tourism", "holiday", "getaway", "backpacking", "tourist spots", "must visit", "travel hacks", "packing tips", "food travel", "cultural travel", "road trip", "flight review", "hotel review"],
+      "templates": {
+        "title": {
+          "shorts": "{city_travel} in 60 Seconds! Must-See Spots #TravelShorts",
+          "long": "Exploring {city_travel}: A Complete Travel Guide & Best Places to Visit"
+        },
+        "description": {
+          "shorts": "Quick tour of {city_travel}'s highlights! Where should I go next? #TravelVlog #Explore #TravelGuide",
+          "long": "Join me on an incredible journey through {city_travel}! Discover hidden gems, {activity_travel_1}, and enjoy {activity_travel_2}. Planning your trip? Check out my top {travel_tips_count} tips! {call_to_action_travel}"
+        },
+        "tags": ["{city_travel}", "travel", "vlog", "travel guide", "adventure", "vacation", "explore", "{country_travel}", "travel tips", "wanderlust", "budget travel", "must visit places", "tourism", "holiday", "city breaks", "{travel_style}"],
+        "variables": {
+          "city_travel": ["Paris", "Tokyo", "New York", "Rome", "Dubai", "Bali", "Goa", "Mumbai", "London", "Kyoto", "Barcelona", "Sydney", "Rio de Janeiro"],
+          "country_travel": ["France", "Japan", "USA", "Italy", "UAE", "Indonesia", "India", "UK", "Spain", "Australia", "Brazil"],
+          "activity_travel_1": ["delicious local food", "breathtaking historical sites", "vibrant nightlife", "stunning natural landscapes", "unique cultural experiences", "thrilling outdoor activities"],
+          "activity_travel_2": ["stunning natural landscapes", "cultural experiences", "thrilling adventures", "relaxing beaches", "mountain views", "shopping districts"],
+          "travel_tips_count": ["5", "10", "7", "3", "8", "12"],
+          "travel_style": ["luxury travel", "solo travel", "family travel", "budget travel", "adventure travel", "cultural immersion"],
+          "call_to_action_travel": ["What's your dream destination?", "Subscribe for more travel vlogs", "Plan your next adventure!", "Hit the bell for travel updates"]
+        }
+      }
+    },
+    {
+      "keywords": ["fitness", "workout", "exercise", "health", "lose weight", "muscle gain", "yoga", "gym", "home workout", "nutrition", "bodybuilding", "personal training", "strength training", "cardio", "HIIT", "flexibility", "stretching", "healthy lifestyle", "weight loss tips", "fitness routine", "motivation fitness", "sport", "athletic", "abs workout", "full body workout"],
+      "templates": {
+        "title": {
+          "shorts": "{workout_type} for Beginners (60 Sec Challenge) #FitnessShorts",
+          "long": "{workout_type} Full Body Workout Routine | Build Muscle & Lose Fat"
+        },
+        "description": {
+          "shorts": "Try this quick {workout_type} for amazing results! Perfect for any level. #Workout #Fitness #HomeWorkout",
+          "long": "Get ready to transform your body with this {workout_type} workout routine! This video covers {exercise_1} and {exercise_2} to help you reach your fitness goals. Perfect for {fitness_level}. {call_to_action_fitness}"
+        },
+        "tags": ["{workout_type}", "fitness", "workout", "exercise", "health", "lose weight", "muscle gain", "gym", "home workout", "nutrition", "{fitness_level}", "bodybuilding", "{body_part_focus}", "cardio", "HIIT", "strength training", "yoga", "pilates", "healthy lifestyle"],
+        "variables": {
+          "workout_type": ["HIIT", "Strength Training", "Cardio", "Yoga", "Pilates", "Core", "Full Body", "Lower Body", "Upper Body", "Dance Workout"],
+          "fitness_level": ["beginners", "intermediate", "advanced", "all levels"],
+          "exercise_1": ["proper form techniques", "warm-up routines", "cool-down stretches", "resistance training principles", "nutrition advice"],
+          "exercise_2": ["modifications for injuries", "progressing your lifts", "nutrition tips", "mind-muscle connection", "recovery strategies"],
+          "body_part_focus": ["abs", "legs", "arms", "chest", "back", "glutes"],
+          "call_to_action_fitness": ["Join the challenge", "Subscribe for daily workouts", "What's your favorite exercise?", "Share your fitness journey"]
+        }
+      }
+    },
+    {
+      "keywords": ["tech review", "unboxing", "gadget", "smartphone", "laptop", "product review", "tech news", "comparison", "best tech", "new technology", "electronics", "software review", "hardware review", "apps", "gaming tech", "audio tech", "camera review", "wearables", "smart home", "how to tech", "tech explained"],
+      "templates": {
+        "title": {
+          "shorts": "{tech_product_name} in 60 Seconds! Worth It? #TechShorts",
+          "long": "{tech_product_name} Review | The Ultimate Guide (Pros & Cons)"
+        },
+        "description": {
+          "shorts": "Quick look at the new {tech_product_name}! Is it the best? #TechReview #Gadget #Unboxing",
+          "long": "Is the {tech_product_name} worth your money? In this in-depth review, I cover its {feature_1}, {feature_2}, and ultimate performance. Find out if this is the right {tech_product_category} for you! {call_to_action_tech}"
+        },
+        "tags": ["{tech_product_name}", "tech review", "unboxing", "gadget", "smartphone", "laptop", "product review", "best tech", "new technology", "electronics", "{tech_product_category}", "tech news", "comparison", "hands-on", "first impressions", "software", "hardware"],
+        "variables": {
+          "tech_product_name": ["iPhone 16", "Samsung Galaxy S25 Ultra", "MacBook Pro M4", "Dyson Airwrap", "PlayStation 6", "Tesla Model 3", "Sony WH-1000XM6", "Google Pixel 9", "iPad Pro", "AI Assistant X"],
+          "tech_product_category": ["smartphone", "laptop", "headphones", "gaming console", "electric car", "smart home device", "tablet", "camera", "software"],
+          "feature_1": ["camera quality", "battery life", "processing power", "design and build", "display quality", "user interface", "performance", "durability"],
+          "feature_2": ["software features", "gaming performance", "display quality", "audio experience", "connectivity", "value for money", "ecosystem integration"],
+          "call_to_action_tech": ["Subscribe for more tech reviews", "Which tech should I review next?", "Leave your thoughts in the comments", "Check out the full specs in description"]
+        }
+      }
+    },
+    {
+      "keywords": ["finance", "money", "investing", "budget", "personal finance", "stocks", "cryptocurrency", "save money", "financial advice", "wealth", "economy", "stock market", "retirement", "debt", "passive income", "financial freedom", "credit score", "insurance", "taxes", "loans", "business finance", "investing tips", "money management", "beginner finance", "expert advice"],
+      "templates": {
+        "title": {
+          "shorts": "Save Money FAST! {money_tip} in 60 Secs #FinanceShorts",
+          "long": "How to Start Investing in {investment_type} | Beginner's Guide"
+        },
+        "description": {
+          "shorts": "Quick tip to boost your savings! Don't miss this. #MoneyHacks #FinanceTips #Budgeting",
+          "long": "Want to build wealth? This video is your ultimate guide to investing in {investment_type}. Learn about {finance_concept_1} and {finance_concept_2} to make smart financial decisions. Start your journey today! {call_to_action_finance}"
+        },
+        "tags": ["finance", "money", "investing", "budget", "personal finance", "stocks", "cryptocurrency", "save money", "financial advice", "wealth building", "economy", "stock market", "retirement planning", "{money_strategy}", "financial freedom", "{investment_type_tag}"],
+        "variables": {
+          "money_tip": ["Budgeting Secret", "Passive Income Idea", "Investing Tip", "Debt Payoff Strategy", "Frugal Living Hack", "Side Hustle Idea", "Savings Challenge"],
+          "investment_type": ["Stocks", "Real Estate", "Cryptocurrency", "Mutual Funds", "ETFs", "Index Funds", "Bonds", "Dividend Stocks"],
+          "finance_concept_1": ["compound interest", "risk management", "diversification", "asset allocation", "inflation", "market cycles"],
+          "finance_concept_2": ["market analysis", "tax implications", "long-term planning", "financial planning", "debt consolidation", "income diversification"],
+          "money_strategy": ["budgeting", "saving", "investing", "debt management", "passive income"],
+          "investment_type_tag": ["stockmarket", "crypto", "realestateinvesting", "passiveincome"],
+          "call_to_action_finance": ["Subscribe for more financial tips", "What are your money goals?", "Start your financial journey now!", "Get your free financial guide"]
+        }
+      }
+    },
+    {
+      "keywords": ["comedy", "funny", "skit", "prank", "humor", "hilarious", "stand up", "parody", "laugh", "meme", "funny moments", "viral video", "comedy challenge", "reaction video", "blooper reel", "fails", "dark humor", "satire", "jokes", "comedy show", "entertaining"],
+      "templates": {
+        "title": {
+          "shorts": "When Your {situation_comedy} Goes WRONG! 😂 #ComedyShorts",
+          "long": "The Funniest {comedy_type} Compilation of All Time!"
+        },
+        "description": {
+          "shorts": "This {situation_comedy} had me in stitches! 😂 Watch till the end! #FunnyVideos #Comedy #Shorts",
+          "long": "Get ready to laugh out loud! This compilation features the most hilarious {comedy_type} moments, including {funny_scenario_1} and {funny_scenario_2}. You won't believe what happens next! {call_to_action_comedy}"
+        },
+        "tags": ["comedy", "funny", "skit", "prank", "humor", "hilarious", "laugh", "meme", "viral video", "funny moments", "parody", "best comedy", "{comedy_type_tag}", "entertainment", "reaction"],
+        "variables": {
+          "situation_comedy": ["Cooking Attempt", "First Date", "Job Interview", "Friendship Test", "Gym Session", "Online Class", "Meeting a Celebrity", "Pet Encounter"],
+          "comedy_type": ["Skits", "Pranks", "Stand-Up", "Reaction", "Improvisation", "Funny Shorts", "Fails"],
+          "funny_scenario_1": ["unexpected twists", "awkward encounters", "hilarious misunderstandings", "crazy situations", "silly mistakes"],
+          "funny_scenario_2": ["epic fails", "clever comebacks", "sarcastic observations", "unbelievable reactions", "spontaneous humor"],
+          "comedy_type_tag": ["funnyskit", "prankvideo", "standupcomedy", "reactionvideo", "memes"],
+          "call_to_action_comedy": ["Who else relates to this?", "Share with someone who needs a laugh", "Which part made you laugh the most?", "Subscribe for more funny content"]
+        }
+      }
+    },
+    {
+      "keywords": ["beauty", "makeup", "skincare", "hair tutorial", "fashion", "style", "beauty hacks", "review beauty", "cosmetics", "glam", "get ready with me", "haul", "beauty tips", "fashion trends", "product review beauty", "fragrance", "nails", "hair care", "makeover", "transformation", "styling", "beauty routine", "GRWM"],
+      "templates": {
+        "title": {
+          "shorts": "{makeup_look} in 60 Seconds! ✨ #BeautyShorts",
+          "long": "My {makeup_look} Tutorial | Get Ready With Me for {occasion_beauty}"
+        },
+        "description": {
+          "shorts": "Quick & easy {makeup_look} for any day! #MakeupHacks #BeautyTips #GRWM",
+          "long": "Learn how to create this stunning {makeup_look} with my step-by-step tutorial! I'll share my favorite {beauty_product_type_1} and {beauty_product_type_2} to help you achieve a flawless finish for {occasion_beauty}. {call_to_action_beauty}"
+        },
+        "tags": ["beauty", "makeup", "skincare", "hair tutorial", "fashion", "style", "beauty hacks", "cosmetics", "glam", "get ready with me", "haul", "{makeup_look_tag}", "{occasion_beauty_tag}", "beauty tips", "fashion trends", "product review", "{beauty_type}"],
+        "variables": {
+          "makeup_look": ["Natural Everyday Makeup", "Glam Night Out", "Smoky Eye", "Soft Glam", "Bridal Makeup", "Quick Hairdo", "Flawless Skin Routine", "Bold Lip Look", "No-Makeup Makeup"],
+          "occasion_beauty": ["a party", "daily wear", "a wedding", "special events", "work", "school", "date night", "photoshoot"],
+          "beauty_product_type_1": ["foundations", "eyeshadow palettes", "lipsticks", "brushes", "skincare serums", "hair styling tools"],
+          "beauty_product_type_2": ["skincare essentials", "hair styling tools", "fragrances", "nail polishes", "contour kits", "blushers"],
+          "makeup_look_tag": ["eyeshadow", "lipstick", "foundation", "makeuptutorial"],
+          "occasion_beauty_tag": ["partylook", "everydaymakeup", "weddingmakeup"],
+          "beauty_type": ["makeup tutorial", "skincare routine", "hair styling", "fashion haul", "product review"],
+          "call_to_action_beauty": ["What's your favorite beauty product?", "Subscribe for more beauty content", "Try this look yourself!", "Shop my favorite products (links below)"]
+        }
+      }
+    },
+    {
+      "keywords": ["health", "wellness", "mental health", "mindfulness", "meditation", "stress relief", "nutrition", "diet", "healthy habits", "wellbeing", "self-care", "holistic health", "sleep tips", "healthy living", "mindset", "happiness", "gut health", "immunity", "balanced life", "emotional health"],
+      "templates": {
+        "title": {
+          "shorts": "Boost Your {health_aspect} in 60 Secs! #HealthShorts",
+          "long": "The Ultimate Guide to {health_aspect} | Transform Your Wellbeing"
+        },
+        "description": {
+          "shorts": "Quick tip for better {health_aspect}! Start feeling great today. #HealthTips #Wellness",
+          "long": "Discover how to improve your {health_aspect} with this comprehensive guide. We explore {wellness_tip_1} and {wellness_tip_2} to help you achieve a balanced and fulfilling life. Prioritize your wellbeing now! {call_to_action_health}"
+        },
+        "tags": ["health", "wellness", "mental health", "mindfulness", "meditation", "stress relief", "nutrition", "diet", "healthy habits", "wellbeing", "self-care", "holistic health", "sleep tips", "healthy living", "mindset", "happiness", "{health_aspect_tag}", "{wellness_category}"],
+        "variables": {
+          "health_aspect": ["Mental Health", "Sleep Quality", "Energy Levels", "Immune System", "Gut Health", "Stress Management", "Overall Wellbeing"],
+          "wellness_tip_1": ["mindfulness exercises", "nutritional strategies", "daily routines", "breathing techniques"],
+          "wellness_tip_2": ["stress reduction methods", "sleep hygiene practices", "gut-friendly foods", "positive affirmations"],
+          "health_aspect_tag": ["mentalwellness", "sleephealth", "stressrelief", "guthealth", "immunityboost"],
+          "wellness_category": ["nutrition", "meditation", "selfcare", "mindfulness", "stressmanagement"],
+          "call_to_action_health": ["What's your favorite wellness tip?", "Subscribe for more health insights", "Start your wellness journey today!", "Download my free wellness guide"]
+        }
+      }
+    },
+    {
+      "keywords": ["vlog", "daily life", "day in the life", "personal vlog", "lifestyle", "routine", "my day", "challenge vlog", "behind the scenes", "a week in my life", "vlogger", "everyday", "adventure vlog", "travel vlog", "food vlog", "family vlog", "student life", "work life", "morning routine", "night routine"],
+      "templates": {
+        "title": {
+          "shorts": "A Day in My Life as a {vlogger_type} (Shorts)",
+          "long": "My {daily_activity} Routine | A Full Day in My Life Vlog"
+        },
+        "description": {
+          "shorts": "Quick glimpse into my day! What's your favorite part? #DailyVlog #LifeUpdate #Shorts",
+          "long": "Join me for a candid look at my {daily_activity} routine! From {vlog_activity_1} to {vlog_activity_2}, see what a typical day looks like for me. Let me know what you want to see next! {call_to_action_vlog}"
+        },
+        "tags": ["vlog", "daily life", "day in the life", "personal vlog", "lifestyle", "routine", "my day", "challenge vlog", "behind the scenes", "a week in my life", "{vlogger_type_tag}", "everyday vlog", "life update", "routine vlog"],
+        "variables": {
+          "vlogger_type": ["Student", "Creator", "Entrepreneur", "Traveler", "Parent", "Gamer", "Artist", "Athlete"],
+          "vlogger_type_tag": ["studentvlog", "creatorlife", "dailyvlog", "lifestylevlog"],
+          "daily_activity": ["morning", "work", "weekend", "productive", "relaxing", "travel", "busy", "chill"],
+          "vlog_activity_1": ["waking up early", "planning my content", "hitting the gym", "cooking breakfast", "starting my work day", "exploring new places"],
+          "vlog_activity_2": ["cooking healthy meals", "spending time with friends", "unwinding in the evening", "editing videos", "studying for exams", "trying new restaurants"],
+          "call_to_action_vlog": ["Subscribe for more vlogs", "What's your daily routine like?", "Hit the like button if you enjoyed this", "Share your favorite part of the day"]
+        }
+      }
+    }
+  ],
+  "fallback": {
+    "title": "{topic} - Amazing {video_type} You'll Love! | YTSEO.ai",
+    "description": "This {video_type} about {topic} will {impact}. Watch till the end for {benefit}! Learn more and get inspired. Subscribe for daily content! #YouTubeSEO #ContentCreation #TrendingVideo",
+    "tags": ["{topic}", "{video_type_tag}", "viral content", "{language}", "trending", "explore", "learn", "how to", "best of", "new ideas", "community", "inspiration", "discovery", "insights", "education", "entertainment", "popular"],
+    "variables": {
+      "video_type": ["video", "clip", "tutorial", "guide", "story", "review", "explanation", "tips", "tricks", "documentary", "series", "vlog", "challenge", "demonstration", "talk", "discussion", "highlights"],
+      "video_type_tag": ["video", "clip", "tutorial", "guide", "story", "review", "explanation", "tips", "tricks", "vlog", "challenge"],
+      "impact": ["blow your mind", "change your perspective", "inspire you", "make you think", "teach you something new", "entertain you", "help you grow", "solve a problem", "make you laugh", "shock you", "inform you", "motivate you", "educate you", "surprise you"],
+      "benefit": ["a surprise", "valuable tips", "life-changing advice", "exclusive insights", "actionable steps", "fun facts", "new skills", "unique perspectives", "inspiration", "entertainment", "expert advice", "hidden gems", "quick solutions"]
+    }
+  }
 }
