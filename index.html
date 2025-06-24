@@ -1,230 +1,184 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>YouTube SEO Metadata Generator</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 2rem;
-    background: #f9f9f9;
-    color: #222;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  form {
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-    background: #fff;
-    padding: 1.5rem 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
-  }
-  label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-weight: 600;
-  }
-  input[type="text"],
-  textarea,
-  select {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    box-sizing: border-box;
-  }
-  textarea {
-    height: 100px;
-  }
-  button {
-    display: block;
-    background-color: #ff0000;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 auto;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background-color: #cc0000;
-  }
-  .output {
-    max-width: 600px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 1.5rem 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    white-space: pre-wrap;
-    font-family: Consolas, monospace;
-    color: #333;
-  }
-  .output h2 {
-    margin-top: 0;
-    color: #ff0000;
-  }
-  .loading {
-    text-align:center;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: #666;
-  }
-</style>
-</head>
-<body>
-<h1>YouTube SEO Metadata Generator</h1>
-
-<div id="loading" class="loading">Loading configuration...</div>
-
-<form id="seoForm" aria-label="YouTube SEO Generator Form" hidden>
-  <label for="title">Video Title</label>
-  <input type="text" id="title" name="title" maxlength="100" placeholder="Enter your video title" required />
-
-  <label for="description">Video Description</label>
-  <textarea id="description" name="description" placeholder="Enter your video description" required></textarea>
-
-  <label for="tags">Relevant Tags (comma separated)</label>
-  <input type="text" id="tags" name="tags" placeholder="e.g. tutorial, javascript, coding" />
-
-  <label for="language">Content Language</label>
-  <select id="language" name="language" aria-label="Select content language">
-    <!-- Options will be loaded dynamically from JSON -->
-  </select>
-
-  <button type="submit">Generate SEO Metadata</button>
-</form>
-
-<div id="result" class="output" aria-live="polite" tabindex="0"></div>
+<!-- [Keep ALL your existing HTML exactly as you provided it] -->
+<!-- Only replace the ENTIRE <script> tag with this updated version: -->
 
 <script>
-  // Fetch config.json to populate Content Language options dynamically
-  async function loadConfig() {
-    try {
-      const response = await fetch('/config.json', {cache: "no-store"});
-      if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      const config = await response.json();
+        // Translations object (expanded with Spanish, French, German)
+        const translations = {
+            en: {
+                darkModeButton: '🌙 Dark Mode',
+                lightModeButton: '☀️ Light Mode',
+                tagline: 'Smart SEO. More Views. Less Hassle.',
+                videoTopicLabel: '📝 Video Topic/Script',
+                videoTopicPlaceholder: 'e.g. A story about a lion who learns humility...',
+                contentLanguageLabel: '🌍 Content Language',
+                englishOption: 'English',
+                hindiOption: 'Hindi',
+                urduOption: 'Urdu',
+                russianOption: 'Russian',
+                spanishOption: 'Español',
+                frenchOption: 'Français',
+                germanOption: 'Deutsch',
+                videoFormatLabel: '🎬 Video Format',
+                shortVideoOption: 'Short Video',
+                longVideoOption: 'Long Video',
+                generateSEOButton: '⚡ Generate SEO',
+                resetButton: '🔁 Reset',
+                exportButton: '📥 Export All',
+                titleLabel: '🎯 Title',
+                titlePlaceholder: 'Your optimized title will appear here...',
+                copyTitleButton: 'Copy Title',
+                descriptionLabel: '📝 Description',
+                descriptionPlaceholder: 'Your SEO description will appear here...',
+                hashtagsLabel: '📌 Hashtags',
+                hashtagsPlaceholder: 'Relevant hashtags will appear here...',
+                videoTagsLabel: '🔖 Video Tags',
+                videoTagsPlaceholder: 'Optimized tags will appear here...',
+                copyTagsButton: 'Copy Tags',
+                copyHashtagsButton: 'Copy Hashtags',
+                footerText: 'Powered by <strong>YTSEO.ai</strong> – Built with ❤️ for global creators',
+                alertEnterTopic: 'Please enter a video topic first!',
+                alertGenerateContent: 'Generate some content first!',
+                copiedSuccess: '✓ Copied!',
+                generatingText: 'Generating...'
+            },
+            hi: {
+                darkModeButton: '🌙 डार्क मोड',
+                lightModeButton: '☀️ लाइट मोड',
+                tagline: 'स्मार्ट एसईओ। अधिक व्यूज। कम परेशानी।',
+                videoTopicLabel: '📝 वीडियो विषय/स्क्रिप्ट',
+                videoTopicPlaceholder: 'उदा. एक शेर की कहानी जो विनम्रता सीखता है...',
+                contentLanguageLabel: '🌍 सामग्री भाषा',
+                englishOption: 'अंग्रेजी',
+                hindiOption: 'हिन्दी',
+                urduOption: 'اردू',
+                russianOption: 'रूसी',
+                spanishOption: 'स्पेनिश',
+                frenchOption: 'फ्रेंच',
+                germanOption: 'जर्मन',
+                videoFormatLabel: '🎬 वीडियो प्रारूप',
+                shortVideoOption: 'छोटा वीडियो',
+                longVideoOption: 'लंबा वीडियो',
+                generateSEOButton: '⚡ एसईओ जनरेट करें',
+                copyTitleButton: 'शीर्षक कॉपी करें',
+                resetButton: '🔁 रीसेट करें',
+                exportButton: '📥 सभी निर्यात करें',
+                titleLabel: '🎯 शीर्षक',
+                titlePlaceholder: 'आपका अनुकूलित शीर्षक यहां दिखाई देगा...',
+                descriptionLabel: '📝 विवरण',
+                descriptionPlaceholder: 'आपका एसईओ विवरण यहां दिखाई देगा...',
+                hashtagsLabel: '📌 हैशटैग',
+                hashtagsPlaceholder: 'प्रासंगिक हैशटैग यहां दिखाई देंगे...',
+                videoTagsLabel: '🔖 वीडियो टैग',
+                videoTagsPlaceholder: 'अनुकूलित टैग यहां दिखाई देंगे...',
+                copyTagsButton: 'टैग कॉपी करें',
+                copyHashtagsButton: 'हैशटैग कॉपी करें',
+                footerText: '<strong>YTSEO.ai</strong> द्वारा संचालित – वैश्विक रचनाकारों के लिए ❤️ से निर्मित',
+                alertEnterTopic: 'कृपया पहले एक वीडियो विषय दर्ज करें!',
+                alertGenerateContent: 'पहले कुछ सामग्री जनरेट करें!',
+                copiedSuccess: '✓ कॉपी किया गया!',
+                generatingText: 'जनरेट हो रहा है...'
+            },
+            // [Keep all other language translations exactly as you had them]
+            // ...
+        };
 
-      if (!config.languages || !Array.isArray(config.languages) || config.languages.length === 0) {
-        throw new Error('languages array missing or empty in config.json');
-      }
-      return config;
-    } catch (error) {
-      console.error('Failed to load config.json:', error);
-      document.getElementById('loading').textContent = 'Failed to load configuration.';
-      return null;
-    }
-  }
+        // [Keep ALL your existing functions EXCEPT generateSEO() and fetchSEOData()]
+        // Only replace these two functions:
 
-  // Populate content language select options
-  function populateLanguages(langs) {
-    const select = document.getElementById('language');
-    select.innerHTML = '';
-    langs.forEach(({code, name}) => {
-      const option = document.createElement('option');
-      option.value = code;
-      option.textContent = name;
-      select.appendChild(option);
-    });
-  }
+        async function fetchSEOData(contentLang = 'en') {
+            try {
+                const response = await fetch(`json/seo-${contentLang}.json`);
+                if (!response.ok) throw new Error('Language not found');
+                return await response.json();
+            } catch (error) {
+                console.warn(`Loading English fallback for ${contentLang}`);
+                const enResponse = await fetch('json/seo-en.json');
+                return await enResponse.json();
+            }
+        }
 
-  // Update <html lang> attribute to match content language
-  function updateHtmlLang(lang) {
-    document.documentElement.lang = lang || 'en';
-  }
+        async function generateSEO() {
+            const topic = document.getElementById("inputTopic").value.trim();
+            const contentLang = document.getElementById("language").value;
+            const isShort = document.getElementById("type").value === "shorts";
+            const type = isShort ? "shorts" : "long";
+            const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
 
-  // Optimize title respecting 100 char limit
-  function optimizeTitle(title) {
-    let cleanTitle = title.trim().replace(/\s+/g, ' ');
-    cleanTitle = cleanTitle.toLowerCase().split(' ').map((word, i) => {
-      if (i === 0) return word.charAt(0).toUpperCase() + word.slice(1);
-      if (word.length <= 3) return word;
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    }).join(' ');
-    if (cleanTitle.length > 100) {
-      cleanTitle = cleanTitle.substring(0, 97) + '...';
-    }
-    return cleanTitle;
-  }
+            if (!topic) {
+                alert(translations[currentUILang].alertEnterTopic);
+                return;
+            }
 
-  // Generate hashtags from tags string
-  function generateHashtags(tagsString) {
-    if (!tagsString) return '';
-    const tags = tagsString.split(',').map(t => t.trim().toLowerCase())
-                    .filter(t => t.length > 0);
-    const cleanedTags = tags.map(t => t.replace(/[^a-z0-9]/gi, '')).filter(t => t.length > 0);
-    const limitedTags = cleanedTags.slice(0, 15);
-    return limitedTags.map(t => '#' + t).join(' ');
-  }
+            // Show loading state
+            const generateBtn = document.querySelector('[onclick="generateSEO()"]');
+            const originalBtnText = generateBtn.innerHTML;
+            generateBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentUILang].generatingText}`;
+            generateBtn.disabled = true;
 
-  // Enhance description by appending keywords line if not present
-  function enhanceDescription(description, tagsString) {
-    let desc = description.trim();
-    if (!tagsString) return desc;
+            try {
+                // Load templates
+                const { seo_templates, fallback } = await fetchSEOData(contentLang);
+                
+                // Find best matching template
+                const template = findBestTemplate(topic, seo_templates);
+                const chosenTemplate = template || fallback;
 
-    const keywords = tagsString.split(',').map(t => t.trim()).filter(t => t.length > 0);
-    if (keywords.length === 0) return desc;
+                // Generate variables
+                const variables = {
+                    topic,
+                    language: contentLang,
+                    video_type: isShort ? "short video" : "long video",
+                    ...(chosenTemplate.variables || {})
+                };
 
-    const keywordLine = '\n\nKeywords: ' + keywords.join(', ');
-    if (!desc.toLowerCase().includes('keywords')) {
-      desc += keywordLine;
-    }
-    return desc;
-  }
+                let titleTemplate = '';
+                let descriptionTemplate = '';
+                let tagsTemplate = '';
 
-  // Main initialization
-  document.addEventListener('DOMContentLoaded', async () => {
-    const config = await loadConfig();
-    if (!config) return;
+                if (chosenTemplate.templates) {
+                    titleTemplate = chosenTemplate.templates.title[type];
+                    descriptionTemplate = chosenTemplate.templates.description[type];
+                    tagsTemplate = chosenTemplate.templates.tags.join(", ");
+                } else {
+                    titleTemplate = chosenTemplate.title;
+                    descriptionTemplate = chosenTemplate.description;
+                    tagsTemplate = Array.isArray(chosenTemplate.tags) ? 
+                        chosenTemplate.tags.join(", ") : chosenTemplate.tags || ''; 
+                }
 
-    populateLanguages(config.languages);
+                document.getElementById("titleBox").value = replacePlaceholders(titleTemplate, variables);
+                document.getElementById("descBox").value = replacePlaceholders(descriptionTemplate, variables);
+                
+                const tagsRaw = replacePlaceholders(tagsTemplate, variables);
+                document.getElementById("tagsBox").value = tagsRaw;
+                document.getElementById("hashtagBox").value = tagsRaw.split(", ").map(t => `#${t.replace(/\s+/g, '')}`).join(" ");
 
-    const form = document.getElementById('seoForm');
-    const loadingDiv = document.getElementById('loading');
-    loadingDiv.hidden = true;
-    form.hidden = false;
+            } catch (error) {
+                console.error("Generation error:", error);
+                alert(translations[currentUILang].alertGenerateContent);
+            } finally {
+                generateBtn.innerHTML = originalBtnText;
+                generateBtn.disabled = false;
+            }
+        }
 
-    const languageSelect = document.getElementById('language');
+        // [Keep ALL your other existing functions exactly as they were]
+        // findBestTemplate(), replacePlaceholders(), resetFields(), 
+        // downloadTxt(), toggleDarkMode(), applyTranslations(), 
+        // changeUILanguage(), copyToClipboard() all remain UNCHANGED
 
-    // Set initial lang attribute
-    updateHtmlLang(languageSelect.value);
+        // INITIALIZE ON LOAD - Keep this exactly as you had it
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Apply UI language and dark mode first
+            const savedLang = localStorage.getItem('ytseoUILang') || 'en';
+            document.getElementById('uiLang').value = savedLang;
+            applyTranslations(savedLang);
 
-    languageSelect.addEventListener('change', () => {
-      updateHtmlLang(languageSelect.value);
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const titleInput = document.getElementById('title').value;
-      const descriptionInput = document.getElementById('description').value;
-      const tagsInput = document.getElementById('tags').value;
-      const lang = languageSelect.value;
-
-      const optimizedTitle = optimizeTitle(titleInput);
-      const optimizedDescription = enhanceDescription(descriptionInput, tagsInput);
-      const hashtags = generateHashtags(tagsInput);
-
-      const outputText =
-        `Content Language: ${lang}\n\n` +
-        `Optimized Title:\n${optimizedTitle}\n\n` +
-        `Optimized Description:\n${optimizedDescription}\n\n` +
-        `Hashtags:\n${hashtags || 'No hashtags generated'}`;
-
-      const resultDiv = document.getElementById('result');
-      resultDiv.textContent = outputText;
-      resultDiv.focus();
-    });
-  });
-</script>
-</body>
-</html>
+            if (localStorage.getItem('ytseoDarkMode') === 'true') {
+                document.body.classList.add('dark');
+                const btn = document.querySelector('[onclick="toggleDarkMode()"]');
+                const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+                btn.innerHTML = `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}`;
+            }
+        });
+    </script>
