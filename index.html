@@ -216,281 +216,92 @@
             </div>
         </div>
     </div>
+    
+        <script>
+  let seoData = null;
 
-    <script>
-        const uiLangSelect = document.getElementById('uiLang');
-        const nicheSelect = document.getElementById('nicheSelect');
-        const keywordSelect = document.getElementById('keywordSelect');
-        const variablesSection = document.getElementById('variablesSection');
-        const variableInputs = document.getElementById('variableInputs');
-        const generateBtn = document.getElementById('generateBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const generatedTitle = document.getElementById('generatedTitle');
-        const generatedDescription = document.getElementById('generatedDescription');
-        const generatedTags = document.getElementById('generatedTags');
+  function loadSEOData(lang) {
+    fetch(`seo-${lang}.json`)
+      .then(response => response.json())
+      .then(data => {
+        seoData = data;
+        console.log(`✅ SEO data loaded for ${lang}`, seoData);
+      })
+      .catch(err => {
+        console.error("❌ Error loading SEO JSON:", err);
+        seoData = null;
+      });
+  }
 
-        let seoData = {}; // To store the fetched JSON data for the current language
-        let currentTemplate = null; // To store the currently selected template object
+  function copyToClipboard(id) {
+    const textarea = document.getElementById(id);
+    textarea.select();
+    document.execCommand("copy");
+    alert("Copied!");
+  }
 
-        // --- Helper Functions ---
+  function generateSEO() {
+    const topic = document.getElementById("inputTopic").value;
+    const language = document.getElementById("language").value;
+    const type = document.getElementById("type").value;
 
-        // Function to format niche names for display
-        function formatNicheName(niche) {
-            return niche.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-        }
+    if (!seoData) {
+      alert("SEO data not loaded yet. Please wait a few seconds.");
+      return;
+    }
 
-        // Function to copy text to clipboard
-        function copyToClipboard(elementId) {
-            const element = document.getElementById(elementId);
-            element.select();
-            element.setSelectionRange(0, 99999); // For mobile devices
-            document.execCommand("copy");
-            alert("Copied to clipboard!");
-        }
+    // Fallback if no template found
+    const fallback = seoData.fallback;
 
-        // Function to populate dropdowns dynamically
-        function populateDropdown(selectElement, options, selectedValue = null) {
-            selectElement.innerHTML = ''; // Clear existing options
-            const defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.textContent = `Select ${selectElement.id.replace('Select', '')}`;
-            defaultOption.disabled = true;
-            defaultOption.selected = true;
-            selectElement.appendChild(defaultOption);
+    const titleTemplate = fallback.title;
+    const descTemplate = fallback.description;
+    const tagsTemplate = fallback.tags.join(", ");
 
-            options.forEach(option => {
-                const opt = document.createElement('option');
-                opt.value = option.value;
-                opt.textContent = option.text;
-                if (selectedValue && option.value === selectedValue) {
-                    opt.selected = true;
-                }
-                selectElement.appendChild(opt);
-            });
-        }
+    const videoType = type === "shorts" ? "short video" : "long video";
+    const impact = "inspire you";
+    const benefit = "a surprise";
 
-        // --- Core Logic Functions ---
+    document.getElementById("titleBox").value = titleTemplate
+      .replace("{topic}", topic)
+      .replace("{video_type}", videoType);
 
-        // This is the function you provided
-        async function loadSEOData(lang) {
-            try {
-                const response = await fetch(`seo-${lang}.json`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status} - Could not load seo-${lang}.json. Make sure you have the file.`);
-                }
-                seoData = await response.json();
-                console.log("Loaded SEO for:", lang, seoData);
-                // After loading new language data, re-initialize niche and keyword selects
-                initializeNicheAndKeywordSelects();
-                generateSEO(); // Re-generate SEO after new data loads
-            } catch (err) {
-                console.error("Error loading SEO JSON for language", lang, err);
-                generatedTitle.value = `Error: Could not load data for ${lang}.`;
-                generatedDescription.value = `Please ensure 'seo-${lang}.json' exists and is correctly formatted.`;
-                generatedTags.value = "";
-                // Clear dropdowns if data failed to load
-                populateDropdown(nicheSelect, []);
-                populateDropdown(keywordSelect, []);
-                keywordSelect.disabled = true;
-                variablesSection.style.display = 'none';
-            }
-        }
+    document.getElementById("descBox").value = descTemplate
+      .replace("{topic}", topic)
+      .replace("{video_type}", videoType)
+      .replace("{impact}", impact)
+      .replace("{benefit}", benefit);
 
-        function initializeNicheAndKeywordSelects() {
-            // Populate Niche Select based on the newly loaded seoData
-            const nicheOptions = Object.keys(seoData.seo_templates || {}).map(niche => ({
-                value: niche,
-                text: formatNicheName(niche)
-            }));
-            populateDropdown(nicheSelect, nicheOptions);
+    document.getElementById("hashtagBox").value = `#${topic.replace(/\s+/g, "")} #${language} #${type}`;
+    document.getElementById("tagsBox").value = tagsTemplate
+      .replace("{topic}", topic)
+      .replace("{video_type}", type);
+  }
 
-            // Initially disable keyword select and variables section
-            populateDropdown(keywordSelect, []); // Clear previous keywords
-            keywordSelect.disabled = true;
-            variablesSection.style.display = 'none';
-        }
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+  }
 
-        function handleSelectionChange() {
-            const selectedNiche = nicheSelect.value;
-            const selectedKeyword = keywordSelect.value;
+  function resetFields() {
+    document.getElementById("inputTopic").value = "";
+    document.getElementById("language").selectedIndex = 0;
+    document.getElementById("type").selectedIndex = 0;
+    document.getElementById("titleBox").value = "";
+    document.getElementById("descBox").value = "";
+    document.getElementById("hashtagBox").value = "";
+    document.getElementById("tagsBox").value = "";
+  }
 
-            // Enable/Disable Keyword Select based on Niche selection
-            if (selectedNiche && seoData.seo_templates[selectedNiche]) {
-                const keywords = seoData.seo_templates[selectedNiche].map(template => ({
-                    value: template.keyword,
-                    text: template.keyword
-                }));
-                populateDropdown(keywordSelect, keywords);
-                keywordSelect.disabled = false;
-            } else {
-                populateDropdown(keywordSelect, []); // Clear keywords if no niche
-                keywordSelect.disabled = true;
-                variablesSection.style.display = 'none'; // Hide variables if no niche
-            }
+  // Auto-load based on default UI lang
+  window.onload = function () {
+    const uiLang = document.getElementById("uiLang").value || "en";
+    loadSEOData(uiLang);
+  };
 
-            // Update variables section based on selected keyword
-            updateVariableInputs();
-            // Automatically generate SEO on selection change after updates
-            generateSEO();
-        }
-
-        function updateVariableInputs() {
-            const selectedNiche = nicheSelect.value;
-            const selectedKeyword = keywordSelect.value;
-            const selectedLang = uiLangSelect.value; // Get the current UI language for variable options
-
-            variableInputs.innerHTML = ''; // Clear previous inputs
-            variablesSection.style.display = 'none'; // Hide by default
-
-            if (selectedNiche && selectedKeyword && seoData.seo_templates[selectedNiche]) {
-                currentTemplate = seoData.seo_templates[selectedNiche].find(
-                    template => template.keyword === selectedKeyword
-                );
-
-                if (currentTemplate && currentTemplate.variables) {
-                    variablesSection.style.display = 'block'; // Show variables section
-                    for (const varName in currentTemplate.variables) {
-                        if (currentTemplate.variables.hasOwnProperty(varName)) {
-                            // Variable values are now directly in the current language's JSON
-                            const varValues = currentTemplate.variables[varName]; // No need for [selectedLang] here as JSON is already language specific
-                            const div = document.createElement('div');
-                            div.classList.add('variable-item');
-
-                            const label = document.createElement('label');
-                            label.textContent = `${formatVariableName(varName)}:`;
-                            label.htmlFor = `var-${varName}`;
-                            div.appendChild(label);
-
-                            const input = document.createElement('input');
-                            input.type = 'text';
-                            input.id = `var-${varName}`;
-                            input.placeholder = varValues && varValues.length > 0 ? `e.g., ${varValues[0]}` : 'Enter value';
-                            input.value = varValues && varValues.length > 0 ? varValues[Math.floor(Math.random() * varValues.length)] : ''; // Pre-fill with a random value
-                            input.setAttribute('data-variable-name', varName);
-                            input.addEventListener('input', generateSEO); // Re-generate on input change
-                            div.appendChild(input);
-
-                            variableInputs.appendChild(div);
-                        }
-                    }
-                }
-            }
-        }
-
-        function formatVariableName(name) {
-            return name.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-        }
-
-        function generateSEO() {
-            const selectedNiche = nicheSelect.value;
-            const selectedKeyword = keywordSelect.value;
-            const selectedLang = uiLangSelect.value; // Get the current UI language
-
-            let finalTitle = "";
-            let finalDescription = "";
-            let finalTags = [];
-
-            let templateData = null;
-
-            if (selectedNiche && selectedKeyword && seoData.seo_templates) {
-                templateData = seoData.seo_templates[selectedNiche].find(
-                    template => template.keyword === selectedKeyword
-                );
-            }
-
-            // If no specific template is found or selections are incomplete, use fallback
-            if (!templateData || !selectedNiche || !selectedKeyword) {
-                console.warn("Using fallback template due to incomplete selection or missing template.");
-                templateData = seoData.fallback;
-                // For fallback, we need to manually provide some generic values for {topic}
-                // These should ideally be configurable or derived from context.
-                const genericTopic = {
-                    en: "Amazing Content", hi: "अद्भुत सामग्री", ur: "حیرت انگیز مواد", ru: "Удивительный контент", es: "Contenido Asombroso", fr: "Contenu Incroyable", nl: "Geweldige Inhoud"
-                }[selectedLang] || "Amazing Content"; // Default generic topic for the currently loaded language
-
-                // Apply fallback specific variable values if they exist, directly from the loaded JSON
-                if (templateData && templateData.variables) {
-                     for (const varName in templateData.variables) {
-                        if (templateData.variables.hasOwnProperty(varName)) {
-                            const varValues = templateData.variables[varName]; // Values are directly in the loaded language JSON
-                            if (varValues && varValues.length > 0) {
-                                const randomVarValue = varValues[Math.floor(Math.random() * varValues.length)];
-                                const placeholder = new RegExp(`{${varName}}`, 'g');
-                                templateData.title = (templateData.title || "").replace(placeholder, randomVarValue);
-                                templateData.description = (templateData.description || "").replace(placeholder, randomVarValue);
-                                templateData.tags = (templateData.tags || []).map(tag => tag.replace(placeholder, randomVarValue));
-                            }
-                        }
-                    }
-                }
-                
-                // Replace {topic} for fallback explicitly
-                if (templateData && templateData.title) templateData.title = templateData.title.replace(/{topic}/g, genericTopic);
-                if (templateData && templateData.description) templateData.description = templateData.description.replace(/{topic}/g, genericTopic);
-                if (templateData && templateData.tags) templateData.tags = templateData.tags.map(tag => tag.replace(/{topic}/g, genericTopic));
-            }
-            
-            // Get the language-specific title, description, and tags from the currently loaded templateData
-            finalTitle = (templateData && templateData.title) || '';
-            finalDescription = (templateData && templateData.description) || '';
-            finalTags = (templateData && templateData.tags) || [];
-
-            // Replace placeholders with user input values
-            const inputs = variableInputs.querySelectorAll('input[type="text"]');
-            inputs.forEach(input => {
-                const varName = input.getAttribute('data-variable-name');
-                const varValue = input.value;
-                const placeholder = new RegExp(`{${varName}}`, 'g');
-
-                finalTitle = finalTitle.replace(placeholder, varValue);
-                finalDescription = finalDescription.replace(placeholder, varValue);
-                finalTags = finalTags.map(tag => tag.replace(placeholder, varValue));
-            });
-            
-            // Handle any remaining placeholders if user didn't fill all, or template has new ones
-            const allPlaceholdersRegex = /{([^}]+)}/g;
-            finalTitle = finalTitle.replace(allPlaceholdersRegex, '...');
-            finalDescription = finalDescription.replace(allPlaceholdersRegex, '...');
-            finalTags = finalTags.map(tag => tag.replace(allPlaceholdersRegex, '...'));
-
-
-            generatedTitle.value = finalTitle;
-            generatedDescription.value = finalDescription;
-            generatedTags.value = finalTags.join(", ");
-        }
-
-        function resetForm() {
-            uiLangSelect.value = 'en'; // Reset language to default
-            // Reload the default language SEO data
-            loadSEOData(uiLangSelect.value).then(() => {
-                // After data is loaded and UI is initialized, clear fields and generate initial SEO
-                generatedTitle.value = '';
-                generatedDescription.value = '';
-                generatedTags.value = '';
-                currentTemplate = null;
-                // Re-run initial generation to show fallback or default empty state
-                generateSEO();
-            });
-        }
-
-        // --- Event Listeners and Initial Load ---
-
-        // Event listener for language change
-        uiLangSelect.addEventListener('change', (event) => {
-            loadSEOData(event.target.value);
-        });
-
-        // Event listeners for niche and keyword changes
-        nicheSelect.addEventListener('change', handleSelectionChange);
-        keywordSelect.addEventListener('change', handleSelectionChange);
-
-        generateBtn.addEventListener('click', generateSEO);
-        resetBtn.addEventListener('click', resetForm);
-
-        // Initial load: Load SEO data for the default language (English)
-        document.addEventListener('DOMContentLoaded', () => {
-            loadSEOData(uiLangSelect.value); // Load initial data
-        });
-    </script>
+  // When UI language is changed
+  function changeUILanguage() {
+    const lang = document.getElementById("uiLang").value;
+    loadSEOData(lang);
+  }
+</script>
 </body>
 </html>
