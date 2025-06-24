@@ -11,17 +11,17 @@
           "shorts": "This {length} animated story about a {adjective} lion teaches {moral}. Perfect for {audience}!",
           "long": "Join us for a {length} journey with Leo the lion as he discovers {moral}. This {adjective} tale is ideal for {audience} and teaches valuable life lessons."
         },
-        "tags": ["lion story", "{moral}", "animal tales", "{length} video", "{audience} content"],
+        "tags": ["lion story", "{moral}", "animal tales", "{length} video", "{audience} content", "{adjective}"],
         "variables": {
-          "adjective": ["proud", "young", "wise", "mighty"],
-          "moral": ["humility", "kindness", "teamwork", "courage"],
-          "length": ["60-second", "2-minute", "quick", "short"],
-          "audience": ["kids", "families", "children", "all ages"]
+          "adjective": ["proud", "young", "wise", "mighty", "fierce", "lonely"],
+          "moral": ["humility", "kindness", "teamwork", "courage", "forgiveness", "patience", "self-acceptance"],
+          "length": ["60-second", "2-minute", "quick", "short", "animated", "captivating"],
+          "audience": ["kids", "families", "children", "all ages", "young learners", "story lovers"]
         }
       }
     },
     {
-      "keywords": ["python", "coding", "programming"],
+      "keywords": ["python", "coding", "programming", "software"],
       "templates": {
         "title": {
           "shorts": "{number} Python {concept} Every {audience} Should Know",
@@ -31,13 +31,179 @@
           "shorts": "Learn {number} essential Python {concept} in this {length} tutorial! Perfect for {audience}.",
           "long": "Master Python {concept} with this comprehensive {length} guide. Whether you're a {experience} or just starting out, this tutorial covers everything {audience} need to know."
         },
-        "tags": ["python", "{concept}", "coding tutorial", "{length} video", "{audience}"],
+        "tags": ["python", "{concept}", "coding tutorial", "{length} video", "{audience}", "{experience}", "learn to code"],
         "variables": {
-          "number": ["1", "3", "5", "7"],
-          "concept": ["tricks", "functions", "loops", "data types"],
-          "length": ["quick", "in-depth", "detailed", "complete"],
-          "audience": ["beginners", "developers", "students", "coders"],
+          "number": ["1", "3", "5", "7", "10", "Top 10"],
+          "concept": ["tricks", "functions", "loops", "data types", "classes", "modules", "web scraping", "basics", "advanced concepts", "best practices"],
+          "length": ["quick", "in-depth", "detailed", "complete", "beginner-friendly", "practical"],
+          "audience": ["beginners", "developers", "students", "coders", "aspiring programmers", "data scientists"],
           "experience": ["beginner", "intermediate", "expert"]
+        }
+      }
+    },
+    {
+      "keywords": ["motivation", "inspiration", "success", "mindset", "achieve goals", "productivity"],
+      "templates": {
+        "title": {
+          "shorts": "Daily Motivation: {action} Your {goal} in {duration}!",
+          "long": "Unlock Your Potential: {technique} for {goal} & {result}"
+        },
+        "description": {
+          "shorts": "Get your daily dose of motivation to {action} your {goal}. A {duration} boost for success!",
+          "long": "Struggling to find your drive? This video provides {technique} to help you {action} your {goal} and achieve {result}. Let's grow together and build an {adjective_mindset}!"
+        },
+        "tags": ["motivation", "success", "{goal}", "inspiration", "{action}", "mindset", "{technique}", "{result}"],
+        "variables": {
+          "action": ["Achieve", "Boost", "Conquer", "Manifest", "Unleash", "Ignite"],
+          "goal": ["Dreams", "Goals", "Potential", "Productivity", "Greatness", "Fulfillment"],
+          "duration": ["60 seconds", "quick tips", "short burst", "fast advice", "instant boost"],
+          "technique": ["Powerful Mindset Hacks", "Practical Strategies", "Daily Habits", "Unstoppable Drive", "Growth Mindset"],
+          "result": ["Peak Performance", "Lasting Fulfillment", "Financial Freedom", "Personal Growth", "Ultimate Happiness", "Unbreakable Spirit"],
+          "adjective_mindset": ["unbeatable mindset", "positive outlook", "resilient spirit"]
+        }
+      }
+    },
+    {
+      "keywords": ["kindness", "compassion", "empathy", "humanity", "good deeds"],
+      "templates": {
+        "title": {
+          "shorts": "A Simple Act of {emotion} Changes Everything!",
+          "long": "The Power of {emotion}: How One Act Transformed a Life"
+        },
+        "description": {
+          "shorts": "This {length} story shows how a small act of {emotion} creates a huge impact. Prepare to be inspired!",
+          "long": "Discover the profound impact of {emotion} in this {length} heartwarming tale. A story of how compassion can change lives and build {community_type}."
+        },
+        "tags": ["kindness", "{emotion}", "heartwarming story", "humanity", "{community_type}", "{impact_word}", "good vibes"],
+        "variables": {
+          "emotion": ["Kindness", "Compassion", "Generosity", "Empathy", "Love", "Forgiveness"],
+          "length": ["emotional", "touching", "inspiring", "beautiful", "moving", "uplifting"],
+          "community_type": ["strong communities", "better world", "lasting bonds", "joyful lives", "peaceful society", "harmonious relationships"],
+          "impact_word": ["inspiring", "transformative", "uplifting", "profound", "powerful"]
+        }
+      }
+    },
+    {
+      "keywords": ["cooking", "recipe", "food", "kitchen", "bake", "cook", "meal"],
+      "templates": {
+        "title": {
+          "shorts": "Easy {cuisine} {dish_type} in {time}!",
+          "long": "Master {cuisine} {dish_type}: {difficulty} {cooking_method} Guide"
+        },
+        "description": {
+          "shorts": "Whip up this {adjective_dish} {cuisine} {dish_type} in just {time}! Perfect for a {meal_type}.",
+          "long": "Learn to cook the perfect {cuisine} {dish_type} with our {difficulty} {cooking_method} guide. From {ingredient_1} to {ingredient_2}, we cover everything to make your dish {taste_adjective}."
+        },
+        "tags": ["cooking", "recipe", "{cuisine}", "{dish_type}", "{meal_type}", "{difficulty}", "{cooking_method}", "food", "kitchen"],
+        "variables": {
+          "cuisine": ["Italian", "Mexican", "Indian", "Chinese", "Mediterranean", "Thai", "American", "Vegan"],
+          "dish_type": ["Pasta", "Tacos", "Curry", "Stir-fry", "Salad", "Soup", "Chicken", "Dessert", "Bread", "Burger"],
+          "time": ["15 minutes", "30 minutes", "no time", "under an hour", "quick & easy"],
+          "adjective_dish": ["quick", "delicious", "simple", "healthy", "mouth-watering", "flavorful", "homemade"],
+          "meal_type": ["weeknight dinner", "quick lunch", "special occasion", "brunch", "breakfast"],
+          "difficulty": ["beginner-friendly", "intermediate", "expert-level", "easy", "simple"],
+          "cooking_method": ["baking", "frying", "grilling", "stewing", "roasting", "sautéing", "no-bake"],
+          "ingredient_1": ["fresh vegetables", "spices", "chicken", "pasta", "rice", "beans"],
+          "ingredient_2": ["herbs", "sauces", "cheese", "seafood", "chocolate", "fruits"],
+          "taste_adjective": ["delicious", "flavorful", "aromatic", "perfect", "scrumptious", "tasty"]
+        }
+      }
+    },
+    {
+      "keywords": ["travel", "adventure", "vacation", "explore", "trip", "destination"],
+      "templates": {
+        "title": {
+          "shorts": "{city} in {days} Days: A {type_of_trip} Guide!",
+          "long": "Exploring {destination}: Your Ultimate {travel_guide} for {activity}"
+        },
+        "description": {
+          "shorts": "Discover the {adjective_place} sights of {city} in just {days} days! Your {type_of_trip} adventure starts here.",
+          "long": "Embark on an unforgettable journey through {destination}. This {travel_guide} covers everything from {activity_1} to {activity_2}, ensuring you have the most {adjective_experience} vacation."
+        },
+        "tags": ["travel", "{destination}", "{activity}", "{type_of_trip}", "vacation", "{adjective_place}", "{travel_guide}", "wanderlust"],
+        "variables": {
+          "city": ["Paris", "Tokyo", "New York", "Rome", "Bali", "London", "Dubai", "Sydney", "Kyoto", "Rio"],
+          "days": ["3", "5", "7", "10", "a weekend", "a week"],
+          "type_of_trip": ["Solo Travel", "Family Vacation", "Adventure Trip", "Budget Travel", "Luxury Getaway", "Road Trip", "Romantic Escape"],
+          "destination": ["Europe", "Asia", "South America", "National Parks", "The Caribbean", "Southeast Asia", "Africa"],
+          "travel_guide": ["Travel Guide", "Itinerary", "Exploration", "Journey", "Adventure"],
+          "activity": ["sightseeing", "food tours", "hiking", "beaches", "museums", "nightlife", "cultural experiences"],
+          "adjective_place": ["stunning", "incredible", "breathtaking", "memorable", "vibrant", "historic", "picturesque"],
+          "adjective_experience": ["amazing", "unforgettable", "epic", "relaxing", "exciting"],
+          "activity_1": ["local cuisine", "historic sites", "hidden gems"],
+          "activity_2": ["outdoor adventures", "shopping", "cultural festivals"]
+        }
+      }
+    },
+    {
+      "keywords": ["fitness", "workout", "exercise", "health", "lose weight", "muscle gain"],
+      "templates": {
+        "title": {
+          "shorts": "{minutes} {body_part} Workout for {goal} at Home!",
+          "long": "Full {workout_type} Routine: {goal} & {benefit}!"
+        },
+        "description": {
+          "shorts": "Blast your {body_part} with this {intensity} {minutes}-minute workout! No equipment needed, perfect for {goal}.",
+          "long": "Transform your body with this comprehensive {workout_type} routine designed for {goal}. Includes {exercise_1}, {exercise_2}, and key tips for {benefit}. Get ready to sweat!"
+        },
+        "tags": ["fitness", "workout", "{workout_type}", "{body_part}", "{goal}", "exercise", "home workout", "{benefit}"],
+        "variables": {
+          "minutes": ["5", "10", "15", "20", "30"],
+          "body_part": ["Abs", "Full Body", "Legs", "Arms", "Core"],
+          "goal": ["Weight Loss", "Muscle Gain", "Strength", "Flexibility", "Endurance", "Tone"],
+          "intensity": ["quick", "intense", "beginner-friendly", "effective", "challenging"],
+          "workout_type": ["HIIT", "Cardio", "Strength Training", "Yoga", "Pilates", "Dance"],
+          "benefit": ["Boost Metabolism", "Build Stamina", "Improve Posture", "Reduce Stress"],
+          "exercise_1": ["squats", "planks", "push-ups", "lunges"],
+          "exercise_2": ["crunches", "burpees", "deadlifts", "stretches"]
+        }
+      }
+    },
+    {
+      "keywords": ["beauty", "skincare", "makeup", "haircare", "beauty tips"],
+      "templates": {
+        "title": {
+          "shorts": "{number} {beauty_product} Hacks You NEED to Try!",
+          "long": "Ultimate {routine_type} Routine for {skin_type} Skin: {benefit}"
+        },
+        "description": {
+          "shorts": "Unlock {number} amazing {beauty_product} hacks for a flawless look! Quick and easy tips you can use today.",
+          "long": "Achieve your dream skin with this comprehensive {routine_type} routine for {skin_type} skin. Learn about {step_1}, {step_2}, and the best {adjective_product} for {benefit}."
+        },
+        "tags": ["beauty", "{beauty_product}", "{routine_type}", "{skin_type}", "{benefit}", "makeup", "skincare", "haircare"],
+        "variables": {
+          "number": ["3", "5", "7", "10"],
+          "beauty_product": ["Skincare", "Makeup", "Hair", "Anti-Aging"],
+          "routine_type": ["Morning", "Evening", "Daily", "Weekly"],
+          "skin_type": ["Oily", "Dry", "Combination", "Sensitive", "Acne-Prone"],
+          "benefit": ["Glowing Skin", "Clear Complexion", "Anti-Aging", "Hydration", "Hair Growth", "Volume"],
+          "adjective_product": ["best", "holy grail", "affordable", "luxury"],
+          "step_1": ["cleansing", "toning", "moisturizing"],
+          "step_2": ["serums", "face masks", "sunscreen"]
+        }
+      }
+    },
+    {
+      "keywords": ["diy", "crafts", "home decor", "handmade", "diy project"],
+      "templates": {
+        "title": {
+          "shorts": "{number} Easy DIY {item} Ideas for Your Home!",
+          "long": "Transform Your {room}: {diy_project_type} Tutorial for {level}"
+        },
+        "description": {
+          "shorts": "Make {number} amazing {item} at home with these quick and simple DIY hacks! Perfect for {occasion}.",
+          "long": "Give your {room} a {adjective_transformation} makeover with this {diy_project_type} tutorial. Learn {skill} and create {item} that will impress everyone! Great for {level} crafters."
+        },
+        "tags": ["diy", "crafts", "{item}", "home decor", "{diy_project_type}", "{room}", "handmade", "{occasion}"],
+        "variables": {
+          "number": ["3", "5", "7", "10"],
+          "item": ["Decorations", "Gifts", "Furniture", "Art", "Storage Solutions"],
+          "room": ["Living Room", "Bedroom", "Kitchen", "Bathroom", "Garden"],
+          "diy_project_type": ["Upcycling", "Budget-Friendly Decor", "Renovation", "Crafting"],
+          "level": ["Beginners", "Intermediate", "Advanced"],
+          "occasion": ["Christmas", "Birthdays", "Everyday Use", "Seasonal Decor"],
+          "adjective_transformation": ["stunning", "easy", "affordable", "creative", "unique"],
+          "skill": ["painting techniques", "woodworking basics", "fabric manipulation"]
         }
       }
     }
@@ -45,11 +211,11 @@
   "fallback": {
     "title": "{topic} - Amazing {type} You'll Love!",
     "description": "This {type} about {topic} will {impact}. Watch till the end for {benefit}!",
-    "tags": ["{topic}", "{type} video", "viral content", "{language}"],
+    "tags": ["{topic}", "{type} video", "viral content", "{language}", "trending"],
     "variables": {
-      "type": ["story", "tutorial", "guide", "lesson"],
-      "impact": ["blow your mind", "change your perspective", "inspire you", "make you think"],
-      "benefit": ["a surprise", "valuable tips", "life-changing advice", "exclusive insights"]
+      "type": ["story", "tutorial", "guide", "lesson", "review", "vlog", "challenge", "explanation"],
+      "impact": ["blow your mind", "change your perspective", "inspire you", "make you think", "teach you something new", "entertain you", "help you grow", "solve a problem"],
+      "benefit": ["a surprise", "valuable tips", "life-changing advice", "exclusive insights", "actionable steps", "fun facts", "new skills", "unique perspectives"]
     }
   }
 }
