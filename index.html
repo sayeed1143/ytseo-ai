@@ -1,357 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YTSEO.ai – Smart SEO. More Views. Less Hassle.</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <style>
-    /* Your existing CSS (from the previous complete file) goes here. */
-    :root {
-      --bg-light: #f5f5f5;
-      --bg-dark: #121212;
-      --text-light: #333;
-      --text-dark: #f5f5f5;
-      --card-light: #fff;
-      --card-dark: #1e1e1e;
-      --btn-light: #007bff;
-      --btn-dark: #3399ff;
-      --green: #28a745;
-      --highlight: #e57c23;
-      --border-radius: 8px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 1rem;
-      background-color: var(--bg-light);
-      color: var(--text-light);
-      transition: all 0.3s ease;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    body.dark {
-      background-color: var(--bg-dark);
-      color: var(--text-dark);
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-
-    /* Header Styles */
-    .text-logo-header {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
-
-    .text-logo-header h1 {
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      font-weight: 800;
-      color: var(--highlight);
-      margin-bottom: 0.2rem;
-      letter-spacing: -0.5px;
-    }
-
-    .text-logo-header h1 span {
-      color: var(--text-light);
-    }
-
-    body.dark .text-logo-header h1 span {
-      color: var(--text-dark);
-    }
-
-    .tagline {
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
-      color: #666;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    body.dark .tagline {
-      color: #aaa;
-    }
-
-    /* Control Buttons */
-    .control-buttons {
-      position: absolute;
-      top: 1.5rem;
-      right: 1rem;
-      display: flex;
-      gap: 10px;
-    }
-
-    .control-btn {
-      background: none;
-      border: 2px solid #666;
-      padding: 6px 12px;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      color: #666;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-    }
-
-    body.dark .control-btn {
-      border-color: #bbb;
-      color: #bbb;
-    }
-
-    .control-btn:hover {
-      background: rgba(0,0,0,0.1);
-    }
-
-    body.dark .control-btn:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    /* Form Elements */
-    .section {
-      margin-bottom: 1.5rem;
-    }
-
-    label {
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--highlight);
-    }
-
-    textarea, select, input {
-      width: 100%;
-      padding: 0.8rem;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: var(--border-radius);
-      background-color: var(--card-light);
-      color: inherit;
-      transition: all 0.3s;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    body.dark textarea,
-    body.dark select,
-    body.dark input {
-      background-color: var(--card-dark);
-      border: 1px solid #444;
-      color: var(--text-dark);
-    }
-
-    /* Buttons */
-    .btn-group {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-
-    .btn {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-weight: 600;
-      flex: 1;
-      min-width: 120px;
-      text-align: center;
-    }
-
-    .btn-primary {
-      background-color: var(--green);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background-color: #218838;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background-color: #6c757d;
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background-color: #5a6268;
-      transform: translateY(-2px);
-    }
-
-    .btn-tertiary {
-      background-color: var(--btn-light);
-      color: white;
-    }
-
-    .btn-tertiary:hover {
-      background-color: #0056b3;
-      transform: translateY(-2px);
-    }
-
-    /* Card Styles */
-    .result-card {
-      background-color: var(--card-light);
-      border-radius: var(--border-radius);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    body.dark .result-card {
-      background-color: var(--card-dark);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    /* Footer */
-    footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #999;
-      text-align: center;
-      padding: 1rem 0;
-    }
-
-    body.dark footer {
-      color: #666;
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .container {
-        padding: 0.5rem;
-      }
-
-      .control-buttons {
-        position: static;
-        justify-content: center;
-        margin-bottom: 1rem;
-        margin-top: 1rem;
-      }
-
-      .btn {
-        width: 100%;
-      }
-    }
-
-    /* Language Selector */
-    #uiLang {
-      padding: 0.5rem;
-      border-radius: var(--border-radius);
-      border: 1px solid #ddd;
-      background-color: var(--card-light);
-      color: inherit;
-    }
-
-    body.dark #uiLang {
-      background-color: var(--card-dark);
-      border-color: #444;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="control-buttons">
-      <button class="control-btn" onclick="toggleDarkMode()" data-translate-key="darkModeButton">🌙 Dark Mode</button>
-      <select id="uiLang" onchange="changeUILanguage()" class="control-btn" style="appearance: none; padding-right: 1.5rem;">
-        <option value="en">🌐 English</option>
-        <option value="hi">🌐 हिन्दी</option>
-        <option value="ur">🌐 اردو</option>
-        <option value="ru">🌐 Русский</option>
-      </select>
-    </div>
-
-    <div class="text-logo-header">
-      <h1>YT<span>SEO</span>.ai</h1>
-      <p class="tagline" data-translate-key="tagline">Smart SEO. More Views. Less Hassle.</p>
-    </div>
-
-    <div class="section">
-      <label for="inputTopic" data-translate-key="videoTopicLabel">📝 Video Topic/Script</label>
-      <textarea id="inputTopic" placeholder="e.g. A story about a lion who learns humility..." data-translate-key="videoTopicPlaceholder"></textarea>
-    </div>
-
-    <div class="section" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-      <div>
-        <label for="language" data-translate-key="contentLanguageLabel">🌍 Language</label>
-        <select id="language">
-          <option value="english" data-translate-key="englishOption">English</option>
-          <option value="hindi" data-translate-key="hindiOption">Hindi</option>
-          <option value="urdu" data-translate-key="urduOption">Urdu</option>
-          <option value="russian" data-translate-key="russianOption">Russian</option>
-        </select>
-      </div>
-      <div>
-        <label for="type" data-translate-key="videoFormatLabel">🎬 Video Format</label>
-        <select id="type">
-          <option value="shorts" data-translate-key="shortVideoOption">Short Video</option>
-          <option value="long" data-translate-key="longVideoOption">Long Video</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="btn-group">
-      <button class="btn btn-primary" onclick="generateSEO()" data-translate-key="generateSEOButton">⚡ Generate SEO</button>
-      <button class="btn btn-secondary" onclick="resetFields()" data-translate-key="resetButton">🔁 Reset</button>
-      <button class="btn btn-tertiary" onclick="downloadTxt()" data-translate-key="exportButton">📥 Export</button>
-    </div>
-
-    <div class="result-card">
-      <label for="titleBox" data-translate-key="titleLabel">🎯 Title</label>
-      <textarea id="titleBox" placeholder="Your optimized title will appear here..." data-translate-key="titlePlaceholder"></textarea>
-      <button class="btn btn-tertiary" onclick="copyToClipboard('titleBox')" data-translate-key="copyTitleButton">Copy Title</button>
-    </div>
-
-    <div class="result-card">
-      <label for="descBox" data-translate-key="descriptionLabel">📝 Description</label>
-      <textarea id="descBox" placeholder="Your SEO description will appear here..." data-translate-key="descriptionPlaceholder"></textarea>
-      <button class="btn btn-tertiary" onclick="copyToClipboard('descBox')" data-translate-key="copyDescriptionButton">Copy Description</button>
-    </div>
-
-    <div class="result-card">
-      <label for="hashtagBox" data-translate-key="hashtagsLabel">📌 Hashtags</label>
-      <textarea id="hashtagBox" placeholder="Relevant hashtags will appear here..." data-translate-key="hashtagsPlaceholder"></textarea>
-      <button class="btn btn-tertiary" onclick="copyToClipboard('hashtagBox')" data-translate-key="copyHashtagsButton">Copy Hashtags</button>
-    </div>
-
-    <div class="result-card">
-      <label for="tagsBox" data-translate-key="videoTagsLabel">🔖 Video Tags</label>
-      <textarea id="tagsBox" placeholder="Optimized tags will appear here..." data-translate-key="videoTagsPlaceholder"></textarea>
-      <button class="btn btn-tertiary" onclick="copyToClipboard('tagsBox')" data-translate-key="copyTagsButton">Copy Tags</button>
-    </div>
-
-    <footer>
-      <span data-translate-key="footerText">Powered by <strong>YTSEO.ai</strong> – Built with ❤️ for global creators</span>
-    </footer>
-  </div>
-
-  <script>
-    let seoTips = []; // Global variable to store loaded SEO data
-
-    // 1. SAFER JSON LOADING (DeepSeek's improvement)
-    async function loadSEOTips() {
-      try {
-        const response = await fetch('seo-data.json');
-        if (!response.ok) throw new Error('Failed to load SEO data');
-        return await response.json();
-      } catch (error) {
-        console.error('Error loading SEO data. Using fallback:', error);
-        return { seo_tips: [] }; // Return an empty array on error
-      }
-    }
+<script>
+    // Note: seoTips is no longer a global variable for pre-loaded data,
+    // as fetchSEOData will be called directly in generateSEO.
+    // However, the dark mode and UI language setup still rely on DOMContentLoaded.
 
     // Translations object (this remains the same from our last update)
     const translations = {
@@ -377,7 +27,6 @@
         copyTitleButton: 'Copy Title',
         descriptionLabel: '📝 Description',
         descriptionPlaceholder: 'Your SEO description will appear here...',
-        copyDescriptionButton: 'Copy Description',
         hashtagsLabel: '📌 Hashtags',
         hashtagsPlaceholder: 'Relevant hashtags will appear here...',
         videoTagsLabel: '🔖 Video Tags',
@@ -398,7 +47,7 @@
         contentLanguageLabel: '🌍 भाषा',
         englishOption: 'अंग्रेजी',
         hindiOption: 'हिन्दी',
-        urduOption: 'उर्दू',
+        urduOption: 'اردو',
         russianOption: 'रूसी',
         videoFormatLabel: '🎬 वीडियो प्रारूप',
         shortVideoOption: 'छोटा वीडियो',
@@ -411,7 +60,6 @@
         copyTitleButton: 'शीर्षक कॉपी करें',
         descriptionLabel: '📝 विवरण',
         descriptionPlaceholder: 'आपका एसईओ विवरण यहां दिखाई देगा...',
-        copyDescriptionButton: 'विवरण कॉपी करें',
         hashtagsLabel: '📌 हैशटैग',
         hashtagsPlaceholder: 'प्रासंगिक हैशटैग यहां दिखाई देंगे...',
         videoTagsLabel: '🔖 वीडियो टैग',
@@ -445,7 +93,6 @@
         copyTitleButton: 'عنوان کاپی کریں',
         descriptionLabel: '📝 تفصیل',
         descriptionPlaceholder: 'آپ کا ایس ای او تفصیل یہاں ظاہر ہوگا...',
-        copyDescriptionButton: 'تفصیل کاپی کریں',
         hashtagsLabel: '📌 ہیش ٹیگز',
         hashtagsPlaceholder: 'متعلقہ ہیش ٹیگز یہاں ظاہر ہوں گے...',
         videoTagsLabel: '🔖 ویڈیو ٹیگز',
@@ -479,7 +126,6 @@
         copyTitleButton: 'Копировать заголовок',
         descriptionLabel: '📝 Описание',
         descriptionPlaceholder: 'Ваше SEO-описание появится здесь...',
-        copyDescriptionButton: 'Копировать описание',
         hashtagsLabel: '📌 Хэштеги',
         hashtagsPlaceholder: 'Соответствующие хэштеги появятся здесь...',
         videoTagsLabel: '🔖 Теги видео',
@@ -535,92 +181,94 @@
         }, 2000);
     }
 
-    // 2. SMARTER CONTENT GENERATION (DeepSeek's enhanced function)
-    function generateSEO() {
-      const topic = document.getElementById("inputTopic").value.trim();
-      const language = document.getElementById("language").value; // Content language, not UI
-      const type = document.getElementById("type").value; // Short or Long video
-      const currentUILang = localStorage.getItem('ytseoUILang') || 'en'; // UI language for alerts
+    // --- ENHANCED JAVASCRIPT PROCESSOR (from DeepSeek's latest suggestion) ---
 
-      if (!topic) {
-        alert(translations[currentUILang].alertEnterTopic);
-        return;
-      }
+    // Improved content generator
+    async function generateSEO() {
+        const topic = document.getElementById("inputTopic").value.trim();
+        const lang = document.getElementById("language").value; // Content language, not UI
+        const isShort = document.getElementById("type").value === "shorts";
+        const type = isShort ? "shorts" : "long";
+        const currentUILang = localStorage.getItem('ytseoUILang') || 'en'; // UI language for alerts
 
-      // Case-insensitive partial matching against loaded JSON data
-      const matches = seoTips.filter(item =>
-        item.keyword.toLowerCase().includes(topic.toLowerCase()) ||
-        topic.toLowerCase().includes(item.keyword.toLowerCase())
-      );
-
-      let bestMatch = null;
-      if (matches.length > 0) {
-          // Prioritize exact or closer matches if needed, for simplicity taking the first match
-          bestMatch = matches[0];
-      }
-
-      if (bestMatch) {
-        // Use data from JSON match
-        document.getElementById("titleBox").value = bestMatch.title;
-        document.getElementById("descBox").value = bestMatch.description;
-        document.getElementById("hashtagBox").value = bestMatch.tags.map(t => `#${t.replace(/\s+/g, '')}`).join(" ");
-        document.getElementById("tagsBox").value = bestMatch.tags.join(", ");
-      } else {
-        // Fallback to dynamic generation if no JSON match (our previous logic)
-        let titleSuffix = "";
-        let descIntro = "";
-        let subscribeText = "";
-        let likeText = "";
-        let commentText = "";
-
-        if (language === "english") {
-            const shortOrStory = type === "shorts" ? "Short" : "Story";
-            titleSuffix = `Amazing ${shortOrStory}`;
-            descIntro = `In this ${type === "shorts" ? "60-second short" : "video"}, we explore "${topic}".`;
-            subscribeText = "Subscribe for more English content!";
-            likeText = "Like if you found this helpful";
-            commentText = "Comment below with your thoughts";
-        } else if (language === "hindi") {
-            const shortOrStory = type === "shorts" ? "छोटा वीडियो" : "कहानी";
-            titleSuffix = `अद्भुत ${shortOrStory}`;
-            descIntro = `इस ${type === "shorts" ? "60-सेकंड के लघु वीडियो" : "वीडियो"} में, हम "${topic}" का अन्वेषण करते हैं।`;
-            subscribeText = "अधिक हिन्दी सामग्री के लिए सदस्यता लें!";
-            likeText = "अगर आपको यह उपयोगी लगा तो लाइक करें";
-            commentText = "अपने विचार नीचे टिप्पणी करें";
-        } else if (language === "urdu") {
-             const shortOrStory = type === "shorts" ? "مختصر ویڈیو" : "کہانی";
-             titleSuffix = `حیرت انگیز ${shortOrStory}`;
-             descIntro = `اس ${type === "shorts" ? "60 سیکنڈ کی مختصر ویڈیو" : "ویڈیو"} میں، ہم "${topic}" کو دریافت کرتے ہیں۔`;
-             subscribeText = "مزید اردو مواد کے لیے سبسکرائب کریں!";
-             likeText = "اگر آپ کو یہ مفید لگا تو لائک کریں";
-             commentText = "اپنے خیالات نیچے کمنٹس میں بتائیں";
-        } else if (language === "russian") {
-            const shortOrStory = type === "shorts" ? "короткое видео" : "история";
-            titleSuffix = `Удивительная ${shortOrStory}`;
-            descIntro = `В этом ${type === "shorts" ? "60-секундном коротком видео" : "видео"} мы исследуем "${topic}".`;
-            subscribeText = "Подпишитесь для получения большего количества контента на русском языке!";
-            likeText = "Поставьте лайк, если это было полезно";
-            commentText = "Оставьте свои мысли в комментариях ниже";
+        if (!topic) {
+            alert(translations[currentUILang].alertEnterTopic);
+            return;
         }
 
-        document.getElementById("titleBox").value = `${topic} - ${titleSuffix}`;
-        document.getElementById("descBox").value =
-`
-${descIntro}
+        // Load templates
+        const { seo_templates, fallback } = await fetchSEOData();
+        
+        // Find best matching template
+        const template = findBestTemplate(topic, seo_templates);
+        
+        // Use the found template, or the fallback if no specific template is found
+        const chosenTemplate = template || fallback;
 
-🔔 ${subscribeText}
-👍 ${likeText}
-💬 ${commentText}
+        // Generate variables (topic, language, type are always available)
+        const variables = {
+            topic,
+            language: lang,
+            type: isShort ? "short" : "long video", // Provide a more descriptive 'type' for fallback
+            ...(chosenTemplate.variables || {}) // Merge template-specific variables if they exist
+        };
 
-#${language} #${type} #story`;
-
-        document.getElementById("hashtagBox").value =
-`#${language} #${type} #story #viral #trending #${topic.replace(/\s+/g, '')}`;
-
-        document.getElementById("tagsBox").value =
-`${topic}, ${language} ${type}, ${type} video, viral ${type}, ${topic} story`;
-      }
+        // Apply templates and populate textareas
+        document.getElementById("titleBox").value = replacePlaceholders(
+            chosenTemplate.templates ? chosenTemplate.templates.title[type] : chosenTemplate.title,
+            variables
+        );
+        
+        document.getElementById("descBox").value = replacePlaceholders(
+            chosenTemplate.templates ? chosenTemplate.templates.description[type] : chosenTemplate.description,
+            variables
+        );
+        
+        const tagsRaw = replacePlaceholders(
+            chosenTemplate.templates ? chosenTemplate.templates.tags.join(", ") : chosenTemplate.tags.join(", "),
+            variables
+        );
+        document.getElementById("tagsBox").value = tagsRaw;
+        document.getElementById("hashtagBox").value = tagsRaw.split(", ").map(t => `#${t.replace(/\s+/g, '')}`).join(" ");
     }
+
+    // Helper functions (from DeepSeek's latest suggestion)
+    async function fetchSEOData() {
+        try {
+            const response = await fetch('seo-data.json');
+            if (!response.ok) {
+                // If the file is not found or other network error, log and return empty structure
+                console.error('Failed to load seo-data.json. Check file path and content.');
+                return { seo_templates: [], fallback: {} };
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error parsing seo-data.json:', error);
+            return { seo_templates: [], fallback: {} }; // Return empty structure on parse error
+        }
+    }
+
+    function findBestTemplate(topic, templates) {
+        const lowerTopic = topic.toLowerCase();
+        // Finds the first template where any of its keywords match (includes) the topic
+        return templates.find(t => 
+            t.keywords.some(kw => lowerTopic.includes(kw.toLowerCase()))
+        );
+    }
+
+    function replacePlaceholders(text, variables) {
+        if (!text) return ""; // Handle cases where text might be undefined
+        return text.replace(/{(\w+)}/g, (_, key) => {
+            const options = variables[key];
+            // If options is an array, pick a random one; otherwise, use the value directly
+            return Array.isArray(options) 
+                ? options[Math.floor(Math.random() * options.length)]
+                : (options !== undefined ? options : ""); // Use empty string if variable is undefined
+        });
+    }
+
+    // --- END OF ENHANCED JAVASCRIPT PROCESSOR ---
+
 
     // Reset Form
     function resetFields() {
@@ -666,13 +314,9 @@ ${descIntro}
       localStorage.setItem('ytseoDarkMode', document.body.classList.contains("dark"));
     }
 
-    // 3. INITIALIZE ON LOAD (DeepSeek's improvement, combined with our existing DOMContentLoaded)
+    // INITIALIZE ON LOAD (Keep this as it handles UI language and Dark Mode)
     document.addEventListener('DOMContentLoaded', async () => {
-        // Load SEO tips first
-        const data = await loadSEOTips();
-        seoTips = data.seo_tips;
-
-        // Then apply UI language and dark mode
+        // Apply UI language and dark mode first
         const savedLang = localStorage.getItem('ytseoUILang') || 'en';
         document.getElementById('uiLang').value = savedLang;
         applyTranslations(savedLang);
@@ -684,6 +328,4 @@ ${descIntro}
             btn.textContent = translations[currentLang].lightModeButton;
         }
     });
-  </script>
-</body>
-</html>
+</script>
