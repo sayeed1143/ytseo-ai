@@ -578,28 +578,31 @@ hashtagsLabel: '📌 Хэштеги',
             }
         });
     </script>
-    <script>
+   <script>
   function loadSEOData(lang) {
     fetch(`seo-${lang}.json`)
       .then(response => response.json())
       .then(data => {
         window.seoTemplates = data;
-        console.log("Loaded SEO for:", lang, data);
+        console.log("✅ SEO JSON Loaded for:", lang);
       })
-      .catch(err => console.error("Error loading SEO JSON:", err));
+      .catch(err => console.error("❌ Error loading SEO JSON:", err));
   }
 
-  // Load language-based JSON on page load
+  // Load JSON on page load
   document.addEventListener("DOMContentLoaded", function () {
-    const uiLang = document.getElementById("uiLang")?.value || "en";
-    loadSEOData(uiLang);
+    const lang = document.getElementById("uiLang")?.value || "en";
+    loadSEOData(lang);
   });
 
-  // Load new JSON when UI language changes
-  function changeUILanguage() {
-    const selectedLang = document.getElementById("uiLang").value;
-    loadSEOData(selectedLang);
+  // Reload JSON on language change
+  const uiLangEl = document.getElementById("uiLang");
+  if (uiLangEl) {
+    uiLangEl.addEventListener("change", function () {
+      const newLang = uiLangEl.value;
+      loadSEOData(newLang);
+    });
   }
-</script>
+ </script>
 </body>
 </html>
