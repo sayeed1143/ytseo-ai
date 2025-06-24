@@ -382,7 +382,7 @@
           "dish_name": {
             "en": ["Chicken Curry", "Pasta Carbonara", "Vegan Chili", "Chocolate Cake"],
             "hi": ["चिकन करी", "पास्ता कार्बनारा", "वीगन चिली", "चॉकलेट केक"],
-            "ur": ["چکن کری", "پاستا کاربونارا", "ویگن چلی", "چاکلیٹ کیک"],
+            "ur": ["چکن کری", "پاستا کاربونारा", "ویگن چلی", "چاکلیٹ کیک"],
             "ru": ["Куриное карри", "Паста карбонара", "Веганский чили", "Шоколадный торт"],
             "es": ["Curry de Pollo", "Pasta Carbonara", "Chili Vegano", "Pastel de Chocolate"],
             "fr": ["Curry de Poulet", "Pâtes Carbonara", "Chili Vegan", "Gâteau au Chocolat"],
@@ -531,9 +531,7 @@
         }
       }
     ]
-    
-    
-    },
+  },
   "fallback": {
     "title": {
       "en": "{topic} - {video_type} You Need to Watch!",
