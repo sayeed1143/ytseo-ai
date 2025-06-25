@@ -19,221 +19,13 @@
     <meta property="twitter:image" content="https://www.ytseo.ai/twitter-image.jpg"> <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Add these new styles for the AI agent */
-        .ai-agent-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        .ai-agent-container.collapsed {
-            height: 60px;
-            overflow: hidden;
-        }
-        
-        .ai-agent-header {
-            background-color: #4a6bff;
-            color: white;
-            padding: 12px 15px;
-            border-radius: 10px 10px 0 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .ai-agent-header h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-        
-        .ai-agent-header i {
-            transition: transform 0.3s ease;
-        }
-        
-        .ai-agent-container.collapsed .ai-agent-header i {
-            transform: rotate(180deg);
-        }
-        
-        .ai-agent-body {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-radius: 0 0 10px 10px;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .ai-agent-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background-color: #f9f9f9;
-        }
-        
-        .ai-message {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 15px;
-            max-width: 80%;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-        
-        .user-message {
-            background-color: #4a6bff;
-            color: white;
-            margin-left: auto;
-            border-bottom-right-radius: 5px;
-        }
-        
-        .bot-message {
-            background-color: #e9e9e9;
-            margin-right: auto;
-            border-bottom-left-radius: 5px;
-        }
-        
-        .ai-agent-input {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-        }
-        
-        .ai-agent-input input {
-            flex: 1;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            outline: none;
-        }
-        
-        .ai-agent-input button {
-            background-color: #4a6bff;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 8px 15px;
-            margin-left: 5px;
-            cursor: pointer;
-        }
-        
-        .typing-indicator {
-            display: flex;
-            padding: 8px 12px;
-            background-color: #e9e9e9;
-            border-radius: 15px;
-            margin-bottom: 10px;
-            width: fit-content;
-        }
-        
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #666;
-            border-radius: 50%;
-            margin: 0 2px;
-            animation: typingAnimation 1.4s infinite ease-in-out;
-        }
-        
-        .typing-dot:nth-child(1) {
-            animation-delay: 0s;
-        }
-        
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        @keyframes typingAnimation {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-5px); }
-        }
-        
-        body.dark .ai-agent-body {
-            background-color: #2d2d2d;
-            border-color: #444;
-        }
-        
-        body.dark .ai-agent-messages {
-            background-color: #1e1e1e;
-        }
-        
-        body.dark .bot-message {
-            background-color: #333;
-            color: #eee;
-        }
-        
-        body.dark .ai-agent-input {
-            border-top-color: #444;
-        }
-        
-        body.dark .ai-agent-input input {
-            background-color: #333;
-            color: #eee;
-            border-color: #444;
-        }
-        
-        body.dark .typing-indicator {
-            background-color: #333;
-        }
-        
-        body.dark .typing-dot {
-            background-color: #aaa;
-        }
-
-        /* New search bar styles */
-        .search-section {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f5f7ff;
-            border-radius: 10px;
-        }
-        
-        .search-section label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #4a6bff;
-        }
-        
-        .search-section input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        .search-btn {
-            background-color: #4a6bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        body.dark .search-section {
-            background: #2d2d2d;
-        }
-        
-        body.dark .search-section label {
-            color: #7d9bff;
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>YTSEO.ai</h1>
+            <h1 class="logo-title">
+  <span class="yt-part">YT</span><span class="seo-part">SEO.ai</span>
+</h1>
             <p data-translate-key="tagline">Smart SEO. More Views. Less Hassle.</p>
             <div class="header-controls">
                 <select id="uiLang" onchange="changeUILanguage()">
@@ -249,15 +41,9 @@
             </div>
         </div>
     </header>
+  
 
     <main class="container">
-        <!-- 🔍 New Search Bar Section -->
-        <section class="search-section card">
-            <label for="searchInput"><i class="fas fa-search"></i> Quick SEO by Keyword</label>
-            <input type="text" id="searchInput" placeholder="e.g. lion, tech review, workout..." />
-            <button class="search-btn" onclick="searchSEO()"><i class="fas fa-bolt"></i> Generate SEO</button>
-        </section>
-
         <section class="input-section card">
             <div class="form-group">
                 <label for="inputTopic" data-translate-key="videoTopicLabel"><i class="fas fa-pencil-alt"></i> Video Topic/Script</label>
@@ -289,55 +75,37 @@
             <div class="button-group">
                 <button class="btn btn-primary" onclick="generateSEO()" data-translate-key="generateSEOButton"><i class="fas fa-bolt"></i> Generate SEO</button>
                 <button class="btn btn-secondary" onclick="resetFields()" data-translate-key="resetButton"><i class="fas fa-redo-alt"></i> Reset</button>
-                <button class="btn btn-tertiary" onclick="toggleAIAgent()" data-translate-key="aiHelpButton"><i class="fas fa-robot"></i> AI Help</button>
             </div>
         </section>
 
         <section class="output-section card">
-            <div class="output-group">
-                <label for="titleBox" data-translate-key="titleLabel"><i class="fas fa-heading"></i> Title</label>
-                <textarea id="titleBox" rows="2" placeholder="Your optimized title will appear here..." data-translate-key="titlePlaceholder" readonly></textarea>
-                <button class="btn-copy" onclick="copyToClipboard('titleBox')"><i class="fas fa-copy"></i> Copy Title</button>
-            </div>
-
-            <div class="output-group">
-                <label for="descBox" data-translate-key="descriptionLabel"><i class="fas fa-align-left"></i> Description</label>
-                <textarea id="descBox" rows="6" placeholder="Your SEO description will appear here..." data-translate-key="descriptionPlaceholder" readonly></textarea>
-                <button class="btn-copy" onclick="copyToClipboard('descBox')"><i class="fas fa-copy"></i> Copy Description</button>
-            </div>
-
-            <div class="output-group">
-                <label for="hashtagBox" data-translate-key="hashtagsLabel"><i class="fas fa-hashtag"></i> Hashtags</label>
-                <textarea id="hashtagBox" rows="2" placeholder="Relevant hashtags will appear here..." data-translate-key="hashtagsPlaceholder" readonly></textarea>
-                <button class="btn-copy" onclick="copyToClipboard('hashtagBox')"><i class="fas fa-copy"></i> Copy Hashtags</button>
-            </div>
-
-            <div class="output-group">
-                <label for="tagsBox" data-translate-key="videoTagsLabel"><i class="fas fa-tags"></i> Video Tags</label>
-                <textarea id="tagsBox" rows="3" placeholder="Optimized tags will appear here..." data-translate-key="videoTagsPlaceholder" readonly></textarea>
-                <button class="btn-copy" onclick="copyToClipboard('tagsBox')"><i class="fas fa-copy"></i> Copy Tags</button>
-            </div>
-
-            <button class="btn btn-export" onclick="downloadTxt()" data-translate-key="exportButton"><i class="fas fa-download"></i> Export All</button>
-        </section>
-    </main>
-
-    <!-- AI Agent Chat Interface -->
-    <div id="aiAgentContainer" class="ai-agent-container collapsed">
-        <div class="ai-agent-header" onclick="toggleAIAgent()">
-            <h3>YTSEO AI Assistant</h3>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="ai-agent-body">
-            <div id="aiAgentMessages" class="ai-agent-messages">
-                <div class="ai-message bot-message">Hello! I'm your YTSEO AI assistant. How can I help you with your YouTube SEO today?</div>
-            </div>
-            <div class="ai-agent-input">
-                <input id="aiAgentInput" type="text" placeholder="Ask me anything about YouTube SEO..." />
-                <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
+    <div class="output-group">
+        <label for="titleBox" data-translate-key="titleLabel"><i class="fas fa-heading"></i> Title</label>
+        <textarea id="titleBox" rows="2" placeholder="Your optimized title will appear here..." data-translate-key="titlePlaceholder" readonly></textarea>
+        <button type="button" class="btn-copy" onclick="copyToClipboard('titleBox')" aria-label="Copy Title"><i class="fas fa-copy"></i> Copy Title</button>
     </div>
+
+    <div class="output-group">
+        <label for="descBox" data-translate-key="descriptionLabel"><i class="fas fa-align-left"></i> Description</label>
+        <textarea id="descBox" rows="6" placeholder="Your SEO description will appear here..." data-translate-key="descriptionPlaceholder" readonly></textarea>
+        <button type="button" class="btn-copy" onclick="copyToClipboard('descBox')" aria-label="Copy Description"><i class="fas fa-copy"></i> Copy Description</button>
+    </div>
+
+    <div class="output-group">
+        <label for="hashtagBox" data-translate-key="hashtagsLabel"><i class="fas fa-hashtag"></i> Hashtags</label>
+        <textarea id="hashtagBox" rows="2" placeholder="Relevant hashtags will appear here..." data-translate-key="hashtagsPlaceholder" readonly></textarea>
+        <button type="button" class="btn-copy" onclick="copyToClipboard('hashtagBox')" aria-label="Copy Hashtags"><i class="fas fa-copy"></i> Copy Hashtags</button>
+    </div>
+
+    <div class="output-group">
+        <label for="tagsBox" data-translate-key="videoTagsLabel"><i class="fas fa-tags"></i> Video Tags</label>
+        <textarea id="tagsBox" rows="3" placeholder="Optimized tags will appear here..." data-translate-key="videoTagsPlaceholder" readonly></textarea>
+        <button type="button" class="btn-copy" onclick="copyToClipboard('tagsBox')" aria-label="Copy Tags"><i class="fas fa-copy"></i> Copy Tags</button>
+    </div>
+
+    <button type="button" class="btn btn-export" onclick="downloadTxt()" data-translate-key="exportButton"><i class="fas fa-download"></i> Export All</button>
+</section>
+    </main>
 
     <footer>
         <div class="container">
@@ -346,256 +114,541 @@
     </footer>
 
     <script>
-        // SEO Templates Database
-        const seoTemplates = {
-            "seo_templates": [
-                {
-                    "keywords": ["lion", "story", "fable"],
-                    "templates": {
-                        "title": {
-                            "shorts": "The {adjective} Lion: A {moral} Story",
-                            "long": "The Story of the {adjective} Lion - {moral} for {audience}"
-                        },
-                        "description": {
-                            "shorts": "A short story about a lion who learns {moral}. #shorts #storytime",
-                            "long": "In this {duration} story, we follow a lion who discovers {moral}. Perfect for {audience} who enjoy {adjective} tales with life lessons."
-                        },
-                        "variables": {
-                            "adjective": ["Proud", "Hungry", "Wise", "Young"],
-                            "moral": ["humility", "patience", "wisdom", "kindness"],
-                            "audience": ["kids", "families", "story lovers"]
-                        }
-                    }
-                },
-                {
-                    "keywords": ["tech", "review", "gadget"],
-                    "templates": {
-                        "title": {
-                            "shorts": "{product} Review in {number} Seconds!",
-                            "long": "{product} Full Review - {number} Months of Testing"
-                        },
-                        "description": {
-                            "shorts": "Quick thoughts on the {product}! #tech #review",
-                            "long": "After {testing_period} with the {product}, here's my honest review of {feature_1} and {feature_2}. Is it worth buying in {year}?"
-                        },
-                        "variables": {
-                            "product": ["iPhone 15", "Samsung Galaxy", "MacBook Pro"],
-                            "number": ["30", "60", "90"],
-                            "feature_1": ["camera", "battery life", "performance"],
-                            "feature_2": ["display", "software", "design"],
-                            "testing_period": ["1 week", "1 month", "3 months"],
-                            "year": ["2023", "2024", "2025"]
-                        }
-                    }
-                },
-                {
-                    "keywords": ["workout", "exercise", "fitness"],
-                    "templates": {
-                        "title": {
-                            "shorts": "{number}-Min {body_part} Workout",
-                            "long": "{duration} {body_part} Workout for {result}"
-                        },
-                        "description": {
-                            "shorts": "Quick {body_part} workout you can do anywhere! #fitness #shorts",
-                            "long": "This {duration} {body_part} workout combines {method_1} and {method_2} to help you achieve {result}. Perfect for {audience}!"
-                        },
-                        "variables": {
-                            "body_part": ["Abs", "Arms", "Legs", "Full Body"],
-                            "number": ["5", "10", "15"],
-                            "duration": ["10-minute", "30-minute", "1-hour"],
-                            "result": ["toning", "strength", "weight loss"],
-                            "method_1": ["HIIT", "yoga", "calisthenics"],
-                            "method_2": ["strength training", "cardio", "pilates"],
-                            "audience": ["beginners", "intermediates", "advanced"]
-                        }
-                    }
-                }
-            ]
+        // Translations object (expanded with Spanish, French, German)
+        const translations = {
+            en: {
+                darkModeButton: '🌙 Dark Mode',
+                lightModeButton: '☀️ Light Mode',
+                tagline: 'Smart SEO. More Views. Less Hassle.',
+                videoTopicLabel: '📝 Video Topic/Script',
+                videoTopicPlaceholder: 'e.g. A story about a lion who learns humility...',
+                contentLanguageLabel: '🌍 Content Language',
+                englishOption: 'English',
+                hindiOption: 'Hindi',
+                urduOption: 'Urdu',
+                russianOption: 'Russian',
+                spanishOption: 'Español',
+                frenchOption: 'Français',
+                germanOption: 'Deutsch',
+                videoFormatLabel: '🎬 Video Format',
+                shortVideoOption: 'Short Video',
+                longVideoOption: 'Long Video',
+                generateSEOButton: '⚡ Generate SEO',
+                resetButton: '🔁 Reset',
+                exportButton: '📥 Export All',
+                titleLabel: '🎯 Title',
+                titlePlaceholder: 'Your optimized title will appear here...',
+                copyTitleButton: 'Copy Title',
+                descriptionLabel: '📝 Description',
+                descriptionPlaceholder: 'Your SEO description will appear here...',
+                hashtagsLabel: '📌 Hashtags',
+                hashtagsPlaceholder: 'Relevant hashtags will appear here...',
+                videoTagsLabel: '🔖 Video Tags',
+                videoTagsPlaceholder: 'Optimized tags will appear here...',
+                copyTagsButton: 'Copy Tags',
+                copyHashtagsButton: 'Copy Hashtags',
+                footerText: 'Powered by <strong>YTSEO.ai</strong> – Built with ❤️ for global creators',
+                alertEnterTopic: 'Please enter a video topic first!',
+                alertGenerateContent: 'Generate some content first!',
+                copiedSuccess: '✓ Copied!',
+            },
+            hi: {
+                darkModeButton: '🌙 डार्क मोड',
+                lightModeButton: '☀️ लाइट मोड',
+                tagline: 'स्मार्ट एसईओ। अधिक व्यूज। कम परेशानी।',
+                videoTopicLabel: '📝 वीडियो विषय/स्क्रिप्ट',
+                videoTopicPlaceholder: 'उदा. एक शेर की कहानी जो विनम्रता सीखता है...',
+                contentLanguageLabel: '🌍 सामग्री भाषा',
+                englishOption: 'अंग्रेजी',
+                hindiOption: 'हिन्दी',
+                urduOption: 'اردو',
+                russianOption: 'रूसी',
+                spanishOption: 'स्पेनिश',
+                frenchOption: 'फ्रेंच',
+                germanOption: 'जर्मन',
+                videoFormatLabel: '🎬 वीडियो प्रारूप',
+                shortVideoOption: 'छोटा वीडियो',
+                longVideoOption: 'लंबा वीडियो',
+                generateSEOButton: '⚡ एसईओ जनरेट करें',
+                copyTitleButton: 'शीर्षक कॉपी करें',
+                resetButton: '🔁 रीसेट करें',
+                exportButton: '📥 सभी निर्यात करें',
+                titleLabel: '🎯 शीर्षक',
+                titlePlaceholder: 'आपका अनुकूलित शीर्षक यहां दिखाई देगा...',
+                descriptionLabel: '📝 विवरण',
+                descriptionPlaceholder: 'आपका एसईओ विवरण यहां दिखाई देगा...',
+                hashtagsLabel: '📌 हैशटैग',
+                hashtagsPlaceholder: 'प्रासंगिक हैशटैग यहां दिखाई देंगे...',
+                videoTagsLabel: '🔖 वीडियो टैग',
+                videoTagsPlaceholder: 'अनुकूलित टैग यहां दिखाई देंगे...',
+                copyTagsButton: 'टैग कॉपी करें',
+                copyHashtagsButton: 'हैशटैग कॉपी करें',
+                footerText: '<strong>YTSEO.ai</strong> द्वारा संचालित – वैश्विक रचनाकारों के लिए ❤️ से निर्मित',
+                alertEnterTopic: 'कृपया पहले एक वीडियो विषय दर्ज करें!',
+                alertGenerateContent: 'पहले कुछ सामग्री जनरेट करें!',
+                copiedSuccess: '✓ कॉपी किया गया!',
+            },
+            ur: {
+                darkModeButton: '🌙 ڈارک موڈ',
+                lightModeButton: '☀️ لائٹ موڈ',
+                tagline: 'سمارٹ ایس ای او۔ مزید آراء۔ کم پریشانی۔',
+                videoTopicLabel: '📝 ویڈیو کا موضوع/اسکرپٹ',
+                videoTopicPlaceholder: 'مثال کے طور پر: ایک شیر کی کہانی جو عاجزی سیکھتا ہے...',
+                contentLanguageLabel: '🌍 مواد کی زبان',
+                englishOption: 'انگریزی',
+                hindiOption: 'ہندی',
+                urduOption: 'اردو',
+                russianOption: 'روسی',
+                spanishOption: 'ہسپانوی',
+                frenchOption: 'فرانسیسی',
+                germanOption: 'جرمن',
+                videoFormatLabel: '🎬 ویڈیو فارمیٹ',
+                shortVideoOption: 'مختصر ویڈیو',
+                longVideoOption: 'طویل ویڈیو',
+                generateSEOButton: '⚡ ایس ای او بنائیں',
+                resetButton: '🔁 ری سیٹ کریں',
+                exportButton: '📥 سب ایکسپورٹ کریں',
+                titleLabel: '🎯 عنوان',
+                titlePlaceholder: 'آپ کا بہتر کردہ عنوان یہاں ظاہر ہوگا...',
+                copyTitleButton: 'عنوان کاپی کریں',
+                descriptionLabel: '📝 تفصیل',
+                descriptionPlaceholder: 'آپ کا ایس ای او تفصیل یہاں ظاہر ہوگا...',
+                hashtagsLabel: '📌 ہیش ٹیگز',
+                hashtagsPlaceholder: 'متعلقہ ہیش ٹیگز یہاں ظاہر ہوں گے...',
+                videoTagsLabel: '🔖 ویڈیو ٹیگز',
+                videoTagsPlaceholder: 'بہتر کردہ ٹیگز یہاں ظاہر ہوں گے...',
+                copyTagsButton: 'ٹیگز کاپی کریں',
+                copyHashtagsButton: 'ہیش ٹیگز کاپی کریں',
+                footerText: '<strong>YTSEO.ai</strong> کے ذریعے تقویت یافتہ – عالمی تخلیق کاروں کے لیے ❤️ سے بنایا گیا',
+                alertEnterTopic: 'براہ کرم پہلے ایک ویڈیو کا موضوع درج کریں!',
+                alertGenerateContent: 'پہلے کچھ مواد بنائیں!',
+                copiedSuccess: '✓ کاپی کیا گیا!',
+            },
+            ru: {
+                darkModeButton: '🌙 Темный режим',
+                lightModeButton: '☀️ Светлый режим',
+                tagline: 'Умное SEO. Больше просмотров. Меньше хлопот.',
+                videoTopicLabel: '📝 Тема видео/Сценарий',
+                videoTopicPlaceholder: 'Например: История о льве, который учится скромности...',
+                contentLanguageLabel: '🌍 Язык контента',
+                englishOption: 'Английский',
+                hindiOption: 'Хинди',
+                urduOption: 'Урdu',
+                russianOption: 'Русский',
+                spanishOption: 'Испанский',
+                frenchOption: 'Французский',
+                germanOption: 'Немецкий',
+                videoFormatLabel: '🎬 Формат видео',
+                shortVideoOption: 'Короткое видео',
+                longVideoOption: 'Длинное видео',
+                generateSEOButton: '⚡ Создать SEO',
+                resetButton: '🔁 Сбросить',
+                exportButton: '📥 Экспортировать все',
+                titleLabel: '🎯 Заголовок',
+                titlePlaceholder: 'Ваш оптимизированный заголовок появится здесь...',
+                descriptionLabel: '📝 Описание',
+                descriptionPlaceholder: 'Ваше SEO-описание появится здесь...',
+hashtagsLabel: '📌 Хэштеги',
+                hashtagsPlaceholder: 'Соответствующие хэштеги появятся здесь...',
+                videoTagsLabel: '🔖 Теги видео',
+                videoTagsPlaceholder: 'Оптимизированные теги появятся здесь...',
+                copyTagsButton: 'Копировать теги',
+                copyHashtagsButton: 'Копировать хэштеги',
+                footerText: 'Работает на <strong>YTSEO.ai</strong> – Создано с ❤️ для глобальных авторов',
+                alertEnterTopic: 'Пожалуйста, сначала введите тему видео!',
+                alertGenerateContent: 'Сначала сгенерируйте какой-либо контент!',
+                copiedSuccess: '✓ Скопировано!',
+            },
+            es: {
+                darkModeButton: '🌙 Modo Oscuro',
+                lightModeButton: '☀️ Modo Claro',
+                tagline: 'SEO Inteligente. Más Vistas. Menos Complicaciones.',
+                videoTopicLabel: '📝 Tema/Guion del Video',
+                videoTopicPlaceholder: 'Ej. Una historia sobre un león que aprende humildad...',
+                contentLanguageLabel: '🌍 Idioma del Contenido',
+                englishOption: 'Inglés',
+                hindiOption: 'Hindi',
+                urduOption: 'Urdu',
+                russianOption: 'Ruso',
+                spanishOption: 'Español',
+                frenchOption: 'Francés',
+                germanOption: 'Alemán',
+                videoFormatLabel: '🎬 Formato de Video',
+                shortVideoOption: 'Video Corto',
+                longVideoOption: 'Video Largo',
+                generateSEOButton: '⚡ Generar SEO',
+                resetButton: '🔁 Reiniciar',
+                exportButton: '📥 Exportar Todo',
+                titleLabel: '🎯 Título',
+                titlePlaceholder: 'Tu título optimizado aparecerá aquí...',
+                copyTitleButton: 'Copiar Título',
+                descriptionLabel: '📝 Descripción',
+                descriptionPlaceholder: 'Tu descripción SEO aparecerá aquí...',
+                hashtagsLabel: '📌 Hashtags',
+                hashtagsPlaceholder: 'Los hashtags relevantes aparecerán aquí...',
+                videoTagsLabel: '🔖 Etiquetas de Video',
+                videoTagsPlaceholder: 'Las etiquetas optimizadas aparecerán aquí...',
+                copyTagsButton: 'Copiar Etiquetas',
+                copyHashtagsButton: 'Copiar Hashtags',
+                footerText: 'Impulsado por <strong>YTSEO.ai</strong> – Creado con ❤️ para creadores globales',
+                alertEnterTopic: '¡Por favor, ingresa un tema de video primero!',
+                alertGenerateContent: '¡Genera algo de contenido primero!',
+                copiedSuccess: '✓ Copiado!',
+            },
+            fr: {
+                darkModeButton: '🌙 Mode Sombre',
+                lightModeButton: '☀️ Mode Clair',
+                tagline: 'SEO Intelligent. Plus de Vues. Moins de Tracas.',
+                videoTopicLabel: '📝 Sujet/Script Vidéo',
+                videoTopicPlaceholder: 'Ex: Une histoire sur un lion qui apprend l\'humilité...',
+                contentLanguageLabel: '🌍 Langue du Contenu',
+                englishOption: 'Anglais',
+                hindiOption: 'Hindi',
+                urduOption: 'Ourdou',
+                russianOption: 'Russe',
+                spanishOption: 'Espagnol',
+                frenchOption: 'Français',
+                germanOption: 'Allemand',
+                videoFormatLabel: '🎬 Format Vidéo',
+                shortVideoOption: 'Courte Vidéo',
+                longVideoOption: 'Longue Vidéo',
+                generateSEOButton: '⚡ Générer SEO',
+                resetButton: '🔁 Réinitialiser',
+                exportButton: '📥 Tout Exporter',
+                titleLabel: '🎯 Titre',
+                titlePlaceholder: 'Votre titre optimisé apparaîtra ici...',
+                copyTitleButton: 'Copier le Titre',
+                descriptionLabel: '📝 Description',
+                descriptionPlaceholder: 'Votre description SEO apparaîtra ici...',
+                hashtagsLabel: '📌 Hashtags',
+                hashtagsPlaceholder: 'Les hashtags pertinents apparaîtront ici...',
+                videoTagsLabel: '🔖 Mots-clés Vidéo',
+                videoTagsPlaceholder: 'Les mots-clés optimisés apparaîtront ici...',
+                copyTagsButton: 'Copier les Mots-clés',
+                copyHashtagsButton: 'Copier les Hashtags',
+                footerText: 'Propulsé par <strong>YTSEO.ai</strong> – Conçu avec ❤️ pour les créateurs mondiaux',
+                alertEnterTopic: 'Veuillez d\'abord saisir un sujet de vidéo !',
+                alertGenerateContent: 'Générez d\'abord du contenu !',
+                copiedSuccess: '✓ Copié !',
+            },
+            de: {
+                darkModeButton: '🌙 Dunkelmodus',
+                lightModeButton: '☀️ Hellmodus',
+                tagline: 'Smartes SEO. Mehr Aufrufe. Weniger Aufwand.',
+                videoTopicLabel: '📝 Video-Thema/Skript',
+                videoTopicPlaceholder: 'z.B. Eine Geschichte über einen Löwen, der Demut lernt...',
+                contentLanguageLabel: '🌍 Inhaltssprache',
+                englishOption: 'Englisch',
+                hindiOption: 'Hindi',
+                urduOption: 'Urdu',
+                russianOption: 'Russisch',
+                spanishOption: 'Spanisch',
+                frenchOption: 'Französisch',
+                germanOption: 'Deutsch',
+                videoFormatLabel: '🎬 Video-Format',
+                shortVideoOption: 'Kurzvideo',
+                longVideoOption: 'Langvideo',
+                generateSEOButton: '⚡ SEO Generieren',
+                resetButton: '🔁 Zurücksetzen',
+                exportButton: '📥 Alles Exportieren',
+                titleLabel: '🎯 Titel',
+                titlePlaceholder: 'Ihr optimierter Titel wird hier erscheinen...',
+                copyTitleButton: 'Titel kopieren',
+                descriptionLabel: '📝 Beschreibung',
+                descriptionPlaceholder: 'Ihre SEO-Beschreibung wird hier erscheinen...',
+                hashtagsLabel: '📌 Hashtags',
+                hashtagsPlaceholder: 'Relevante Hashtags werden hier erscheinen...',
+                videoTagsLabel: '🔖 Video-Tags',
+                videoTagsPlaceholder: 'Optimierte Tags werden hier erscheinen...',
+                copyTagsButton: 'Tags kopieren',
+                copyHashtagsButton: 'Hashtags kopieren',
+                footerText: 'Powered by <strong>YTSEO.ai</strong> – Mit ❤️ für globale Kreative erstellt',
+                alertEnterTopic: 'Bitte geben Sie zuerst ein Video-Thema ein!',
+                alertGenerateContent: 'Generieren Sie zuerst Inhalte!',
+                copiedSuccess: '✓ Kopiert!',
+            }
         };
 
-        // 🧠 Smart Search Function
-        function searchSEO() {
-            const keyword = document.getElementById("searchInput").value.toLowerCase();
-            const templates = seoTemplates.seo_templates || [];
+        function applyTranslations(lang) {
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                const key = element.getAttribute('data-translate-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = translations[lang][key];
+                    } else if (element.tagName === 'BUTTON' && (key === 'darkModeButton' || key === 'lightModeButton')) {
+                        element.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[lang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[lang].darkModeButton}`;
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            const darkModeBtn = document.querySelector('[onclick="toggleDarkMode()"]');
+            if (darkModeBtn) {
+                darkModeBtn.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[lang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[lang].darkModeButton}`;
+            }
+        }
 
-            const match = templates.find(template =>
-                template.keywords.some(k => k.toLowerCase().includes(keyword))
-            );
+        function changeUILanguage() {
+            const lang = document.getElementById("uiLang").value;
+            localStorage.setItem('ytseoUILang', lang);
+            applyTranslations(lang);
+        }
 
-            if (!match) {
-                alert("No template found for that keyword.");
+        // Copy to Clipboard
+        function copyToClipboard(id) {
+            const textarea = document.getElementById(id);
+            textarea.select();
+            document.execCommand("copy");
+
+            const btn = document.querySelector(`[onclick="copyToClipboard('${id}')"]`);
+            const originalHTML = btn.innerHTML; // Store original HTML to include icon
+            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+            btn.innerHTML = `<i class="fas fa-check"></i> ${translations[currentLang].copiedSuccess}`;
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 2000);
+        }
+
+        // --- ENHANCED JAVASCRIPT PROCESSOR (with corrected generateSEO) ---
+
+        // Improved content generator
+        async function generateSEO() {
+            const topic = document.getElementById("inputTopic").value.trim();
+            const contentLang = document.getElementById("language").value; // Get content language
+            const isShort = document.getElementById("type").value === "shorts";
+            const type = isShort ? "shorts" : "long";
+            const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
+
+            if (!topic) {
+                alert(translations[currentUILang].alertEnterTopic);
                 return;
             }
 
-            // Pick random variables
-            const vars = match.templates.variables;
-            const getRandom = arr => arr[Math.floor(Math.random() * arr.length)];
+            // Show loading state
+            const generateBtn = document.querySelector('[onclick="generateSEO()"]');
+            const originalBtnText = generateBtn.innerHTML;
+            generateBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentUILang].generatingText || 'Generating...'}`;
+            generateBtn.disabled = true;
 
-            const type = document.getElementById("type").value;
-            const lang = document.getElementById("language").value;
+            try {
+                // Load templates with content language
+                const seoData = await fetchSEOData(contentLang);
+                const { seo_templates, fallback } = seoData || { seo_templates: [], fallback: {} };
+                
+                // Find best matching template with improved logic
+                const template = findBestTemplate(topic, seo_templates);
+                
+                // Use the found template, or the fallback if no specific template is found
+                const chosenTemplate = template || fallback;
 
-            const title = match.templates.title[type]
-                .replace("{character}", getRandom(vars.character || ["Hero"]))
-                .replace("{object}", getRandom(vars.object || ["Object"]))
-                .replace("{adjective}", getRandom(vars.adjective || ["Great"]))
-                .replace("{product}", getRandom(vars.product || ["Product"]))
-                .replace("{number}", getRandom(vars.number || ["5"]))
-                .replace("{body_part}", getRandom(vars.body_part || ["Body"]))
-                .replace("{dish}", getRandom(vars.dish || ["Dish"]))
-                .replace("{result}", getRandom(vars.result || ["Result"]))
-                .replace("{subject}", getRandom(vars.subject || ["Subject"]))
-                .replace("{year}", getRandom(vars.year || ["2025"]));
+                // Generate variables (topic, language, type are always available)
+                const variables = {
+                    topic,
+                    language: contentLang,
+                    video_type: isShort ? "short video" : "long video",
+                    ...(chosenTemplate.variables || {})
+                };
 
-            const description = match.templates.description[type]
-                .replace("{character}", getRandom(vars.character || ["Hero"]))
-                .replace("{moral}", getRandom(vars.moral || ["Wisdom"]))
-                .replace("{adjective}", getRandom(vars.adjective || ["Amazing"]))
-                .replace("{product}", getRandom(vars.product || ["Product"]))
-                .replace("{feature_1}", getRandom(vars.feature_1 || ["Feature"]))
-                .replace("{feature_2}", getRandom(vars.feature_2 || ["Feature"]))
-                .replace("{testing_period}", getRandom(vars.testing_period || ["1 week"]))
-                .replace("{call_to_action}", getRandom(vars.call_to_action || ["Subscribe"]))
-                .replace("{dish}", getRandom(vars.dish || ["Dish"]))
-                .replace("{ingredient_1}", getRandom(vars.ingredient_1 || ["Stuff"]))
-                .replace("{ingredient_2}", getRandom(vars.ingredient_2 || ["Stuff"]))
-                .replace("{cuisine}", getRandom(vars.cuisine || ["Cuisine"]))
-                .replace("{audience}", getRandom(vars.audience || ["Everyone"]))
-                .replace("{duration}", getRandom(vars.duration || ["10-minute"]))
-                .replace("{method_1}", getRandom(vars.method_1 || ["Method"]))
-                .replace("{method_2}", getRandom(vars.method_2 || ["Method"]))
-                .replace("{number}", getRandom(vars.number || ["5"]))
-                .replace("{subject}", getRandom(vars.subject || ["Subject"]));
+                let titleTemplate = '';
+                let descriptionTemplate = '';
+                let tagsTemplate = '';
 
-            document.getElementById("titleBox").value = title;
-            document.getElementById("descBox").value = description;
-            document.getElementById("hashtagBox").value = "#" + keyword + " #" + type + " #ytseo";
-            document.getElementById("tagsBox").value = keyword + ", " + type + ", SEO";
+                if (chosenTemplate.templates) { // If it's a specific SEO template with "shorts" / "long" variations
+                    titleTemplate = chosenTemplate.templates.title[type];
+                    descriptionTemplate = chosenTemplate.templates.description[type];
+                    tagsTemplate = chosenTemplate.templates.tags.join(", ");
+                } else { // If it's the fallback template (or any other simpler structure)
+                    titleTemplate = chosenTemplate.title || '';
+                    descriptionTemplate = chosenTemplate.description || '';
+                    tagsTemplate = Array.isArray(chosenTemplate.tags) ? chosenTemplate.tags.join(", ") : chosenTemplate.tags || ''; 
+                }
+
+                document.getElementById("titleBox").value = replacePlaceholders(titleTemplate, variables);
+                document.getElementById("descBox").value = replacePlaceholders(descriptionTemplate, variables);
+                
+                const tagsRaw = replacePlaceholders(tagsTemplate, variables);
+                document.getElementById("tagsBox").value = tagsRaw;
+                document.getElementById("hashtagBox").value = tagsRaw.split(", ").map(t => `#${t.replace(/\s+/g, '')}`).join(" ");
+
+            } catch (error) {
+                console.error("Generation error:", error);
+                alert(translations[currentUILang].alertGenerateContent);
+            } finally {
+                generateBtn.innerHTML = originalBtnText;
+                generateBtn.disabled = false;
+            }
         }
 
-        // 🌙 Dark Mode (Persistent)
-        document.addEventListener("DOMContentLoaded", () => {
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark") document.body.classList.add("dark");
-        });
+        // Helper functions
+        async function fetchSEOData(contentLang = 'en') {
+            try {
+                const response = await fetch(`seo-data-${contentLang}.json`);
+                if (!response.ok) {
+                    console.error(`Failed to load seo-data-${contentLang}.json. Trying fallback...`);
+                    const enResponse = await fetch('seo-data-en.json');
+                    if (!enResponse.ok) throw new Error('Fallback failed');
+                    return await enResponse.json();
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading SEO data:', error);
+                return { seo_templates: [], fallback: {} }; // Return empty structure on error
+            }
+        }
 
+        // NEW IMPROVED findBestTemplate function
+        function findBestTemplate(topic, templates) {
+            const lowerTopic = topic.toLowerCase();
+            const topicWords = new Set(lowerTopic.split(/\s+/).filter(word => word.length > 2)); // Get unique words from topic, ignore short ones
+
+            let bestMatchTemplate = null;
+            let maxMatchingScore = 0; // Use a score instead of just count
+
+            if (!templates) return null;
+
+            for (const template of templates) {
+                let currentScore = 0;
+                if (!template.keywords) continue;
+                
+                template.keywords.forEach(kw => {
+                    const lowerKw = kw.toLowerCase();
+                    if (lowerTopic.includes(lowerKw)) {
+                        // Give higher score for exact phrase match
+                        if (lowerTopic === lowerKw) {
+                            currentScore += 100; // Very high score for exact match
+                        } else if (lowerTopic.includes(lowerKw + ' ')) { // Word boundary check
+                            currentScore += lowerKw.split(/\s+/).length * 10; // More weight for multi-word keywords
+                        } else {
+                            currentScore += lowerKw.split(/\s+/).length; // Basic score for partial include
+                        }
+                    }
+                });
+
+                if (currentScore > maxMatchingScore) {
+                    maxMatchingScore = currentScore;
+                    bestMatchTemplate = template;
+                }
+            }
+            return bestMatchTemplate;
+        }
+
+        function replacePlaceholders(text, variables) {
+            if (!text) return "";
+            return text.replace(/{(\w+)}/g, (_, key) => {
+                const options = variables[key];
+                return Array.isArray(options) 
+                    ? options[Math.floor(Math.random() * options.length)]
+                    : (options !== undefined ? options : "");
+            });
+        }
+
+        // Reset Form
+        function resetFields() {
+            document.getElementById("inputTopic").value = "";
+            document.getElementById("language").selectedIndex = 0;
+            document.getElementById("type").selectedIndex = 0;
+            document.getElementById("titleBox").value = "";
+            document.getElementById("descBox").value = "";
+            document.getElementById("hashtagBox").value = "";
+            document.getElementById("tagsBox").value = "";
+        }
+
+        // Download as TXT
+        function downloadTxt() {
+            const title = document.getElementById("titleBox").value;
+            const desc = document.getElementById("descBox").value;
+            const tags = document.getElementById("tagsBox").value;
+            const hashtags = document.getElementById("hashtagBox").value;
+            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+
+            if (!title && !desc && !tags && !hashtags) {
+                alert(translations[currentLang].alertGenerateContent);
+                return;
+            }
+
+            const content = `Title:\n${title}\n\nDescription:\n${desc}\n\nTags:\n${tags}\n\nHashtags:\n${hashtags}\n\nGenerated by YTSEO.ai`;
+            const blob = new Blob([content], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "ytseo-ai-content.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // Dark Mode Toggle
         function toggleDarkMode() {
             document.body.classList.toggle("dark");
-            localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+            const btn = document.querySelector('[onclick="toggleDarkMode()"]');
+            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+            btn.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[currentLang].darkModeButton}`;
+            localStorage.setItem('ytseoDarkMode', document.body.classList.contains("dark"));
         }
 
-        // AI Agent functionality
-        let aiAgentVisible = false;
-        let waitingForAIResponse = false;
-        
-        function toggleAIAgent() {
-            const container = document.getElementById("aiAgentContainer");
-            aiAgentVisible = !container.classList.contains("collapsed");
-            
-            if (aiAgentVisible) {
-                container.classList.add("collapsed");
-            } else {
-                container.classList.remove("collapsed");
-                setTimeout(() => {
-                    const messages = document.getElementById("aiAgentMessages");
-                    messages.scrollTop = messages.scrollHeight;
-                }, 100);
-            }
-        }
-        
-        function sendAIMessage() {
-            const input = document.getElementById("aiAgentInput");
-            const message = input.value.trim();
-            
-            if (message === '') return;
-            
-            addMessageToChat(message, 'user');
-            input.value = '';
-            
-            showTypingIndicator();
-            
-            waitingForAIResponse = true;
-            setTimeout(() => {
-                generateAIResponse(message);
-                waitingForAIResponse = false;
-            }, 1500 + Math.random() * 2000);
-        }
-        
-        function addMessageToChat(message, sender) {
-            const messages = document.getElementById("aiAgentMessages");
-            const messageDiv = document.createElement("div");
-            messageDiv.className = `ai-message ${sender}-message`;
-            messageDiv.textContent = message;
-            messages.appendChild(messageDiv);
-            messages.scrollTop = messages.scrollHeight;
-        }
-        
-        function showTypingIndicator() {
-            const messages = document.getElementById("aiAgentMessages");
-            const typingDiv = document.createElement("div");
-            typingDiv.className = 'typing-indicator';
-            typingDiv.id = 'typingIndicator';
-            
-            for (let i = 0; i < 3; i++) {
-                const dot = document.createElement("div");
-                dot.className = 'typing-dot';
-                typingDiv.appendChild(dot);
-            }
-            
-            messages.appendChild(typingDiv);
-            messages.scrollTop = messages.scrollHeight;
-        }
-        
-        function hideTypingIndicator() {
-            const typing = document.getElementById("typingIndicator");
-            if (typing) typing.remove();
-        }
-        
-        function generateAIResponse(userMessage) {
-            hideTypingIndicator();
-            
-            let response = '';
-            const lowerMessage = userMessage.toLowerCase();
-            
-            if (lowerMessage.includes('title') || lowerMessage.includes('headline')) {
-                response = 'A good YouTube title should be clear, compelling, and contain your main keyword. For Shorts, keep it short and punchy. For long videos, you can be more descriptive. Example: "How to [Do Something] - [Benefit/Result]"';
-            } 
-            else if (lowerMessage.includes('description') || lowerMessage.includes('desc')) {
-                response = 'Your description should start with the most important information (include keywords naturally). For longer videos, consider adding timestamps. End with a call-to-action (like/subscribe) and relevant links.';
-            }
-            else if (lowerMessage.includes('tag') || lowerMessage.includes('keyword')) {
-                response = 'Use 10-15 tags that are relevant to your content. Include a mix of: 1) Exact match keywords, 2) Broad topics, 3) Your channel name. Tags help YouTube understand your content.';
-            }
-            else if (lowerMessage.includes('short') || lowerMessage.includes('reel')) {
-                response = 'For Shorts: 1) Use #Shorts in title/description, 2) Keep titles very short (under 50 chars), 3) Use trending sounds/music, 4) First 2 seconds must grab attention, 5) Vertical format only (9:16 aspect ratio).';
-            }
-            else if (lowerMessage.includes('view') || lowerMessage.includes('watch')) {
-                response = 'To get more views: 1) Create thumbnails that stand out, 2) Use cards/end screens, 3) Engage with comments, 4) Share on social media, 5) Collaborate with other creators, 6) Post consistently.';
-            }
-            else {
-                const randomIndex = Math.floor(Math.random() * translations[currentLang].aiResponses.length);
-                response = translations[currentLang].aiResponses[randomIndex];
-            }
-            
-            addMessageToChat(response, 'bot');
-        }
-        
-        document.getElementById("aiAgentInput").addEventListener("keypress", function(e) {
-            if (e.key === 'Enter' && !waitingForAIResponse) {
-                sendAIMessage();
+        // INITIALIZE ON LOAD
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Apply UI language and dark mode first
+            const savedLang = localStorage.getItem('ytseoUILang') || 'en';
+            document.getElementById('uiLang').value = savedLang;
+            applyTranslations(savedLang);
+
+            if (localStorage.getItem('ytseoDarkMode') === 'true') {
+                document.body.classList.add('dark');
+                const btn = document.querySelector('[onclick="toggleDarkMode()"]');
+                const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+                btn.innerHTML = `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}`;
             }
         });
-
-        // Initialize
-        let currentLang = 'en';
-        window.onload = function() {
-            // Initialize dark mode
-            if (localStorage.getItem('theme') === 'dark') {
-                document.body.classList.add('dark');
-                const darkModeButton = document.querySelector('[data-translate-key="darkModeButton"]');
-                darkModeButton.innerHTML = '☀️ ' + translations[currentLang].lightModeButton;
-                darkModeButton.setAttribute('data-translate-key', 'lightModeButton');
-            }
-        };
     </script>
+    <section class="ai-agent card" style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc;">
+  <h2>AI Assistant 🤖</h2>
+  <div id="chatWindow" style="height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; background: #f9f9f9; margin-bottom: 1rem;"></div>
+  <input type="text" id="userInput" placeholder="Ask me something..." style="width: 80%; padding: 0.5rem;" />
+  <button onclick="sendMessage()" style="padding: 0.5rem 1rem;">Send</button>
+</section>
+
+<script>
+  const chatWindow = document.getElementById('chatWindow');
+  const userInput = document.getElementById('userInput');
+
+  const fakeResponses = [
+    "That's interesting! Can you tell me more?",
+    "I see. How does that make you feel?",
+    "I'm here to help you with your SEO questions!",
+    "Can you clarify that a bit?",
+    "Let's focus on optimizing your video titles!",
+    "Great point! Have you tried using relevant hashtags?",
+    "Sorry, I don't have the answer to that yet.",
+    "Here's a tip: always use keywords in your description.",
+    "Keep your videos engaging and your tags relevant.",
+    "I'm learning more every day. Thanks for chatting!"
+  ];
+
+  function sendMessage() {
+    const text = userInput.value.trim();
+    if (!text) return;
+    
+    appendMessage('You', text);
+    userInput.value = '';
+    
+    // Fake AI thinking delay
+    setTimeout(() => {
+      const response = fakeResponses[Math.floor(Math.random() * fakeResponses.length)];
+      appendMessage('AI', response);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }, 700);
+  }
+
+  function appendMessage(sender, message) {
+    const msgDiv = document.createElement('div');
+    msgDiv.style.marginBottom = '0.5rem';
+    msgDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
+    chatWindow.appendChild(msgDiv);
+  }
+</script>
 </body>
 </html>
+
