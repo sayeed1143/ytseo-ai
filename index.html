@@ -148,7 +148,6 @@
                 alertEnterTopic: 'Please enter a video topic first!',
                 alertGenerateContent: 'Generate some content first!',
                 copiedSuccess: '✓ Copied!',
-                generatingText: 'Generating...'
             },
             hi: {
                 darkModeButton: '🌙 डार्क मोड',
@@ -185,7 +184,6 @@
                 alertEnterTopic: 'कृपया पहले एक वीडियो विषय दर्ज करें!',
                 alertGenerateContent: 'पहले कुछ सामग्री जनरेट करें!',
                 copiedSuccess: '✓ कॉपी किया गया!',
-                generatingText: 'जनरेट हो रहा है...'
             },
             ur: {
                 darkModeButton: '🌙 ڈارک موڈ',
@@ -222,7 +220,6 @@
                 alertEnterTopic: 'براہ کرم پہلے ایک ویڈیو کا موضوع درج کریں!',
                 alertGenerateContent: 'پہلے کچھ مواد بنائیں!',
                 copiedSuccess: '✓ کاپی کیا گیا!',
-                generatingText: 'تخلیق ہو رہا ہے...'
             },
             ru: {
                 darkModeButton: '🌙 Темный режим',
@@ -248,7 +245,7 @@
                 titlePlaceholder: 'Ваш оптимизированный заголовок появится здесь...',
                 descriptionLabel: '📝 Описание',
                 descriptionPlaceholder: 'Ваше SEO-описание появится здесь...',
-                hashtagsLabel: '📌 Хэштеги',
+hashtagsLabel: '📌 Хэштеги',
                 hashtagsPlaceholder: 'Соответствующие хэштеги появятся здесь...',
                 videoTagsLabel: '🔖 Теги видео',
                 videoTagsPlaceholder: 'Оптимизированные теги появятся здесь...',
@@ -258,7 +255,6 @@
                 alertEnterTopic: 'Пожалуйста, сначала введите тему видео!',
                 alertGenerateContent: 'Сначала сгенерируйте какой-либо контент!',
                 copiedSuccess: '✓ Скопировано!',
-                generatingText: 'Генерация...'
             },
             es: {
                 darkModeButton: '🌙 Modo Oscuro',
@@ -295,7 +291,6 @@
                 alertEnterTopic: '¡Por favor, ingresa un tema de video primero!',
                 alertGenerateContent: '¡Genera algo de contenido primero!',
                 copiedSuccess: '✓ Copiado!',
-                generatingText: 'Generando...'
             },
             fr: {
                 darkModeButton: '🌙 Mode Sombre',
@@ -332,7 +327,6 @@
                 alertEnterTopic: 'Veuillez d\'abord saisir un sujet de vidéo !',
                 alertGenerateContent: 'Générez d\'abord du contenu !',
                 copiedSuccess: '✓ Copié !',
-                generatingText: 'Génération en cours...'
             },
             de: {
                 darkModeButton: '🌙 Dunkelmodus',
@@ -369,7 +363,6 @@
                 alertEnterTopic: 'Bitte geben Sie zuerst ein Video-Thema ein!',
                 alertGenerateContent: 'Generieren Sie zuerst Inhalte!',
                 copiedSuccess: '✓ Kopiert!',
-                generatingText: 'Wird generiert...'
             }
         };
 
@@ -415,24 +408,12 @@
             }, 2000);
         }
 
-        // --- UPDATED FUNCTIONS ---
-        async function fetchSEOData(contentLang = 'en') {
-            try {
-                // Try to load the language-specific JSON file
-                const response = await fetch(`seo-data-${contentLang}.json`);
-                if (!response.ok) throw new Error('Language file not found');
-                return await response.json();
-            } catch (error) {
-                console.warn(`Falling back to English for ${contentLang}`);
-                // Fallback to English if language file fails
-                const enResponse = await fetch('seo-data-en.json');
-                return await enResponse.json();
-            }
-        }
+        // --- ENHANCED JAVASCRIPT PROCESSOR (with corrected generateSEO) ---
 
+        // Improved content generator
         async function generateSEO() {
             const topic = document.getElementById("inputTopic").value.trim();
-            const contentLang = document.getElementById("language").value; // Get selected content language
+            const contentLang = document.getElementById("language").value; // Get content language
             const isShort = document.getElementById("type").value === "shorts";
             const type = isShort ? "shorts" : "long";
             const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
@@ -450,4 +431,174 @@
 
             try {
                 // Load templates with content language
-                const {
+                const seoData = await fetchSEOData(contentLang);
+                const { seo_templates, fallback } = seoData || { seo_templates: [], fallback: {} };
+                
+                // Find best matching template with improved logic
+                const template = findBestTemplate(topic, seo_templates);
+                
+                // Use the found template, or the fallback if no specific template is found
+                const chosenTemplate = template || fallback;
+
+                // Generate variables (topic, language, type are always available)
+                const variables = {
+                    topic,
+                    language: contentLang,
+                    video_type: isShort ? "short video" : "long video",
+                    ...(chosenTemplate.variables || {})
+                };
+
+                let titleTemplate = '';
+                let descriptionTemplate = '';
+                let tagsTemplate = '';
+
+                if (chosenTemplate.templates) { // If it's a specific SEO template with "shorts" / "long" variations
+                    titleTemplate = chosenTemplate.templates.title[type];
+                    descriptionTemplate = chosenTemplate.templates.description[type];
+                    tagsTemplate = chosenTemplate.templates.tags.join(", ");
+                } else { // If it's the fallback template (or any other simpler structure)
+                    titleTemplate = chosenTemplate.title || '';
+                    descriptionTemplate = chosenTemplate.description || '';
+                    tagsTemplate = Array.isArray(chosenTemplate.tags) ? chosenTemplate.tags.join(", ") : chosenTemplate.tags || ''; 
+                }
+
+                document.getElementById("titleBox").value = replacePlaceholders(titleTemplate, variables);
+                document.getElementById("descBox").value = replacePlaceholders(descriptionTemplate, variables);
+                
+                const tagsRaw = replacePlaceholders(tagsTemplate, variables);
+                document.getElementById("tagsBox").value = tagsRaw;
+                document.getElementById("hashtagBox").value = tagsRaw.split(", ").map(t => `#${t.replace(/\s+/g, '')}`).join(" ");
+
+            } catch (error) {
+                console.error("Generation error:", error);
+                alert(translations[currentUILang].alertGenerateContent);
+            } finally {
+                generateBtn.innerHTML = originalBtnText;
+                generateBtn.disabled = false;
+            }
+        }
+
+        // Helper functions
+        async function fetchSEOData(contentLang = 'en') {
+            try {
+                const response = await fetch(`seo-data-${contentLang}.json`);
+                if (!response.ok) {
+                    console.error(`Failed to load seo-data-${contentLang}.json. Trying fallback...`);
+                    const enResponse = await fetch('seo-data-en.json');
+                    if (!enResponse.ok) throw new Error('Fallback failed');
+                    return await enResponse.json();
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading SEO data:', error);
+                return { seo_templates: [], fallback: {} }; // Return empty structure on error
+            }
+        }
+
+        // NEW IMPROVED findBestTemplate function
+        function findBestTemplate(topic, templates) {
+            const lowerTopic = topic.toLowerCase();
+            const topicWords = new Set(lowerTopic.split(/\s+/).filter(word => word.length > 2)); // Get unique words from topic, ignore short ones
+
+            let bestMatchTemplate = null;
+            let maxMatchingScore = 0; // Use a score instead of just count
+
+            if (!templates) return null;
+
+            for (const template of templates) {
+                let currentScore = 0;
+                if (!template.keywords) continue;
+                
+                template.keywords.forEach(kw => {
+                    const lowerKw = kw.toLowerCase();
+                    if (lowerTopic.includes(lowerKw)) {
+                        // Give higher score for exact phrase match
+                        if (lowerTopic === lowerKw) {
+                            currentScore += 100; // Very high score for exact match
+                        } else if (lowerTopic.includes(lowerKw + ' ')) { // Word boundary check
+                            currentScore += lowerKw.split(/\s+/).length * 10; // More weight for multi-word keywords
+                        } else {
+                            currentScore += lowerKw.split(/\s+/).length; // Basic score for partial include
+                        }
+                    }
+                });
+
+                if (currentScore > maxMatchingScore) {
+                    maxMatchingScore = currentScore;
+                    bestMatchTemplate = template;
+                }
+            }
+            return bestMatchTemplate;
+        }
+
+        function replacePlaceholders(text, variables) {
+            if (!text) return "";
+            return text.replace(/{(\w+)}/g, (_, key) => {
+                const options = variables[key];
+                return Array.isArray(options) 
+                    ? options[Math.floor(Math.random() * options.length)]
+                    : (options !== undefined ? options : "");
+            });
+        }
+
+        // Reset Form
+        function resetFields() {
+            document.getElementById("inputTopic").value = "";
+            document.getElementById("language").selectedIndex = 0;
+            document.getElementById("type").selectedIndex = 0;
+            document.getElementById("titleBox").value = "";
+            document.getElementById("descBox").value = "";
+            document.getElementById("hashtagBox").value = "";
+            document.getElementById("tagsBox").value = "";
+        }
+
+        // Download as TXT
+        function downloadTxt() {
+            const title = document.getElementById("titleBox").value;
+            const desc = document.getElementById("descBox").value;
+            const tags = document.getElementById("tagsBox").value;
+            const hashtags = document.getElementById("hashtagBox").value;
+            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+
+            if (!title && !desc && !tags && !hashtags) {
+                alert(translations[currentLang].alertGenerateContent);
+                return;
+            }
+
+            const content = `Title:\n${title}\n\nDescription:\n${desc}\n\nTags:\n${tags}\n\nHashtags:\n${hashtags}\n\nGenerated by YTSEO.ai`;
+            const blob = new Blob([content], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "ytseo-ai-content.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark");
+            const btn = document.querySelector('[onclick="toggleDarkMode()"]');
+            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+            btn.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[currentLang].darkModeButton}`;
+            localStorage.setItem('ytseoDarkMode', document.body.classList.contains("dark"));
+        }
+
+        // INITIALIZE ON LOAD
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Apply UI language and dark mode first
+            const savedLang = localStorage.getItem('ytseoUILang') || 'en';
+            document.getElementById('uiLang').value = savedLang;
+            applyTranslations(savedLang);
+
+            if (localStorage.getItem('ytseoDarkMode') === 'true') {
+                document.body.classList.add('dark');
+                const btn = document.querySelector('[onclick="toggleDarkMode()"]');
+                const currentLang = localStorage.getItem('ytseoUILang') || 'en';
+                btn.innerHTML = `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}`;
+            }
+        });
+    </script>
+</body>
+</html>
