@@ -1,48 +1,251 @@
+/* ===== Enhanced YTSEO.ai Styles ===== */
 :root {
-    /* Light Theme */
-    --bg-light: #f8f9fa;
-    --text-light: #2d3748;
-    --card-light: #ffffff;
+    /* Enhanced Color System */
+    --background-color-light: #f8f9fa;
+    --text-color-light: #2d3748;
+    --card-background-light: #ffffff;
+    --border-color-light: #e2e8f0;
     --header-bg-light: #1a202c;
-    --primary-light: #e53e3e;
-    --primary-hover-light: #c53030;
+    --header-text-light: #f8f9fa;
+    --primary-button-bg-light: #e53e3e;
+    --primary-button-hover-light: #c53030;
+    --secondary-button-bg-light: #4a5568;
+    --secondary-button-hover-light: #2d3748;
+    --export-button-bg-light: #38a169;
+    --export-button-hover-light: #2f855a;
+    --copy-button-bg-light: #edf2f7;
+    --copy-button-text-light: #4a5568;
+    --copy-button-hover-light: #e2e8f0;
+    --input-focus-glow-light: rgba(229, 62, 62, 0.3);
 
-    /* Dark Theme */
-    --bg-dark: #121826;
-    --text-dark: #f0f4f8;
-    --card-dark: #1e293b;
+    /* Dark Mode Enhancements */
+    --background-color-dark: #121826;
+    --text-color-dark: #f0f4f8;
+    --card-background-dark: #1e293b;
+    --border-color-dark: #334155;
     --header-bg-dark: #0f172a;
-    --primary-dark: #f56565;
+    --primary-button-bg-dark: #f56565;
+    --primary-button-hover-dark: #e53e3e;
+    --export-button-bg-dark: #48bb78;
+    --export-button-hover-dark: #38a169;
+    --copy-button-bg-dark: #2d3748;
+    --copy-button-text-dark: #cbd5e0;
+    --copy-button-hover-dark: #4a5568;
+    --input-focus-glow-dark: rgba(245, 101, 101, 0.4);
+
+    /* New Transition Variables */
+    --transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-transform: transform 0.15s ease-out;
 }
 
+/* ===== Base Styles ===== */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-light);
-    transition: all 0.3s ease;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
 }
 
 body.dark {
-    background-color: var(--bg-dark);
-    color: var(--text-dark);
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
 }
 
+/* ===== Layout Improvements ===== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
+/* ===== Header Enhancements ===== */
+header {
+    background-color: var(--header-bg-light);
+    color: var(--header-text-light);
+    padding: 1.5rem 0;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.dark header {
+    background-color: var(--header-bg-dark);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ===== Form Elements ===== */
+select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color-light);
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--card-background-light);
+    color: var(--text-color-light);
+    transition: var(--transition-base);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+body.dark select,
+body.dark textarea {
+    border-color: var(--border-color-dark);
+    background-color: var(--card-background-dark);
+    color: var(--text-color-dark);
+}
+
+/* ===== Button Enhancements ===== */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition-base);
+    border: none;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background-color: var(--primary-button-bg-light);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-button-hover-light);
+}
+
+/* ===== Card Improvements ===== */
 .card {
-    background-color: var(--card-light);
+    background-color: var(--card-background-light);
     border-radius: 0.75rem;
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-color-light);
+    transition: var(--transition-base);
 }
 
 body.dark .card {
-    background-color: var(--card-dark);
+    background-color: var(--card-background-dark);
+    border-color: var(--border-color-dark);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Full CSS continues with all previous enhancements */
+/* ===== Output Section ===== */
+.output-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.output-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.btn-copy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    background-color: var(--copy-button-bg-light);
+    color: var(--copy-button-text-light);
+    border-radius: 0 0.5rem 0 0;
+    font-size: 0.875rem;
+    transition: var(--transition-base);
+}
+
+body.dark .btn-copy {
+    background-color: var(--copy-button-bg-dark);
+    color: var(--copy-button-text-dark);
+}
+
+/* ===== Loading State ===== */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* ===== Responsive Improvements ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .header-controls {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ===== Accessibility Improvements ===== */
+:focus-visible {
+    outline: 2px solid var(--primary-button-bg-light);
+    outline-offset: 2px;
+}
+
+body.dark :focus-visible {
+    outline-color: var(--primary-button-bg-dark);
+}
+
+/* ===== Print Styles ===== */
+@media print {
+    .header-controls,
+    .btn {
+        display: none !important;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: none;
+        page-break-inside: avoid;
+    }
+}
