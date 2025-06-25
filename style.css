@@ -89,7 +89,20 @@ body.dark header {
     flex-wrap: wrap;
     justify-content: center;
 }
+.logo-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 0;
+}
 
+.logo-title .yt-part {
+  color: #FF0000; /* Bright red for "YT" */
+}
+
+.logo-title .seo-part {
+  color: #FFFFFF; /* White for "SEO.ai" */
+}
 /* ===== Form Elements ===== */
 select, textarea {
     width: 100%;
@@ -162,25 +175,46 @@ body.dark .card {
 
 /* ===== Output Section ===== */
 .output-group {
-    position: relative;
-    margin-bottom: 1.5rem;
+  position: relative;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .output-group textarea {
-    min-height: 100px;
-    resize: vertical;
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in width */
+  padding-right: 4.5rem; /* Add right padding to avoid overlap with copy button */
+  min-height: 100px;
+  resize: vertical;
 }
 
+/* Copy button styling */
 .btn-copy {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.5rem 1rem;
-    background-color: var(--copy-button-bg-light);
-    color: var(--copy-button-text-light);
-    border-radius: 0 0.5rem 0 0;
-    font-size: 0.875rem;
-    transition: var(--transition-base);
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2.5rem; /* fixed height */
+  padding: 0 1rem;
+  background-color: var(--copy-button-bg-light);
+  color: var(--copy-button-text-light);
+  border-radius: 0 0.5rem 0 0;
+  font-size: 0.875rem;
+  line-height: 2.5rem;
+  cursor: pointer;
+  transition: var(--transition-base);
+  border: none;
+  box-sizing: content-box;
+}
+
+body.dark .btn-copy {
+  background-color: var(--copy-button-bg-dark);
+  color: var(--copy-button-text-dark);
+}
+
+/* Optional: Ensure all copy buttons have the same width */
+.btn-copy {
+  min-width: 4.5rem;
+  text-align: center;
 }
 
 body.dark .btn-copy {
