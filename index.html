@@ -111,372 +111,130 @@
     </footer>
 
 <script>
-    const uiLangSelect = document.getElementById('uiLang');
-    const topicInput = document.getElementById('topicInput');
-    const nicheSelect = document.getElementById('nicheSelect');
-    const keywordSelect = document.getElementById('keywordSelect');
-    const videoTypeSelect = document.getElementById('videoTypeSelect');
-    const variablesSection = document.getElementById('variablesSection');
-    const variableInputs = document.getElementById('variableInputs');
-    const generateBtn = document.getElementById('generateBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const generatedTitle = document.getElementById('generatedTitle');
-    const generatedDescription = document.getElementById('generatedDescription');
-    const generatedTags = document.getElementById('generatedTags');
+  // Load correct language JSON
+  function loadSEOData(lang) {
+    fetch(`seo-data-${lang}.json`)
+      .then((response) => response.json())
+      .then((data) => {
+        window.seoTemplates = data;
+        console.log("✅ SEO Data Loaded for:", lang, data);
+        setupSmartSuggestions(); // refresh suggestions after load
+      })
+      .catch((err) => console.error("❌ Error loading SEO JSON:", err));
+  }
 
-    let seoData = {}; // This will hold the entire loaded JSON data for the current language
-    let currentTemplate = null; // Stores the currently selected template object (the 'templates' object from JSON)
+  // On page load
+  document.addEventListener("DOMContentLoaded", function () {
+    const uiLang = document.getElementById("uiLang")?.value || "en";
+    loadSEOData(uiLang);
 
-    // Helper to format names (niche or variable) for display
-    function formatNameForDisplay(name) {
-        return name.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+    const topicInput = document.getElementById("inputTopic");
+    topicInput.addEventListener("input", setupSmartSuggestions);
+
+    // Reset error messages
+    document.getElementById("suggestions").innerHTML = "";
+  });
+
+  // UI language change handler
+  function changeUILanguage() {
+    const selectedLang = document.getElementById("uiLang").value;
+    loadSEOData(selectedLang);
+  }
+
+  // Show suggestions under topic box
+  function setupSmartSuggestions() {
+    const inputVal = document.getElementById("inputTopic").value.toLowerCase();
+    const suggestionBox = document.getElementById("suggestions");
+    if (!window.seoTemplates?.seo_templates) return;
+
+    const allKeywords = window.seoTemplates.seo_templates
+      .flatMap((t) => t.keywords || [])
+      .filter((k) => k.toLowerCase().includes(inputVal))
+      .slice(0, 5);
+
+    suggestionBox.innerHTML = allKeywords.length
+      ? "Suggestions: " + allKeywords.join(", ")
+      : "";
+  }
+
+  // Generate SEO from template or fallback
+  function generateSEO() {
+    const topic = document.getElementById("inputTopic").value.trim();
+    const type = document.getElementById("type").value;
+    const lang = document.getElementById("language").value;
+
+    if (!topic) return alert("Please enter a topic first!");
+
+    let matched = null;
+    if (seoTemplates?.seo_templates?.length > 0) {
+      matched = seoTemplates.seo_templates.find((t) =>
+        t.keywords.some((k) => topic.toLowerCase().includes(k))
+      );
     }
 
-    // Helper to copy text to clipboard
-    function copyToClipboard(elementId) {
-        const element = document.getElementById(elementId);
-        element.select();
-        element.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-        alert("Copied to clipboard!");
+    if (!matched) {
+      console.warn("No keyword matched. Using fallback.");
+      matched = seoTemplates.fallback;
     }
 
-    // Function to populate dropdowns dynamically
-    function populateDropdown(selectElement, options, selectedValue = null, defaultText) {
-        selectElement.innerHTML = '';
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = defaultText || `Select ${selectElement.id.replace('Select', '')}`;
-        defaultOption.disabled = true;
-        defaultOption.selected = true;
-        selectElement.appendChild(defaultOption);
+    const vars = matched.variables || {};
+    const pick = (key) =>
+      Array.isArray(vars[key])
+        ? vars[key][Math.floor(Math.random() * vars[key].length)]
+        : `{${key}}`;
 
-        options.forEach(option => {
-            const opt = document.createElement('option');
-            opt.value = option.value;
-            opt.textContent = option.text;
-            if (selectedValue && option.value === selectedValue) {
-                opt.selected = true;
-            }
-            selectElement.appendChild(opt);
-        });
-    }
+    const fill = (template) =>
+      template
+        .replace(/{(\w+)}/g, (_, key) => pick(key))
+        .replace("{topic}", topic)
+        .replace("{language}", lang)
+        .replace("{type}", type);
 
-    // --- Core Data Loading ---
-    async function loadSEOData(lang) {
-        try {
-            // *** THIS IS THE CRITICAL FIX FOR ENGLISH FILE NAMING ***
-            const filename = (lang === 'en') ? 'seo-data.json' : `seo-data-${lang}.json`;
-            const response = await fetch(filename);
-            // *******************************************************
+    // Output
+    document.getElementById("titleBox").value = fill(matched.templates?.title?.[type] || "");
+    document.getElementById("descBox").value = fill(matched.templates?.description?.[type] || "");
+    document.getElementById("hashtagBox").value = (matched.tags || [])
+      .map((t) => "#" + fill(t).replace(/\s+/g, ""))
+      .join(" ");
+    document.getElementById("tagsBox").value = (matched.tags || [])
+      .map((t) => fill(t).toLowerCase())
+      .join(", ");
+  }
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status} - Could not load ${filename}.`);
-            }
-            const data = await response.json();
-            console.log("Loaded SEO data for:", lang, data);
+  // Copy
+  function copyToClipboard(id) {
+    const el = document.getElementById(id);
+    el.select();
+    document.execCommand("copy");
+    alert("Copied!");
+  }
 
-            seoData = data; // Store the fetched data
-            initializeUI(); // Re-initialize the UI with the new language data
-        } catch (err) {
-            console.error("Error loading SEO JSON for language", lang, err);
-            generatedTitle.value = `Error: Could not load data for ${lang}.`;
-            generatedDescription.value = `Please ensure '${(lang === 'en') ? 'seo-data.json' : `seo-data-${lang}.json`}' exists and is correctly formatted.`;
-            generatedTags.value = "";
-            populateDropdown(nicheSelect, [], "No Niches Available");
-            populateDropdown(keywordSelect, [], "No Keywords Available");
-            keywordSelect.disabled = true;
-            variablesSection.style.display = 'none';
-        }
-    }
+  // Reset
+  function resetFields() {
+    document.getElementById("inputTopic").value = "";
+    document.getElementById("language").selectedIndex = 0;
+    document.getElementById("type").selectedIndex = 0;
+    document.getElementById("titleBox").value = "";
+    document.getElementById("descBox").value = "";
+    document.getElementById("hashtagBox").value = "";
+    document.getElementById("tagsBox").value = "";
+    document.getElementById("suggestions").innerHTML = "";
+  }
 
-    // --- UI Initialization and Update ---
-    function initializeUI() {
-        // Populate Niche Select (from keywords in seo_templates array)
-        const nicheOptions = [];
-        if (seoData.seo_templates) {
-            const uniqueNiches = new Set();
-            seoData.seo_templates.forEach(templateGroup => {
-                if (templateGroup.keywords && templateGroup.keywords.length > 0) {
-                    const primaryKeyword = templateGroup.keywords[0];
-                    if (!uniqueNiches.has(primaryKeyword)) {
-                        uniqueNiches.add(primaryKeyword);
-                        nicheOptions.push({ value: primaryKeyword, text: formatNameForDisplay(primaryKeyword) });
-                    }
-                }
-            });
-        }
-        populateDropdown(nicheSelect, nicheOptions, null, "Select Niche/Category");
+  // Export to .txt
+  function downloadTxt() {
+    const content = `Title:\n${titleBox.value}\n\nDescription:\n${descBox.value}\n\nHashtags:\n${hashtagBox.value}\n\nTags:\n${tagsBox.value}`;
+    const blob = new Blob([content], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.download = "seo.txt";
+    link.href = URL.createObjectURL(blob);
+    link.click();
+  }
 
-        // Populate Video Type Selector
-        populateDropdown(videoTypeSelect, [
-            { value: 'long', text: 'Long Form Video' },
-            { value: 'shorts', text: 'YouTube Shorts' }
-        ], 'long', "Select Video Type"); // Default to 'long'
-
-        // Reset keyword and variable sections
-        populateDropdown(keywordSelect, [], "Select Keyword");
-        keywordSelect.disabled = true;
-        variablesSection.style.display = 'none';
-        generatedTitle.value = '';
-        generatedDescription.value = '';
-        generatedTags.value = '';
-        currentTemplate = null; // Clear currently selected template
-        topicInput.value = ''; // Clear topic input on language change/reset
-    }
-
-    // Handles niche and keyword selection changes
-    function handleSelectionChange() {
-        // Clear topic input if manual dropdowns are being used
-        topicInput.value = '';
-
-        const selectedNiche = nicheSelect.value;
-        const keywordsForSelectedNiche = [];
-        currentTemplate = null; // Reset template on new selection
-
-        const selectedTemplateGroup = seoData.seo_templates.find(group => group.keywords.includes(selectedNiche));
-
-        if (selectedTemplateGroup) {
-            selectedTemplateGroup.keywords.forEach(keyword => {
-                keywordsForSelectedNiche.push({ value: keyword, text: keyword });
-            });
-            populateDropdown(keywordSelect, keywordsForSelectedNiche, null, "Select Specific Keyword");
-            keywordSelect.disabled = false;
-        } else {
-            populateDropdown(keywordSelect, [], "Select Keyword");
-            keywordSelect.disabled = true;
-            variablesSection.style.display = 'none';
-        }
-
-        updateVariableInputs();
-        generateSEO(); // Regenerate SEO after manual selection changes
-    }
-
-    // Updates variable input fields based on selected keyword
-    function updateVariableInputs() {
-        const selectedNiche = nicheSelect.value;
-        const selectedKeyword = keywordSelect.value;
-
-        variableInputs.innerHTML = '';
-        variablesSection.style.display = 'none';
-        currentTemplate = null; // Reset current template
-
-        if (selectedNiche && selectedKeyword && seoData.seo_templates) {
-            const selectedGroup = seoData.seo_templates.find(group => group.keywords.includes(selectedNiche));
-
-            if (selectedGroup && selectedGroup.templates) {
-                currentTemplate = selectedGroup.templates;
-
-                if (currentTemplate.variables) {
-                    variablesSection.style.display = 'block';
-                    for (const varName in currentTemplate.variables) {
-                        if (currentTemplate.variables.hasOwnProperty(varName)) {
-                            const varValues = currentTemplate.variables[varName];
-                            const div = document.createElement('div');
-                            div.classList.add('variable-item');
-
-                            const label = document.createElement('label');
-                            label.textContent = `${formatNameForDisplay(varName)}:`;
-                            label.htmlFor = `var-${varName}`;
-                            div.appendChild(label);
-
-                            const input = document.createElement('input');
-                            input.type = 'text';
-                            input.id = `var-${varName}`;
-                            input.placeholder = varValues && varValues.length > 0 ? `e.g., ${varValues[0]}` : 'Enter value';
-                            input.value = varValues && varValues.length > 0 ? varValues[Math.floor(Math.random() * varValues.length)] : '';
-                            input.setAttribute('data-variable-name', varName);
-                            input.addEventListener('input', generateSEO); // Update SEO on variable input change
-                            div.appendChild(input);
-
-                            variableInputs.appendChild(div);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // --- Fake AI Generator Logic (triggered by topicInput or generate button if topic is present) ---
-    function generateSEOFromTopic() {
-        const topic = topicInput.value.trim(); // Keep original casing for topic substitution
-        const videoType = videoTypeSelect.value;
-
-        let templateToUse = null;
-
-        if (topic && seoData.seo_templates) {
-            const lowerCaseTopic = topic.toLowerCase();
-            // Try to find a template group whose keywords include the topic
-            for (const templateGroup of seoData.seo_templates) {
-                if (templateGroup.keywords && templateGroup.keywords.some(kw => lowerCaseTopic.includes(kw.toLowerCase()))) {
-                    templateToUse = templateGroup.templates;
-                    break;
-                }
-            }
-        }
-
-        // If no matching template, use fallback
-        templateToUse = templateToUse || seoData.fallback;
-
-        // Ensure we have a valid template, or default to empty strings
-        if (!templateToUse) {
-            generatedTitle.value = "No template found for this topic or no fallback available.";
-            generatedDescription.value = "";
-            generatedTags.value = "";
-            return;
-        }
-
-        let finalTitle = "";
-        let finalDescription = "";
-        let finalTags = [];
-
-        // Get title and description based on videoType
-        if (templateToUse.title) {
-            finalTitle = templateToUse.title[videoType] || templateToUse.title.long || '';
-        }
-        if (templateToUse.description) {
-            finalDescription = templateToUse.description[videoType] || templateToUse.description.long || '';
-        }
-        finalTags = (templateToUse.tags && Array.isArray(templateToUse.tags)) ? [...templateToUse.tags] : [];
-
-        // Substitute variables from the matched/fallback template's own variables
-        if (templateToUse.variables) {
-            for (const varName in templateToUse.variables) {
-                if (templateToUse.variables.hasOwnProperty(varName)) {
-                    const varValues = templateToUse.variables[varName];
-                    // Pick a random value from the variable list, or use the topic if it's the {topic} variable
-                    let varValue = varValues && varValues.length > 0 ? varValues[Math.floor(Math.random() * varValues.length)] : '';
-                    if (varName === 'topic') { // Special handling for {topic}, always use topic input if present
-                         varValue = topic || '...'; // Use topic input, or placeholder if topic is empty
-                    }
-
-                    const placeholder = new RegExp(`{${varName}}`, 'g');
-                    finalTitle = finalTitle.replace(placeholder, varValue);
-                    finalDescription = finalDescription.replace(placeholder, varValue);
-                    finalTags = finalTags.map(tag => tag.replace(placeholder, varValue));
-                }
-            }
-        }
-
-        // Replace any remaining unpopulated placeholders with "..."
-        const allPlaceholdersRegex = /{([^}]+)}/g;
-        finalTitle = finalTitle.replace(allPlaceholdersRegex, '...');
-        finalDescription = finalDescription.replace(allPlaceholdersRegex, '...');
-        finalTags = finalTags.map(tag => tag.replace(allPlaceholdersRegex, '...'));
-
-        generatedTitle.value = finalTitle;
-        generatedDescription.value = finalDescription;
-        generatedTags.value = finalTags.join(", ");
-
-        // Reset dropdowns and variable section as AI generation operates independently
-        populateDropdown(nicheSelect, [], "Select Niche/Category");
-        populateDropdown(keywordSelect, [], "Select Keyword");
-        keywordSelect.disabled = true;
-        variablesSection.style.display = 'none';
-        currentTemplate = null; // Clear template state after AI generation
-    }
-
-    // --- Original Generate SEO (for manual dropdown selections) ---
-    function generateSEO() {
-        let finalTitle = "";
-        let finalDescription = "";
-        let finalTags = [];
-        const videoType = videoTypeSelect.value;
-
-        let templateToUse = currentTemplate; // Use the template selected via dropdowns
-
-        // If no specific niche/keyword is selected, clear outputs for manual mode.
-        if (!templateToUse || !nicheSelect.value || !keywordSelect.value) {
-            generatedTitle.value = "";
-            generatedDescription.value = "";
-            generatedTags.value = "";
-            return;
-        }
-
-        if (templateToUse) {
-            if (templateToUse.title) {
-                finalTitle = templateToUse.title[videoType] || templateToUse.title.long || '';
-            }
-            if (templateToUse.description) {
-                finalDescription = templateToUse.description[videoType] || templateToUse.description.long || '';
-            }
-            finalTags = (templateToUse.tags && Array.isArray(templateToUse.tags)) ? [...templateToUse.tags] : [];
-
-            const inputs = variableInputs.querySelectorAll('input[type="text"]');
-            inputs.forEach(input => {
-                const varName = input.getAttribute('data-variable-name');
-                const varValue = input.value;
-                const placeholder = new RegExp(`{${varName}}`, 'g');
-
-                finalTitle = finalTitle.replace(placeholder, varValue);
-                finalDescription = finalDescription.replace(placeholder, varValue);
-                finalTags = finalTags.map(tag => tag.replace(placeholder, varValue));
-            });
-        }
-
-        const allPlaceholdersRegex = /{([^}]+)}/g;
-        finalTitle = finalTitle.replace(allPlaceholdersRegex, '...');
-        finalDescription = finalDescription.replace(allPlaceholdersRegex, '...');
-        finalTags = finalTags.map(tag => tag.replace(allPlaceholdersRegex, '...'));
-
-        generatedTitle.value = finalTitle;
-        generatedDescription.value = finalDescription;
-        generatedTags.value = finalTags.join(", ");
-    }
-
-
-    // Resets the form and reloads initial data
-    function resetForm() {
-        uiLangSelect.value = 'en'; // Reset language to default
-        loadSEOData(uiLangSelect.value); // Reload data for 'en'
-        // Ensure outputs are cleared immediately on reset
-        generatedTitle.value = '';
-        generatedDescription.value = '';
-        generatedTags.value = '';
-    }
-
-    // --- Event Listeners ---
-    uiLangSelect.addEventListener('change', (event) => {
-        loadSEOData(event.target.value);
-    });
-
-    // Listen for input on the topic field to trigger AI generation
-    topicInput.addEventListener('input', () => {
-        // Clear manual selections if topic is being used
-        nicheSelect.value = '';
-        keywordSelect.value = '';
-        variablesSection.style.display = 'none';
-        currentTemplate = null;
-        generateSEOFromTopic();
-    });
-
-    nicheSelect.addEventListener('change', handleSelectionChange);
-    keywordSelect.addEventListener('change', updateVariableInputs);
-
-    videoTypeSelect.addEventListener('change', () => {
-        // Determine which generation method to use based on topic input state
-        if (topicInput.value.trim() !== "") {
-            generateSEOFromTopic();
-        } else {
-            generateSEO();
-        }
-    });
-
-    // Generate button will prioritize AI generation if topic is present, otherwise manual
-    generateBtn.addEventListener('click', () => {
-        if (topicInput.value.trim() !== "") {
-            generateSEOFromTopic();
-        } else {
-            generateSEO();
-        }
-    });
-
-    resetBtn.addEventListener('click', resetForm);
-
-    // Initial load when the DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
-        loadSEOData(uiLangSelect.value || 'en');
-    });
+  // Dark Mode
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+  }
 </script>
 </body>
 </html>
