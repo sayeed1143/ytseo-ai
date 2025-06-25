@@ -3,30 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YTSEO.ai - Smart SEO for YouTube Videos</title>
-    <meta name="description" content="Generate optimized YouTube titles, descriptions, and tags instantly. Boost your video's SEO with AI-powered suggestions.">
-    <meta name="keywords" content="YouTube SEO, video optimization, title generator, description generator, tag generator, YouTube tools, AI SEO, content creator tools, content creation, video marketing, get more views, YouTube growth">
-    <meta name="author" content="YTSEO.ai">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.ytseo.ai/">
-    <meta property="og:title" content="YTSEO.ai - Smart SEO for YouTube Videos">
-    <meta property="og:description" content="Generate optimized YouTube titles, descriptions, and tags instantly. Boost your video's SEO with AI-powered suggestions.">
-    <meta property="og:image" content="https://www.ytseo.ai/og-image.jpg"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.ytseo.ai/">
-    <meta property="twitter:title" content="YTSEO.ai - Smart SEO for YouTube Videos">
-    <meta property="twitter:description" content="Generate optimized YouTube titles, descriptions, and tags instantly. Boost your video's SEO with AI-powered suggestions.">
-    <meta property="twitter:image" content="https://www.ytseo.ai/twitter-image.jpg"> <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>AI SEO Content Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --container-bg: #fff;
+            --input-bg: #e8f0fe;
+            --input-border: #ccc;
+            --button-bg: #4CAF50;
+            --button-text: white;
+            --button-hover-bg: #45a049;
+            --output-bg: #f9f9f9;
+            --output-border: #ddd;
+            --copy-button-bg: #007bff;
+            --copy-button-hover-bg: #0056b3;
+            --dark-mode-toggle-bg: #6c757d;
+            --dark-mode-toggle-hover-bg: #5a6268;
+            --reset-button-bg: #dc3545;
+            --reset-button-hover-bg: #c82333;
+            --export-button-bg: #17a2b8;
+            --export-button-hover-bg: #138496;
+            --or-divider-color: #666;
+            --header-color: #2c3e50;
+        }
+
+        body.dark-mode {
+            --bg-color: #2b2b2b;
+            --text-color: #e0e0e0;
+            --container-bg: #3c3c3c;
+            --input-bg: #4a4a4a;
+            --input-border: #666;
+            --button-bg: #28a745;
+            --button-hover-bg: #218838;
+            --output-bg: #444;
+            --output-border: #555;
+            --copy-button-bg: #17a2b8;
+            --copy-button-hover-bg: #138496;
+            --dark-mode-toggle-bg: #5a6268;
+            --dark-mode-toggle-hover-bg: #4e555b;
+            --reset-button-bg: #dc3545;
+            --reset-button-hover-bg: #c82333;
+            --export-button-bg: #6f42c1;
+            --export-button-hover-bg: #5f32a0;
+            --or-divider-color: #bbb;
+            --header-color: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            background-color: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--header-color);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .input-group, .output-section {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        textarea, select {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 40px;
+        }
+
+        textarea[readonly] {
+            background-color: var(--output-bg);
+            border: 1px solid var(--output-border);
+        }
+
+        .dropdown {
+            cursor: pointer;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button i {
+            margin-right: 5px;
+        }
+
+        #generateBtn {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+        }
+
+        #generateBtn:hover {
+            background-color: var(--button-hover-bg);
+            transform: translateY(-2px);
+        }
+
+        .output-section button {
+            background-color: var(--copy-button-bg);
+            color: white;
+            margin-top: 10px;
+        }
+
+        .output-section button:hover {
+            background-color: var(--copy-button-hover-bg);
+            transform: translateY(-2px);
+        }
+
+        #resetBtn {
+            background-color: var(--reset-button-bg);
+            color: white;
+        }
+
+        #resetBtn:hover {
+            background-color: var(--reset-button-hover-bg);
+            transform: translateY(-2px);
+        }
+
+        #exportBtn {
+            background-color: var(--export-button-bg);
+            color: white;
+        }
+
+        #exportBtn:hover {
+            background-color: var(--export-button-hover-bg);
+            transform: translateY(-2px);
+        }
+
+        .dark-mode-toggle {
+            background-color: var(--dark-mode-toggle-bg);
+            color: white;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: var(--dark-mode-toggle-hover-bg);
+        }
+
+        .variables-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            background-color: var(--input-bg);
+        }
+
+        .variables-section h3 {
+            margin-top: 0;
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .variables-section .input-group {
+            margin-bottom: 10px;
+        }
+
+        .or-divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            font-weight: 700;
+            color: var(--or-divider-color);
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: var(--or-divider-color);
+        }
+
+        .or-divider::before {
+            left: 0;
+        }
+
+        .or-divider::after {
+            right: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 1fr 1fr; /* Two columns for larger screens */
+            }
+
+            .main-inputs {
+                grid-column: 1 / 2;
+            }
+
+            .output-fields {
+                grid-column: 2 / 3;
+            }
+            
+            .button-group {
+                grid-column: 1 / 3; /* Buttons span both columns */
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 20px;
+            }
+            .button-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>YTSEO.ai</h1>
-            <p data-translate-key="tagline">Smart SEO. More Views. Less Hassle.</p>
-            <div class="header-controls">
-                <select id="uiLang" onchange="changeUILanguage()">
+    <div class="container">
+        <h1>AI SEO Content Generator</h1>
+
+        <div class="input-group" style="text-align: right;">
+            <label for="uiLang" data-translate-key="uiLanguageLabel"></label>
+            <select id="uiLang" class="dropdown">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="ru">Русский (Russian)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="fr">Français (French)</option>
+                <option value="de">Deutsch (German)</option>
+            </select>
+        </div>
+
+        <div class="main-inputs">
+            <div class="input-group">
+                <label id="aiTopicLabel" data-translate-key="videoTopicLabel" for="inputTopic"></label>
+                <textarea id="inputTopic" rows="4" data-translate-key="videoTopicPlaceholder" placeholder="e.g. A story about a lion who learns humility..."></textarea>
+            </div>
+
+            <div class="or-divider">
+                <span id="orDivider" data-translate-key="orLabel">OR</span>
+            </div>
+
+            <div class="input-group">
+                <label id="nicheLabel" for="nicheSelect" data-translate-key="selectNicheCategory"></label>
+                <select id="nicheSelect" class="dropdown"></select>
+            </div>
+
+            <div class="input-group">
+                <label id="keywordLabel" for="keywordSelect" data-translate-key="selectSpecificKeyword"></label>
+                <select id="keywordSelect" class="dropdown" disabled></select>
+            </div>
+
+            <div id="variablesSection" class="variables-section" style="display: none;">
+                <h3>Custom Variables</h3>
+                <div id="variableInputs">
+                    </div>
+            </div>
+
+            <div class="input-group">
+                <label data-translate-key="contentLanguageLabel" for="language"></label>
+                <select id="language" class="dropdown">
                     <option value="en" data-translate-key="englishOption">English</option>
                     <option value="hi" data-translate-key="hindiOption">Hindi</option>
                     <option value="ur" data-translate-key="urduOption">Urdu</option>
@@ -35,930 +335,792 @@
                     <option value="fr" data-translate-key="frenchOption">Français</option>
                     <option value="de" data-translate-key="germanOption">Deutsch</option>
                 </select>
-                <button onclick="toggleDarkMode()" data-translate-key="darkModeButton">🌙 Dark Mode</button>
+            </div>
+
+            <div class="input-group">
+                <label data-translate-key="videoFormatLabel" for="type"></label>
+                <select id="type" class="dropdown">
+                    <option value="shorts" data-translate-key="shortVideoOption">Short Video</option>
+                    <option value="long" data-translate-key="longVideoOption">Long Video</option>
+                </select>
             </div>
         </div>
-    </header>
-
-    <main class="container">
-        <section class="input-section card">
-            <div class="form-group">
-                <label for="inputTopic" data-translate-key="videoTopicLabel"><i class="fas fa-pencil-alt"></i> Video Topic/Script</label>
-                <textarea id="inputTopic" rows="4" placeholder="e.g. A story about a lion who learns humility..." data-translate-key="videoTopicPlaceholder"></textarea>
+        
+        <div class="output-fields">
+            <div class="output-section">
+                <label data-translate-key="titleLabel" for="titleBox"></label>
+                <textarea id="titleBox" rows="2" readonly data-translate-key="titlePlaceholder"></textarea>
+                <button id="copyTitleBtn" onclick="copyToClipboard('titleBox')" data-translate-key="copyTitleButton"><i class="fas fa-copy"></i> Copy Title</button>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="language" data-translate-key="contentLanguageLabel"><i class="fas fa-globe"></i> Content Language</label>
-                    <select id="language">
-                        <option value="en" data-translate-key="englishOption">English</option>
-                        <option value="hi" data-translate-key="hindiOption">Hindi</option>
-                        <option value="ur" data-translate-key="urduOption">Urdu</option>
-                        <option value="ru" data-translate-key="russianOption">Russian</option>
-                        <option value="es" data-translate-key="spanishOption">Español</option>
-                        <option value="fr" data-translate-key="frenchOption">Français</option>
-                        <option value="de" data-translate-key="germanOption">Deutsch</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="type" data-translate-key="videoFormatLabel"><i class="fas fa-video"></i> Video Format</label>
-                    <select id="type">
-                        <option value="shorts" data-translate-key="shortVideoOption">Short Video</option>
-                        <option value="long" data-translate-key="longVideoOption">Long Video</option>
-                    </select>
-                </div>
+            <div class="output-section">
+                <label data-translate-key="descriptionLabel" for="descBox"></label>
+                <textarea id="descBox" rows="5" readonly data-translate-key="descriptionPlaceholder"></textarea>
+                <button id="copyDescBtn" onclick="copyToClipboard('descBox')" data-translate-key="copyDescriptionButton"><i class="fas fa-copy"></i> Copy Description</button>
             </div>
 
-            <div class="button-group">
-                <button class="btn btn-primary" onclick="generateSEO()" data-translate-key="generateSEOButton"><i class="fas fa-bolt"></i> Generate SEO</button>
-                <button class="btn btn-secondary" onclick="resetFields()" data-translate-key="resetButton"><i class="fas fa-redo-alt"></i> Reset</button>
-            </div>
-        </section>
-
-        <section class="output-section card">
-            <div class="output-group">
-                <label for="titleBox" data-translate-key="titleLabel"><i class="fas fa-heading"></i> Title</label>
-                <textarea id="titleBox" rows="2" placeholder="Your optimized title will appear here..." data-translate-key="titlePlaceholder" readonly></textarea>
-                <button class="btn-copy" onclick="copyToClipboard('titleBox')"><i class="fas fa-copy"></i> Copy Title</button>
+            <div class="output-section">
+                <label data-translate-key="hashtagsLabel" for="hashtagBox"></label>
+                <textarea id="hashtagBox" rows="2" readonly data-translate-key="hashtagsPlaceholder"></textarea>
+                <button id="copyHashtagsBtn" onclick="copyToClipboard('hashtagBox')" data-translate-key="copyHashtagsButton"><i class="fas fa-copy"></i> Copy Hashtags</button>
             </div>
 
-            <div class="output-group">
-                <label for="descBox" data-translate-key="descriptionLabel"><i class="fas fa-align-left"></i> Description</label>
-                <textarea id="descBox" rows="6" placeholder="Your SEO description will appear here..." data-translate-key="descriptionPlaceholder" readonly></textarea>
-                <button class="btn-copy" onclick="copyToClipboard('descBox')"><i class="fas fa-copy"></i> Copy Description</button>
+            <div class="output-section">
+                <label data-translate-key="videoTagsLabel" for="tagsBox"></label>
+                <textarea id="tagsBox" rows="2" readonly data-translate-key="videoTagsPlaceholder"></textarea>
+                <button id="copyTagsBtn" onclick="copyToClipboard('tagsBox')" data-translate-key="copyTagsButton"><i class="fas fa-copy"></i> Copy Tags</button>
             </div>
-
-            <div class="output-group">
-                <label for="hashtagBox" data-translate-key="hashtagsLabel"><i class="fas fa-hashtag"></i> Hashtags</label>
-                <textarea id="hashtagBox" rows="2" placeholder="Relevant hashtags will appear here..." data-translate-key="hashtagsPlaceholder" readonly></textarea>
-                <button class="btn-copy" onclick="copyToClipboard('hashtagBox')"><i class="fas fa-copy"></i> Copy Hashtags</button>
-            </div>
-
-            <div class="output-group">
-                <label for="tagsBox" data-translate-key="videoTagsLabel"><i class="fas fa-tags"></i> Video Tags</label>
-                <textarea id="tagsBox" rows="3" placeholder="Optimized tags will appear here..." data-translate-key="videoTagsPlaceholder" readonly></textarea>
-                <button class="btn-copy" onclick="copyToClipboard('tagsBox')"><i class="fas fa-copy"></i> Copy Tags</button>
-            </div>
-
-            <button class="btn btn-export" onclick="downloadTxt()" data-translate-key="exportButton"><i class="fas fa-download"></i> Export All</button>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p data-translate-key="footerText">Powered by <strong>YTSEO.ai</strong> – Built with ❤️ for global creators</p>
         </div>
-    </footer>
 
-   <script>
-    // --- UI Translations (from your provided script) ---
-    const translations = {
-        en: {
-            darkModeButton: '🌙 Dark Mode',
-            lightModeButton: '☀️ Light Mode',
-            tagline: 'Smart SEO. More Views. Less Hassle.',
-            videoTopicLabel: '📝 Video Topic for AI Generation', // Renamed for clarity with AI focus
-            videoTopicPlaceholder: 'e.g. A story about a lion who learns humility...',
-            contentLanguageLabel: '🌍 Content Language',
-            englishOption: 'English',
-            hindiOption: 'Hindi',
-            urduOption: 'Urdu',
-            russianOption: 'Russian',
-            spanishOption: 'Español',
-            frenchOption: 'Français',
-            germanOption: 'Deutsch',
-            videoFormatLabel: '🎬 Video Format',
-            shortVideoOption: 'Short Video',
-            longVideoOption: 'Long Video',
-            generateSEOButton: '⚡ Generate SEO',
-            resetButton: '🔁 Reset',
-            exportButton: '📥 Export All',
-            titleLabel: '🎯 Title',
-            titlePlaceholder: 'Your optimized title will appear here...',
-            copyTitleButton: 'Copy Title',
-            descriptionLabel: '📝 Description',
-            descriptionPlaceholder: 'Your SEO description will appear here...',
-            hashtagsLabel: '📌 Hashtags',
-            hashtagsPlaceholder: 'Relevant hashtags will appear here...',
-            videoTagsLabel: '🔖 Video Tags',
-            videoTagsPlaceholder: 'Optimized tags will appear here...',
-            copyTagsButton: 'Copy Tags',
-            copyHashtagsButton: 'Copy Hashtags',
-            footerText: 'Powered by <strong>YTSEO.ai</strong> – Built with ❤️ for global creators',
-            alertEnterTopic: 'Please enter a video topic for AI generation, or select a Niche/Keyword for manual generation!', // Updated alert
-            alertGenerateContent: 'Generate some content first!',
-            copiedSuccess: '✓ Copied!',
-            generatingText: 'Generating...', // Added for loading state
-            selectNicheCategory: 'Select Niche/Category', // Added for Niche dropdown
-            selectSpecificKeyword: 'Select Specific Keyword', // Added for Keyword dropdown
-            noNichesAvailable: 'No Niches Available', // Added for Niche fallback
-            noKeywordsAvailable: 'No Keywords Available', // Added for Keyword fallback
-            orLabel: 'OR' // Added for "OR" divider
-        },
-        hi: {
-            darkModeButton: '🌙 डार्क मोड',
-            lightModeButton: '☀️ लाइट मोड',
-            tagline: 'स्मार्ट एसईओ। अधिक व्यूज। कम परेशानी।',
-            videoTopicLabel: '📝 एआई जनरेशन के लिए वीडियो विषय',
-            videoTopicPlaceholder: 'उदा. एक शेर की कहानी जो विनम्रता सीखता है...',
-            contentLanguageLabel: '🌍 सामग्री भाषा',
-            englishOption: 'अंग्रेजी',
-            hindiOption: 'हिन्दी',
-            urduOption: 'اردو',
-            russianOption: 'रूसी',
-            spanishOption: 'स्पेनिश',
-            frenchOption: 'फ्रेंच',
-            germanOption: 'जर्मन',
-            videoFormatLabel: '🎬 वीडियो प्रारूप',
-            shortVideoOption: 'छोटा वीडियो',
-            longVideoOption: 'लंबा वीडियो',
-            generateSEOButton: '⚡ एसईओ जनरेट करें',
-            copyTitleButton: 'शीर्षक कॉपी करें',
-            resetButton: '🔁 रीसेट करें',
-            exportButton: '📥 सभी निर्यात करें',
-            titleLabel: '🎯 शीर्षक',
-            titlePlaceholder: 'आपका अनुकूलित शीर्षक यहां दिखाई देगा...',
-            descriptionLabel: '📝 विवरण',
-            descriptionPlaceholder: 'आपका एसईओ विवरण यहां दिखाई देगा...',
-            hashtagsLabel: '📌 हैशटैग',
-            hashtagsPlaceholder: 'प्रासंगिक हैशटैग यहां दिखाई देंगे...',
-            videoTagsLabel: '🔖 वीडियो टैग',
-            videoTagsPlaceholder: 'अनुकूलित टैग यहां दिखाई देंगे...',
-            copyTagsButton: 'टैग कॉपी करें',
-            copyHashtagsButton: 'हैशटैग कॉपी करें',
-            footerText: '<strong>YTSEO.ai</strong> द्वारा संचालित – वैश्विक रचनाकारों के लिए ❤️ से निर्मित',
-            alertEnterTopic: 'कृपया एआई जनरेशन के लिए वीडियो विषय दर्ज करें, या मैन्युअल जनरेशन के लिए आला/कीवर्ड चुनें!',
-            alertGenerateContent: 'पहले कुछ सामग्री जनरेट करें!',
-            copiedSuccess: '✓ कॉपी किया गया!',
-            generatingText: 'उत्पन्न हो रहा है...',
-            selectNicheCategory: 'आला/श्रेणी चुनें',
-            selectSpecificKeyword: 'विशिष्ट कीवर्ड चुनें',
-            noNichesAvailable: 'कोई आला उपलब्ध नहीं',
-            noKeywordsAvailable: 'कोई कीवर्ड उपलब्ध नहीं',
-            orLabel: 'या'
-        },
-        ur: {
-            darkModeButton: '🌙 ڈارک موڈ',
-            lightModeButton: '☀️ لائٹ موڈ',
-            tagline: 'سمارٹ ایس ای او۔ مزید آراء۔ کم پریشانی۔',
-            videoTopicLabel: '📝 اے آئی جنریشن کے لیے ویڈیو کا موضوع',
-            videoTopicPlaceholder: 'مثال کے طور پر: ایک شیر کی کہانی جو عاجزی سیکھتا ہے...',
-            contentLanguageLabel: '🌍 مواد کی زبان',
-            englishOption: 'انگریزی',
-            hindiOption: 'ہندی',
-            urduOption: 'اردو',
-            russianOption: 'روسی',
-            spanishOption: 'ہسپانوی',
-            frenchOption: 'فرانسیسی',
-            germanOption: 'جرمن',
-            videoFormatLabel: '🎬 ویڈیو فارمیٹ',
-            shortVideoOption: 'مختصر ویڈیو',
-            longVideoOption: 'طویل ویڈیو',
-            generateSEOButton: '⚡ ایس ای او بنائیں',
-            resetButton: '🔁 ری سیٹ کریں',
-            exportButton: '📥 سب ایکسپورٹ کریں',
-            titleLabel: '🎯 عنوان',
-            titlePlaceholder: 'آپ کا بہتر کردہ عنوان یہاں ظاہر ہوگا...',
-            copyTitleButton: 'عنوان کاپی کریں',
-            descriptionLabel: '📝 تفصیل',
-            descriptionPlaceholder: 'آپ کا ایس ای او تفصیل یہاں ظاہر ہوگا...',
-            hashtagsLabel: '📌 ہیش ٹیگز',
-            hashtagsPlaceholder: 'متعلقہ ہیش ٹیگز یہاں ظاہر ہوں گے...',
-            videoTagsLabel: '🔖 ویڈیو ٹیگز',
-            videoTagsPlaceholder: 'بہتر کردہ ٹیگز یہاں ظاہر ہوں گے...',
-            copyTagsButton: 'ٹیگز کاپی کریں',
-            copyHashtagsButton: 'ہیش ٹیگز کاپی کریں',
-            footerText: '<strong>YTSEO.ai</strong> کے ذریعے تقویت یافتہ – عالمی تخلیق کاروں کے لیے ❤️ سے بنایا گیا',
-            alertEnterTopic: 'براہ کرم اے آئی جنریشن کے لیے ویڈیو کا موضوع درج کریں، یا دستی جنریشن کے لیے موضوع/کلیدی لفظ منتخب کریں!',
-            alertGenerateContent: 'پہلے کچھ مواد بنائیں!',
-            copiedSuccess: '✓ کاپی کیا گیا!',
-            generatingText: 'بنایا جا رہا ہے...',
-            selectNicheCategory: 'موضوع/زمرہ منتخب کریں',
-            selectSpecificKeyword: 'مخصوص کلیدی لفظ منتخب کریں',
-            noNichesAvailable: 'کوئی موضوع دستیاب نہیں',
-            noKeywordsAvailable: 'کوئی کلیدی لفظ دستیاب نہیں',
-            orLabel: 'یا'
-        },
-        ru: {
-            darkModeButton: '🌙 Темный режим',
-            lightModeButton: '☀️ Светлый режим',
-            tagline: 'Умное SEO. Больше просмотров. Меньше хлопот.',
-            videoTopicLabel: '📝 Тема видео для ИИ-генерации',
-            videoTopicPlaceholder: 'Например: История о льве, который учится скромности...',
-            contentLanguageLabel: '🌍 Язык контента',
-            englishOption: 'Английский',
-            hindiOption: 'Хинди',
-            urduOption: 'Урdu',
-            russianOption: 'Русский',
-            spanishOption: 'Испанский',
-            frenchOption: 'Французский',
-            germanOption: 'Немецкий',
-            videoFormatLabel: '🎬 Формат видео',
-            shortVideoOption: 'Короткое видео',
-            longVideoOption: 'Длинное видео',
-            generateSEOButton: '⚡ Создать SEO',
-            resetButton: '🔁 Сбросить',
-            exportButton: '📥 Экспортировать все',
-            titleLabel: '🎯 Заголовок',
-            titlePlaceholder: 'Ваш оптимизированный заголовок появится здесь...',
-            descriptionLabel: '📝 Описание',
-            descriptionPlaceholder: 'Ваше SEO-описание появится здесь...',
-            hashtagsLabel: '📌 Хэштеги',
-            hashtagsPlaceholder: 'Соответствующие хэштеги появятся здесь...',
-            videoTagsLabel: '🔖 Теги видео',
-            videoTagsPlaceholder: 'Оптимизированные теги появятся здесь...',
-            copyTagsButton: 'Копировать теги',
-            copyHashtagsButton: 'Копировать хэштеги',
-            footerText: 'Работает на <strong>YTSEO.ai</strong> – Создано с ❤️ для глобальных авторов',
-            alertEnterTopic: 'Пожалуйста, сначала введите тему видео для ИИ-генерации, или выберите нишу/ключевое слово для ручной генерации!',
-            alertGenerateContent: 'Сначала сгенерируйте какой-либо контент!',
-            copiedSuccess: '✓ Скопировано!',
-            generatingText: 'Генерирую...',
-            selectNicheCategory: 'Выберите нишу/категорию',
-            selectSpecificKeyword: 'Выберите конкретное ключевое слово',
-            noNichesAvailable: 'Ниши недоступны',
-            noKeywordsAvailable: 'Ключевые слова недоступны',
-            orLabel: 'ИЛИ'
-        },
-        es: {
-            darkModeButton: '🌙 Modo Oscuro',
-            lightModeButton: '☀️ Modo Claro',
-            tagline: 'SEO Inteligente. Más Vistas. Menos Complicaciones.',
-            videoTopicLabel: '📝 Tema del Video para Generación IA',
-            videoTopicPlaceholder: 'Ej. Una historia sobre un león que aprende humildad...',
-            contentLanguageLabel: '🌍 Idioma del Contenido',
-            englishOption: 'Inglés',
-            hindiOption: 'Hindi',
-            urduOption: 'Urdu',
-            russianOption: 'Ruso',
-            spanishOption: 'Español',
-            frenchOption: 'Francés',
-            germanOption: 'Alemán',
-            videoFormatLabel: '🎬 Formato de Video',
-            shortVideoOption: 'Video Corto',
-            longVideoOption: 'Video Largo',
-            generateSEOButton: '⚡ Generar SEO',
-            resetButton: '🔁 Reiniciar',
-            exportButton: '📥 Exportar Todo',
-            titleLabel: '🎯 Título',
-            titlePlaceholder: 'Tu título optimizado aparecerá aquí...',
-            copyTitleButton: 'Copiar Título',
-            descriptionLabel: '📝 Descripción',
-            descriptionPlaceholder: 'Tu descripción SEO aparecerá aquí...',
-            hashtagsLabel: '📌 Hashtags',
-            hashtagsPlaceholder: 'Los hashtags relevantes aparecerán aquí...',
-            videoTagsLabel: '🔖 Etiquetas de Video',
-            videoTagsPlaceholder: 'Las etiquetas optimizadas aparecerán aquí...',
-            copyTagsButton: 'Copiar Etiquetas',
-            copyHashtagsButton: 'Copiar Hashtags',
-            footerText: 'Impulsado por <strong>YTSEO.ai</strong> – Creado con ❤️ para creadores globales',
-            alertEnterTopic: '¡Por favor, ingresa un tema de video para generación IA, o selecciona una Nicho/Palabra clave para generación manual!',
-            alertGenerateContent: '¡Genera algo de contenido primero!',
-            copiedSuccess: '✓ Copiado!',
-            generatingText: 'Generando...',
-            selectNicheCategory: 'Seleccionar Nicho/Categoría',
-            selectSpecificKeyword: 'Seleccionar Palabra Clave Específica',
-            noNichesAvailable: 'No hay Nichos Disponibles',
-            noKeywordsAvailable: 'No hay Palabras Clave Disponibles',
-            orLabel: 'O'
-        },
-        fr: {
-            darkModeButton: '🌙 Mode Sombre',
-            lightModeButton: '☀️ Mode Clair',
-            tagline: 'SEO Intelligent. Plus de Vues. Moins de Tracas.',
-            videoTopicLabel: '📝 Sujet Vidéo pour Génération IA',
-            videoTopicPlaceholder: 'Ex: Une histoire sur un lion qui apprend l\'humilité...',
-            contentLanguageLabel: '🌍 Langue du Contenu',
-            englishOption: 'Anglais',
-            hindiOption: 'Hindi',
-            urduOption: 'Ourdou',
-            russianOption: 'Russe',
-            spanishOption: 'Espagnol',
-            frenchOption: 'Français',
-            germanOption: 'Allemand',
-            videoFormatLabel: '🎬 Format Vidéo',
-            shortVideoOption: 'Courte Vidéo',
-            longVideoOption: 'Longue Vidéo',
-            generateSEOButton: '⚡ Générer SEO',
-            resetButton: '🔁 Réinitialiser',
-            exportButton: '📥 Tout Exporter',
-            titleLabel: '🎯 Titre',
-            titlePlaceholder: 'Votre titre optimisé apparaîtra ici...',
-            copyTitleButton: 'Copier le Titre',
-            descriptionLabel: '📝 Description',
-            descriptionPlaceholder: 'Votre description SEO apparaîtra ici...',
-            hashtagsLabel: '📌 Hashtags',
-            hashtagsPlaceholder: 'Les hashtags pertinents apparaîtront ici...',
-            videoTagsLabel: '🔖 Mots-clés Vidéo',
-            videoTagsPlaceholder: 'Les mots-clés optimisés apparaîtront ici...',
-            copyTagsButton: 'Copier les Mots-clés',
-            copyHashtagsButton: 'Copier les Hashtags',
-            footerText: 'Propulsé par <strong>YTSEO.ai</strong> – Conçu avec ❤️ pour les créateurs mondiaux',
-            alertEnterTopic: 'Veuillez d\'abord saisir un sujet de vidéo pour la génération IA, ou sélectionner une niche/mot-clé pour la génération manuelle !',
-            alertGenerateContent: 'Générez d\'abord du contenu !',
-            copiedSuccess: '✓ Copié !',
-            generatingText: 'Génération en cours...',
-            selectNicheCategory: 'Sélectionner Niche/Catégorie',
-            selectSpecificKeyword: 'Sélectionner Mot-clé Spécifique',
-            noNichesAvailable: 'Aucune Niche Disponible',
-            noKeywordsAvailable: 'Aucun Mot-clé Disponible',
-            orLabel: 'OU'
-        },
-        de: {
-            darkModeButton: '🌙 Dunkelmodus',
-            lightModeButton: '☀️ Hellmodus',
-            tagline: 'Smartes SEO. Mehr Aufrufe. Weniger Aufwand.',
-            videoTopicLabel: '📝 Video-Thema für KI-Generierung',
-            videoTopicPlaceholder: 'z.B. Eine Geschichte über einen Löwen, der Demut lernt...',
-            contentLanguageLabel: '🌍 Inhaltssprache',
-            englishOption: 'Englisch',
-            hindiOption: 'Hindi',
-            urduOption: 'Urdu',
-            russianOption: 'Russisch',
-            spanishOption: 'Spanisch',
-            frenchOption: 'Französisch',
-            germanOption: 'Deutsch',
-            videoFormatLabel: '🎬 Video-Format',
-            shortVideoOption: 'Kurzvideo',
-            longVideoOption: 'Langvideo',
-            generateSEOButton: '⚡ SEO Generieren',
-            resetButton: '🔁 Zurücksetzen',
-            exportButton: '📥 Alles Exportieren',
-            titleLabel: '🎯 Titel',
-            titlePlaceholder: 'Ihr optimierter Titel wird hier erscheinen...',
-            copyTitleButton: 'Titel kopieren',
-            descriptionLabel: '📝 Beschreibung',
-            descriptionPlaceholder: 'Ihre SEO-Beschreibung wird hier erscheinen...',
-            hashtagsLabel: '📌 Hashtags',
-            hashtagsPlaceholder: 'Relevante Hashtags werden hier erscheinen...',
-            videoTagsLabel: '🔖 Video-Tags',
-            videoTagsPlaceholder: 'Optimierte Tags werden hier erscheinen...',
-            copyTagsButton: 'Tags kopieren',
-            copyHashtagsButton: 'Hashtags kopieren',
-            footerText: 'Powered by <strong>YTSEO.ai</strong> – Mit ❤️ für globale Kreative erstellt',
-            alertEnterTopic: 'Bitte geben Sie zuerst ein Video-Thema für die KI-Generierung ein oder wählen Sie eine Nische/Schlüsselwort für die manuelle Generierung!',
-            alertGenerateContent: 'Generieren Sie zuerst Inhalte!',
-            copiedSuccess: '✓ Kopiert!',
-            generatingText: 'Generieren...',
-            selectNicheCategory: 'Nische/Kategorie auswählen',
-            selectSpecificKeyword: 'Spezifisches Schlüsselwort auswählen',
-            noNichesAvailable: 'Keine Nischen verfügbar',
-            noKeywordsAvailable: 'Keine Schlüsselwörter verfügbar',
-            orLabel: 'ODER'
-        }
-    };
+        <div class="button-group">
+            <button id="generateBtn" data-translate-key="generateSEOButton"><i class="fas fa-magic"></i> Generate SEO</button>
+            <button id="resetBtn" data-translate-key="resetButton"><i class="fas fa-redo"></i> Reset</button>
+            <button id="exportBtn" data-translate-key="exportButton"><i class="fas fa-download"></i> Export All</button>
+        </div>
+    </div>
 
-    function applyTranslations(lang) {
-        document.querySelectorAll('[data-translate-key]').forEach(element => {
-            const key = element.getAttribute('data-translate-key');
-            if (translations[lang] && translations[lang][key]) {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = translations[lang][key];
-                } else if (element.tagName === 'OPTION') {
-                    element.textContent = translations[lang][key];
-                } else {
-                    element.innerHTML = translations[lang][key];
-                }
+    <button onclick="toggleDarkMode()" class="dark-mode-toggle" data-translate-key="darkModeButton">
+        <i class="fas fa-moon"></i> <span data-translate-key="darkModeLabel">Dark Mode</span>
+    </button>
+
+    <script>
+        // --- Translations Data ---
+        const translations = {
+            en: {
+                uiLanguageLabel: "UI Language:",
+                videoTopicLabel: "Video Topic for AI Generation:",
+                videoTopicPlaceholder: "e.g. A story about a lion who learns humility...",
+                orLabel: "OR",
+                selectNicheCategory: "Select Niche/Category:",
+                selectSpecificKeyword: "Select Specific Keyword:",
+                customVariables: "Custom Variables",
+                contentLanguageLabel: "Content Language:",
+                englishOption: "English",
+                hindiOption: "Hindi",
+                urduOption: "Urdu",
+                russianOption: "Russian",
+                spanishOption: "Español",
+                frenchOption: "Français",
+                germanOption: "Deutsch",
+                videoFormatLabel: "Video Format:",
+                shortVideoOption: "Short Video",
+                longVideoOption: "Long Video",
+                generateSEOButton: "Generate SEO",
+                resetButton: "Reset",
+                exportButton: "Export All",
+                titleLabel: "Generated Title:",
+                titlePlaceholder: "Your SEO friendly title will appear here...",
+                copyTitleButton: "Copy Title",
+                descriptionLabel: "Generated Description:",
+                descriptionPlaceholder: "Your detailed description will appear here...",
+                copyDescriptionButton: "Copy Description",
+                hashtagsLabel: "Generated Hashtags:",
+                hashtagsPlaceholder: "#your #hashtags #here...",
+                copyHashtagsButton: "Copy Hashtags",
+                videoTagsLabel: "Generated Video Tags:",
+                videoTagsPlaceholder: "your,video,tags,here...",
+                copyTagsButton: "Copy Tags",
+                darkModeButton: "Dark Mode",
+                darkModeLabel: "Dark Mode",
+                copiedToClipboard: "Copied to clipboard!",
+                noKeywordSelected: "Please select a keyword first.",
+                noTopicOrManual: "Please enter a topic or select niche/keyword to generate.",
+                fetchingData: "Fetching data for: ",
+                dataLoaded: "Loaded SEO data for: ",
+                errorFetchingData: "Error fetching SEO data:",
+                aiGenerationMessage: "Generating content for topic: ",
+                manualGenerationMessage: "Generating content from manual selection...",
+                loadingMessage: "Generating...",
+                topicEmpty: "Video topic cannot be empty for AI generation.",
+                fetchingAiData: "Fetching AI data..."
+            },
+            hi: {
+                uiLanguageLabel: "यूआई भाषा:",
+                videoTopicLabel: "एआई जनरेशन के लिए वीडियो विषय:",
+                videoTopicPlaceholder: "उदाहरण: एक शेर की कहानी जो विनम्रता सीखता है...",
+                orLabel: "या",
+                selectNicheCategory: "श्रेणी/विषय चुनें:",
+                selectSpecificKeyword: "विशिष्ट कीवर्ड चुनें:",
+                customVariables: "कस्टम वेरिएबल",
+                contentLanguageLabel: "सामग्री भाषा:",
+                englishOption: "अंग्रेज़ी",
+                hindiOption: "हिन्दी",
+                urduOption: "उर्दू",
+                russianOption: "रूसी",
+                spanishOption: "स्पेनिश",
+                frenchOption: "फ्रेंच",
+                germanOption: "जर्मन",
+                videoFormatLabel: "वीडियो प्रारूप:",
+                shortVideoOption: "शॉर्ट वीडियो",
+                longVideoOption: "लॉन्ग वीडियो",
+                generateSEOButton: "एसईओ जनरेट करें",
+                resetButton: "रीसेट करें",
+                exportButton: "सभी निर्यात करें",
+                titleLabel: "जनरेटेड शीर्षक:",
+                titlePlaceholder: "आपका एसईओ अनुकूल शीर्षक यहां दिखाई देगा...",
+                copyTitleButton: "शीर्षक कॉपी करें",
+                descriptionLabel: "जनरेटेड विवरण:",
+                descriptionPlaceholder: "आपका विस्तृत विवरण यहां दिखाई देगा...",
+                copyDescriptionButton: "विवरण कॉपी करें",
+                hashtagsLabel: "जनरेटेड हैशटैग:",
+                hashtagsPlaceholder: "#आपके #हैशटैग #यहां...",
+                copyHashtagsButton: "हैशटैग कॉपी करें",
+                videoTagsLabel: "जनरेटेड वीडियो टैग:",
+                videoTagsPlaceholder: "आपके,वीडियो,टैग,यहां...",
+                copyTagsButton: "टैग कॉपी करें",
+                darkModeButton: "डार्क मोड",
+                darkModeLabel: "डार्क मोड",
+                copiedToClipboard: "क्लिपबोर्ड पर कॉपी किया गया!",
+                noKeywordSelected: "कृपया पहले एक कीवर्ड चुनें।",
+                noTopicOrManual: "कृपया एक विषय दर्ज करें या जनरेट करने के लिए श्रेणी/कीवर्ड चुनें।",
+                fetchingData: "डेटा ला रहा है: ",
+                dataLoaded: "एसईओ डेटा लोड किया गया: ",
+                errorFetchingData: "एसईओ डेटा लाने में त्रुटि:",
+                aiGenerationMessage: "विषय के लिए सामग्री जनरेट कर रहा है: ",
+                manualGenerationMessage: "मैनुअल चयन से सामग्री जनरेट कर रहा है...",
+                loadingMessage: "जनरेट कर रहा है...",
+                topicEmpty: "एआई जनरेशन के लिए वीडियो विषय खाली नहीं हो सकता।",
+                fetchingAiData: "एआई डेटा ला रहा है..."
+            },
+            ur: {
+                uiLanguageLabel: "یو آئی زبان:",
+                videoTopicLabel: "اے آئی جنریشن کے لیے ویڈیو کا موضوع:",
+                videoTopicPlaceholder: "مثلاً: ایک شیر کی کہانی جو عاجزی سیکھتا ہے...",
+                orLabel: "یا",
+                selectNicheCategory: "طاق/قسم منتخب کریں:",
+                selectSpecificKeyword: "مخصوص کلیدی لفظ منتخب کریں:",
+                customVariables: "اپنی مرضی کے متغیرات",
+                contentLanguageLabel: "مواد کی زبان:",
+                englishOption: "انگریزی",
+                hindiOption: "ہندی",
+                urduOption: "اردو",
+                russianOption: "روسی",
+                spanishOption: "ہسپانوی",
+                frenchOption: "فرانسیسی",
+                germanOption: "جرمن",
+                videoFormatLabel: "ویڈیو فارمیٹ:",
+                shortVideoOption: "شارٹ ویڈیو",
+                longVideoOption: "لانگ ویڈیو",
+                generateSEOButton: "ایس ای او بنائیں",
+                resetButton: "ری سیٹ کریں",
+                exportButton: "سب برآمد کریں",
+                titleLabel: "تیار کردہ عنوان:",
+                titlePlaceholder: "آپ کا ایس ای او دوستانہ عنوان یہاں ظاہر ہوگا...",
+                copyTitleButton: "عنوان کاپی کریں",
+                descriptionLabel: "تیار کردہ تفصیل:",
+                descriptionPlaceholder: "آپ کی تفصیلی تفصیل یہاں ظاہر ہوگی...",
+                copyDescriptionButton: "تفصیل کاپی کریں",
+                hashtagsLabel: "تیار کردہ ہیش ٹیگز:",
+                hashtagsPlaceholder: "#آپ #کے #ہیش #ٹیگز #یہاں...",
+                copyHashtagsButton: "ہیش ٹیگز کاپی کریں",
+                videoTagsLabel: "تیار کردہ ویڈیو ٹیگز:",
+                videoTagsPlaceholder: "آپ کے،ویڈیو،ٹیگز،یہاں...",
+                copyTagsButton: "ٹیگز کاپی کریں",
+                darkModeButton: "ڈارک موڈ",
+                darkModeLabel: "ڈارک موڈ",
+                copiedToClipboard: "کلپ بورڈ پر کاپی ہو گیا!",
+                noKeywordSelected: "براہ کرم پہلے ایک کلیدی لفظ منتخب کریں۔",
+                noTopicOrManual: "براہ کرم کوئی موضوع درج کریں یا بنانے کے لیے طاق/کلیدی لفظ منتخب کریں۔",
+                fetchingData: "ڈیٹا لایا جا رہا ہے: ",
+                dataLoaded: "ایس ای او ڈیٹا لوڈ کیا گیا: ",
+                errorFetchingData: "ایس ای او ڈیٹا لانے میں خرابی:",
+                aiGenerationMessage: "موضوع کے لیے مواد تیار کر رہا ہے: ",
+                manualGenerationMessage: "دستی انتخاب سے مواد تیار کر رہا ہے...",
+                loadingMessage: "تیار ہو رہا ہے...",
+                topicEmpty: "اے آئی جنریشن کے لیے ویڈیو کا موضوع خالی نہیں ہو سکتا۔",
+                fetchingAiData: "اے آئی ڈیٹا لایا جا رہا ہے..."
+            },
+            ru: {
+                uiLanguageLabel: "Язык интерфейса:",
+                videoTopicLabel: "Тема видео для ИИ-генерации:",
+                videoTopicPlaceholder: "напр. История о льве, который учится смирению...",
+                orLabel: "ИЛИ",
+                selectNicheCategory: "Выберите нишу/категорию:",
+                selectSpecificKeyword: "Выберите конкретное ключевое слово:",
+                customVariables: "Пользовательские переменные",
+                contentLanguageLabel: "Язык контента:",
+                englishOption: "Английский",
+                hindiOption: "Хинди",
+                urduOption: "Урду",
+                russianOption: "Русский",
+                spanishOption: "Испанский",
+                frenchOption: "Французский",
+                germanOption: "Немецкий",
+                videoFormatLabel: "Формат видео:",
+                shortVideoOption: "Короткое видео",
+                longVideoOption: "Длинное видео",
+                generateSEOButton: "Сгенерировать SEO",
+                resetButton: "Сброс",
+                exportButton: "Экспортировать все",
+                titleLabel: "Сгенерированный заголовок:",
+                titlePlaceholder: "Ваш SEO-оптимизированный заголовок появится здесь...",
+                copyTitleButton: "Копировать заголовок",
+                descriptionLabel: "Сгенерированное описание:",
+                descriptionPlaceholder: "Ваше подробное описание появится здесь...",
+                copyDescriptionButton: "Копировать описание",
+                hashtagsLabel: "Сгенерированные хэштеги:",
+                hashtagsPlaceholder: "#ваши #хэштеги #здесь...",
+                copyHashtagsButton: "Копировать хэштеги",
+                videoTagsLabel: "Сгенерированные теги видео:",
+                videoTagsPlaceholder: "ваши,видео,теги,здесь...",
+                copyTagsButton: "Копировать теги",
+                darkModeButton: "Темный режим",
+                darkModeLabel: "Темный режим",
+                copiedToClipboard: "Скопировано в буфер обмена!",
+                noKeywordSelected: "Пожалуйста, сначала выберите ключевое слово.",
+                noTopicOrManual: "Пожалуйста, введите тему или выберите нишу/ключевое слово для генерации.",
+                fetchingData: "Загрузка данных для: ",
+                dataLoaded: "SEO-данные загружены для: ",
+                errorFetchingData: "Ошибка при получении SEO-данных:",
+                aiGenerationMessage: "Генерация контента по теме: ",
+                manualGenerationMessage: "Генерация контента из ручного выбора...",
+                loadingMessage: "Генерация...",
+                topicEmpty: "Тема видео не может быть пустой для ИИ-генерации.",
+                fetchingAiData: "Получение данных ИИ..."
+            },
+            es: {
+                uiLanguageLabel: "Idioma de la interfaz:",
+                videoTopicLabel: "Tema del video para generación con IA:",
+                videoTopicPlaceholder: "ej. Una historia sobre un león que aprende humildad...",
+                orLabel: "O",
+                selectNicheCategory: "Seleccionar Nicho/Categoría:",
+                selectSpecificKeyword: "Seleccionar Palabra Clave Específica:",
+                customVariables: "Variables Personalizadas",
+                contentLanguageLabel: "Idioma del Contenido:",
+                englishOption: "Inglés",
+                hindiOption: "Hindi",
+                urduOption: "Urdu",
+                russianOption: "Ruso",
+                spanishOption: "Español",
+                frenchOption: "Francés",
+                germanOption: "Alemán",
+                videoFormatLabel: "Formato de Video:",
+                shortVideoOption: "Video Corto",
+                longVideoOption: "Video Largo",
+                generateSEOButton: "Generar SEO",
+                resetButton: "Reiniciar",
+                exportButton: "Exportar Todo",
+                titleLabel: "Título Generado:",
+                titlePlaceholder: "Tu título SEO amigable aparecerá aquí...",
+                copyTitleButton: "Copiar Título",
+                descriptionLabel: "Descripción Generada:",
+                descriptionPlaceholder: "Tu descripción detallada aparecerá aquí...",
+                copyDescriptionButton: "Copiar Descripción",
+                hashtagsLabel: "Hashtags Generados:",
+                hashtagsPlaceholder: "#tus #hashtags #aquí...",
+                copyHashtagsButton: "Copiar Hashtags",
+                videoTagsLabel: "Etiquetas de Video Generadas:",
+                videoTagsPlaceholder: "tus,etiquetas,de,video,aquí...",
+                copyTagsButton: "Copiar Etiquetas",
+                darkModeButton: "Modo Oscuro",
+                darkModeLabel: "Modo Oscuro",
+                copiedToClipboard: "¡Copiado al portapapeles!",
+                noKeywordSelected: "Por favor, selecciona primero una palabra clave.",
+                noTopicOrManual: "Por favor, introduce un tema o selecciona nicho/palabra clave para generar.",
+                fetchingData: "Obteniendo datos para: ",
+                dataLoaded: "Datos SEO cargados para: ",
+                errorFetchingData: "Error al obtener datos SEO:",
+                aiGenerationMessage: "Generando contenido para el tema: ",
+                manualGenerationMessage: "Generando contenido de selección manual...",
+                loadingMessage: "Generando...",
+                topicEmpty: "El tema del video no puede estar vacío para la generación con IA.",
+                fetchingAiData: "Obteniendo datos de IA..."
+            },
+            fr: {
+                uiLanguageLabel: "Langue de l'interface utilisateur :",
+                videoTopicLabel: "Sujet de la vidéo pour la génération IA :",
+                videoTopicPlaceholder: "ex. Une histoire sur un lion qui apprend l'humilité...",
+                orLabel: "OU",
+                selectNicheCategory: "Sélectionner la Niche/Catégorie :",
+                selectSpecificKeyword: "Sélectionner le Mot-clé Spécifique :",
+                customVariables: "Variables Personnalisées",
+                contentLanguageLabel: "Langue du Contenu :",
+                englishOption: "Anglais",
+                hindiOption: "Hindi",
+                urduOption: "Ourdou",
+                russianOption: "Russe",
+                spanishOption: "Espagnol",
+                frenchOption: "Français",
+                germanOption: "Allemand",
+                videoFormatLabel: "Format Vidéo :",
+                shortVideoOption: "Vidéo Courte",
+                longVideoOption: "Vidéo Longue",
+                generateSEOButton: "Générer le SEO",
+                resetButton: "Réinitialiser",
+                exportButton: "Exporter Tout",
+                titleLabel: "Titre Généré :",
+                titlePlaceholder: "Votre titre optimisé pour le SEO apparaîtra ici...",
+                copyTitleButton: "Copier le Titre",
+                descriptionLabel: "Description Générée :",
+                descriptionPlaceholder: "Votre description détaillée apparaîtra ici...",
+                copyDescriptionButton: "Copier la Description",
+                hashtagsLabel: "Hashtags Générés :",
+                hashtagsPlaceholder: "#vos #hashtags #ici...",
+                copyHashtagsButton: "Copier les Hashtags",
+                videoTagsLabel: "Mots-clés Vidéo Générés :",
+                videoTagsPlaceholder: "vos,mots-clés,vidéo,ici...",
+                copyTagsButton: "Copier les Mots-clés",
+                darkModeButton: "Mode Sombre",
+                darkModeLabel: "Mode Sombre",
+                copiedToClipboard: "Copié dans le presse-papiers !",
+                noKeywordSelected: "Veuillez d'abord sélectionner un mot-clé.",
+                noTopicOrManual: "Veuillez entrer un sujet ou sélectionner une niche/mot-clé à générer.",
+                fetchingData: "Récupération des données pour : ",
+                dataLoaded: "Données SEO chargées pour : ",
+                errorFetchingData: "Erreur lors de la récupération des données SEO :",
+                aiGenerationMessage: "Génération de contenu pour le sujet : ",
+                manualGenerationMessage: "Génération de contenu à partir de la sélection manuelle...",
+                loadingMessage: "Génération...",
+                topicEmpty: "Le sujet de la vidéo ne peut pas être vide pour la génération IA.",
+                fetchingAiData: "Récupération des données IA..."
+            },
+            de: {
+                uiLanguageLabel: "UI Sprache:",
+                videoTopicLabel: "Videothema für KI-Generierung:",
+                videoTopicPlaceholder: "z.B. Eine Geschichte über einen Löwen, der Demut lernt...",
+                orLabel: "ODER",
+                selectNicheCategory: "Nische/Kategorie auswählen:",
+                selectSpecificKeyword: "Spezifisches Keyword auswählen:",
+                customVariables: "Benutzerdefinierte Variablen",
+                contentLanguageLabel: "Inhaltssprache:",
+                englishOption: "Englisch",
+                hindiOption: "Hindi",
+                urduOption: "Urdu",
+                russianOption: "Russisch",
+                spanishOption: "Spanisch",
+                frenchOption: "Französisch",
+                germanOption: "Deutsch",
+                videoFormatLabel: "Videoformat:",
+                shortVideoOption: "Kurzvideo",
+                longVideoOption: "Langvideo",
+                generateSEOButton: "SEO generieren",
+                resetButton: "Zurücksetzen",
+                exportButton: "Alle exportieren",
+                titleLabel: "Generierter Titel:",
+                titlePlaceholder: "Ihr SEO-freundlicher Titel erscheint hier...",
+                copyTitleButton: "Titel kopieren",
+                descriptionLabel: "Generierte Beschreibung:",
+                descriptionPlaceholder: "Ihre detaillierte Beschreibung erscheint hier...",
+                copyDescriptionButton: "Beschreibung kopieren",
+                hashtagsLabel: "Generierte Hashtags:",
+                hashtagsPlaceholder: "#Ihre #hashtags #hier...",
+                copyHashtagsButton: "Hashtags kopieren",
+                videoTagsLabel: "Generierte Videotags:",
+                videoTagsPlaceholder: "Ihre,Video,Tags,hier...",
+                copyTagsButton: "Tags kopieren",
+                darkModeButton: "Dark Mode",
+                darkModeLabel: "Dark Mode",
+                copiedToClipboard: "In die Zwischenablage kopiert!",
+                noKeywordSelected: "Bitte wählen Sie zuerst ein Keyword aus.",
+                noTopicOrManual: "Bitte geben Sie ein Thema ein oder wählen Sie Nische/Keyword zur Generierung aus.",
+                fetchingData: "Daten werden abgerufen für: ",
+                dataLoaded: "SEO-Daten geladen für: ",
+                errorFetchingData: "Fehler beim Abrufen der SEO-Daten:",
+                aiGenerationMessage: "Inhalt wird für Thema generiert: ",
+                manualGenerationMessage: "Inhalt wird aus manueller Auswahl generiert...",
+                loadingMessage: "Generiere...",
+                topicEmpty: "Videothema darf für KI-Generierung nicht leer sein.",
+                fetchingAiData: "KI-Daten werden abgerufen..."
             }
-        });
-        const darkModeBtn = document.querySelector('[onclick="toggleDarkMode()"]');
-        if (darkModeBtn) {
-            darkModeBtn.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[lang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[lang].darkModeButton}`;
-        }
-        // Update Niche/Keyword/OR labels as well
-        document.getElementById('nicheLabel').textContent = translations[lang].selectNicheCategory;
-        document.getElementById('keywordLabel').textContent = translations[lang].selectSpecificKeyword;
-        document.getElementById('orDivider').textContent = translations[lang].orLabel;
-        document.getElementById('aiTopicLabel').textContent = translations[lang].videoTopicLabel;
-    }
-
-    function changeUILanguage() {
-        const lang = document.getElementById("uiLang").value;
-        localStorage.setItem('ytseoUILang', lang);
-        applyTranslations(lang);
-    }
-
-    // --- DOM Element References (Using your provided IDs where applicable) ---
-    const uiLangSelect = document.getElementById('uiLang');
-    const inputTopic = document.getElementById('inputTopic'); // Your existing ID
-    const contentLangSelect = document.getElementById('language'); // Your existing ID
-    const nicheSelect = document.getElementById('nicheSelect');
-    const keywordSelect = document.getElementById('keywordSelect');
-    const videoTypeSelect = document.getElementById('type'); // Your existing ID
-    const variablesSection = document.getElementById('variablesSection');
-    const variableInputs = document.getElementById('variableInputs');
-    const generateBtn = document.getElementById('generateBtn'); // Your existing ID
-    const resetBtn = document.getElementById('resetBtn'); // Your existing ID
-    const generatedTitle = document.getElementById('titleBox'); // Your existing ID
-    const generatedDescription = document.getElementById('descBox'); // Your existing ID
-    const generatedHashtags = document.getElementById('hashtagBox'); // Your existing ID
-    const generatedTags = document.getElementById('tagsBox'); // Your existing ID
-
-    let seoData = {}; // This will hold the entire loaded JSON data for the current content language
-    let currentTemplate = null; // Stores the currently selected template object (the 'templates' object from JSON)
-
-    // Helper to format names (niche or variable) for display
-    function formatNameForDisplay(name) {
-        return name.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-    }
-
-    // Helper to copy text to clipboard
-    function copyToClipboard(elementId) {
-        const textarea = document.getElementById(elementId);
-        textarea.select();
-        textarea.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-
-        const btn = document.querySelector(`[onclick="copyToClipboard('${elementId}')"]`);
-        const originalHTML = btn.innerHTML;
-        const currentLang = localStorage.getItem('ytseoUILang') || 'en';
-        btn.innerHTML = `<i class="fas fa-check"></i> ${translations[currentLang].copiedSuccess}`;
-        setTimeout(() => {
-            btn.innerHTML = originalHTML;
-        }, 2000);
-    }
-
-    // Function to populate dropdowns dynamically
-    function populateDropdown(selectElement, options, selectedValue = null, defaultText) {
-        selectElement.innerHTML = '';
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = defaultText;
-        defaultOption.disabled = true;
-        defaultOption.selected = true;
-        selectElement.appendChild(defaultOption);
-
-        options.forEach(option => {
-            const opt = document.createElement('option');
-            opt.value = option.value;
-            opt.textContent = option.text;
-            if (selectedValue && option.value === selectedValue) {
-                opt.selected = true;
-            }
-            selectElement.appendChild(opt);
-        });
-    }
-
-    // --- Core Data Loading (Corrected for your seo-data-{lang}.json deployment) ---
-    async function loadSEOData(lang) {
-        try {
-            // This now consistently looks for seo-data-{lang}.json, as you confirmed it works.
-            const response = await fetch(`seo-data-${lang}.json`);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status} - Could not load seo-data-${lang}.json.`);
-            }
-            const data = await response.json();
-            console.log("Loaded SEO data for:", lang, data);
-
-            seoData = data; // Store the fetched data
-            initializeContentUI(); // Initialize UI relevant to content data
-        } catch (err) {
-            const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
-            console.error("Error loading SEO JSON for language", lang, err);
-            generatedTitle.value = translations[currentUILang].alertGenerateContent;
-            generatedDescription.value = `Error: Could not load data for ${lang}. Please ensure 'seo-data-${lang}.json' exists and is correctly formatted.`;
-            generatedTags.value = "";
-            generatedHashtags.value = "";
-            populateDropdown(nicheSelect, [], null, translations[currentUILang].noNichesAvailable);
-            populateDropdown(keywordSelect, [], null, translations[currentUILang].noKeywordsAvailable);
-            keywordSelect.disabled = true;
-            variablesSection.style.display = 'none';
-        }
-    }
-
-    // --- UI Initialization and Update for Content-related Elements ---
-    function initializeContentUI() {
-        const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
-        const nicheOptions = [];
-        if (seoData.seo_templates) {
-            const uniqueNiches = new Set();
-            seoData.seo_templates.forEach(templateGroup => {
-                if (templateGroup.keywords && templateGroup.keywords.length > 0) {
-                    const primaryKeyword = templateGroup.keywords[0]; // Assuming first keyword is the niche
-                    if (!uniqueNiches.has(primaryKeyword)) {
-                        uniqueNiches.add(primaryKeyword);
-                        nicheOptions.push({ value: primaryKeyword, text: formatNameForDisplay(primaryKeyword) });
-                    }
-                }
-            });
-        }
-        populateDropdown(nicheSelect, nicheOptions, null, translations[currentUILang].selectNicheCategory);
-
-        // Reset other elements
-        populateDropdown(keywordSelect, [], null, translations[currentUILang].selectSpecificKeyword);
-        keywordSelect.disabled = true;
-        variablesSection.style.display = 'none';
-        generatedTitle.value = '';
-        generatedDescription.value = '';
-        generatedTags.value = '';
-        generatedHashtags.value = '';
-        currentTemplate = null;
-        inputTopic.value = ''; // Clear topic input as well
-    }
-
-    // Handles niche and keyword selection changes (Manual Generation Pathway)
-    function handleManualSelectionChange() {
-        // Clear AI topic input when manual selection is used
-        inputTopic.value = '';
-        const selectedNiche = nicheSelect.value;
-        const keywordsForSelectedNiche = [];
-        currentTemplate = null;
-
-        const selectedTemplateGroup = seoData.seo_templates.find(group => group.keywords.includes(selectedNiche));
-
-        if (selectedTemplateGroup) {
-            // Populate keywords from the selected group
-            selectedTemplateGroup.keywords.forEach(keyword => {
-                keywordsForSelectedNiche.push({ value: keyword, text: keyword });
-            });
-            const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
-            populateDropdown(keywordSelect, keywordsForSelectedNiche, null, translations[currentUILang].selectSpecificKeyword);
-            keywordSelect.disabled = false;
-        } else {
-            // Reset keyword dropdown if no niche selected
-            const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
-            populateDropdown(keywordSelect, [], null, translations[currentUILang].selectSpecificKeyword);
-            keywordSelect.disabled = true;
-            variablesSection.style.display = 'none';
-        }
-        updateVariableInputs();
-        generateContentFromManualSelection(); // Regenerate SEO after manual selection changes
-    }
-
-    // Updates variable input fields based on selected keyword
-    function updateVariableInputs() {
-        const selectedNiche = nicheSelect.value;
-        const selectedKeyword = keywordSelect.value;
-
-        variableInputs.innerHTML = '';
-        variablesSection.style.display = 'none';
-        currentTemplate = null;
-
-        if (selectedNiche && selectedKeyword && seoData.seo_templates) {
-            const selectedGroup = seoData.seo_templates.find(group => group.keywords.includes(selectedNiche));
-
-            if (selectedGroup && selectedGroup.templates) {
-                currentTemplate = selectedGroup.templates;
-
-                if (currentTemplate.variables) {
-                    variablesSection.style.display = 'block';
-                    for (const varName in currentTemplate.variables) {
-                        if (currentTemplate.variables.hasOwnProperty(varName)) {
-                            const varValues = currentTemplate.variables[varName];
-                            const div = document.createElement('div');
-                            div.classList.add('variable-item');
-
-                            const label = document.createElement('label');
-                            label.textContent = `${formatNameForDisplay(varName)}:`;
-                            label.htmlFor = `var-${varName}`;
-                            div.appendChild(label);
-
-                            const input = document.createElement('input');
-                            input.type = 'text';
-                            input.id = `var-${varName}`;
-                            input.placeholder = varValues && varValues.length > 0 ? `e.g., ${varValues[0]}` : 'Enter value';
-                            input.value = varValues && varValues.length > 0 ? varValues[Math.floor(Math.random() * varValues.length)] : '';
-                            input.setAttribute('data-variable-name', varName);
-                            input.addEventListener('input', generateContentFromManualSelection); // Update SEO on variable input change
-                            div.appendChild(input);
-
-                            variableInputs.appendChild(div);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // --- Primary Generate SEO function (handles both AI and Manual pathways) ---
-    async function generateSEO() {
-        const topic = inputTopic.value.trim();
-        const selectedNiche = nicheSelect.value;
-        const selectedKeyword = keywordSelect.value;
-        const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
-
-        // Validate input based on which path is active
-        if (!topic && (!selectedNiche || !selectedKeyword)) {
-            alert(translations[currentUILang].alertEnterTopic);
-            return;
-        }
-
-        // Show loading state
-        const originalBtnText = generateBtn.innerHTML;
-        generateBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentUILang].generatingText}`;
-        generateBtn.disabled = true;
-
-        try {
-            if (topic) {
-                // AI Generation pathway
-                await generateContentFromTopic();
-            } else {
-                // Manual Generation pathway
-                await generateContentFromManualSelection();
-            }
-        } catch (error) {
-            console.error("Generation error:", error);
-            alert(translations[currentUILang].alertGenerateContent);
-        } finally {
-            generateBtn.innerHTML = originalBtnText;
-            generateBtn.disabled = false;
-        }
-    }
-
-
-    // --- AI Generation Logic (extracted from the main generateSEO) ---
-    async function generateContentFromTopic() {
-        const topic = inputTopic.value.trim();
-        const contentLang = contentLangSelect.value;
-        const videoType = videoTypeSelect.value; // 'long' or 'shorts'
-
-        // Data should already be loaded if language was selected, but fetch again if needed.
-        // This makes sure we have the latest data for the selected content language.
-        if (Object.keys(seoData).length === 0 || contentLang !== seoData.currentLang) {
-             await loadSEOData(contentLang); // Reload if content language changed or data not present
-        }
-
-        const { seo_templates, fallback } = seoData || { seo_templates: [], fallback: {} };
-        const template = findBestTemplate(topic, seo_templates);
-        const chosenTemplate = template || fallback;
-
-        if (!chosenTemplate || (!chosenTemplate.title && !chosenTemplate.description && !chosenTemplate.tags)) {
-            generatedTitle.value = "No suitable template or fallback found for this topic.";
-            generatedDescription.value = "";
-            generatedTags.value = "";
-            generatedHashtags.value = "";
-            return;
-        }
-
-        // Generate variables (topic is primary, language and type are standard)
-        const variables = {
-            topic: topic,
-            language: contentLang,
-            video_type: videoType,
-            ...(chosenTemplate.variables || {}) // Include variables defined in the matched/fallback template
         };
 
-        let titleTemplate = '';
-        let descriptionTemplate = '';
-        let tagsTemplate = '';
+        let currentUILanguage = localStorage.getItem('uiLanguage') || 'en';
+        let currentContentLanguage = 'en'; // Default content language
+        let seoData = {}; // Stores loaded SEO data for the current content language
+        let currentTemplate = null; // Stores the selected template for manual generation
 
-        // Determine correct template parts based on structure
-        if (chosenTemplate.templates) { // For specific seo_templates entries (with 'shorts' / 'long' variations)
-            titleTemplate = chosenTemplate.templates.title[videoType] || chosenTemplate.templates.title.long || '';
-            descriptionTemplate = chosenTemplate.templates.description[videoType] || chosenTemplate.templates.description.long || '';
-            tagsTemplate = Array.isArray(chosenTemplate.templates.tags) ? chosenTemplate.templates.tags.join(", ") : chosenTemplate.templates.tags || '';
-        } else { // For fallback or simpler templates
-            titleTemplate = chosenTemplate.title || '';
-            descriptionTemplate = chosenTemplate.description || '';
-            tagsTemplate = Array.isArray(chosenTemplate.tags) ? chosenTemplate.tags.join(", ") : chosenTemplate.tags || '';
-        }
+        // --- DOM Element References ---
+        const uiLangSelect = document.getElementById('uiLang');
+        const aiTopicLabel = document.getElementById('aiTopicLabel');
+        const inputTopic = document.getElementById('inputTopic');
+        const orDivider = document.getElementById('orDivider');
+        const nicheLabel = document.getElementById('nicheLabel');
+        const nicheSelect = document.getElementById('nicheSelect');
+        const keywordLabel = document.getElementById('keywordLabel');
+        const keywordSelect = document.getElementById('keywordSelect');
+        const variablesSection = document.getElementById('variablesSection');
+        const variableInputs = document.getElementById('variableInputs');
+        const contentLangSelect = document.getElementById('language');
+        const videoTypeSelect = document.getElementById('type');
+        const generateBtn = document.getElementById('generateBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        const generatedTitle = document.getElementById('titleBox');
+        const generatedDescription = document.getElementById('descBox');
+        const generatedHashtags = document.getElementById('hashtagBox');
+        const generatedTags = document.getElementById('tagsBox');
 
-        generatedTitle.value = replacePlaceholders(titleTemplate, variables);
-        generatedDescription.value = replacePlaceholders(descriptionTemplate, variables);
+        // --- Core Functions ---
 
-        const tagsRaw = replacePlaceholders(tagsTemplate, variables);
-        generatedTags.value = tagsRaw;
-        generatedHashtags.value = tagsRaw.split(",").map(t => `#${t.trim().replace(/\s+/g, '')}`).filter(tag => tag !== '#').join(" "); // Filter empty hashtags
-
-        // Reset manual selection dropdowns and variables after AI generation
-        const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
-        populateDropdown(nicheSelect, [], null, translations[currentUILang].selectNicheCategory);
-        populateDropdown(keywordSelect, [], null, translations[currentUILang].selectSpecificKeyword);
-        keywordSelect.disabled = true;
-        variablesSection.style.display = 'none';
-        currentTemplate = null;
-    }
-
-    // --- Manual Generation Logic (extracted from the main generateSEO) ---
-    async function generateContentFromManualSelection() {
-        const contentLang = contentLangSelect.value;
-        const videoType = videoTypeSelect.value; // 'long' or 'shorts'
-
-        // Data should already be loaded if language was selected, but fetch again if needed.
-        if (Object.keys(seoData).length === 0 || contentLang !== seoData.currentLang) {
-             await loadSEOData(contentLang); // Reload if content language changed or data not present
-        }
-
-        // Use currentTemplate which is set by updateVariableInputs based on niche/keyword
-        let templateToUse = currentTemplate;
-
-        // If no specific niche/keyword is selected, clear outputs for manual mode.
-        if (!templateToUse || !nicheSelect.value || !keywordSelect.value) {
-            generatedTitle.value = "";
-            generatedDescription.value = "";
-            generatedTags.value = "";
-            generatedHashtags.value = "";
-            return;
-        }
-
-        let finalTitle = "";
-        let finalDescription = "";
-        let finalTags = [];
-
-        if (templateToUse) {
-            if (templateToUse.title) {
-                finalTitle = templateToUse.title[videoType] || templateToUse.title.long || '';
-            }
-            if (templateToUse.description) {
-                finalDescription = templateToUse.description[videoType] || templateToUse.description.long || '';
-            }
-            finalTags = (templateToUse.tags && Array.isArray(templateToUse.tags)) ? [...templateToUse.tags] : [];
-
-            const manualVariables = {};
-            // Collect values from dynamically generated variable inputs
-            const inputs = variableInputs.querySelectorAll('input[type="text"]');
-            inputs.forEach(input => {
-                const varName = input.getAttribute('data-variable-name');
-                manualVariables[varName] = input.value;
-            });
-
-            // Combine with standard variables for replacement
-            const allVariables = {
-                language: contentLang,
-                video_type: videoType,
-                ...manualVariables
-            };
-
-            finalTitle = replacePlaceholders(finalTitle, allVariables);
-            finalDescription = replacePlaceholders(finalDescription, allVariables);
-            finalTags = finalTags.map(tag => replacePlaceholders(tag, allVariables));
-        }
-
-        // Replace any remaining unpopulated placeholders with "..."
-        const allPlaceholdersRegex = /{([^}]+)}/g;
-        finalTitle = finalTitle.replace(allPlaceholdersRegex, '...');
-        finalDescription = finalDescription.replace(allPlaceholdersRegex, '...');
-        finalTags = finalTags.map(tag => tag.replace(allPlaceholdersRegex, '...'));
-
-        generatedTitle.value = finalTitle;
-        generatedDescription.value = finalDescription;
-        generatedTags.value = finalTags.join(", ");
-        generatedHashtags.value = finalTags.map(t => `#${t.trim().replace(/\s+/g, '')}`).filter(tag => tag !== '#').join(" ");
-    }
-
-
-    // NEW IMPROVED findBestTemplate function (for AI generation)
-    function findBestTemplate(topic, templates) {
-        const lowerTopic = topic.toLowerCase();
-        const topicWords = new Set(lowerTopic.split(/\s+/).filter(word => word.length > 2)); // Get unique words from topic, ignore short ones
-
-        let bestMatchTemplate = null;
-        let maxMatchingScore = 0; // Use a score instead of just count
-
-        if (!templates) return null;
-
-        for (const template of templates) {
-            let currentScore = 0;
-            if (!template.keywords) continue;
-
-            template.keywords.forEach(kw => {
-                const lowerKw = kw.toLowerCase();
-                if (lowerTopic.includes(lowerKw)) {
-                    // Give higher score for exact phrase match
-                    if (lowerTopic === lowerKw) {
-                        currentScore += 100; // Very high score for exact match
-                    } else if (lowerTopic.includes(lowerKw + ' ')) { // Word boundary check
-                        currentScore += lowerKw.split(/\s+/).length * 10; // More weight for multi-word keywords
+        // Function to update UI elements based on selected language
+        function applyTranslations(lang) {
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                const key = element.getAttribute('data-translate-key');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
                     } else {
-                        currentScore += lowerKw.split(/\s+/).length; // Basic score for partial include
+                        element.textContent = translations[lang][key];
                     }
                 }
             });
-
-            if (currentScore > maxMatchingScore) {
-                maxMatchingScore = currentScore;
-                bestMatchTemplate = template;
+            // Update Dark Mode toggle text if present
+            const darkModeLabel = document.querySelector('.dark-mode-toggle span[data-translate-key="darkModeLabel"]');
+            if (darkModeLabel) {
+                darkModeLabel.textContent = translations[lang]['darkModeLabel'];
             }
         }
-        return bestMatchTemplate;
-    }
 
-    // Replaces placeholders like {variableName} with values from the variables object
-    function replacePlaceholders(text, variables) {
-        if (!text) return "";
-        return text.replace(/{(\w+)}/g, (_, key) => {
-            const value = variables[key];
-            if (Array.isArray(value)) {
-                return value[Math.floor(Math.random() * value.length)];
+        // Initialize UI language on load
+        function initializeUILanguage() {
+            if (uiLangSelect) { // Check if element exists
+                uiLangSelect.value = currentUILanguage;
+                applyTranslations(currentUILanguage);
             }
-            return value !== undefined ? value : ""; // Return empty string if variable is not found
+        }
+
+        // Change UI Language
+        function changeUILanguage() {
+            currentUILanguage = uiLangSelect.value;
+            localStorage.setItem('uiLanguage', currentUILanguage);
+            applyTranslations(currentUILanguage);
+        }
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Apply dark mode on load
+        function applyDarkModeSetting() {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+        }
+
+        // Copy to Clipboard
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            element.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand("copy");
+            alert(translations[currentUILanguage].copiedToClipboard);
+        }
+
+        // Function to fetch and load SEO data from JSON file
+        async function loadSEOData(lang) {
+            currentContentLanguage = lang; // Update current content language
+            console.log(translations[currentUILanguage].fetchingData + lang);
+            try {
+                const response = await fetch(`./seo-data-${lang}.json`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                seoData = await response.json();
+                console.log(translations[currentUILanguage].dataLoaded + lang);
+                populateNicheSelect(); // Repopulate niches based on new data
+            } catch (error) {
+                console.error(translations[currentUILanguage].errorFetchingData, error);
+                seoData = {}; // Clear data on error
+                populateNicheSelect(); // Clear dropdowns
+            }
+        }
+
+        // Populate Niche/Category dropdown
+        function populateNicheSelect() {
+            nicheSelect.innerHTML = `<option value="" selected disabled>${translations[currentUILanguage].selectNicheCategory}</option>`;
+            keywordSelect.innerHTML = `<option value="" selected disabled>${translations[currentUILanguage].selectSpecificKeyword}</option>`;
+            keywordSelect.disabled = true;
+            variablesSection.style.display = 'none';
+
+            if (seoData && seoData.niches) {
+                Object.keys(seoData.niches).forEach(niche => {
+                    const option = document.createElement('option');
+                    option.value = niche;
+                    option.textContent = niche;
+                    nicheSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Populate Specific Keyword dropdown
+        function populateKeywordSelect(niche) {
+            keywordSelect.innerHTML = `<option value="" selected disabled>${translations[currentUILanguage].selectSpecificKeyword}</option>`;
+            variablesSection.style.display = 'none';
+
+            if (seoData && seoData.niches && seoData.niches[niche] && seoData.niches[niche].keywords) {
+                Object.keys(seoData.niches[niche].keywords).forEach(keyword => {
+                    const option = document.createElement('option');
+                    option.value = keyword;
+                    option.textContent = keyword;
+                    keywordSelect.appendChild(option);
+                });
+                keywordSelect.disabled = false;
+            } else {
+                keywordSelect.disabled = true;
+            }
+        }
+
+        // Update variable inputs based on selected keyword
+        function updateVariableInputs() {
+            const niche = nicheSelect.value;
+            const keyword = keywordSelect.value;
+            variableInputs.innerHTML = ''; // Clear previous variables
+            variablesSection.style.display = 'none'; // Hide by default
+
+            if (niche && keyword && seoData.niches[niche] && seoData.niches[niche].keywords[keyword]) {
+                currentTemplate = seoData.niches[niche].keywords[keyword];
+                if (currentTemplate.variables && currentTemplate.variables.length > 0) {
+                    variablesSection.style.display = 'block'; // Show variables section
+                    currentTemplate.variables.forEach(variable => {
+                        const inputGroup = document.createElement('div');
+                        inputGroup.classList.add('input-group');
+                        inputGroup.innerHTML = `
+                            <label for="var-${variable}">${variable.replace(/_/g, ' ')}:</label>
+                            <input type="text" id="var-${variable}" placeholder="Enter ${variable.replace(/_/g, ' ')}">
+                        `;
+                        variableInputs.appendChild(inputGroup);
+                    });
+                }
+            } else {
+                currentTemplate = null; // No template selected
+            }
+        }
+
+        // Get variable values from inputs
+        function getVariableValues() {
+            const vars = {};
+            if (currentTemplate && currentTemplate.variables) {
+                currentTemplate.variables.forEach(variable => {
+                    const input = document.getElementById(`var-${variable}`);
+                    if (input) {
+                        vars[variable] = input.value.trim();
+                    }
+                });
+            }
+            return vars;
+        }
+
+        // --- Content Generation Logic ---
+
+        // Function to replace placeholders
+        function replacePlaceholders(text, replacements) {
+            let result = text;
+            for (const key in replacements) {
+                const placeholder = new RegExp(`\\{${key}\\}`, 'g');
+                result = result.replace(placeholder, replacements[key]);
+            }
+            return result;
+        }
+
+        // AI Generation Logic (Placeholder - integrate with your actual AI API)
+        async function generateContentFromTopic() {
+            const topic = inputTopic.value.trim();
+            const videoType = videoTypeSelect.value;
+
+            if (!topic) {
+                alert(translations[currentUILanguage].topicEmpty);
+                return;
+            }
+
+            console.log(translations[currentUILanguage].aiGenerationMessage + `"${topic}" for ${videoType}`);
+            displayLoading();
+
+            try {
+                // --- INTEGRATE YOUR ACTUAL AI API CALL HERE ---
+                // Example:
+                // const aiResponse = await fetch('/api/generate-ai-content', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ topic, videoType, lang: currentContentLanguage })
+                // });
+                // if (!aiResponse.ok) throw new Error('AI API call failed');
+                // const data = await aiResponse.json();
+                // generatedTitle.value = data.title || '';
+                // generatedDescription.value = data.description || '';
+                // generatedHashtags.value = data.hashtags || '';
+                // generatedTags.value = data.tags || '';
+
+                // For demonstration, simulating an AI response after a delay:
+                await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call delay
+                generatedTitle.value = `AI Generated Title for "${topic}" (${videoType})`;
+                generatedDescription.value = `This is an AI-generated description for the topic "${topic}" and format "${videoType}". It covers key aspects and is optimized for SEO based on the AI's understanding.`;
+                generatedHashtags.value = `#${topic.replace(/\s/g, '').toLowerCase()} #${videoType} #AIGenerated #SEO`;
+                generatedTags.value = `${topic.toLowerCase()},ai,generated,${videoType},seo`;
+
+            } catch (error) {
+                console.error(translations[currentUILanguage].errorFetchingData, error);
+                alert(translations[currentUILanguage].errorFetchingData + error.message);
+                resetOutputs();
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Manual Generation Logic
+        async function generateContentFromManualSelection() {
+            const niche = nicheSelect.value;
+            const keyword = keywordSelect.value;
+            const videoType = videoTypeSelect.value; // 'shorts' or 'long'
+
+            if (!niche || !keyword) {
+                alert(translations[currentUILanguage].noKeywordSelected);
+                return;
+            }
+
+            console.log(translations[currentUILanguage].manualGenerationMessage);
+            displayLoading();
+
+            try {
+                const variables = getVariableValues();
+                const template = seoData.niches[niche].keywords[keyword];
+
+                const titleTemplate = template.title[videoType] || template.title.default;
+                const descriptionTemplate = template.description[videoType] || template.description.default;
+                const hashtagsTemplate = template.hashtags[videoType] || template.hashtags.default;
+                const tagsTemplate = template.tags[videoType] || template.tags.default;
+
+                generatedTitle.value = replacePlaceholders(titleTemplate, variables);
+                generatedDescription.value = replacePlaceholders(descriptionTemplate, variables);
+                generatedHashtags.value = replacePlaceholders(hashtagsTemplate, variables);
+                generatedTags.value = replacePlaceholders(tagsTemplate, variables);
+
+            } catch (error) {
+                console.error("Error generating content from manual selection:", error);
+                alert("Error generating content: " + error.message);
+                resetOutputs();
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // Main Generate SEO function
+        function generateSEO() {
+            if (inputTopic.value.trim() !== "") {
+                generateContentFromTopic();
+            } else if (nicheSelect.value && keywordSelect.value) {
+                generateContentFromManualSelection();
+            } else {
+                alert(translations[currentUILanguage].noTopicOrManual);
+            }
+        }
+
+        // Display/Hide Loading Message
+        function displayLoading() {
+            generateBtn.textContent = translations[currentUILanguage].loadingMessage;
+            generateBtn.disabled = true;
+            // Optionally disable all inputs/selects during loading
+            document.querySelectorAll('input, textarea, select, button').forEach(el => {
+                if (el !== generateBtn && el !== resetBtn) el.disabled = true;
+            });
+        }
+
+        function hideLoading() {
+            generateBtn.textContent = translations[currentUILanguage].generateSEOButton;
+            generateBtn.disabled = false;
+            // Re-enable all inputs/selects after loading
+            document.querySelectorAll('input, textarea, select, button').forEach(el => {
+                if (el !== generateBtn && el !== resetBtn) el.disabled = false;
+            });
+            // Re-disable keywordSelect if niche is not selected
+            if (!nicheSelect.value) {
+                keywordSelect.disabled = true;
+            }
+        }
+
+
+        // Reset Fields
+        function resetOutputs() {
+            generatedTitle.value = '';
+            generatedDescription.value = '';
+            generatedHashtags.value = '';
+            generatedTags.value = '';
+        }
+
+        function resetFields() {
+            inputTopic.value = '';
+            nicheSelect.value = '';
+            keywordSelect.innerHTML = `<option value="" selected disabled>${translations[currentUILanguage].selectSpecificKeyword}</option>`;
+            keywordSelect.disabled = true;
+            variablesSection.style.display = 'none';
+            variableInputs.innerHTML = '';
+            contentLangSelect.value = 'en'; // Reset content language to default
+            videoTypeSelect.value = 'shorts'; // Reset video type to default
+            resetOutputs();
+            loadSEOData('en'); // Reload default English data
+        }
+
+        // Download generated content as a TXT file
+        function downloadTxt() {
+            const title = generatedTitle.value;
+            const description = generatedDescription.value;
+            const hashtags = generatedHashtags.value;
+            const tags = generatedTags.value;
+
+            const content = `Title:\n${title}\n\nDescription:\n${description}\n\nHashtags:\n${hashtags}\n\nVideo Tags:\n${tags}`;
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const filename = `SEO_Content_${new Date().toISOString().slice(0, 10)}.txt`;
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
+        }
+
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeUILanguage();
+            applyDarkModeSetting();
+            loadSEOData(contentLangSelect.value); // Load initial data for default content language
+
+            uiLangSelect.addEventListener('change', changeUILanguage); // UI language change
+
+            contentLangSelect.addEventListener('change', (event) => { // Content language change
+                loadSEOData(event.target.value);
+            });
+
+            // Topic Input (AI Generation pathway)
+            inputTopic.addEventListener('input', () => {
+                // Clear manual selections if topic is being used
+                if (inputTopic.value.trim() !== "") {
+                    nicheSelect.value = '';
+                    keywordSelect.value = '';
+                    variablesSection.style.display = 'none';
+                    currentTemplate = null;
+                }
+            });
+
+            // Manual Selection dropdowns
+            nicheSelect.addEventListener('change', (event) => {
+                populateKeywordSelect(event.target.value);
+                // Clear topic input if manual selection starts
+                if (nicheSelect.value) {
+                    inputTopic.value = '';
+                }
+            });
+            keywordSelect.addEventListener('change', updateVariableInputs);
+
+            // Main Generate Button
+            generateBtn.addEventListener('click', generateSEO);
+
+            // Reset Button
+            resetBtn.addEventListener('click', resetFields);
+
+            // Export Button
+            exportBtn.addEventListener('click', downloadTxt);
+
+            // Initial state for keyword select
+            if (!nicheSelect.value) {
+                keywordSelect.disabled = true;
+            }
         });
-    }
-
-    // Reset Form (for UI elements and outputs)
-    function resetFields() {
-        const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
-        inputTopic.value = "";
-        contentLangSelect.value = 'en'; // Reset content language to English
-        videoTypeSelect.value = "long"; // Reset video type
-
-        generatedTitle.value = "";
-        generatedDescription.value = "";
-        generatedHashtags.value = "";
-        generatedTags.value = "";
-
-        // Reset manual selection dropdowns and variable section
-        populateDropdown(nicheSelect, [], null, translations[currentUILang].selectNicheCategory);
-        populateDropdown(keywordSelect, [], null, translations[currentUILang].selectSpecificKeyword);
-        keywordSelect.disabled = true;
-        variablesSection.style.display = 'none';
-        currentTemplate = null;
-
-        // Reload data for the default English content language
-        loadSEOData('en');
-    }
-
-    // Download as TXT
-    function downloadTxt() {
-        const title = generatedTitle.value;
-        const desc = generatedDescription.value;
-        const tags = generatedTags.value;
-        const hashtags = generatedHashtags.value;
-        const currentUILang = localStorage.getItem('ytseoUILang') || 'en';
-
-        if (!title && !desc && !tags && !hashtags) {
-            alert(translations[currentUILang].alertGenerateContent);
-            return;
-        }
-
-        const content = `Title:\n${title}\n\nDescription:\n${desc}\n\nTags:\n${tags}\n\nHashtags:\n${hashtags}\n\nGenerated by YTSEO.ai`;
-        const blob = new Blob([content], { type: "text/plain" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "ytseo-ai-content.txt";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url); // Clean up
-    }
-
-    // Dark Mode Toggle
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark");
-        const btn = document.querySelector('[onclick="toggleDarkMode()"]');
-        const currentLang = localStorage.getItem('ytseoUILang') || 'en';
-        btn.innerHTML = document.body.classList.contains("dark") ? `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}` : `<i class="fas fa-moon"></i> ${translations[currentLang].darkModeButton}`;
-        localStorage.setItem('ytseoDarkMode', document.body.classList.contains("dark"));
-    }
-
-    // --- Event Listeners ---
-    uiLangSelect.addEventListener('change', changeUILanguage); // UI language change
-
-    contentLangSelect.addEventListener('change', (event) => { // Content language change
-        loadSEOData(event.target.value);
-    });
-
-    // Topic Input (AI Generation pathway)
-    inputTopic.addEventListener('input', () => {
-        // Clear manual selections if topic is being used
-        nicheSelect.value = '';
-        keywordSelect.value = '';
-        variablesSection.style.display = 'none';
-        currentTemplate = null;
-        generateContentFromTopic(); // Automatically generate on topic input
-    });
-
-    // Manual Selection dropdowns
-    nicheSelect.addEventListener('change', handleManualSelectionChange);
-    keywordSelect.addEventListener('change', updateVariableInputs); // Update variables on keyword change
-
-    // Video Type affects both AI and Manual generation
-    videoTypeSelect.addEventListener('change', () => {
-        if (inputTopic.value.trim() !== "") {
-            generateContentFromTopic();
-        } else {
-            generateContentFromManualSelection();
-        }
-    });
-
-    // Main Generate Button
-    generateBtn.addEventListener('click', generateSEO);
-
-    // Reset Button
-    resetBtn.addEventListener('click', resetFields);
-
-    // --- INITIALIZE ON LOAD ---
-    document.addEventListener('DOMContentLoaded', async () => {
-        // Apply UI language and dark mode first
-        const savedUILang = localStorage.getItem('ytseoUILang') || 'en';
-        document.getElementById('uiLang').value = savedUILang;
-        applyTranslations(savedUILang);
-
-        if (localStorage.getItem('ytseoDarkMode') === 'true') {
-            document.body.classList.add('dark');
-            const btn = document.querySelector('[onclick="toggleDarkMode()"]');
-            const currentLang = localStorage.getItem('ytseoUILang') || 'en';
-            if (btn) { // Ensure button exists before trying to update its content
-                btn.innerHTML = `<i class="fas fa-sun"></i> ${translations[currentLang].lightModeButton}`;
-            }
-        }
-
-        // Load content data for the default language (English, or saved content language if applicable)
-        const savedContentLang = contentLangSelect.value || 'en';
-        await loadSEOData(savedContentLang); // Load initial content data
-    });
-</script>
+    </script>
 </body>
 </html>
