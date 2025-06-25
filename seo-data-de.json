@@ -1,126 +1,126 @@
 {
   "seo_templates": [
     {
-      "keywords": ["story", "tale", "fable", "moral story", "children story", "bedtime story"],
+      "keywords": ["Geschichte", "Märchen", "Fabel", "moralische Geschichte", "Kindergeschichte", "Gute-Nacht-Geschichte"],
       "templates": {
         "title": {
-          "shorts": "{character} and the {object}: A {adjective} Story",
-          "long": "The {adjective} Tale of {character} | Full Animated Story"
+          "shorts": "{character} und {object}: Eine {adjective} Geschichte",
+          "long": "Die {adjective} Geschichte von {character} | Vollständige Animation"
         },
         "description": {
-          "shorts": "Watch this {adjective} story about {character} learning {moral}. Perfect for kids! #ShortStory #{character}",
-          "long": "Enjoy this complete {adjective} animated story about {character} and their journey to discover {moral}. Great for {audience}. Don't forget to {call_to_action}."
+          "shorts": "Sehen Sie diese {adjective} Geschichte über {character}, der {moral} lernt. Perfekt für Kinder! #Kurzgeschichte #{character}",
+          "long": "Genießen Sie diese {adjective} animierte Geschichte über {character} und seine Reise zu {moral}. Ideal für {audience}. Vergessen Sie nicht, {call_to_action}."
         },
-        "tags": ["{character}", "story", "{adjective}", "{moral}", "{audience}", "animated", "kids"],
+        "tags": ["{character}", "Geschichte", "{adjective}", "{moral}", "{audience}", "animiert", "Kinder"],
         "variables": {
-          "character": ["Lion", "Rabbit", "Turtle", "Elephant", "Monkey"],
-          "object": ["Magic Stone", "Golden Crown", "Mysterious Box"],
-          "adjective": ["heartwarming", "funny", "educational", "inspiring"],
-          "moral": ["friendship", "honesty", "perseverance", "kindness"],
-          "audience": ["children", "families", "all ages"],
-          "call_to_action": ["subscribe", "like the video", "share with friends"]
+          "character": ["Löwe", "Hase", "Schildkröte", "Elefant", "Affe"],
+          "object": ["Zauberstein", "Goldene Krone", "Geheimnisvolle Kiste"],
+          "adjective": ["berührend", "lustig", "lehrreich", "inspirierend"],
+          "moral": ["Freundschaft", "Ehrlichkeit", "Durchhaltevermögen", "Freundlichkeit"],
+          "audience": ["Kinder", "Familien", "alle Altersgruppen"],
+          "call_to_action": ["zu abonnieren", "das Video zu liken", "mit Freunden zu teilen"]
         }
       }
     },
     {
-      "keywords": ["tech review", "gadget", "smartphone", "unboxing"],
+      "keywords": ["Technik-Test", "Gadget", "Smartphone", "Unboxing"],
       "templates": {
         "title": {
-          "shorts": "{product} Unboxing - First Look!",
-          "long": "{product} Full Review - Worth It in {year}?"
+          "shorts": "{product} Unboxing - Erster Eindruck!",
+          "long": "{product} Kompletttest - Lohnt es sich {year}?"
         },
         "description": {
-          "shorts": "Quick look at the new {product}! #{product} #Tech",
-          "long": "In-depth review of {product} after {testing_period}. We test {feature_1} and {feature_2}. {call_to_action} for more tech reviews!"
+          "shorts": "Erster Blick auf das neue {product}! #{product} #Technik",
+          "long": "Detaillierter Test des {product} nach {testing_period}. Wir prüfen {feature_1} und {feature_2}. {call_to_action} für mehr Tests!"
         },
-        "tags": ["{product}", "tech review", "unboxing", "{brand}", "{year}", "smartphone"],
+        "tags": ["{product}", "Technik", "Unboxing", "{brand}", "{year}", "Smartphone"],
         "variables": {
           "product": ["iPhone 16", "Samsung Galaxy S25", "Google Pixel 9"],
           "brand": ["Apple", "Samsung", "Google"],
           "year": ["2024", "2025"],
-          "testing_period": ["1 week", "1 month", "3 months"],
-          "feature_1": ["camera", "battery life", "performance"],
-          "feature_2": ["display", "software", "design"],
-          "call_to_action": ["Subscribe", "Hit the bell icon"]
+          "testing_period": ["1 Woche", "1 Monat", "3 Monate"],
+          "feature_1": ["Kamera", "Akku", "Leistung"],
+          "feature_2": ["Display", "Software", "Design"],
+          "call_to_action": ["Abonnieren Sie", "Aktivieren Sie die Glocke"]
         }
       }
     },
     {
-      "keywords": ["study tips", "learning", "education"],
+      "keywords": ["Lerntipps", "Lernen", "Bildung"],
       "templates": {
         "title": {
-          "shorts": "{number} Study Hacks That Actually Work!",
-          "long": "How to Study {subject} Effectively - Complete Guide"
+          "shorts": "{number} Lerntipps, die wirklich funktionieren!",
+          "long": "Wie man {subject} effektiv lernt - Komplettguide"
         },
         "description": {
-          "shorts": "Try these {number} study hacks today! #StudyTips #{subject}",
-          "long": "Learn the best methods to study {subject} effectively. Includes {method_1} and {method_2}. Perfect for {audience}. {call_to_action} for more tips!"
+          "shorts": "Probieren Sie diese {number} Tipps heute aus! #Lerntipps #{subject}",
+          "long": "Lernen Sie die besten Methoden zum Studieren von {subject}. Enthält {method_1} und {method_2}. Perfekt für {audience}. {call_to_action} für mehr Tipps!"
         },
-        "tags": ["study tips", "{subject}", "education", "learning", "students"],
+        "tags": ["Lernen", "{subject}", "Bildung", "Studium", "Studenten"],
         "variables": {
           "number": ["3", "5", "7"],
-          "subject": ["Math", "Science", "History", "Languages"],
-          "method_1": ["active recall", "spaced repetition", "mind mapping"],
-          "method_2": ["pomodoro technique", "Feynman method", "interleaving"],
-          "audience": ["students", "professionals", "lifelong learners"],
-          "call_to_action": ["Subscribe", "Bookmark this video"]
+          "subject": ["Mathe", "Naturwissenschaften", "Geschichte", "Sprachen"],
+          "method_1": ["aktives Erinnern", "verteiltes Lernen", "Mindmaps"],
+          "method_2": ["Pomodoro-Technik", "Feynman-Methode", "Interleaving"],
+          "audience": ["Studenten", "Berufstätige", "Lebenslange Lerner"],
+          "call_to_action": ["Abonnieren Sie", "Speichern Sie dieses Video"]
         }
       }
     },
     {
-      "keywords": ["fitness", "workout", "exercise"],
+      "keywords": ["Fitness", "Training", "Übung"],
       "templates": {
         "title": {
-          "shorts": "{number}-Minute {body_part} Workout",
-          "long": "Complete {body_part} Workout Routine for {result}"
+          "shorts": "{number}-Minuten {body_part}-Training",
+          "long": "Komplettes {body_part}-Training für {result}"
         },
         "description": {
-          "shorts": "Quick {body_part} workout you can do anywhere! #{body_part}Workout",
-          "long": "Follow this {duration} {body_part} workout to achieve {result}. Includes {exercise_1} and {exercise_2}. {call_to_action} for more fitness content!"
+          "shorts": "Schnelles {body_part}-Training für überall! #{body_part}Training",
+          "long": "Folgen Sie diesem {duration} {body_part}-Training für {result}. Enthält {exercise_1} und {exercise_2}. {call_to_action} für mehr Inhalte!"
         },
-        "tags": ["fitness", "{body_part}", "workout", "exercise", "{result}"],
+        "tags": ["Fitness", "{body_part}", "Training", "Übung", "{result}"],
         "variables": {
           "number": ["5", "10", "15"],
-          "body_part": ["Abs", "Arms", "Legs", "Full Body"],
-          "result": ["toning", "strength", "weight loss"],
-          "duration": ["10-minute", "30-minute", "1-hour"],
-          "exercise_1": ["push-ups", "squats", "planks"],
-          "exercise_2": ["lunges", "burpees", "jumping jacks"],
-          "call_to_action": ["Subscribe", "Save this routine"]
+          "body_part": ["Bauch", "Arme", "Beine", "Ganzkörper"],
+          "result": ["Straffung", "Kraft", "Gewichtsverlust"],
+          "duration": ["10-minütiges", "30-minütiges", "1-stündiges"],
+          "exercise_1": ["Liegestütze", "Kniebeugen", "Planks"],
+          "exercise_2": ["Ausfallschritte", "Burpees", "Hampelmänner"],
+          "call_to_action": ["Abonnieren Sie", "Speichern Sie diese Routine"]
         }
       }
     },
     {
-      "keywords": ["cooking", "recipe", "food"],
+      "keywords": ["Kochen", "Rezept", "Essen"],
       "templates": {
         "title": {
-          "shorts": "How to Make {dish} in {time}!",
-          "long": "The Perfect {dish} Recipe - {cuisine} Style"
+          "shorts": "Wie man {dish} in nur {time} macht!",
+          "long": "Perfektes {dish}-Rezept im {cuisine}-Stil"
         },
         "description": {
-          "shorts": "Easy {dish} recipe anyone can make! #{dish} #{cuisine}",
-          "long": "Learn to make authentic {cuisine} {dish} with this step-by-step guide. Uses {ingredient_1} and {ingredient_2}. {call_to_action} for more recipes!"
+          "shorts": "Einfaches {dish}-Rezept für jeden! #{dish} #{cuisine}",
+          "long": "Lernen Sie, authentisches {cuisine} {dish} mit dieser Schritt-für-Schritt-Anleitung zuzubereiten. Verwendet {ingredient_1} und {ingredient_2}. {call_to_action} für mehr Rezepte!"
         },
-        "tags": ["{dish}", "recipe", "cooking", "{cuisine}", "food"],
+        "tags": ["{dish}", "Rezept", "Kochen", "{cuisine}", "Essen"],
         "variables": {
-          "dish": ["Pasta", "Curry", "Stir Fry", "Salad"],
-          "time": ["5 minutes", "15 minutes", "30 minutes"],
-          "cuisine": ["Italian", "Indian", "Chinese", "Mexican"],
-          "ingredient_1": ["fresh herbs", "special spices", "secret sauce"],
-          "ingredient_2": ["local vegetables", "premium protein", "homemade stock"],
-          "call_to_action": ["Subscribe", "Try this recipe"]
+          "dish": ["Pasta", "Curry", "Pfannengericht", "Salat"],
+          "time": ["5 Minuten", "15 Minuten", "30 Minuten"],
+          "cuisine": ["Italienisch", "Indisch", "Chinesisch", "Mexikanisch"],
+          "ingredient_1": ["frische Kräuter", "besondere Gewürze", "Geheimsauce"],
+          "ingredient_2": ["lokales Gemüse", "Premium-Protein", "hausgemachte Brühe"],
+          "call_to_action": ["Abonnieren Sie", "Probieren Sie dieses Rezept"]
         }
       }
     }
   ],
   "fallback": {
-    "title": "{topic} - Amazing {video_type} You'll Love!",
-    "description": "This {video_type} about {topic} will {impact}. Watch till the end for {benefit}!",
-    "tags": ["{topic}", "{video_type}", "viral", "trending"],
+    "title": "{topic} - Unglaubliches {video_type}, das Sie lieben werden!",
+    "description": "Dieses {video_type} über {topic} wird Sie {impact}. Schauen Sie bis zum Ende für {benefit}!",
+    "tags": ["{topic}", "{video_type}", "viral", "Trend"],
     "variables": {
-      "video_type": ["video", "guide", "tutorial"],
-      "impact": ["blow your mind", "change your life", "inspire you"],
-      "benefit": ["a surprise", "exclusive tips", "a free gift"]
+      "video_type": ["Video", "Guide", "Tutorial"],
+      "impact": ["überraschen", "Ihr Leben verändern", "inspirieren"],
+      "benefit": ["eine Überraschung", "exklusive Tipps", "ein Geschenk"]
     }
   }
 }
