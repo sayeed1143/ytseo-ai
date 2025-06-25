@@ -79,32 +79,32 @@
         </section>
 
         <section class="output-section card">
-    <div class="output-group">
-        <label for="titleBox" data-translate-key="titleLabel"><i class="fas fa-heading"></i> Title</label>
-        <textarea id="titleBox" rows="2" placeholder="Your optimized title will appear here..." data-translate-key="titlePlaceholder" readonly></textarea>
-        <button type="button" class="btn-copy" onclick="copyToClipboard('titleBox')" aria-label="Copy Title"><i class="fas fa-copy"></i> Copy Title</button>
-    </div>
+            <div class="output-group">
+                <label for="titleBox" data-translate-key="titleLabel"><i class="fas fa-heading"></i> Title</label>
+                <textarea id="titleBox" rows="2" placeholder="Your optimized title will appear here..." data-translate-key="titlePlaceholder" readonly></textarea>
+                <button class="btn-copy" onclick="copyToClipboard('titleBox')"><i class="fas fa-copy"></i> Copy Title</button>
+            </div>
 
-    <div class="output-group">
-        <label for="descBox" data-translate-key="descriptionLabel"><i class="fas fa-align-left"></i> Description</label>
-        <textarea id="descBox" rows="6" placeholder="Your SEO description will appear here..." data-translate-key="descriptionPlaceholder" readonly></textarea>
-        <button type="button" class="btn-copy" onclick="copyToClipboard('descBox')" aria-label="Copy Description"><i class="fas fa-copy"></i> Copy Description</button>
-    </div>
+            <div class="output-group">
+                <label for="descBox" data-translate-key="descriptionLabel"><i class="fas fa-align-left"></i> Description</label>
+                <textarea id="descBox" rows="6" placeholder="Your SEO description will appear here..." data-translate-key="descriptionPlaceholder" readonly></textarea>
+                <button class="btn-copy" onclick="copyToClipboard('descBox')"><i class="fas fa-copy"></i> Copy Description</button>
+            </div>
 
-    <div class="output-group">
-        <label for="hashtagBox" data-translate-key="hashtagsLabel"><i class="fas fa-hashtag"></i> Hashtags</label>
-        <textarea id="hashtagBox" rows="2" placeholder="Relevant hashtags will appear here..." data-translate-key="hashtagsPlaceholder" readonly></textarea>
-        <button type="button" class="btn-copy" onclick="copyToClipboard('hashtagBox')" aria-label="Copy Hashtags"><i class="fas fa-copy"></i> Copy Hashtags</button>
-    </div>
+            <div class="output-group">
+                <label for="hashtagBox" data-translate-key="hashtagsLabel"><i class="fas fa-hashtag"></i> Hashtags</label>
+                <textarea id="hashtagBox" rows="2" placeholder="Relevant hashtags will appear here..." data-translate-key="hashtagsPlaceholder" readonly></textarea>
+                <button class="btn-copy" onclick="copyToClipboard('hashtagBox')"><i class="fas fa-copy"></i> Copy Hashtags</button>
+            </div>
 
-    <div class="output-group">
-        <label for="tagsBox" data-translate-key="videoTagsLabel"><i class="fas fa-tags"></i> Video Tags</label>
-        <textarea id="tagsBox" rows="3" placeholder="Optimized tags will appear here..." data-translate-key="videoTagsPlaceholder" readonly></textarea>
-        <button type="button" class="btn-copy" onclick="copyToClipboard('tagsBox')" aria-label="Copy Tags"><i class="fas fa-copy"></i> Copy Tags</button>
-    </div>
+            <div class="output-group">
+                <label for="tagsBox" data-translate-key="videoTagsLabel"><i class="fas fa-tags"></i> Video Tags</label>
+                <textarea id="tagsBox" rows="3" placeholder="Optimized tags will appear here..." data-translate-key="videoTagsPlaceholder" readonly></textarea>
+                <button class="btn-copy" onclick="copyToClipboard('tagsBox')"><i class="fas fa-copy"></i> Copy Tags</button>
+            </div>
 
-    <button type="button" class="btn btn-export" onclick="downloadTxt()" data-translate-key="exportButton"><i class="fas fa-download"></i> Export All</button>
-</section>
+            <button class="btn btn-export" onclick="downloadTxt()" data-translate-key="exportButton"><i class="fas fa-download"></i> Export All</button>
+        </section>
     </main>
 
     <footer>
