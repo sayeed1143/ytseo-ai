@@ -1,0 +1,126 @@
+{
+  "seo_templates": [
+    {
+      "keywords": ["historia", "cuento", "fábula", "historia moral", "cuento infantil", "historia para dormir"],
+      "templates": {
+        "title": {
+          "shorts": "{character} y {object}: Un cuento {adjective}",
+          "long": "El cuento {adjective} de {character} | Historia animada completa"
+        },
+        "description": {
+          "shorts": "Mira esta historia {adjective} sobre {character} aprendiendo {moral}. ¡Perfecto para niños! #CuentoCorto #{character}",
+          "long": "Disfruta esta historia animada {adjective} sobre {character} y su viaje para descubrir {moral}. Ideal para {audience}. No olvides {call_to_action}."
+        },
+        "tags": ["{character}", "cuento", "{adjective}", "{moral}", "{audience}", "animado", "niños"],
+        "variables": {
+          "character": ["León", "Conejo", "Tortuga", "Elefante", "Mono"],
+          "object": ["Piedra mágica", "Corona dorada", "Caja misteriosa"],
+          "adjective": ["conmovedor", "divertido", "educativo", "inspirador"],
+          "moral": ["amistad", "honestidad", "perseverancia", "bondad"],
+          "audience": ["niños", "familias", "todas las edades"],
+          "call_to_action": ["suscribirte", "dar like", "compartir con amigos"]
+        }
+      }
+    },
+    {
+      "keywords": ["reseña de tecnología", "gadget", "smartphone", "unboxing"],
+      "templates": {
+        "title": {
+          "shorts": "Unboxing del {product} - ¡Primera impresión!",
+          "long": "Reseña completa del {product} - ¿Vale la pena en {year}?"
+        },
+        "description": {
+          "shorts": "¡Primer vistazo al nuevo {product}! #{product} #Tecnología",
+          "long": "Reseña detallada del {product} después de {testing_period}. Probamos {feature_1} y {feature_2}. ¡{call_to_action} para más reseñas!"
+        },
+        "tags": ["{product}", "tecnología", "unboxing", "{brand}", "{year}", "smartphone"],
+        "variables": {
+          "product": ["iPhone 16", "Samsung Galaxy S25", "Google Pixel 9"],
+          "brand": ["Apple", "Samsung", "Google"],
+          "year": ["2024", "2025"],
+          "testing_period": ["1 semana", "1 mes", "3 meses"],
+          "feature_1": ["cámara", "batería", "rendimiento"],
+          "feature_2": ["pantalla", "software", "diseño"],
+          "call_to_action": ["Suscríbete", "Activa la campanita"]
+        }
+      }
+    },
+    {
+      "keywords": ["consejos de estudio", "aprendizaje", "educación"],
+      "templates": {
+        "title": {
+          "shorts": "¡{number} consejos de estudio que realmente funcionan!",
+          "long": "Cómo estudiar {subject} efectivamente - Guía completa"
+        },
+        "description": {
+          "shorts": "Prueba estos {number} consejos hoy mismo! #ConsejosDeEstudio #{subject}",
+          "long": "Aprende los mejores métodos para estudiar {subject}. Incluye {method_1} y {method_2}. Perfecto para {audience}. ¡{call_to_action} para más tips!"
+        },
+        "tags": ["estudio", "{subject}", "educación", "aprendizaje", "estudiantes"],
+        "variables": {
+          "number": ["3", "5", "7"],
+          "subject": ["Matemáticas", "Ciencias", "Historia", "Idiomas"],
+          "method_1": ["recuerdo activo", "repaso espaciado", "mapas mentales"],
+          "method_2": ["técnica pomodoro", "método Feynman", "intercalado"],
+          "audience": ["estudiantes", "profesionales", "aprendices"],
+          "call_to_action": ["Suscríbete", "Guarda este video"]
+        }
+      }
+    },
+    {
+      "keywords": ["fitness", "entrenamiento", "ejercicio"],
+      "templates": {
+        "title": {
+          "shorts": "Entrenamiento de {body_part} en {number} minutos",
+          "long": "Rutina completa de {body_part} para {result}"
+        },
+        "description": {
+          "shorts": "¡Rápido entrenamiento de {body_part} que puedes hacer en cualquier lugar! #{body_part}Workout",
+          "long": "Sigue esta rutina de {duration} para {body_part} y logra {result}. Incluye {exercise_1} y {exercise_2}. ¡{call_to_action} para más contenido!"
+        },
+        "tags": ["fitness", "{body_part}", "entrenamiento", "ejercicio", "{result}"],
+        "variables": {
+          "number": ["5", "10", "15"],
+          "body_part": ["abdomen", "brazos", "piernas", "cuerpo completo"],
+          "result": ["tonificar", "fuerza", "bajar de peso"],
+          "duration": ["10 minutos", "30 minutos", "1 hora"],
+          "exercise_1": ["flexiones", "sentadillas", "planchas"],
+          "exercise_2": ["zancadas", "burpees", "saltos"],
+          "call_to_action": ["Suscríbete", "Guarda esta rutina"]
+        }
+      }
+    },
+    {
+      "keywords": ["cocina", "receta", "comida"],
+      "templates": {
+        "title": {
+          "shorts": "Cómo hacer {dish} en solo {time}!",
+          "long": "Receta perfecta de {dish} al estilo {cuisine}"
+        },
+        "description": {
+          "shorts": "¡Fácil receta de {dish} que cualquiera puede hacer! #{dish} #{cuisine}",
+          "long": "Aprende a hacer auténtico {dish} {cuisine} con esta guía paso a paso. Usa {ingredient_1} y {ingredient_2}. ¡{call_to_action} para más recetas!"
+        },
+        "tags": ["{dish}", "receta", "cocina", "{cuisine}", "comida"],
+        "variables": {
+          "dish": ["pasta", "curry", "salteado", "ensalada"],
+          "time": ["5 minutos", "15 minutos", "30 minutos"],
+          "cuisine": ["italiano", "indio", "chino", "mexicano"],
+          "ingredient_1": ["hierbas frescas", "especias especiales", "salsa secreta"],
+          "ingredient_2": ["verduras locales", "proteína premium", "caldo casero"],
+          "call_to_action": ["Suscríbete", "Prueba esta receta"]
+        }
+      }
+    }
+  ],
+  "fallback": {
+    "title": "{topic} - Increíble {video_type} que te encantará!",
+    "description": "Este {video_type} sobre {topic} te {impact}. ¡Mira hasta el final para {benefit}!",
+    "tags": ["{topic}", "{video_type}", "viral", "tendencia"],
+    "variables": {
+      "video_type": ["video", "guía", "tutorial"],
+      "impact": ["sorprenderá", "cambiará tu vida", "inspirará"],
+      "benefit": ["una sorpresa", "consejos exclusivos", "un regalo"]
+    }
+  }
+}
