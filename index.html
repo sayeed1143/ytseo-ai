@@ -41,7 +41,13 @@
             </div>
         </div>
     </header>
-  
+  <!-- 🔍 Search SEO by keyword -->
+<div class="section">
+  <label for="searchInput">🔍 SEO by Keyword</label>
+  <input type="text" id="searchInput" placeholder="e.g. lion, tech review, workout..." />
+  <button class="generate-btn" onclick="searchSEO()">🎯 Generate SEO</button>
+</div>
+
 
     <main class="container">
         <section class="input-section card">
@@ -49,12 +55,6 @@
                 <label for="inputTopic" data-translate-key="videoTopicLabel"><i class="fas fa-pencil-alt"></i> Video Topic/Script</label>
                 <textarea id="inputTopic" rows="4" placeholder="e.g. A story about a lion who learns humility..." data-translate-key="videoTopicPlaceholder"></textarea>
             </div>
-<!-- 🔍 Search SEO by keyword -->
-<div class="section">
-  <label for="searchInput">🔍 SEO by Keyword</label>
-  <input type="text" id="searchInput" placeholder="e.g. lion, tech review, workout..." />
-  <button class="generate-btn" onclick="searchSEO()">🎯 Generate SEO</button>
-</div>
 
             <div class="form-row">
                 <div class="form-group">
@@ -659,77 +659,6 @@ hashtagsLabel: '📌 Хэштеги',
     msgDiv.style.marginBottom = '0.5rem';
     msgDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
     chatWindow.appendChild(msgDiv);
-  }
-</script>
-    <script>
-  // 🧠 Smart Search Function
-  function searchSEO() {
-    const keyword = document.getElementById("searchInput").value.toLowerCase();
-    const templates = window.seoTemplates?.seo_templates || [];
-
-    const match = templates.find(template =>
-      template.keywords.some(k => k.toLowerCase().includes(keyword))
-    );
-
-    if (!match) {
-      alert("No template found for that keyword.");
-      return;
-    }
-
-    // Pick a random variable
-    const vars = match.templates.variables;
-    const getRandom = arr => arr[Math.floor(Math.random() * arr.length)];
-
-    const type = document.getElementById("type").value;
-    const lang = document.getElementById("language").value;
-
-    const title = match.templates.title[type]
-      .replace("{character}", getRandom(vars.character || ["Hero"]))
-      .replace("{object}", getRandom(vars.object || ["Object"]))
-      .replace("{adjective}", getRandom(vars.adjective || ["Great"]))
-      .replace("{product}", getRandom(vars.product || ["Product"]))
-      .replace("{number}", getRandom(vars.number || ["5"]))
-      .replace("{body_part}", getRandom(vars.body_part || ["Body"]))
-      .replace("{dish}", getRandom(vars.dish || ["Dish"]))
-      .replace("{result}", getRandom(vars.result || ["Result"]))
-      .replace("{subject}", getRandom(vars.subject || ["Subject"]))
-      .replace("{year}", getRandom(vars.year || ["2025"]));
-
-    const description = match.templates.description[type]
-      .replace("{character}", getRandom(vars.character || ["Hero"]))
-      .replace("{moral}", getRandom(vars.moral || ["Wisdom"]))
-      .replace("{adjective}", getRandom(vars.adjective || ["Amazing"]))
-      .replace("{product}", getRandom(vars.product || ["Product"]))
-      .replace("{feature_1}", getRandom(vars.feature_1 || ["Feature"]))
-      .replace("{feature_2}", getRandom(vars.feature_2 || ["Feature"]))
-      .replace("{testing_period}", getRandom(vars.testing_period || ["1 week"]))
-      .replace("{call_to_action}", getRandom(vars.call_to_action || ["Subscribe"]))
-      .replace("{dish}", getRandom(vars.dish || ["Dish"]))
-      .replace("{ingredient_1}", getRandom(vars.ingredient_1 || ["Stuff"]))
-      .replace("{ingredient_2}", getRandom(vars.ingredient_2 || ["Stuff"]))
-      .replace("{cuisine}", getRandom(vars.cuisine || ["Cuisine"]))
-      .replace("{audience}", getRandom(vars.audience || ["Everyone"]))
-      .replace("{duration}", getRandom(vars.duration || ["10-minute"]))
-      .replace("{method_1}", getRandom(vars.method_1 || ["Method"]))
-      .replace("{method_2}", getRandom(vars.method_2 || ["Method"]))
-      .replace("{number}", getRandom(vars.number || ["5"]))
-      .replace("{subject}", getRandom(vars.subject || ["Subject"]));
-
-    document.getElementById("titleBox").value = title;
-    document.getElementById("descBox").value = description;
-    document.getElementById("hashtagBox").value = "#" + keyword + " #" + type + " #ytseo";
-    document.getElementById("tagsBox").value = keyword + ", " + type + ", SEO";
-  }
-
-  // 🌙 Dark Mode (Persistent)
-  document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") document.body.classList.add("dark");
-  });
-
-  function toggleDarkMode() {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
   }
 </script>
 </body>
