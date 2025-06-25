@@ -1,0 +1,126 @@
+{
+  "seo_templates": [
+    {
+      "keywords": ["histoire", "conte", "fable", "histoire morale", "histoire pour enfants", "histoire du soir"],
+      "templates": {
+        "title": {
+          "shorts": "{character} et {object} : Une histoire {adjective}",
+          "long": "Le {adjective} conte de {character} | Histoire animée complète"
+        },
+        "description": {
+          "shorts": "Regardez cette histoire {adjective} sur {character} qui apprend {moral}. Parfait pour les enfants ! #HistoireCourte #{character}",
+          "long": "Découvrez cette histoire animée {adjective} sur {character} et son voyage vers {moral}. Idéal pour {audience}. N'oubliez pas de {call_to_action}."
+        },
+        "tags": ["{character}", "histoire", "{adjective}", "{moral}", "{audience}", "animé", "enfants"],
+        "variables": {
+          "character": ["Lion", "Lapin", "Tortue", "Éléphant", "Singe"],
+          "object": ["Pierre magique", "Couronne dorée", "Boîte mystérieuse"],
+          "adjective": ["touchante", "drôle", "éducative", "inspirante"],
+          "moral": ["amitié", "honnêteté", "persévérance", "gentillesse"],
+          "audience": ["enfants", "familles", "tous âges"],
+          "call_to_action": ["vous abonner", "aimer la vidéo", "partager avec des amis"]
+        }
+      }
+    },
+    {
+      "keywords": ["test technologie", "gadget", "smartphone", "déballage"],
+      "templates": {
+        "title": {
+          "shorts": "Déballage du {product} - Première impression !",
+          "long": "Test complet du {product} - Vaut-il l'achat en {year} ?"
+        },
+        "description": {
+          "shorts": "Premier aperçu du nouveau {product} ! #{product} #Technologie",
+          "long": "Test approfondi du {product} après {testing_period}. Nous évaluons {feature_1} et {feature_2}. {call_to_action} pour plus de tests !"
+        },
+        "tags": ["{product}", "technologie", "déballage", "{brand}", "{year}", "smartphone"],
+        "variables": {
+          "product": ["iPhone 16", "Samsung Galaxy S25", "Google Pixel 9"],
+          "brand": ["Apple", "Samsung", "Google"],
+          "year": ["2024", "2025"],
+          "testing_period": ["1 semaine", "1 mois", "3 mois"],
+          "feature_1": ["appareil photo", "autonomie", "performances"],
+          "feature_2": ["écran", "logiciel", "design"],
+          "call_to_action": ["Abonnez-vous", "Activez la cloche"]
+        }
+      }
+    },
+    {
+      "keywords": ["conseils étude", "apprentissage", "éducation"],
+      "templates": {
+        "title": {
+          "shorts": "{number} conseils d'étude qui fonctionnent vraiment !",
+          "long": "Comment étudier {subject} efficacement - Guide complet"
+        },
+        "description": {
+          "shorts": "Essayez ces {number} conseils dès aujourd'hui ! #ConseilsÉtude #{subject}",
+          "long": "Découvrez les meilleures méthodes pour étudier {subject}. Inclut {method_1} et {method_2}. Parfait pour {audience}. {call_to_action} pour plus d'astuces !"
+        },
+        "tags": ["étude", "{subject}", "éducation", "apprentissage", "étudiants"],
+        "variables": {
+          "number": ["3", "5", "7"],
+          "subject": ["Maths", "Sciences", "Histoire", "Langues"],
+          "method_1": ["rappel actif", "répétition espacée", "cartes mentales"],
+          "method_2": ["technique pomodoro", "méthode Feynman", "entrelacement"],
+          "audience": ["étudiants", "professionnels", "apprenants"],
+          "call_to_action": ["Abonnez-vous", "Enregistrez cette vidéo"]
+        }
+      }
+    },
+    {
+      "keywords": ["fitness", "entraînement", "exercice"],
+      "templates": {
+        "title": {
+          "shorts": "Entraînement {body_part} de {number} minutes",
+          "long": "Routine complète {body_part} pour {result}"
+        },
+        "description": {
+          "shorts": "Rapide entraînement {body_part} à faire partout ! #{body_part}Workout",
+          "long": "Suivez cette routine de {duration} pour {body_part} et obtenez {result}. Inclut {exercise_1} et {exercise_2}. {call_to_action} pour plus de contenu !"
+        },
+        "tags": ["fitness", "{body_part}", "entraînement", "exercice", "{result}"],
+        "variables": {
+          "number": ["5", "10", "15"],
+          "body_part": ["abdos", "bras", "jambes", "corps entier"],
+          "result": ["sculpter", "force", "perte de poids"],
+          "duration": ["10 minutes", "30 minutes", "1 heure"],
+          "exercise_1": ["pompes", "squats", "planches"],
+          "exercise_2": ["fentes", "burpees", "sauts"],
+          "call_to_action": ["Abonnez-vous", "Sauvegardez cette routine"]
+        }
+      }
+    },
+    {
+      "keywords": ["cuisine", "recette", "nourriture"],
+      "templates": {
+        "title": {
+          "shorts": "Comment faire {dish} en seulement {time} !",
+          "long": "Recette parfaite du {dish} style {cuisine}"
+        },
+        "description": {
+          "shorts": "Recette facile de {dish} pour tous ! #{dish} #{cuisine}",
+          "long": "Apprenez à faire un authentique {dish} {cuisine} avec ce guide étape par étape. Utilise {ingredient_1} et {ingredient_2}. {call_to_action} pour plus de recettes !"
+        },
+        "tags": ["{dish}", "recette", "cuisine", "{cuisine}", "nourriture"],
+        "variables": {
+          "dish": ["pâtes", "curry", "sauté", "salade"],
+          "time": ["5 minutes", "15 minutes", "30 minutes"],
+          "cuisine": ["italien", "indien", "chinois", "mexicain"],
+          "ingredient_1": ["herbes fraîches", "épices spéciales", "sauce secrète"],
+          "ingredient_2": ["légumes locaux", "protéine premium", "bouillon maison"],
+          "call_to_action": ["Abonnez-vous", "Essayez cette recette"]
+        }
+      }
+    }
+  ],
+  "fallback": {
+    "title": "{topic} - Incroyable {video_type} que vous adorerez !",
+    "description": "Ce {video_type} sur {topic} va vous {impact}. Regardez jusqu'à la fin pour {benefit} !",
+    "tags": ["{topic}", "{video_type}", "viral", "tendance"],
+    "variables": {
+      "video_type": ["vidéo", "guide", "tutoriel"],
+      "impact": ["surprendre", "changer votre vie", "inspirer"],
+      "benefit": ["une surprise", "des conseils exclusifs", "un cadeau"]
+    }
+  }
+}
