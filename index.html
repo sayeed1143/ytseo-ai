@@ -3,269 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YTSEO.ai - Smart SEO for YouTube Videos</title>
-    <meta name="description" content="Generate optimized YouTube titles, descriptions, and tags instantly. Boost your video's SEO with AI-powered suggestions.">
-    <!-- Rest of your head content -->
-    <style>
-        /* Your existing styles */
-    </style>
+    <title>SEO Content Generator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <!-- Your header content -->
+        <h1>SEO Content Generator</h1>
+        <button id="toggle-theme">Toggle Dark/Light Mode</button>
+        <select id="language-selector">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="ur">Urdu</option>
+            <option value="ru">Russian</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+        </select>
     </header>
-
-    <main class="container">
-        <!-- Your main content -->
+    <main>
+        <section>
+            <h2>AI Generation Pathway</h2>
+            <textarea id="inputTopic" placeholder="Enter video topic here..."></textarea>
+            <button id="generate-seo">Generate SEO</button>
+        </section>
+        <section>
+            <h2>Manual Selection Pathway</h2>
+            <label for="niche-dropdown">Niche/Category:</label>
+            <select id="niche-dropdown"></select>
+            <label for="keyword-dropdown">Specific Keyword:</label>
+            <select id="keyword-dropdown"></select>
+            <div id="dynamic-variables"></div>
+            <label for="video-format">Video Format:</label>
+            <select id="video-format">
+                <option value="short">Short Video</option>
+                <option value="long">Long Video</option>
+            </select>
+        </section>
+        <section>
+            <h2>SEO Content Output</h2>
+            <textarea id="output-title" placeholder="Generated Title"></textarea>
+            <button class="copy-btn" data-target="output-title">Copy</button>
+            <textarea id="output-description" placeholder="Generated Description"></textarea>
+            <button class="copy-btn" data-target="output-description">Copy</button>
+            <textarea id="output-hashtags" placeholder="Generated Hashtags"></textarea>
+            <button class="copy-btn" data-target="output-hashtags">Copy</button>
+            <textarea id="output-tags" placeholder="Generated Video Tags"></textarea>
+            <button class="copy-btn" data-target="output-tags">Copy</button>
+        </section>
+        <button id="reset-btn">Reset</button>
+        <button id="export-btn">Export All</button>
     </main>
-
-    <!-- AI Agent Chat Interface -->
-    <div id="aiAgentContainer" class="ai-agent-container collapsed">
-        <div class="ai-agent-header" onclick="toggleAIAgent()">
-            <h3>YTSEO AI Assistant</h3>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="ai-agent-body">
-            <div id="aiAgentMessages" class="ai-agent-messages">
-                <div class="ai-message bot-message">Hello! I'm your YTSEO AI assistant. How can I help you with your YouTube SEO today?</div>
-            </div>
-            <div class="ai-agent-input">
-                <input id="aiAgentInput" type="text" placeholder="Ask me anything about YouTube SEO..." />
-                <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <!-- Your footer content -->
-    </footer>
-        <script>
-        // Translations object (expanded with Spanish, French, German)
-        const translations = {
-            en: {
-                darkModeButton: '🌙 Dark Mode',
-                lightModeButton: '☀️ Light Mode',
-                tagline: 'Smart SEO. More Views. Less Hassle.',
-                videoTopicLabel: '📝 Video Topic/Script',
-                videoTopicPlaceholder: 'e.g. A story about a lion who learns humility...',
-                contentLanguageLabel: '🌍 Content Language',
-                englishOption: 'English',
-                hindiOption: 'Hindi',
-                urduOption: 'Urdu',
-                russianOption: 'Russian',
-                spanishOption: 'Español',
-                frenchOption: 'Français',
-                germanOption: 'Deutsch',
-                videoFormatLabel: '🎬 Video Format',
-                shortVideoOption: 'Short Video',
-                longVideoOption: 'Long Video',
-                generateSEOButton: '⚡ Generate SEO',
-                resetButton: '🔁 Reset',
-                exportButton: '📥 Export All',
-                titleLabel: '🎯 Title',
-                titlePlaceholder: 'Your optimized title will appear here...',
-                copyTitleButton: 'Copy Title',
-                descriptionLabel: '📝 Description',
-                descriptionPlaceholder: 'Your SEO description will appear here...',
-                hashtagsLabel: '📌 Hashtags',
-                hashtagsPlaceholder: 'Relevant hashtags will appear here...',
-                videoTagsLabel: '🔖 Video Tags',
-                videoTagsPlaceholder: 'Optimized tags will appear here...',
-                copyTagsButton: 'Copy Tags',
-                copyHashtagsButton: 'Copy Hashtags',
-                footerText: 'Powered by <strong>YTSEO.ai</strong> – Built with ❤️ for global creators',
-                alertEnterTopic: 'Please enter a video topic first!',
-                alertGenerateContent: 'Generate some content first!',
-                copiedSuccess: '✓ Copied!',
-                aiHelpButton: 'AI Help',
-                generatingText: 'Generating...',
-                aiWelcomeMessage: 'Hello! I\'m your YTSEO AI assistant. How can I help you with your YouTube SEO today?',
-                aiTypingMessage: 'YTSEO AI is typing...',
-                aiResponses: [
-                    'For better SEO, try to include your main keyword in both the title and first few lines of your description.',
-                    'Shorter videos perform better when the title is more direct and attention-grabbing.',
-                    'Longer videos benefit from titles that set expectations about the content and duration.',
-                    'Remember to add relevant hashtags (3-5 is ideal) to help with discoverability.',
-                    'Your description should include keywords naturally and provide value to viewers.',
-                    'Tags help YouTube understand your content. Use a mix of broad and specific tags.'
-                ],
-                aiCommonQuestions: [
-                    'How to write a good YouTube title?',
-                    'What makes a good description?',
-                    'How many tags should I use?',
-                    'Best practices for Shorts?',
-                    'How to rank higher in search?'
-                ]
-            },
-            // Other language translations would go here...
-        };
-
-        // Dark mode toggle
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark');
-            const darkModeButton = document.querySelector('[data-translate-key="darkModeButton"]');
-            const isDark = document.body.classList.contains('dark');
-            
-            if (isDark) {
-                darkModeButton.innerHTML = '☀️ ' + translations[currentLang].lightModeButton;
-                darkModeButton.setAttribute('data-translate-key', 'lightModeButton');
-            } else {
-                darkModeButton.innerHTML = '🌙 ' + translations[currentLang].darkModeButton;
-                darkModeButton.setAttribute('data-translate-key', 'darkModeButton');
-            }
-            
-            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-        }
-
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark');
-            const darkModeButton = document.querySelector('[data-translate-key="darkModeButton"]');
-            darkModeButton.innerHTML = '☀️ ' + translations[currentLang].lightModeButton;
-            darkModeButton.setAttribute('data-translate-key', 'lightModeButton');
-        }
-
-        // AI Agent functionality
-        let aiAgentVisible = false;
-        let waitingForAIResponse = false;
-        
-        function toggleAIAgent() {
-            const container = document.getElementById('aiAgentContainer');
-            aiAgentVisible = !container.classList.contains('collapsed');
-            
-            if (aiAgentVisible) {
-                container.classList.add('collapsed');
-            } else {
-                container.classList.remove('collapsed');
-                // Scroll to bottom when opening
-                setTimeout(() => {
-                    const messages = document.getElementById('aiAgentMessages');
-                    messages.scrollTop = messages.scrollHeight;
-                }, 100);
-            }
-        }
-        
-        function sendAIMessage() {
-            const input = document.getElementById('aiAgentInput');
-            const message = input.value.trim();
-            
-            if (message === '') return;
-            
-            // Add user message to chat
-            addMessageToChat(message, 'user');
-            input.value = '';
-            
-            // Show typing indicator
-            showTypingIndicator();
-            
-            // Simulate AI response after a delay
-            waitingForAIResponse = true;
-            setTimeout(() => {
-                generateAIResponse(message);
-                waitingForAIResponse = false;
-            }, 1500 + Math.random() * 2000);
-        }
-        
-        function addMessageToChat(message, sender) {
-            const messages = document.getElementById('aiAgentMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `ai-message ${sender}-message`;
-            messageDiv.textContent = message;
-            messages.appendChild(messageDiv);
-            
-            // Scroll to bottom
-            messages.scrollTop = messages.scrollHeight;
-        }
-        
-        function showTypingIndicator() {
-            const messages = document.getElementById('aiAgentMessages');
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'typing-indicator';
-            typingDiv.id = 'typingIndicator';
-            
-            for (let i = 0; i < 3; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'typing-dot';
-                typingDiv.appendChild(dot);
-            }
-            
-            messages.appendChild(typingDiv);
-            messages.scrollTop = messages.scrollHeight;
-        }
-        
-        function hideTypingIndicator() {
-            const typing = document.getElementById('typingIndicator');
-            if (typing) {
-                typing.remove();
-            }
-        }
-        
-        function generateAIResponse(userMessage) {
-            hideTypingIndicator();
-            
-            // Simple keyword matching for responses
-            let response = '';
-            const lowerMessage = userMessage.toLowerCase();
-            
-            if (lowerMessage.includes('title') || lowerMessage.includes('headline')) {
-                response = 'A good YouTube title should be clear, compelling, and contain your main keyword. For Shorts, keep it short and punchy. For long videos, you can be more descriptive. Example: "How to [Do Something] - [Benefit/Result]"';
-            } 
-            else if (lowerMessage.includes('description') || lowerMessage.includes('desc')) {
-                response = 'Your description should start with the most important information (include keywords naturally). For longer videos, consider adding timestamps. End with a call-to-action (like/subscribe) and relevant links.';
-            }
-            else if (lowerMessage.includes('tag') || lowerMessage.includes('keyword')) {
-                response = 'Use 10-15 tags that are relevant to your content. Include a mix of: 1) Exact match keywords, 2) Broad topics, 3) Your channel name. Tags help YouTube understand your content.';
-            }
-            else if (lowerMessage.includes('short') || lowerMessage.includes('reel')) {
-                response = 'For Shorts: 1) Use #Shorts in title/description, 2) Keep titles very short (under 50 chars), 3) Use trending sounds/music, 4) First 2 seconds must grab attention, 5) Vertical format only (9:16 aspect ratio).';
-            }
-            else if (lowerMessage.includes('view') || lowerMessage.includes('watch')) {
-                response = 'To get more views: 1) Create thumbnails that stand out, 2) Use cards/end screens, 3) Engage with comments, 4) Share on social media, 5) Collaborate with other creators, 6) Post consistently.';
-            }
-            else {
-                // Random helpful tip if no specific match
-                const randomIndex = Math.floor(Math.random() * translations[currentLang].aiResponses.length);
-                response = translations[currentLang].aiResponses[randomIndex];
-            }
-            
-            addMessageToChat(response, 'bot');
-        }
-        
-        // Allow pressing Enter to send message
-        document.getElementById('aiAgentInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !waitingForAIResponse) {
-                sendAIMessage();
-            }
-        });
-        
-        // Generate some common questions buttons
-        function generateCommonQuestions() {
-            const messages = document.getElementById('aiAgentMessages');
-            const questions = translations[currentLang].aiCommonQuestions;
-            
-            questions.forEach(question => {
-                const questionBtn = document.createElement('button');
-                questionBtn.textContent = question;
-                questionBtn.className = 'common-question';
-                questionBtn.onclick = function() {
-                    document.getElementById('aiAgentInput').value = question;
-                    sendAIMessage();
-                };
-                
-                const container = document.createElement('div');
-                container.className = 'common-question-container';
-                container.appendChild(questionBtn);
-                
-                messages.appendChild(container);
-            });
-        }
-        
-        // Initialize the AI agent
-        window.onload = function() {
-            generateCommonQuestions();
-        };
-
-        // Rest of your existing functions (generateSEO, copyToClipboard, etc.) would go here...
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
